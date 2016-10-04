@@ -1,4 +1,5 @@
 var OystersLayer = cc.Layer.extend({
+    optionButtons: [],
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -9,67 +10,60 @@ var OystersLayer = cc.Layer.extend({
         /////////////////////////////
         // 2. load question options
         var questionOptions = GD.currentLevel.getQuestionOptions();
-        cc.log(questionOptions);
         
         this.labels = [];
         
         for (var i = 0; i < questionOptions.length; i++) {
-            var option = new ccui.Button(res.oyster);
-            option.addTouchEventListener(this.optionButtonTouch, this);
-            option.setPosition(
+            var optionButton = new OptionButton(res.oyster, questionOptions[i]);
+            optionButton.setPosition(
                 cc.p(
-                    (size.width / (questionOptions.length)) * i + 150, 
+                    (size.width / questionOptions.length) * i + 150,
                     200
                 )
             );
-            option.setTag(i);
-            option.setUserData({answer: questionOptions[i]});
             
-            var label = new cc.LabelTTF(questionOptions[i], "arial", 60);
-            label.setPosition(
-                cc.p(option.width/2, option.height/2)
-            );
-            label.setColor(cc.color.BLACK);
-            option.addChild(label);
+            optionButton.addTouchEventListener(this.optionButtonTouch, this);
+            this.optionButtons.push(optionButton);
             
-            this.labels.push(label);
-            
-            this.addChild(option);
+            this.addChild(optionButton);
         }
         
-        if (GD.currentLevel.isTimedLevel()) {
-            cc.log("schedule update");
-            this.scheduleUpdate(this.tick, 1);
-        }
+        /////////////////////////////
+        // 3. check if level is timed and set an update
+        this.configureTimedLevel();
         
         return true;
     },
     optionButtonTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            var selection = GD.currentLevel.checkAnswer(sender.getUserData().answer);
+            var selection = GD.currentLevel.checkAnswer(sender.getOption());
             // animations and feedback depending on the correctnes of the answer
+            
             if (GD.currentLevel.isLevelCompleted()) {
                 GD.loadNextLevel();
                 
-                if (GD.currentLevel.isTimedLevel()) {
-                    cc.log("schedule update");
-                    this.schedule(this.tick, 1);
-                }
+                this.configureTimedLevel();
             }
             
             this.resetQuestion();
         }
     },
+    configureTimedLevel: function () {
+        if (GD.currentLevel.isTimedLevel()) {
+            cc.log("schedule update");
+            this.schedule(this.tick, 1);
+        } else {
+            this.unschedule(this.tick);
+        }
+    },
     resetQuestion: function () {
         var questionOptions = GD.currentLevel.getQuestionOptions();
-        cc.log(questionOptions);
         
-        for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = this.getChildByTag(i);
+        for (var i = 0; i < this.optionButtons.length; i++) {
+            var optionButton = this.optionButtons[i];
             
             //reset answer
-            optionButton.setUserData({answer: questionOptions[i]});            
-            this.labels[i].setString(questionOptions[i]);
+            optionButton.setOption(questionOptions[i]);
         }
     },
     tick: function (dt) {

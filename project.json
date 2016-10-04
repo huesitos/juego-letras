@@ -17,6 +17,7 @@
         "src/Utils.js",
         "src/Level.js",
         "src/GameDirector.js",
+        "src/OptionButton.js",
         "src/OystersLayer.js"
     ]
 }
