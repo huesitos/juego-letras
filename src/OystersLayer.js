@@ -15,7 +15,7 @@ var OystersLayer = cc.Layer.extend({
         
         var pos = size.width * .20;
         for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = new OptionButton(res.oyster, questionOptions[i]);
+            var optionButton = new OptionButton(imgRes.oyster, questionOptions[i]);
             optionButton.setPosition(
                 cc.p(
                     pos,
@@ -33,20 +33,53 @@ var OystersLayer = cc.Layer.extend({
         // 3. check if level is timed and set an update
         this.configureTimedLevel();
         
+        /////////////////////////////
+        // 4. play current right answer audio
+        GD.currentLevel.playOptionAudio();
+        
         return true;
     },
     optionButtonTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
             var selection = GD.currentLevel.checkAnswer(sender.getOption());
             // animations and feedback depending on the correctnes of the answer
-            
-            if (GD.currentLevel.isLevelCompleted()) {
-                GD.loadNextLevel();
+            if (selection) {
+                cc.audioEngine.playEffect(audioRes.success);
+                var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
+                var moveCenter = new cc.MoveTo(0.05, sender.getPosition());
+                var moveDown = new cc.MoveBy(0.05, cc.p(0, -10));
                 
-                this.configureTimedLevel();
+                var jumpAction = new cc.Sequence(moveUp, moveCenter, moveDown, moveCenter);
+                
+                sender.runAction(jumpAction);
+            } else {
+                cc.audioEngine.playEffect(audioRes.failure);
+                var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
+                var moveCenter = new cc.MoveTo(0.05, sender.getPosition());
+                var moveLeft = new cc.MoveBy(0.05, cc.p(-10, 0));
+                
+                var jerkAction = new cc.Sequence(moveRight, moveCenter, moveLeft, moveCenter);
+                
+                sender.runAction(jerkAction);
             }
             
-            this.resetQuestion();
+            // short pause
+            cc.eventManager.pauseTarget(this, true);
+            var delay = new cc.DelayTime(2);
+            
+            var nextQuestion = function () {
+                cc.eventManager.resumeTarget(this, true);
+                if (GD.currentLevel.isLevelCompleted()) {
+                    GD.loadNextLevel();
+
+                    this.configureTimedLevel();
+                }
+
+                this.resetQuestion();
+            }
+            var resumeTarget = new cc.CallFunc(nextQuestion, this);
+            
+            this.runAction(new cc.Sequence(delay, resumeTarget));
         }
     },
     configureTimedLevel: function () {
@@ -66,6 +99,8 @@ var OystersLayer = cc.Layer.extend({
             //reset answer
             optionButton.setOption(questionOptions[i]);
         }
+        
+        GD.currentLevel.playOptionAudio();
     },
     tick: function (dt) {
         GD.currentLevel.tick(dt);

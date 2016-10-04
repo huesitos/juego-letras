@@ -105,6 +105,14 @@ function Level(map, levelNum) {
         return questionOptions;
     };
     
+    this.getRightOption = function () {
+        return currentRightAnswer;
+    };
+    
+    this.playOptionAudio = function () {
+        cc.audioEngine.playEffect(stimuliRes[currentRightAnswer]);
+    };
+    
     this.checkAnswer = function (option) {
         var correctness = option === currentRightAnswer;
         
