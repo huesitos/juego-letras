@@ -6,33 +6,60 @@ var mapTransitions = {
 
 var world = {
     sea: [
+//        {
+//            "presentation": ["a", "e", "i", "o", "u"],
+//            "stimuli": ["a", "e", "i", "o", "u"],
+//            "distractions": ["a", "e", "i", "o", "u"],
+//            "activity": "rocks",
+//            "type": "UR",
+//            "goal": 100
+//        },
         {
             "presentation": ["a", "e", "i", "o", "u"],
             "stimuli": ["a", "e", "i", "o", "u"],
             "distractions": ["a", "e", "i", "o", "u"],
             "type": "UR",
+            "activity": "oysters",
             "goal": 100
         },
-    	{
-    		"stimuli": [
-                "ae", "ai", "ao", "au",
-                "ea", "ei", "eo", "eu",
-                "ia", "ie", "io", "iu", 
-                "oa", "oe", "oi", "ou", 
-                "ua", "ue", "ui", "uo"
-            ],
-    		"distractions": [
-                "a", "e", "i", "o", "u",
-                "ae", "ai", "ao", "au",
-                "ea", "ei", "eo", "eu",
-                "ia", "ie", "io", "iu", 
-                "oa", "oe", "oi", "ou", 
-                "ua", "ue", "ui", "uo"
-            ],
-    		"type": "T",
+        {
+            "presentation": ["ae", "ai", "ao", "au"],
+            "stimuli": ["ae", "ai", "ao", "au"],
+            "distractions": ["a", "e", "i", "o", "u"],
+            "activity": "oysters",
+            "type": "T",
             "time": 10,
-    		"goal": 100
-    	}
+            "goal": 100
+        },
+        {
+            "presentation": ["ea", "ei", "eo", "eu"],
+            "stimuli": ["ea", "ei", "eo", "eu"],
+            "distractions": ["ae", "ai", "ao", "au"],
+            "activity": "chests",
+            "type": "UR",
+            "goal": 100
+        },
+        {
+            "presentation": ["ia", "ie", "io", "iu"],
+            "stimuli": ["ia", "ie", "io", "iu"],
+            "distractions": ["ea", "ei", "eo", "eu"],
+            "type": "UR",
+            "goal": 100
+        },
+        {
+            "presentation": ["oa", "oe", "oi", "ou"],
+            "stimuli": ["oa", "oe", "oi", "ou"],
+            "distractions": ["ia", "ie", "io", "iu"],
+            "type": "UR",
+            "goal": 100
+        },
+        {
+            "presentation": ["ua", "ue", "ui", "uo"],
+            "stimuli": ["ua", "ue", "ui", "uo"],
+            "distractions": ["oa", "oe", "oi", "ou"],
+            "type": "UR",
+            "goal": 100
+        }
     ],
     beach: [
         {

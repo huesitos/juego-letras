@@ -3,8 +3,6 @@ var TIMED_LEVEL = "T";
 function Level(map, levelNum) {
     // load level
     var levelData = copyObject(world[map][levelNum]);
-    cc.log(levelData);
-    // cc.log(cc.sys.localStorage.getItem(JSON.stringify(map+levelNum)));
     
     // initialize variables
     var score; // max is level goal

@@ -13,15 +13,16 @@ var OystersLayer = cc.Layer.extend({
         
         this.labels = [];
         
+        var pos = size.width * .20;
         for (var i = 0; i < questionOptions.length; i++) {
             var optionButton = new OptionButton(res.oyster, questionOptions[i]);
             optionButton.setPosition(
                 cc.p(
-                    (size.width / questionOptions.length) * i + 150,
+                    pos,
                     200
                 )
             );
-            
+            pos += optionButton.getContentSize().width + size.width * .15;
             optionButton.addTouchEventListener(this.optionButtonTouch, this);
             this.optionButtons.push(optionButton);
             
