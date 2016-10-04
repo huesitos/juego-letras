@@ -124,9 +124,13 @@ function Level(map, levelNum) {
         return correctness;
     };
     
+    this.getActivity = function () {
+        return levelData["activity"];
+    };
+    
     this.isTimedLevel = function () {
         return levelData["type"] === TIMED_LEVEL;
-    }
+    };
     
     if (levelData["type"] === TIMED_LEVEL) {
         cc.log("timed level");

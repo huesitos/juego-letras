@@ -29,7 +29,20 @@ function GameDirector() {
                 cc.log("game completed");
             }
         }
-    }
+    };
+    
+    this.getNextLevelScene = function () {
+        var activity = this.currentLevel.getActivity();
+        var scene = new cc.Scene();
+        
+        switch (activity) {
+            case "oysters":
+                scene = OystersLayer.getScene();
+                break;
+        };
+        
+        return scene;
+    };
 }
 
 var GD = new GameDirector();
