@@ -1,4 +1,6 @@
 var TIMED_LEVEL = "T";
+var FUEL_CHANGED_EVENT = "fuelChanged";
+var LEVEL_COMPLETED_EVENT = "levelCompleted";
 
 function Level(map, levelNum) {
     // load level
@@ -62,6 +64,10 @@ function Level(map, levelNum) {
     function onRightAnswer() {
         score += scorePerAnswer;
         
+        var fuelChangedEvent = new cc.EventCustom(FUEL_CHANGED_EVENT);
+        fuelChangedEvent.setUserData({fuel: scorePerAnswer});
+        cc.eventManager.dispatchEvent(fuelChangedEvent);
+        
         if (that.isTimedLevel()) {
             progress = 0;
         }
@@ -120,7 +126,9 @@ function Level(map, levelNum) {
             onRightAnswer();
             
             if (this.isLevelCompleted()) {
-                cc.log("level is completed");
+                var levelCompletedEvent = new cc.EventCustom(LEVEL_COMPLETED_EVENT);
+                cc.eventManager.dispatchEvent(levelCompletedEvent);
+                
                 saveLevelResults();
             }
         } else {

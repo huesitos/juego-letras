@@ -65,7 +65,7 @@ var OystersLayer = cc.Layer.extend({
             
             // short pause
             cc.eventManager.pauseTarget(this, true);
-            var delay = new cc.DelayTime(2);
+            var delay = new cc.DelayTime(1);
             
             var nextQuestion = function () {
                 cc.eventManager.resumeTarget(this, true);
@@ -82,9 +82,11 @@ var OystersLayer = cc.Layer.extend({
             this.runAction(new cc.Sequence(delay, resumeTarget));
         }
     },
+    changeFuelBar: function (event) {
+        cc.log("event dispatched")
+    },
     configureTimedLevel: function () {
         if (GD.currentLevel.isTimedLevel()) {
-            cc.log("schedule update");
             this.schedule(this.tick, 1);
         } else {
             this.unschedule(this.tick);
@@ -114,7 +116,7 @@ var OystersLayer = cc.Layer.extend({
 });
 
 OystersLayer.getScene = function () {
-    var scene = new cc.Scene();
+    var scene = new GameScene();
     scene.addChild(new OystersLayer());
     
     return scene;

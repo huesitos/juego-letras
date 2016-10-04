@@ -1,5 +1,6 @@
 var imgRes = {
-    oyster: "res/oyster.png"
+    oyster: "res/oyster.png",
+    fuelBar: "res/fuelBar.png"
 };
 
 var audioRes = {
