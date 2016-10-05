@@ -16,7 +16,7 @@ var UILayer = cc.Layer.extend({
         );
         this.fuelBar.setAnchorPoint(cc.p(0, 0));
         this.fuelBar.setRotation(270);
-        this.fuelBar.setPercent(0);
+        this.fuelBar.setPercent(GD.currentLevel.getLevelScore());
         this.addChild(this.fuelBar);
         
         cc.eventManager.addListener({
@@ -35,7 +35,7 @@ var UILayer = cc.Layer.extend({
     },
     changeFuelBar: function (event) {
         this.fuelBar.setPercent(
-            this.fuelBar.getPercent() + event.getUserData().fuel
+            GD.currentLevel.getLevelScore()
         );
     },
     levelCompleted: function (event) {

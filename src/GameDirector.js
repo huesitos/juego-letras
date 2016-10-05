@@ -4,7 +4,6 @@ function GameDirector() {
     
     // load current level
     this.currentLevel = new Level(map, level);
-    this.currentLevel.setQuestion();
     
     this.loadNextLevel = function () {
         level++;
@@ -28,17 +27,28 @@ function GameDirector() {
                 this.currentLevel = new Level(map, level);
             } else {
                 cc.log("game completed");
+                this.currentLevel = null;
             }
         }
     };
     
-    this.getNextActivityScene = function () {
-        var activity = this.currentLevel.getActivity();
+    this.getNextScene = function () {
+        var activity = this.currentLevel ? this.currentLevel.getActivity() : "end";
         var scene = new GameScene();
         
         switch (activity) {
             case "oysters":
                 scene = OystersLayer.getScene();
+                break;
+            case "end":
+                scene = new cc.Scene();
+                
+                var layer = new cc.Layer();
+                var label = new cc.LabelTTF("End", "Arial", 50);
+                label.setPosition(cc.p(cc.winSize.width / 2, cc.winSize.height / 2));
+                layer.addChild(label);
+                
+                scene.addChild(layer)
                 break;
         };
         

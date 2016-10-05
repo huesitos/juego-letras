@@ -1,6 +1,7 @@
-var TIMED_LEVEL = "T";
 var FUEL_CHANGED_EVENT = "fuelChanged";
 var LEVEL_COMPLETED_EVENT = "levelCompleted";
+var ACTIVITY_FINISHED_EVENT = "activityFinished";
+var QUESTION_CHECKED = "questionChecked";
 
 function Level(map, levelNum) {
     // load level
@@ -19,12 +20,14 @@ function Level(map, levelNum) {
         return pre + cur;
     });
     
-    var score; // max is level goal
+    var levelScore; // max is level goal
+    var activityScore; // max is activity goal
     var scorePerAnswer; // score for each right answer
     var wrongsCount; // determines stars for activities
     var rightAnswer; // changes for each question
     var questionOptions; // array with distractions and answer
-    score = 0;
+    levelScore = 49;
+    activityScore = 49;
     /*
     each activity corresponds to:
     100 / 2 = 50
@@ -36,6 +39,8 @@ function Level(map, levelNum) {
     cc.log(scorePerAnswer);
     wrongsCount = 0;
     rightAnswer = "";
+    
+    var progress = 0; // for timed activities
     
     var that = this;
     
@@ -68,7 +73,7 @@ function Level(map, levelNum) {
         return selectedDist;
     };
     
-    this.setQuestion = function () {
+    function setQuestion() {
         var stimulus = getRandomStimulus();
         rightAnswer = stimulus;
         cc.log("answer: " + rightAnswer);
@@ -78,10 +83,14 @@ function Level(map, levelNum) {
         
         questionOptions = distractions;
         shuffle(questionOptions);
+        cc.log("question has been set");
+        cc.log(questionOptions);
     };
+    setQuestion();
     
     function onRightAnswer() {
-        score += scorePerAnswer;
+        activityScore += scorePerAnswer;
+        levelScore += scorePerAnswer;
         
         var fuelChangedEvent = new cc.EventCustom(FUEL_CHANGED_EVENT);
         fuelChangedEvent.setUserData({fuel: scorePerAnswer});
@@ -90,7 +99,6 @@ function Level(map, levelNum) {
         if (that.isTimedActivity()) {
             progress = 0;
         }
-        cc.log("score: " + score);
     };
     
     function onWrongAnswer() {
@@ -124,12 +132,8 @@ function Level(map, levelNum) {
     
     function saveLevelResults() {}
     
-    this.isActivityCompleted = function () {
-        return score >= activityData["goal"];
-    };
-    
     this.isLevelCompleted = function () {
-        return score >= levelGoal;
+        return levelScore >= levelGoal;
     };
     
     this.getQuestionOptions = function () {    
@@ -146,32 +150,41 @@ function Level(map, levelNum) {
     
     this.checkAnswer = function (option) {
         var correctness = option === rightAnswer;
+        progress = 0;
+        
+        var event; // to be dispatched at the end
         
         if (correctness) {
             onRightAnswer();
-            
-            if (this.isActivityCompleted()) {
-                saveActivityResults();
-                
-                // level is completed
-                if (score === levelGoal) {
-                    var levelCompletedEvent = new cc.EventCustom(LEVEL_COMPLETED_EVENT);
-                    cc.eventManager.dispatchEvent(levelCompletedEvent);
-                    
-                    saveLevelResults();
-                } else {
-                    currentActivity++;
-                    
-                    activityData = copyObject(levelData.activities[currentActivity]);
-                }
-            }
         } else {
             onWrongAnswer();
         }
         
-        this.setQuestion();
+        if (activityScore >= activityData["goal"]) {
+            saveActivityResults();
+
+            // level is completed
+            if (levelScore === levelGoal) {
+                cc.log("level completed");
+                saveLevelResults();
+                GD.loadNextLevel();
+                
+                event = new cc.EventCustom(LEVEL_COMPLETED_EVENT);
+            } else {
+                cc.log("activity completed");
+                activityScore = 0;
+                currentActivity++;
+                activityData = copyObject(levelData.activities[currentActivity]);
+
+                event = new cc.EventCustom(ACTIVITY_FINISHED_EVENT);
+            }
+        } else {
+            event = new cc.EventCustom(QUESTION_CHECKED);
+            event.setUserData({correctness: correctness});
+        }
         
-        return correctness;
+        setQuestion();
+        cc.eventManager.dispatchEvent(event);
     };
     
     this.getActivity = function () {
@@ -181,25 +194,28 @@ function Level(map, levelNum) {
     this.isTimedActivity = function () {
         return activityData["type"] === TIMED_LEVEL;
     };
+
+    this.skipQuestion = function () {
+        cc.log("skipping question");
+        progress = 0;
+        
+        onWrongAnswer();
+        setQuestion();
+    };
+
+    this.tick = function (dt) {
+        progress += dt;
+    };
+
+    this.hasTimerFinished = function () {
+        return progress >= activityData["time"];
+    };
     
-    if (activityData["type"] === TIMED_LEVEL) {
-        cc.log("timed level");
-        var progress = 0;
-        
-        this.skipQuestion = function () {
-            cc.log("skipping question");
-            progress = 0;
-            
-            onWrongAnswer();
-            this.setQuestion();
-        };
-        
-        this.tick = function (dt) {
-            progress += dt;
-        };
-        
-        this.hasTimerFinished = function () {
-            return progress >= activityData["time"];
-        };
-    }
+    this.getTotalTime = function () {
+        return activityData["time"];
+    };
+    
+    this.getLevelScore = function () {
+        return levelScore;
+    };
 };

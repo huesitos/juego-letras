@@ -34,7 +34,11 @@ var stimuliRes = {
 	"w": "res/audio/stimuli.ogg",
 	"x": "res/audio/stimuli.ogg",
 	"y": "res/audio/stimuli.ogg",
-	"z": "res/audio/stimuli.ogg"
+	"z": "res/audio/stimuli.ogg",
+    "ae": "res/audio/stimuli.ogg",
+    "ai": "res/audio/stimuli.ogg",
+    "ao": "res/audio/stimuli.ogg",
+    "au": "res/audio/stimuli.ogg"
 }
 
 var g_resources = [];

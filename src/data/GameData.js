@@ -1,8 +1,11 @@
 var mapTransitions = {
-    sea: "beach",
-    beach: "sky",
-    sky: "space"
+//    sea: "beach",
+//    beach: "sky",
+//    sky: "space"
 };
+
+var TIMED_LEVEL = "T";
+var UNIQUE_ANSWER = "UR";
 
 var world = {
     sea: [
@@ -20,18 +23,18 @@ var world = {
                     "presentation": ["a", "e", "i", "o", "u"],
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],
-                    "type": "UR",
+                    "type": UNIQUE_ANSWER,
                     "activity": "oysters",
-                    "goal": 100
+                    "goal": 50
                 },
                 {
                     "presentation": ["ae", "ai", "ao", "au"],
                     "stimuli": ["ae", "ai", "ao", "au"],
                     "distractions": ["a", "e", "i", "o", "u"],
                     "activity": "oysters",
-                    "type": "T",
+                    "type": TIMED_LEVEL,
                     "time": 10,
-                    "goal": 100
+                    "goal": 50
                 },
 //                {
 //                    "presentation": ["ea", "ei", "eo", "eu"],
