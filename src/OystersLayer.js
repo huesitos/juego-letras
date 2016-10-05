@@ -79,10 +79,9 @@ var OystersLayer = cc.Layer.extend({
 
                         this.configureTimedActivity();
                     }
-//                    cc.log(GD.getNextActivityScene());
-//                    cc.director.runScene(GD.getNextActivityScene());
+                    cc.director.runScene(GD.getNextActivityScene());
                     
-                    cc.director.runScene(new cc.Scene());
+//                    cc.director.runScene(new cc.Scene());
                 } else {
                     // if the activity is not complete, reset the
                     // question to continue

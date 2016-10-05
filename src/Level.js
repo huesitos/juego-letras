@@ -25,7 +25,15 @@ function Level(map, levelNum) {
     var rightAnswer; // changes for each question
     var questionOptions; // array with distractions and answer
     score = 0;
-    scorePerAnswer = activityData.goal / 10;
+    /*
+    each activity corresponds to:
+    100 / 2 = 50
+    
+    each correct answer adds:
+    50 / goal
+    */
+    scorePerAnswer = (100 / levelData.activities.length) / activityData.goal;
+    cc.log(scorePerAnswer);
     wrongsCount = 0;
     rightAnswer = "";
     
