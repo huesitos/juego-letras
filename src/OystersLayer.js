@@ -31,7 +31,7 @@ var OystersLayer = cc.Layer.extend({
         
         /////////////////////////////
         // 3. check if level is timed and set an update
-        this.configureTimedLevel();
+        this.configureTimedActivity();
         
         /////////////////////////////
         // 4. play current right answer audio
@@ -69,24 +69,33 @@ var OystersLayer = cc.Layer.extend({
             
             var nextQuestion = function () {
                 cc.eventManager.resumeTarget(this, true);
-                if (GD.currentLevel.isLevelCompleted()) {
-                    GD.loadNextLevel();
+                
+                // check if the activity is completed
+                if (GD.currentLevel.isActivityCompleted()) {
+                    // if the activity is completed, load the
+                    // new level and go to that scene
+                    if (GD.currentLevel.isLevelCompleted()) {
+                        GD.loadNextLevel();
 
-                    this.configureTimedLevel();
+                        this.configureTimedActivity();
+                    }
+//                    cc.log(GD.getNextActivityScene());
+//                    cc.director.runScene(GD.getNextActivityScene());
+                    
+                    cc.director.runScene(new cc.Scene());
+                } else {
+                    // if the activity is not complete, reset the
+                    // question to continue
+                    this.resetQuestion();
                 }
-
-                this.resetQuestion();
             }
             var resumeTarget = new cc.CallFunc(nextQuestion, this);
             
             this.runAction(new cc.Sequence(delay, resumeTarget));
         }
     },
-    changeFuelBar: function (event) {
-        cc.log("event dispatched")
-    },
-    configureTimedLevel: function () {
-        if (GD.currentLevel.isTimedLevel()) {
+    configureTimedActivity: function () {
+        if (GD.currentLevel.isTimedActivity()) {
             this.schedule(this.tick, 1);
         } else {
             this.unschedule(this.tick);

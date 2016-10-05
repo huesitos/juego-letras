@@ -5,30 +5,42 @@ var LEVEL_COMPLETED_EVENT = "levelCompleted";
 function Level(map, levelNum) {
     // load level
     var levelData = copyObject(world[map][levelNum]);
+    var currentActivity; // the activity being played
+    var activityData; // the data of the activity being played
+    currentActivity = 0;
+    activityData = levelData.activities[currentActivity];
     
     // initialize variables
+    var levelGoal = levelData.activities.map(
+        function (activity) {
+            return activity.goal;
+        }
+    ).reduce(function (pre, cur) {
+        return pre + cur;
+    });
+    
     var score; // max is level goal
     var scorePerAnswer; // score for each right answer
-    var wrongsCount; // determines stars
-    var currentRightAnswer; // changes for each question
+    var wrongsCount; // determines stars for activities
+    var rightAnswer; // changes for each question
     var questionOptions; // array with distractions and answer
     score = 0;
-    scorePerAnswer = 10;
+    scorePerAnswer = activityData.goal / 10;
     wrongsCount = 0;
-    currentRightAnswer = "";
+    rightAnswer = "";
     
     var that = this;
     
     function getRandomStimulus() {
-        var randomPick = Math.random() * levelData["stimuli"].length;
+        var randomPick = Math.random() * activityData["stimuli"].length;
         randomPick = Math.floor(randomPick); // only integers
         
-        return levelData["stimuli"][randomPick];
+        return activityData["stimuli"][randomPick];
     };
     
     function getRandomDistractions(stimulus, amount = 0) {
         // copy list
-        var distractions = levelData["distractions"].slice();
+        var distractions = activityData["distractions"].slice();
         var stimulusIndex = distractions.indexOf(stimulus);
         // remove the selected stimulus from the list of distractions
         // in case it exists
@@ -48,10 +60,10 @@ function Level(map, levelNum) {
         return selectedDist;
     };
     
-    function setQuestion() {
+    this.setQuestion = function () {
         var stimulus = getRandomStimulus();
-        currentRightAnswer = stimulus;
-        cc.log("answer: " + currentRightAnswer);
+        rightAnswer = stimulus;
+        cc.log("answer: " + rightAnswer);
         
         var distractions = getRandomDistractions(stimulus, 2);
         distractions.push(stimulus);
@@ -59,7 +71,6 @@ function Level(map, levelNum) {
         questionOptions = distractions;
         shuffle(questionOptions);
     };
-    setQuestion();
     
     function onRightAnswer() {
         score += scorePerAnswer;
@@ -68,7 +79,7 @@ function Level(map, levelNum) {
         fuelChangedEvent.setUserData({fuel: scorePerAnswer});
         cc.eventManager.dispatchEvent(fuelChangedEvent);
         
-        if (that.isTimedLevel()) {
+        if (that.isTimedActivity()) {
             progress = 0;
         }
         cc.log("score: " + score);
@@ -79,7 +90,7 @@ function Level(map, levelNum) {
         cc.log("wrongs: " + wrongsCount);
     };
     
-    function saveLevelResults() {
+    function saveActivityResults() {
         var earnedStars;
         
         if (wrongsCount === 0) {
@@ -97,14 +108,20 @@ function Level(map, levelNum) {
         }
         var itemKey = map + levelNum;
         
-        cc.sys.localStorage.setItem(
-            JSON.stringify(itemKey), 
-            JSON.stringify(results)
-        );
+//        cc.sys.localStorage.setItem(
+//            JSON.stringify(itemKey), 
+//            JSON.stringify(results)
+//        );
+    };
+    
+    function saveLevelResults() {}
+    
+    this.isActivityCompleted = function () {
+        return score >= activityData["goal"];
     };
     
     this.isLevelCompleted = function () {
-        return score >= levelData["goal"];
+        return score >= levelGoal;
     };
     
     this.getQuestionOptions = function () {    
@@ -112,43 +129,52 @@ function Level(map, levelNum) {
     };
     
     this.getRightOption = function () {
-        return currentRightAnswer;
+        return rightAnswer;
     };
     
     this.playOptionAudio = function () {
-        cc.audioEngine.playEffect(stimuliRes[currentRightAnswer]);
+        cc.audioEngine.playEffect(stimuliRes[rightAnswer]);
     };
     
     this.checkAnswer = function (option) {
-        var correctness = option === currentRightAnswer;
+        var correctness = option === rightAnswer;
         
         if (correctness) {
             onRightAnswer();
             
-            if (this.isLevelCompleted()) {
-                var levelCompletedEvent = new cc.EventCustom(LEVEL_COMPLETED_EVENT);
-                cc.eventManager.dispatchEvent(levelCompletedEvent);
+            if (this.isActivityCompleted()) {
+                saveActivityResults();
                 
-                saveLevelResults();
+                // level is completed
+                if (score === levelGoal) {
+                    var levelCompletedEvent = new cc.EventCustom(LEVEL_COMPLETED_EVENT);
+                    cc.eventManager.dispatchEvent(levelCompletedEvent);
+                    
+                    saveLevelResults();
+                } else {
+                    currentActivity++;
+                    
+                    activityData = copyObject(levelData.activities[currentActivity]);
+                }
             }
         } else {
             onWrongAnswer();
         }
         
-        setQuestion();
+        this.setQuestion();
         
         return correctness;
     };
     
     this.getActivity = function () {
-        return levelData["activity"];
+        return activityData["activity"];
     };
     
-    this.isTimedLevel = function () {
-        return levelData["type"] === TIMED_LEVEL;
+    this.isTimedActivity = function () {
+        return activityData["type"] === TIMED_LEVEL;
     };
     
-    if (levelData["type"] === TIMED_LEVEL) {
+    if (activityData["type"] === TIMED_LEVEL) {
         cc.log("timed level");
         var progress = 0;
         
@@ -157,7 +183,7 @@ function Level(map, levelNum) {
             progress = 0;
             
             onWrongAnswer();
-            setQuestion();
+            this.setQuestion();
         };
         
         this.tick = function (dt) {
@@ -165,7 +191,7 @@ function Level(map, levelNum) {
         };
         
         this.hasTimerFinished = function () {
-            return progress >= levelData["time"];
+            return progress >= activityData["time"];
         };
     }
 };

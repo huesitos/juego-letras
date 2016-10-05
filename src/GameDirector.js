@@ -4,6 +4,7 @@ function GameDirector() {
     
     // load current level
     this.currentLevel = new Level(map, level);
+    this.currentLevel.setQuestion();
     
     this.loadNextLevel = function () {
         level++;
@@ -31,9 +32,9 @@ function GameDirector() {
         }
     };
     
-    this.getNextLevelScene = function () {
+    this.getNextActivityScene = function () {
         var activity = this.currentLevel.getActivity();
-        var scene = new cc.Scene();
+        var scene = new GameScene();
         
         switch (activity) {
             case "oysters":
