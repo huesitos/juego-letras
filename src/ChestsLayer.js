@@ -1,4 +1,4 @@
-var ChestsLayer = cc.Layer.extend({
+var ChestsLayer = GameLayer.extend({
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -196,7 +196,10 @@ var ChestsLayer = cc.Layer.extend({
 
 ChestsLayer.getScene = function () {
     var scene = new GameScene();
-    scene.addChild(new ChestsLayer());
+    var layer = new ChestsLayer();
+    layer.setName("gameLayer");
+    
+    scene.addChild(layer);
     
     return scene;
 };

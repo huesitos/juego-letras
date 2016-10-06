@@ -20,6 +20,7 @@
         "src/UILayer.js",
         "src/GameScene.js",
         "src/OptionButton.js",
+        "src/GameLayer.js",
         "src/ChestsLayer.js",
         "src/OystersLayer.js"
     ]

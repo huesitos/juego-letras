@@ -1,6 +1,10 @@
 var imgRes = {
     oyster: "res/oyster.png",
     chest: "res/chest.png",
+    pause: "res/pause.png",
+    resume: "res/resume.png",
+    replay: "res/replay.png",
+    help: "res/help.png",
     fuelBar: "res/fuelBar.png"
 };
 

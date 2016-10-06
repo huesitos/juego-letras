@@ -1,4 +1,4 @@
-var OystersLayer = cc.Layer.extend({
+var OystersLayer = GameLayer.extend({
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -196,7 +196,10 @@ var OystersLayer = cc.Layer.extend({
 
 OystersLayer.getScene = function () {
     var scene = new GameScene();
-    scene.addChild(new OystersLayer());
+    var layer = new OystersLayer();
+    layer.setName("gameLayer");
+    
+    scene.addChild(layer);
     
     return scene;
 };
