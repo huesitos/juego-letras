@@ -26,8 +26,8 @@ function Level(map, levelNum) {
     var wrongsCount; // determines stars for activities
     var rightAnswer; // changes for each question
     var questionOptions; // array with distractions and answer
-    levelScore = 49;
-    activityScore = 49;
+    levelScore = 0;
+    activityScore = 0;
     /*
     each activity corresponds to:
     100 / 2 = 50

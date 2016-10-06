@@ -28,6 +28,14 @@ var world = {
                     "goal": 50
                 },
                 {
+                    "presentation": ["a", "e", "i", "o", "u"],
+                    "stimuli": ["a", "e", "i", "o", "u"],
+                    "distractions": ["a", "e", "i", "o", "u"],
+                    "activity": "chests",
+                    "type": UNIQUE_ANSWER,
+                    "goal": 50
+                },
+                {
                     "presentation": ["ae", "ai", "ao", "au"],
                     "stimuli": ["ae", "ai", "ao", "au"],
                     "distractions": ["a", "e", "i", "o", "u"],
@@ -42,7 +50,7 @@ var world = {
 //                    "distractions": ["ae", "ai", "ao", "au"],
 //                    "activity": "chests",
 //                    "type": "UR",
-//                    "goal": 100
+//                    "goal": 50
 //                },
 //                {
 //                    "presentation": ["ia", "ie", "io", "iu"],

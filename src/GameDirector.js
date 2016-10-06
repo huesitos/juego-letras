@@ -40,6 +40,9 @@ function GameDirector() {
             case "oysters":
                 scene = OystersLayer.getScene();
                 break;
+            case "chests":
+                scene = ChestsLayer.getScene();
+                break;
             case "end":
                 scene = new cc.Scene();
                 

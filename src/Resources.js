@@ -1,5 +1,6 @@
 var imgRes = {
     oyster: "res/oyster.png",
+    chest: "res/chest.png",
     fuelBar: "res/fuelBar.png"
 };
 
