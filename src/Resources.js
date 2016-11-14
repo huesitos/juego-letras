@@ -1,12 +1,25 @@
-var imgRes = {
-    oyster: "res/oyster.png",
-    chest: "res/chest.png",
-    pause: "res/pause.png",
-    resume: "res/resume.png",
-    replay: "res/replay.png",
-    help: "res/help.png",
-    fuelBar: "res/fuelBar.png"
+var uiImgRes = {
+    pause_png: "res/pause.png",
+    resume_png: "res/resume.png",
+    replay_png: "res/replay.png",
+    help_png: "res/help.png",
+    fuelBarEmpty_png: "res/fuel_bar_empty.png",
+    fuelBarFull_png: "res/fuel_bar_full.png"
 };
+
+var seaImgRes = {
+    oysterOpened_png: "res/sea/oyster_opened.png",
+    oysterClosed_png: "res/sea/oyster_closed.png",
+    rock1Normal_png: "res/sea/rock1_normal.png",
+    rock1Cracked_png: "res/sea/rock1_cracked.png",
+    rock2Normal_png: "res/sea/rock2_normal.png",
+    rock2Cracked_png: "res/sea/rock2_cracked.png",
+    rock3Normal_png: "res/sea/rock3_normal.png",
+    rock3Cracked_png: "res/sea/rock3_cracked.png",
+    seaFloor_png: "res/sea/sea_floor.png",
+    seaWater_png: "res/sea/sea_water.png",
+    chest_png: "res/chest.png",
+}
 
 var audioRes = {
     success: "res/audio/success.mp3",
@@ -47,8 +60,12 @@ var stimuliRes = {
 }
 
 var g_resources = [];
-for (var i in imgRes) {
-    g_resources.push(imgRes[i]);
+for (var i in uiImgRes) {
+    g_resources.push(uiImgRes[i]);
+}
+
+for (var i in seaImgRes) {
+    g_resources.push(seaImgRes[i]);
 }
 
 for (var i in audioRes) {

@@ -5,6 +5,14 @@ var OystersLayer = GameLayer.extend({
         this._super();
         
         var size = cc.winSize;
+        
+        var waterBackground = new cc.Sprite(seaImgRes.seaWater_png);
+        waterBackground.attr({x: size.width / 2, y: size.height / 2});
+        this.addChild(waterBackground);
+        
+        this.background = new cc.Sprite(seaImgRes.seaFloor_png);
+        this.background.attr({x: size.width / 2, y: size.height / 2});
+        this.addChild(this.background);
 
         /////////////////////////////
         // 2. load question options
@@ -15,19 +23,24 @@ var OystersLayer = GameLayer.extend({
         this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
         this.addChild(this.answerLabel);
         
-        var xPos = size.width * .20;
+        this.optionInitStateSrc = seaImgRes.oysterClosed_png;
+        this.optionClickedStateSrc = seaImgRes.oysterOpened_png;
+        
+        var xPos = size.width * .25;
+        var yPos = [100, 140, 80];
         for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = new OptionButton(imgRes.oyster, questionOptions[i]);
-            var pos = cc.p(xPos, 200);
+            var optionButton = new OptionButton(this.optionInitStateSrc, questionOptions[i]);
+            var pos = cc.p(xPos, yPos[i]);
             
             optionButton.setPosition(pos);
+            optionButton.setAnchorPoint(cc.p(0.5, 0));
             optionButton.setUserData({initPos: pos});
             
             optionButton.addTouchEventListener(this.optionButtonTouch, this);
             this.optionButtons.push(optionButton);
             this.addChild(optionButton);
             
-            xPos += optionButton.getContentSize().width + size.width * .15;
+            xPos += optionButton.getContentSize().width / 2 + size.width * .14;
         }
         cc.log(this.optionButtons);
         
@@ -89,8 +102,11 @@ var OystersLayer = GameLayer.extend({
             
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
-                cc.log("correct!");
                 cc.audioEngine.playEffect(audioRes.success);
+                cc.log(this.optionClickedStateSrc);
+                sender.loadTextures(this.optionClickedStateSrc, this.optionClickedStateSrc);
+                sender.hideLabel();
+                
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
                 var moveDown = new cc.MoveBy(0.05, cc.p(0, -10));
@@ -99,7 +115,6 @@ var OystersLayer = GameLayer.extend({
                 
                 sender.runAction(jumpAction);
             } else {
-                cc.log("incorrect!");
                 cc.audioEngine.playEffect(audioRes.failure);
                 var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
@@ -114,7 +129,6 @@ var OystersLayer = GameLayer.extend({
 
             function checkAnswer() {
                 cc.eventManager.resumeTarget(this, true);
-                cc.log("check answer");                
                 GD.currentLevel.checkAnswer(sender.getOption());
             };
             var actionFunc = new cc.CallFunc(checkAnswer, this);
@@ -147,11 +161,14 @@ var OystersLayer = GameLayer.extend({
             this.optionButtons[o].stopAllActions();
         }
         
+        // reset position and image
         for (var o in this.optionButtons) {
             var optionButton = this.optionButtons[o];
             var initPos = optionButton.getUserData().initPos;
 
             optionButton.setPosition(initPos);
+            optionButton.loadTextures(this.optionInitStateSrc, this.optionInitStateSrc);
+            optionButton.showLabel();
         }
         
         var questionOptions = GD.currentLevel.getQuestionOptions();

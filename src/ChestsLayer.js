@@ -1,5 +1,5 @@
 var ChestsLayer = GameLayer.extend({
-    ctor:function () {
+    ctor: function () {
         //////////////////////////////
         // 1. super init first
         this._super();
@@ -17,7 +17,7 @@ var ChestsLayer = GameLayer.extend({
         
         var xPos = size.width * .20;
         for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = new OptionButton(imgRes.chest, questionOptions[i]);
+            var optionButton = new OptionButton(imgRes.chest_png, questionOptions[i]);
             var pos = cc.p(xPos, 200);
             
             optionButton.setPosition(pos);
@@ -89,7 +89,6 @@ var ChestsLayer = GameLayer.extend({
             
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
-                cc.log("correct!");
                 cc.audioEngine.playEffect(audioRes.success);
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
@@ -99,7 +98,6 @@ var ChestsLayer = GameLayer.extend({
                 
                 sender.runAction(jumpAction);
             } else {
-                cc.log("incorrect!");
                 cc.audioEngine.playEffect(audioRes.failure);
                 var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
@@ -114,7 +112,6 @@ var ChestsLayer = GameLayer.extend({
 
             function checkAnswer() {
                 cc.eventManager.resumeTarget(this, true);
-                cc.log("check answer");                
                 GD.currentLevel.checkAnswer(sender.getOption());
             };
             var actionFunc = new cc.CallFunc(checkAnswer, this);

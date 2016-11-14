@@ -10,7 +10,7 @@ var UILayer = cc.Layer.extend({
         //////////////////////////////
         // 2. create fuel bar
         this.fuelBar = new ccui.LoadingBar();
-        this.fuelBar.loadTexture(imgRes.fuelBar);
+        this.fuelBar.loadTexture(uiImgRes.fuelBarEmpty_png);
         this.fuelBar.setPosition(
             cc.p(size.width * .07, size.height * .15)
         );
@@ -24,26 +24,26 @@ var UILayer = cc.Layer.extend({
         
         var yPos = size.height * .85;
         
-        this.helpBtn = new ccui.Button(imgRes.help);
+        this.helpBtn = new ccui.Button(uiImgRes.help_png);
         this.helpBtn.setPosition(cc.p(size.width * .95, yPos));
         this.helpBtn.addTouchEventListener(this.onHelpBtnTouch, this);
         this.addChild(this.helpBtn);
         
         yPos -= (this.helpBtn.height / 2 + size.height * .05);
         
-        this.replayBtn = new ccui.Button(imgRes.replay);
+        this.replayBtn = new ccui.Button(uiImgRes.replay_png);
         this.replayBtn.setPosition(cc.p(size.width * .95, yPos));
         this.replayBtn.addTouchEventListener(this.onReplayTouch, this);
         this.addChild(this.replayBtn);
         
         yPos -= (this.replayBtn.height / 2 + size.height * .05);
         
-        this.pauseBtn = new ccui.Button(imgRes.pause);
+        this.pauseBtn = new ccui.Button(uiImgRes.pause_png);
         this.pauseBtn.setPosition(cc.p(size.width * .95, yPos));
         this.pauseBtn.addTouchEventListener(this.onPauseTouch, this);
         this.addChild(this.pauseBtn);
         
-        this.resumeBtn = new ccui.Button(imgRes.resume);
+        this.resumeBtn = new ccui.Button(uiImgRes.resume_png);
         this.resumeBtn.setPosition(cc.p(size.width * .95, yPos));
         this.resumeBtn.addTouchEventListener(this.onResumeTouch, this);
         this.resumeBtn.setVisible(false);
