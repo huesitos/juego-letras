@@ -26,7 +26,7 @@ var OystersLayer = GameLayer.extend({
         this.optionInitStateSrc = seaImgRes.oysterClosed_png;
         this.optionClickedStateSrc = seaImgRes.oysterOpened_png;
         
-        var xPos = size.width * .25;
+        var xPos = size.width * .27;
         var yPos = [100, 140, 80];
         for (var i = 0; i < questionOptions.length; i++) {
             var optionButton = new OptionButton(this.optionInitStateSrc, questionOptions[i]);

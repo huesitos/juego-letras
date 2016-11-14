@@ -12,7 +12,6 @@ var world = {
         {
             activities: [
 //                {
-//                    "presentation": ["a", "e", "i", "o", "u"],
 //                    "stimuli": ["a", "e", "i", "o", "u"],
 //                    "distractions": ["a", "e", "i", "o", "u"],
 //                    "activity": "rocks",
@@ -20,32 +19,28 @@ var world = {
 //                    "goal": 100
 //                },
                 {
-                    "presentation": ["a", "e", "i", "o", "u"],
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],
                     "type": UNIQUE_ANSWER,
                     "activity": "oysters",
-                    "goal": 50
+                    "goal": 10  
                 },
                 {
-                    "presentation": ["a", "e", "i", "o", "u"],
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],
                     "activity": "chests",
                     "type": UNIQUE_ANSWER,
-                    "goal": 50
-                },
-                {
-                    "presentation": ["ae", "ai", "ao", "au"],
-                    "stimuli": ["ae", "ai", "ao", "au"],
-                    "distractions": ["a", "e", "i", "o", "u"],
-                    "activity": "oysters",
-                    "type": TIMED_LEVEL,
-                    "time": 10,
-                    "goal": 50
+                    "goal": 10
                 },
 //                {
-//                    "presentation": ["ea", "ei", "eo", "eu"],
+//                    "stimuli": ["ae", "ai", "ao", "au"],
+//                    "distractions": ["a", "e", "i", "o", "u"],
+//                    "activity": "oysters",
+//                    "type": TIMED_LEVEL,
+//                    "time": 10,
+//                    "goal": 50
+//                },
+//                {
 //                    "stimuli": ["ea", "ei", "eo", "eu"],
 //                    "distractions": ["ae", "ai", "ao", "au"],
 //                    "activity": "chests",
@@ -53,21 +48,18 @@ var world = {
 //                    "goal": 50
 //                },
 //                {
-//                    "presentation": ["ia", "ie", "io", "iu"],
 //                    "stimuli": ["ia", "ie", "io", "iu"],
 //                    "distractions": ["ea", "ei", "eo", "eu"],
 //                    "type": "UR",
 //                    "goal": 100
 //                },
 //                {
-//                    "presentation": ["oa", "oe", "oi", "ou"],
 //                    "stimuli": ["oa", "oe", "oi", "ou"],
 //                    "distractions": ["ia", "ie", "io", "iu"],
 //                    "type": "UR",
 //                    "goal": 100
 //                },
 //                {
-//                    "presentation": ["ua", "ue", "ui", "uo"],
 //                    "stimuli": ["ua", "ue", "ui", "uo"],
 //                    "distractions": ["oa", "oe", "oi", "ou"],
 //                    "type": "UR",
@@ -79,7 +71,6 @@ var world = {
     ]
 //    beach: [
 //        {
-//    		"presentation": ["m", "n", "s"],
 //            "stimuli": ["m", "n", "s"],
 //    		"distractions": ['a', 'e', 'i', 'o', 'u'],
 //    		"type": "UR",
@@ -96,7 +87,6 @@ var world = {
 //    		"goal": 100
 //    	},
 //        {
-//    		"presentation": ["m", "n", "s", "l", "f", "p"],
 //            "stimuli": ["m", "n", "s", "l", "f", "p"],
 //    		"distractions": [".."],
 //    		"type": "UR",
@@ -126,7 +116,6 @@ var world = {
 //    		"goal": 100
 //    	},
 //        {
-//    		"presentation": ["t", "b", "d"],
 //    		"stimuli": ["t", "b", "d"],
 //    		"distractions": ['l', 'f', 'p', 'm', 'n'],
 //    		"type": "UR",
@@ -212,7 +201,6 @@ var world = {
 //    		"goal": 100
 //    	},
 //        {
-//    		"presentation": ["c", "q"],
 //            "stimuli": [
 //                "m", "n", "s", "l", "f", "p",
 //                "a", "e", "i", "o", "u"
@@ -233,7 +221,6 @@ var world = {
 //    		"goal": 100
 //    	},
 //        {
-//    		"presentation": ['v', 'll', 'h', 'y'],
 //    		"stimuli": [
 //                "m", "n", "s", "l", "f", "p",
 //                "a", "e", "i", "o", "u", 't',

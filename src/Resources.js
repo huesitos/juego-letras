@@ -18,7 +18,7 @@ var seaImgRes = {
     rock3Cracked_png: "res/sea/rock3_cracked.png",
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
-    chest_png: "res/chest.png",
+    chest_png: "res/sea/chest.png",
 }
 
 var audioRes = {

@@ -17,7 +17,7 @@ var ChestsLayer = GameLayer.extend({
         
         var xPos = size.width * .20;
         for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = new OptionButton(imgRes.chest_png, questionOptions[i]);
+            var optionButton = new OptionButton(seaImgRes.chest_png, questionOptions[i]);
             var pos = cc.p(xPos, 200);
             
             optionButton.setPosition(pos);

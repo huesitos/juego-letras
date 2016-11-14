@@ -9,15 +9,22 @@ var UILayer = cc.Layer.extend({
         
         //////////////////////////////
         // 2. create fuel bar
+        var emptyFuelBar = new cc.Sprite(uiImgRes.fuelBarEmpty_png);
+        emptyFuelBar.setPosition(
+            cc.p(size.width * .04, size.height * .10)
+        );
+        emptyFuelBar.setAnchorPoint(cc.p(0, 0));
+        this.addChild(emptyFuelBar, 0);
+        
         this.fuelBar = new ccui.LoadingBar();
-        this.fuelBar.loadTexture(uiImgRes.fuelBarEmpty_png);
+        this.fuelBar.loadTexture(uiImgRes.fuelBarFull_png);
         this.fuelBar.setPosition(
-            cc.p(size.width * .07, size.height * .15)
+            cc.p(size.width * .04 + emptyFuelBar.width, size.height * .10)
         );
         this.fuelBar.setAnchorPoint(cc.p(0, 0));
         this.fuelBar.setRotation(270);
         this.fuelBar.setPercent(GD.currentLevel.getLevelScore());
-        this.addChild(this.fuelBar);
+        this.addChild(this.fuelBar, 1);
         
         //////////////////////////////
         // 3. create game buttons
