@@ -1,4 +1,4 @@
-var UILayer = cc.Layer.extend({
+var HUDLayer = cc.Layer.extend({
     fuelBar: null,
     ctor:function () {
         //////////////////////////////
@@ -23,7 +23,7 @@ var UILayer = cc.Layer.extend({
         );
         this.fuelBar.setAnchorPoint(cc.p(0, 0));
         this.fuelBar.setRotation(270);
-        this.fuelBar.setPercent(GD.currentLevel.getLevelScore());
+        this.fuelBar.setPercent(0);
         this.addChild(this.fuelBar, 1);
         
         //////////////////////////////
@@ -61,22 +61,24 @@ var UILayer = cc.Layer.extend({
         
         cc.eventManager.addListener({
             event: cc.EventListener.CUSTOM,
-            eventName: FUEL_CHANGED_EVENT,
-            callback: this.changeFuelBar.bind(this)
+            eventName: MAP_LAYER_COMPLETED_EVENT,
+            callback: this.mapCompleted.bind(this)
         }, this);
         
-        cc.eventManager.addListener({
-            event: cc.EventListener.CUSTOM,
-            eventName: LEVEL_COMPLETED_EVENT,
-            callback: this.levelCompleted.bind(this)
-        }, this);
+        this.scheduleUpdate();
         
+        this.dt = 0;
         return true;
     },
-    changeFuelBar: function (event) {
-        this.fuelBar.setPercent(
-            GD.currentLevel.getLevelScore()
-        );
+    update: function (dt) {
+        this.dt += dt;
+        var fuelGoal = GD.gameState.currentFuelGoal;
+        var fuelScore = GD.gameState.currentFuelScore;
+        
+        // the score
+        var ratio = (fuelScore * 100) / fuelGoal;
+        
+        this.fuelBar.setPercent(ratio);
     },
     onHelpBtnTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
@@ -116,7 +118,7 @@ var UILayer = cc.Layer.extend({
             cc.log("resuming game");
         }
     },
-    levelCompleted: function (event) {
+    mapCompleted: function (event) {
         this.fuelBar.setPercent(0);
     }
 });

@@ -1,22 +1,22 @@
 var GameLayer = cc.Layer.extend({
-    ctor: function (bg, optionSrcs) {
+    ctor: function (optionSrcs, activity) {
         //////////////////////////////
         // 1. super init first
         this._super();
         
-        var size = cc.winSize;
+        this.activity = activity;
         
-        this.addChild(bg);
+        var size = cc.winSize;
                 
         var xPos = size.width * .27;
-        var yPos = [100, 140, 80];
+        var yPos = [100, 140, 90];
         
         /////////////////////////////
         // 2. load question options
         this.optionButtons = [];
-        var questionOptions = GD.currentLevel.getQuestionOptions();
+        var questionOptions = this.activity.getQuestionOptions();
         
-        this.answerLabel = new cc.LabelTTF(GD.currentLevel.getRightOption(), "Arial", 50);
+        this.answerLabel = new cc.LabelTTF(this.activity.getRightOption(), "Arial", 50);
         this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
         this.addChild(this.answerLabel);
         
@@ -34,23 +34,22 @@ var GameLayer = cc.Layer.extend({
             
             xPos += optionButton.getContentSize().width / 2 + size.width * .14;
         }
-        cc.log(this.optionButtons);
         
+        // do all this after transition is over :o
         /////////////////////////////
         // 3. check if level is timed and set an update
 //        this.configureTimedActivity();
         
         /////////////////////////////
         // 4. play current right answer audio
-        GD.currentLevel.playOptionAudio();
+        this.activity.playOptionAudio();
         
         /////////////////////////////
         // 5. register events
         // activity completed
         var aCompleted = function (event) {
             cc.eventManager.pauseTarget(this, true);
-            cc.log("transition to new activity scene");
-            cc.director.runScene(GD.getNextScene());
+            cc.director.runScene(new cc.TransitionFadeUp(0.5, GD.getNextScene()));
         };
         
         cc.eventManager.addListener({
@@ -63,32 +62,27 @@ var GameLayer = cc.Layer.extend({
         var lCompleted = function (event) {
             // ascend transition
             cc.eventManager.pauseTarget(this, true);
-            cc.log("transition to new level activity scene");
-            cc.director.runScene(GD.getNextScene());
+            cc.director.runScene(new cc.TransitionSlideInT(2, GD.getNextScene()));
         };
         
         cc.eventManager.addListener({
             event: cc.EventListener.CUSTOM,
-            eventName: LEVEL_COMPLETED_EVENT,
+            eventName: MAP_LAYER_COMPLETED_EVENT,
             callback: lCompleted.bind(this)
         }, this);
         
         // question checked and no transition
-        var qChecked = function (event) {
-            this.resetQuestion();
-        };
-        
         cc.eventManager.addListener({
             event: cc.EventListener.CUSTOM,
             eventName: QUESTION_CHECKED,
-            callback: qChecked.bind(this)
+            callback: this.resetQuestion.bind(this)
         }, this);
         
         return true;
     },
     optionButtonTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            var selection = GD.currentLevel.getRightOption() === sender.getOption();
+            var selection = this.activity.getRightOption() === sender.getOption();
             cc.eventManager.pauseTarget(this, true);
             this.unscheduleAllCallbacks();
             
@@ -120,7 +114,7 @@ var GameLayer = cc.Layer.extend({
 
             function checkAnswer() {
                 cc.eventManager.resumeTarget(this, true);
-                GD.currentLevel.checkAnswer(sender.getOption());
+                this.activity.checkAnswer(sender.getOption());
             };
             var actionFunc = new cc.CallFunc(checkAnswer, this);
 
@@ -128,7 +122,7 @@ var GameLayer = cc.Layer.extend({
         }
     },
     configureTimedActivity: function () {
-        if (GD.currentLevel.isTimedActivity()) {
+        if (this.activity.isTimedActivity()) {
             this.schedule(this.tick, 1);
             
             for (var o in this.optionButtons) {
@@ -136,7 +130,7 @@ var GameLayer = cc.Layer.extend({
                 
                 // move out of the screen
                 var moveAction = new cc.MoveTo(
-                    GD.currentLevel.getTotalTime(),
+                    this.activity.getTotalTime(),
                     cc.p(
                         optionButton.x,
                         cc.winSize.height + optionButton.height / 2
@@ -158,41 +152,37 @@ var GameLayer = cc.Layer.extend({
             var initPos = optionButton.getUserData().initPos;
 
             optionButton.setPosition(initPos);
-            optionButton.changeToNormal();
-            optionButton.showLabel();
         }
         
-        var questionOptions = GD.currentLevel.getQuestionOptions();
+        var questionOptions = this.activity.getQuestionOptions();
         
         for (var i = 0; i < this.optionButtons.length; i++) {
             var optionButton = this.optionButtons[i];
             
             //reset answer
             optionButton.setOption(questionOptions[i]);
+            optionButton.changeToNormal();
+            optionButton.showLabel();
         }
-        
-        this.answerLabel.setString(GD.currentLevel.getRightOption());
-        GD.currentLevel.playOptionAudio();
-        this.configureTimedActivity();
+        this.answerLabel.setString(this.activity.getRightOption());
+        this.activity.playOptionAudio();
+//        this.configureTimedActivity();
     },
     tick: function (dt) {
-        GD.currentLevel.tick(dt);
-        cc.log("tick");
+        this.activity.tick(dt);
 
-        if (GD.currentLevel.hasTimerFinished()) {
+        if (this.activity.hasTimerFinished()) {
             this.unscheduleAllCallbacks();
                         
             // short pause
-            GD.currentLevel.skipQuestion();
+            this.activity.skipQuestion();
             cc.eventManager.pauseTarget(this, true);
             
             var delay = new cc.DelayTime(1);
 
             function nextQuestion() {
-                cc.log("resuming target");
                 cc.eventManager.resumeTarget(this, true);
                 
-                cc.log("OL: setting new values")
                 this.resetQuestion();
             };
             var actionFunc = new cc.CallFunc(nextQuestion, this);

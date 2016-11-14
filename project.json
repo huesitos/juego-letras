@@ -14,16 +14,18 @@
     "jsList" : [
         "src/Resources.js",
         "src/data/GameData.js",
-        "src/Utils.js",
-        "src/Level.js",
-        "src/GameDirector.js",
-        "src/SeaMap.js",
-        "src/UILayer.js",
-        "src/GameScene.js",
-        "src/OptionButton.js",
-        "src/GameLayer.js",
-        "src/ChestsLayer.js",
-        "src/RocksLayer.js",
-        "src/SeaBottomBg.js"
+        "src/engine/GameState.js",
+        "src/engine/Utils.js",
+        "src/engine/Activity.js",
+        "src/ui/backgrounds/SeaBottomBg.js",
+        "src/engine/Map.js",
+        "src/engine/SeaMap.js",
+        "src/engine/GameDirector.js",
+        
+        "src/ui/nodes/OptionButton.js",
+        "src/ui/layers/HUDLayer.js",
+        "src/ui/layers/GameLayer.js",
+        "src/ui/layers/RocksLayer.js",
+        "src/ui/GameScene.js"
     ]
 }

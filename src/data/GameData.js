@@ -10,64 +10,70 @@ var UNIQUE_ANSWER = "UR";
 var world = {
     sea: [
         {
+            background: "seaBottom",
             activities: [
                 {
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],
-                    "activity": "rocks",
+                    "activityID": "rocks",
                     "type": UNIQUE_ANSWER,
-                    "goal": 50
+                    "goal": 2
                 },
                 {
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],
+                    "activityID": "oysters",
                     "type": UNIQUE_ANSWER,
-                    "activity": "oysters",
-                    "goal": 50  
+                    "goal": 2
                 },
-//                {
-//                    "stimuli": ["a", "e", "i", "o", "u"],
-//                    "distractions": ["a", "e", "i", "o", "u"],
-//                    "activity": "chests",
-//                    "type": UNIQUE_ANSWER,
-//                    "goal": 50
-//                },
-//                {
-//                    "stimuli": ["ae", "ai", "ao", "au"],
-//                    "distractions": ["a", "e", "i", "o", "u"],
-//                    "activity": "oysters",
-//                    "type": TIMED_LEVEL,
-//                    "time": 10,
-//                    "goal": 50
-//                },
+                {
+                    "stimuli": ["ae", "ai", "ao", "au"],
+                    "distractions": ["a", "e", "i", "o", "u"],
+                    "type": UNIQUE_ANSWER,
+                    "activityID": "chests",
+                    "goal": 2
+                },
+            ]
+        },
+//        {
+//            background: "seaMiddle",
+//            activities: [
 //                {
 //                    "stimuli": ["ea", "ei", "eo", "eu"],
 //                    "distractions": ["ae", "ai", "ao", "au"],
-//                    "activity": "chests",
-//                    "type": "UR",
+//                    "activityID": "octopus",
+//                    "type": UNIQUE_ANSWER,
 //                    "goal": 50
 //                },
 //                {
 //                    "stimuli": ["ia", "ie", "io", "iu"],
 //                    "distractions": ["ea", "ei", "eo", "eu"],
-//                    "type": "UR",
-//                    "goal": 100
+//                    "activityID": "jellyfish",
+//                    "type": TIMED_LEVEL,
+//                    "time": 10,
+//                    "goal": 50
 //                },
+//            ]
+//        },
+//        {
+//            background: "seaTop",
+//            activities: [
 //                {
 //                    "stimuli": ["oa", "oe", "oi", "ou"],
 //                    "distractions": ["ia", "ie", "io", "iu"],
+//                    "activityID": "bubbles",
 //                    "type": "UR",
-//                    "goal": 100
+//                    "goal": 50
 //                },
 //                {
 //                    "stimuli": ["ua", "ue", "ui", "uo"],
 //                    "distractions": ["oa", "oe", "oi", "ou"],
+//                    "activityID": "fisherman",
 //                    "type": "UR",
 //                    "goal": 100
 //                }
-            ]
-        }
-//        
+//            ]
+//        }
     ]
 //    beach: [
 //        {
