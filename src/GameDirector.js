@@ -38,10 +38,13 @@ function GameDirector() {
         
         switch (activity) {
             case "oysters":
-                scene = OystersLayer.getScene();
+                scene = SeaMap.getOystersScene();
                 break;
             case "chests":
-                scene = ChestsLayer.getScene();
+                scene = SeaMap.getChestsScene();
+                break;
+            case "rocks":
+                scene = SeaMap.getRocksScene();
                 break;
             case "end":
                 scene = new cc.Scene();

@@ -23,15 +23,15 @@ var world = {
                     "distractions": ["a", "e", "i", "o", "u"],
                     "type": UNIQUE_ANSWER,
                     "activity": "oysters",
-                    "goal": 10  
+                    "goal": 50  
                 },
-                {
-                    "stimuli": ["a", "e", "i", "o", "u"],
-                    "distractions": ["a", "e", "i", "o", "u"],
-                    "activity": "chests",
-                    "type": UNIQUE_ANSWER,
-                    "goal": 10
-                },
+//                {
+//                    "stimuli": ["a", "e", "i", "o", "u"],
+//                    "distractions": ["a", "e", "i", "o", "u"],
+//                    "activity": "chests",
+//                    "type": UNIQUE_ANSWER,
+//                    "goal": 50
+//                },
 //                {
 //                    "stimuli": ["ae", "ai", "ao", "au"],
 //                    "distractions": ["a", "e", "i", "o", "u"],
