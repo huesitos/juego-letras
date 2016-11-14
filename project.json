@@ -17,12 +17,13 @@
         "src/Utils.js",
         "src/Level.js",
         "src/GameDirector.js",
+        "src/SeaMap.js",
         "src/UILayer.js",
         "src/GameScene.js",
-        "src/SeaMap.js",
         "src/OptionButton.js",
         "src/GameLayer.js",
         "src/ChestsLayer.js",
+        "src/RocksLayer.js",
         "src/SeaBottomBg.js"
     ]
 }

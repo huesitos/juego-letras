@@ -11,13 +11,13 @@ var world = {
     sea: [
         {
             activities: [
-//                {
-//                    "stimuli": ["a", "e", "i", "o", "u"],
-//                    "distractions": ["a", "e", "i", "o", "u"],
-//                    "activity": "rocks",
-//                    "type": "UR",
-//                    "goal": 100
-//                },
+                {
+                    "stimuli": ["a", "e", "i", "o", "u"],
+                    "distractions": ["a", "e", "i", "o", "u"],
+                    "activity": "rocks",
+                    "type": UNIQUE_ANSWER,
+                    "goal": 50
+                },
                 {
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],

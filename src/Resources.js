@@ -19,7 +19,22 @@ var seaImgRes = {
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
     chest_png: "res/sea/chest.png",
-}
+};
+
+var rocksImgRes = [
+    {
+        normal: seaImgRes.rock1Normal_png,
+        cracked: seaImgRes.rock1Cracked_png
+    },
+    {
+        normal: seaImgRes.rock2Normal_png,
+        cracked: seaImgRes.rock2Cracked_png
+    },
+    {
+        normal: seaImgRes.rock3Normal_png,
+        cracked: seaImgRes.rock3Cracked_png
+    }
+];
 
 var audioRes = {
     success: "res/audio/success.mp3",

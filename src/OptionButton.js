@@ -1,7 +1,7 @@
-function OptionButton(sprite_res, option) {
+function OptionButton(spriteNormal, spriteClicked, option) {
     var size = cc.winSize;
     
-    var optionButton = new ccui.Button(sprite_res);
+    var optionButton = new ccui.Button(spriteNormal);
     
     optionButton.getOption = function () {
         return option;
@@ -12,13 +12,26 @@ function OptionButton(sprite_res, option) {
     label.setColor(cc.color.BLACK);
     optionButton.addChild(label);
     label.setPosition(
-        cc.p(optionButton.width / 2, optionButton.height * 1.3)
+        cc.p(optionButton.width / 2, optionButton.height * 1.25)
     );
     
     optionButton.setOption = function (new_opt) {
         option = new_opt;
         
         label.setString(new_opt);
+    };
+    
+    optionButton.setStatesTextures = function (normal, clicked) {
+        spriteNormal = normal;
+        spriteClicked = clicked;
+    };
+    
+    optionButton.changeToClicked = function () {
+        this.loadTextures(spriteClicked, spriteClicked);
+    };
+    
+    optionButton.changeToNormal = function () {
+        this.loadTextures(spriteNormal, spriteNormal);
     };
     
     optionButton.hideLabel = function () {

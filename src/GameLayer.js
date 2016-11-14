@@ -7,10 +7,7 @@ var GameLayer = cc.Layer.extend({
         var size = cc.winSize;
         
         this.addChild(bg);
-        
-        this.optionInitStateSrc = optionSrcs.initState;
-        this.optionClickedStateSrc = optionSrcs.clickedState;
-        
+                
         var xPos = size.width * .27;
         var yPos = [100, 140, 80];
         
@@ -24,7 +21,7 @@ var GameLayer = cc.Layer.extend({
         this.addChild(this.answerLabel);
         
         for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = new OptionButton(this.optionInitStateSrc, questionOptions[i]);
+            var optionButton = new OptionButton(optionSrcs.initState, optionSrcs.clickedState, questionOptions[i]);
             var pos = cc.p(xPos, yPos[i]);
             
             optionButton.setPosition(pos);
@@ -98,8 +95,7 @@ var GameLayer = cc.Layer.extend({
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
                 cc.audioEngine.playEffect(audioRes.success);
-                cc.log(this.optionClickedStateSrc);
-                sender.loadTextures(this.optionClickedStateSrc, this.optionClickedStateSrc);
+                sender.changeToClicked();
                 sender.hideLabel();
                 
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
@@ -162,7 +158,7 @@ var GameLayer = cc.Layer.extend({
             var initPos = optionButton.getUserData().initPos;
 
             optionButton.setPosition(initPos);
-            optionButton.loadTextures(this.optionInitStateSrc, this.optionInitStateSrc);
+            optionButton.changeToNormal();
             optionButton.showLabel();
         }
         

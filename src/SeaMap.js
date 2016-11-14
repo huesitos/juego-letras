@@ -34,12 +34,9 @@ SeaMap.getChestsScene = function () {
 
 SeaMap.getRocksScene = function () {
     var scene = new GameScene();
-    var layer = new GameLayer(
-        new SeaBottomBg(),
-        {
-            initState: seaImgRes.oysterClosed_png,
-            clickedState: seaImgRes.oysterOpened_png
-        }
+    
+    var layer = new RocksLayer(
+        new SeaBottomBg()
     );
     layer.setName("gameLayer");
     
