@@ -28,10 +28,13 @@ var seaImgRes = {
     tentacle3_png: "res/sea/octopus_tentacle_3.png",
     tentacle4_png: "res/sea/octopus_tentacle_4.png",
     
+    chest_png: "res/sea/chest.png",
+    
+    bubble_png: "res/sea/bubble.png",
+    
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
-    seaOctopus_png: "res/sea/sea_octopus.png",
-    chest_png: "res/sea/chest.png"
+    seaOctopus_png: "res/sea/sea_octopus.png"
 };
 
 var rocksImgRes = [

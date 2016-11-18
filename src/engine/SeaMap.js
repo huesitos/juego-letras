@@ -61,6 +61,20 @@ SeaMap.getGameLayer = function (activityData, activity) {
             );
             break;
         case "bubbles":
+            var xPos = size.width * .27;
+            var yPos = [250, 270, 250];
+            
+            gameLayer = new GameLayer(
+                {
+                    initState: seaImgRes.bubble_png,
+                    clickedState: seaImgRes.bubble_png
+                },
+                {
+                    xPos: xPos,
+                    yPos: yPos
+                },
+                activity
+            );
             break;
         case "jellyfish":
             break;

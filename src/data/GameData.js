@@ -53,14 +53,14 @@ var world = {
 //                    "time": 10,
 //                    "goal": 50
 //                },
-//                {
-//                    "stimuli": ["ia", "ie", "io", "iu",
-//                                "ea", "ei", "eo", "eu"],
-//                    "distractions": ["ia", "ie", "io", "iu"],
-//                    "activityID": "bubbles",
-//                    "type": UNIQUE_ANSWER,
-//                    "goal": 50
-//                },
+                {
+                    "stimuli": ["ia", "ie", "io", "iu",
+                                "ea", "ei", "eo", "eu"],
+                    "distractions": ["ia", "ie", "io", "iu"],
+                    "activityID": "bubbles",
+                    "type": UNIQUE_ANSWER,
+                    "goal": 50
+                },
             ]
         },
 //        {
