@@ -19,7 +19,7 @@ function GameDirector() {
             nextScene = new cc.Scene();
 
             var layer = new cc.Layer();
-            var label = new cc.LabelTTF("End", "Arial", 50);
+            var label = new cc.LabelTTF("End", _b_getFontName(fonts.gameFont), 50);
             label.setPosition(cc.p(cc.winSize.width / 2, cc.winSize.height / 2));
             layer.addChild(label);
 

@@ -35,7 +35,7 @@ var GameLayer = cc.Layer.extend({
         // do all this after transition is over :o
         /////////////////////////////
         // 3. check if level is timed and set an update
-//        this.configureTimedActivity();
+        this.configureTimedActivity();
         
         /////////////////////////////
         // 4. play current right answer audio
@@ -125,12 +125,12 @@ var GameLayer = cc.Layer.extend({
             for (var o in this.optionButtons) {
                 var optionButton = this.optionButtons[o];
                 
-                // move out of the screen
+                // move out of the bottom of the screen
                 var moveAction = new cc.MoveTo(
                     this.activity.getTotalTime(),
                     cc.p(
                         optionButton.x,
-                        cc.winSize.height + optionButton.height / 2
+                        -optionButton.height
                     )
                 );
                 
@@ -163,7 +163,7 @@ var GameLayer = cc.Layer.extend({
         }
         this.answerLabel.setString(this.activity.getRightOption());
         this.activity.playOptionAudio();
-//        this.configureTimedActivity();
+        this.configureTimedActivity();
     },
     tick: function (dt) {
         this.activity.tick(dt);
