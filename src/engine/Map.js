@@ -2,7 +2,8 @@ var MAP_LAYER_COMPLETED_EVENT = "mapLayerCompleted";
 var ACTIVITY_FINISHED_EVENT = "activityFinished";
 
 var BACKGROUNDS = Object.freeze({
-    "seaBottom": SeaBottomBg
+    "seaBottom": SeaBottomBg,
+    "seaMiddle": SeaMiddleBg
 });
 
 function Map(mapID) {
@@ -39,7 +40,9 @@ function Map(mapID) {
             // if there is another activity, load scene and return
             var scene = new GameScene();
             var mapLayerBgO = BACKGROUNDS[mapData[currentLayer].background];
-            scene.addChild(new mapLayerBgO(), 0);
+            var background = new mapLayerBgO();
+            scene.background = background;
+            scene.addChild(background, 0);
             
             // create new activity and pass it to the layer
             // add the layer to the scene and return it

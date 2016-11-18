@@ -35,16 +35,16 @@ var world = {
                 },
             ]
         },
-//        {
-//            background: "seaMiddle",
-//            activities: [
-//                {
-//                    "stimuli": ["ea", "ei", "eo", "eu"],
-//                    "distractions": ["ae", "ai", "ao", "au"],
-//                    "activityID": "octopus",
-//                    "type": UNIQUE_ANSWER,
-//                    "goal": 50
-//                },
+        {
+            background: "seaMiddle",
+            activities: [
+                {
+                    "stimuli": ["ea", "ei", "eo", "eu"],
+                    "distractions": ["ae", "ai", "ao", "au"],
+                    "activityID": "octopus",
+                    "type": UNIQUE_ANSWER,
+                    "goal": 50
+                },
 //                {
 //                    "stimuli": ["ia", "ie", "io", "iu"],
 //                    "distractions": ["ea", "ei", "eo", "eu"],
@@ -53,8 +53,16 @@ var world = {
 //                    "time": 10,
 //                    "goal": 50
 //                },
-//            ]
-//        },
+//                {
+//                    "stimuli": ["ia", "ie", "io", "iu",
+//                                "ea", "ei", "eo", "eu"],
+//                    "distractions": ["ia", "ie", "io", "iu"],
+//                    "activityID": "bubbles",
+//                    "type": UNIQUE_ANSWER,
+//                    "goal": 50
+//                },
+            ]
+        },
 //        {
 //            background: "seaTop",
 //            activities: [

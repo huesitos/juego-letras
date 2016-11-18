@@ -1,5 +1,5 @@
 var GameLayer = cc.Layer.extend({
-    ctor: function (optionSrcs, activity) {
+    ctor: function (optionSrcs, optionsPos, activity) {
         //////////////////////////////
         // 1. super init first
         this._super();
@@ -7,9 +7,6 @@ var GameLayer = cc.Layer.extend({
         this.activity = activity;
         
         var size = cc.winSize;
-                
-        var xPos = size.width * .27;
-        var yPos = [100, 140, 90];
         
         /////////////////////////////
         // 2. load question options
@@ -22,7 +19,7 @@ var GameLayer = cc.Layer.extend({
         
         for (var i = 0; i < questionOptions.length; i++) {
             var optionButton = new OptionButton(optionSrcs.initState, optionSrcs.clickedState, questionOptions[i]);
-            var pos = cc.p(xPos, yPos[i]);
+            var pos = cc.p(optionsPos.xPos, optionsPos.yPos[i]);
             
             optionButton.setPosition(pos);
             optionButton.setAnchorPoint(cc.p(0.5, 0));
@@ -32,7 +29,7 @@ var GameLayer = cc.Layer.extend({
             this.optionButtons.push(optionButton);
             this.addChild(optionButton);
             
-            xPos += optionButton.getContentSize().width / 2 + size.width * .14;
+            optionsPos.xPos += optionButton.getContentSize().width / 2 + size.width * .14;
         }
         
         // do all this after transition is over :o

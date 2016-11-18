@@ -10,15 +10,24 @@ var uiImgRes = {
 var seaImgRes = {
     oysterOpened_png: "res/sea/oyster_opened.png",
     oysterClosed_png: "res/sea/oyster_closed.png",
+    
     rock1Normal_png: "res/sea/rock1_normal.png",
     rock1Cracked_png: "res/sea/rock1_cracked.png",
     rock2Normal_png: "res/sea/rock2_normal.png",
     rock2Cracked_png: "res/sea/rock2_cracked.png",
     rock3Normal_png: "res/sea/rock3_normal.png",
     rock3Cracked_png: "res/sea/rock3_cracked.png",
+    
     ink1_png: "res/sea/ink1.png",
     ink2_png: "res/sea/ink2.png",
     ink3_png: "res/sea/ink3.png",
+    
+    octopus_png: "res/sea/octopus.png",
+    tentacle1_png: "res/sea/octopus_tentacle_1.png",
+    tentacle2_png: "res/sea/octopus_tentacle_2.png",
+    tentacle3_png: "res/sea/octopus_tentacle_3.png",
+    tentacle4_png: "res/sea/octopus_tentacle_4.png",
+    
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
     seaOctopus_png: "res/sea/sea_octopus.png",
