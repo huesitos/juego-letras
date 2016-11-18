@@ -16,9 +16,13 @@ var seaImgRes = {
     rock2Cracked_png: "res/sea/rock2_cracked.png",
     rock3Normal_png: "res/sea/rock3_normal.png",
     rock3Cracked_png: "res/sea/rock3_cracked.png",
+    ink1_png: "res/sea/ink1.png",
+    ink2_png: "res/sea/ink2.png",
+    ink3_png: "res/sea/ink3.png",
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
-    chest_png: "res/sea/chest.png",
+    seaOctopus_png: "res/sea/sea_octopus.png",
+    chest_png: "res/sea/chest.png"
 };
 
 var rocksImgRes = [
@@ -71,7 +75,15 @@ var stimuliRes = {
     "ae": "res/audio/stimuli.ogg",
     "ai": "res/audio/stimuli.ogg",
     "ao": "res/audio/stimuli.ogg",
-    "au": "res/audio/stimuli.ogg"
+    "au": "res/audio/stimuli.ogg",
+    "ea": "res/audio/stimuli.ogg",
+    "ei": "res/audio/stimuli.ogg",
+    "eo": "res/audio/stimuli.ogg",
+    "eu": "res/audio/stimuli.ogg",
+    "ia": "res/audio/stimuli.ogg",
+    "ie": "res/audio/stimuli.ogg",
+    "io": "res/audio/stimuli.ogg",
+    "iu": "res/audio/stimuli.ogg"
 }
 
 var g_resources = [];
