@@ -39,12 +39,17 @@ function GameDirector() {
                 
                 if (newMapID) {
                     currenMap = Maps[newMapID];
-                    this.gameState.resetFuelGoal(
-                        currentMap.layerGoal
-                    );
+                    
+                    tthis.onNewLayer();
                 }
             }
         }
+    };
+    
+    this.onNewLayer = function () {
+        this.gameState.setFuelGoal(
+            currentMap.layerGoal
+        );
     };
 }
 

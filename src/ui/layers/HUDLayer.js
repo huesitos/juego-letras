@@ -57,21 +57,13 @@ var HUDLayer = cc.Layer.extend({
         this.addChild(this.resumeBtn);
         
         //////////////////////////////
-        // 4. add listeners
-        
-        cc.eventManager.addListener({
-            event: cc.EventListener.CUSTOM,
-            eventName: MAP_LAYER_COMPLETED_EVENT,
-            callback: this.mapCompleted.bind(this)
-        }, this);
+        // 4. set update
         
         this.scheduleUpdate();
         
-        this.dt = 0;
         return true;
     },
     update: function (dt) {
-        this.dt += dt;
         var fuelGoal = GD.gameState.currentFuelGoal;
         var fuelScore = GD.gameState.currentFuelScore;
         
@@ -117,8 +109,5 @@ var HUDLayer = cc.Layer.extend({
             this.resumeBtn.setVisible(false);
             cc.log("resuming game");
         }
-    },
-    mapCompleted: function (event) {
-        this.fuelBar.setPercent(0);
     }
 });

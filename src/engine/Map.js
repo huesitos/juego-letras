@@ -16,7 +16,6 @@ function Map(mapID) {
     
     // load map layer data
     this.layerGoal; // score needed to advance to the next layer
-    this.activityGoal; // score needed to next activity
     
     this.layerGoal = mapData[currentLayer].activities.map(
         function (activity) {
@@ -26,7 +25,6 @@ function Map(mapID) {
         return pre + cur;
     });
     
-    this.activityGoal = this.layerGoal / mapData.length;
     var activityObject; // copy of the object sent to the scene
     
     // methods
@@ -76,9 +74,21 @@ function Map(mapID) {
                 currentActivity = 0;
                 currentLayer++;
                 
-                cc.eventManager.dispatchCustomEvent(
-                    MAP_LAYER_COMPLETED_EVENT
-                );
+                if (!this.isMapCompleted()) {
+                    cc.eventManager.dispatchCustomEvent(
+                        MAP_LAYER_COMPLETED_EVENT
+                    );
+                    
+                    this.layerGoal = mapData[currentLayer].activities.map(
+                        function (activity) {
+                            return activity.goal;
+                        }
+                    ).reduce(function (pre, cur) {
+                        return pre + cur;
+                    });
+                    
+                    GD.onNewLayer();
+                }
             }
 
             // notify whether the layer or activity is completed

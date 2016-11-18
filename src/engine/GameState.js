@@ -1,10 +1,11 @@
 function GameState(fuelGoal) {
-    this.currentFuelGoal; // points needed to complete map
-    this.currentFuelGoal = fuelGoal;
+    this.currentFuelGoal; // points needed to complete layer
+    this.currentFuelScore; // points scored while playing
     
-    this.currentFuelScore = 0;
-    
-    this.resetFuelGoal = function (fuelGoal) {
+    this.setFuelGoal = function (fuelGoal) {
         this.currentFuelGoal = fuelGoal;
+        this.currentFuelScore = 0;
     };
+    
+    this.setFuelGoal(fuelGoal);
 };
