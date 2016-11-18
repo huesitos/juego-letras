@@ -1,3 +1,5 @@
+// images
+
 var uiImgRes = {
     pause_png: "res/pause.png",
     resume_png: "res/resume.png",
@@ -51,6 +53,14 @@ var rocksImgRes = [
         cracked: seaImgRes.rock3Cracked_png
     }
 ];
+
+// fonts
+
+var fonts = {
+    gameFont: {type:"font", name: "AndikaNewBasic-B", srcs: ["res/fonts/AndikaNewBasic-B.tff"]}
+}
+
+// audios
 
 var audioRes = {
     success: "res/audio/success.mp3",
@@ -113,4 +123,16 @@ for (var i in audioRes) {
 
 for (var i in stimuliRes) {
     g_resources.push(stimuliRes[i]);
+}
+
+for (var i in fonts) {
+    g_resources.push(fonts[i]);
+}
+
+var _b_getFontName = function(resource) {
+    if(cc.sys.isNative) {
+        return resource.srcs[0];
+    } else {
+        return resource.name;
+    }
 }

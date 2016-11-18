@@ -8,7 +8,7 @@ function OptionButton(spriteNormal, spriteClicked, option) {
     };
     optionButton.setPosition(cc.p(0, 0));
 
-    var label = new cc.LabelTTF(option, "arial", 60);
+    var label = new cc.LabelTTF(option, _b_getFontName(fonts.gameFont), 60);
     label.setColor(cc.color.BLACK);
     optionButton.addChild(label);
     label.setPosition(

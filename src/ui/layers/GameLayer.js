@@ -13,7 +13,7 @@ var GameLayer = cc.Layer.extend({
         this.optionButtons = [];
         var questionOptions = this.activity.getQuestionOptions();
         
-        this.answerLabel = new cc.LabelTTF(this.activity.getRightOption(), "Arial", 50);
+        this.answerLabel = new cc.LabelTTF(this.activity.getRightOption(), _b_getFontName(fonts.gameFont), 60);
         this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
         this.addChild(this.answerLabel);
         
