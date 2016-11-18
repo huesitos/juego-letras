@@ -75,7 +75,10 @@ function Map(mapID) {
             if (currentActivity >= mapData[currentLayer].activities.length) {
                 currentActivity = 0;
                 currentLayer++;
-
+                
+                cc.eventManager.dispatchCustomEvent(
+                    MAP_LAYER_COMPLETED_EVENT
+                );
             }
 
             // notify whether the layer or activity is completed
