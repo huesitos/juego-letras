@@ -59,6 +59,18 @@ SeaMap.getGameLayer = function (activityData, activity) {
                 },
                 activity
             );
+            
+            gameLayer.customIntroAnimation = function () {
+                this.optionButtons.forEach(function (button) {
+                    var startPos = button.getPosition();
+                    button.setVisible(true);
+                    button.attr({
+                        x: cc.winSize.width * .205,
+                        y: cc.winSize.height * .128
+                    });
+                    button.runAction(new cc.MoveTo(0.5, startPos));
+                });
+            };
             break;
         case "bubbles":
             var xPos = size.width * .27;
@@ -75,6 +87,19 @@ SeaMap.getGameLayer = function (activityData, activity) {
                 },
                 activity
             );
+            
+            gameLayer.optionButtons.forEach(function (button) {
+                button.setVisible(false);
+            });
+            
+            gameLayer.customIntroAnimation = function () {
+                this.optionButtons.forEach(function (button) {
+                    var startPos = button.getPosition();
+                    button.setVisible(true);
+                    button.setPositionY(-button.height);
+                    button.runAction(new cc.MoveTo(1, startPos));
+                });
+            };
             break;
         case "jellyfish":
             break;

@@ -2,29 +2,33 @@ var OctopusLayer = GameLayer.extend({
     ctor: function (optionsPos, activity) {
         //////////////////////////////
         // 1. super init first
-        var rock1 = {
+        var ink1 = {
             initState: seaImgRes.ink1_png,
             clickedState: seaImgRes.ink1_png
         }
         
-        this._super(rock1, optionsPos, activity);
+        this._super(ink1, optionsPos, activity);
         
         var size = cc.winSize;
         
         //////////////////////////////
         // 2. modify inks so each is different
         
+        this.optionButtons[0].setVisible(false);
+        
         this.optionButtons[1].setStatesTextures(
             seaImgRes.ink2_png,
             seaImgRes.ink2_png
         );
         this.optionButtons[1].changeToNormal();
+        this.optionButtons[1].setVisible(false);
         
         this.optionButtons[2].setStatesTextures(
             seaImgRes.ink3_png,
             seaImgRes.ink3_png
         );
         this.optionButtons[2].changeToNormal();
+        this.optionButtons[2].setVisible(false);
         
         //////////////////////////////
         // 3. add octopus to the background
@@ -45,9 +49,9 @@ var OctopusLayer = GameLayer.extend({
         tentacle1.attr({x: size.width * .37, y: size.height * .19});
         this.addChild(tentacle1);
         
-        var octopus = new cc.Sprite(seaImgRes.octopus_png);
-        octopus.attr({x: size.width * .205, y: size.height * .128});
-        this.addChild(octopus);
+        this.octopus = new cc.Sprite(seaImgRes.octopus_png);
+        this.octopus.attr({x: size.width * .205, y: size.height * .128});
+        this.addChild(this.octopus);
         
         var rotateLeft = new cc.RotateTo(3, -3);
         var rotateCenter = new cc.RotateTo(2, 0);

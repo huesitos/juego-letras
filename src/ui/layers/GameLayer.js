@@ -1,4 +1,5 @@
 var GameLayer = cc.Layer.extend({
+    customIntroAnimation: function () {},
     ctor: function (optionSrcs, optionsPos, activity) {
         //////////////////////////////
         // 1. super init first
@@ -96,7 +97,9 @@ var GameLayer = cc.Layer.extend({
         };
         
         this.runAction(new cc.Sequence(
-            new cc.DelayTime(3.5),
+            new cc.DelayTime(3),
+            new cc.CallFunc(this.customIntroAnimation, this),
+            new cc.DelayTime(0.5),
             new cc.CallFunc(turnClicked, this.optionButtons[0]),
             new cc.DelayTime(0.5),
             new cc.CallFunc(turnClicked, this.optionButtons[1]),
