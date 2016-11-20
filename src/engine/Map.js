@@ -50,7 +50,7 @@ function Map(mapID) {
                 activityData,
                 activityObject
             );
-            gameLayer.setName("gameLayer");
+            scene.gameLayer = gameLayer;
             scene.addChild(gameLayer);
 
             return scene;

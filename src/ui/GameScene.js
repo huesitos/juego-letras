@@ -2,7 +2,11 @@ var GameScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
         
-        this.addChild(new HUDLayer(), 100);
+        this.hudLayer = new HUDLayer();
+        this.hudLayer.setVisible(false);
+        this.addChild(this.hudLayer, 100);
+        
+        this.gameLayer.beginActivity();
         
         this.scheduleUpdate();
     },

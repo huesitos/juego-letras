@@ -26,7 +26,7 @@ function OptionButton(spriteNormal, spriteClicked, option) {
         spriteClicked = clicked;
     };
     
-    optionButton.changeToClicked = function () {
+    optionButton.onClicked = function () {
         this.loadTextures(spriteClicked, spriteClicked);
     };
     

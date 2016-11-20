@@ -32,21 +32,13 @@ var GameLayer = cc.Layer.extend({
             optionsPos.xPos += optionButton.getContentSize().width / 2 + size.width * .14;
         }
         
-        // do all this after transition is over :o
         /////////////////////////////
-        // 3. check if level is timed and set an update
-        this.configureTimedActivity();
-        
-        /////////////////////////////
-        // 4. play current right answer audio
-        this.activity.playOptionAudio();
-        
-        /////////////////////////////
-        // 5. register events
+        // 3. register events
         // activity completed
         var aCompleted = function (event) {
             cc.eventManager.pauseTarget(this, true);
-            cc.director.runScene(new cc.TransitionFadeUp(0.5, GD.getNextScene()));
+            this.getParent().hudLayer.setVisible(false);
+            cc.director.runScene(new cc.TransitionSlideInR(3, GD.getNextScene()));
         };
         
         cc.eventManager.addListener({
@@ -59,7 +51,8 @@ var GameLayer = cc.Layer.extend({
         var lCompleted = function (event) {
             // ascend transition
             cc.eventManager.pauseTarget(this, true);
-            cc.director.runScene(new cc.TransitionSlideInT(2, GD.getNextScene()));
+            this.getParent().hudLayer.setVisible(false);
+            cc.director.runScene(new cc.TransitionSlideInT(3, GD.getNextScene()));
         };
         
         cc.eventManager.addListener({
@@ -77,6 +70,44 @@ var GameLayer = cc.Layer.extend({
         
         return true;
     },
+    beginActivity: function () {
+        cc.eventManager.pauseTarget(this, true);
+        
+        var turnClicked = function () {
+            this.onClicked();
+        };
+        
+        var returnToNormal = function () {
+            this.optionButtons.forEach(function (button) {
+                button.changeToNormal();
+            });
+        };
+        
+        var startActivity = function () {
+            cc.eventManager.resumeTarget(this, true);
+            
+            this.getParent().hudLayer.setVisible(true);
+            
+            // check if level is timed and set an update
+            this.configureTimedActivity();
+
+            // play current right answer audio
+            this.activity.playOptionAudio();
+        };
+        
+        this.runAction(new cc.Sequence(
+            new cc.DelayTime(3.5),
+            new cc.CallFunc(turnClicked, this.optionButtons[0]),
+            new cc.DelayTime(0.5),
+            new cc.CallFunc(turnClicked, this.optionButtons[1]),
+            new cc.DelayTime(0.5),
+            new cc.CallFunc(turnClicked, this.optionButtons[2]),
+            new cc.DelayTime(0.5),
+            new cc.CallFunc(returnToNormal, this),
+            new cc.DelayTime(0.5),
+            new cc.CallFunc(startActivity, this)
+        ));
+    },
     optionButtonTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
             var selection = this.activity.getRightOption() === sender.getOption();
@@ -86,7 +117,7 @@ var GameLayer = cc.Layer.extend({
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
                 cc.audioEngine.playEffect(audioRes.success);
-                sender.changeToClicked();
+                sender.onClicked();
                 sender.hideLabel();
                 
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
