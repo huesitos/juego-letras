@@ -41,9 +41,12 @@ function Map(mapID) {
             // if there is another activity, load scene and return
             var scene = new GameScene();
             var mapLayerBgO = BACKGROUNDS[activityData.background];
-            var background = new mapLayerBgO();
+            var background = new BackgroundLayer();
+            activityData.backgroundImgs.forEach(function (path) {
+                background.addBackgroundImage(path);
+            });
             scene.background = background;
-            scene.addChild(background, 0);
+            scene.addChild(background, -1);
             
             // create new activity and pass it to the layer
             // add the layer to the scene and return it
