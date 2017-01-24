@@ -4,7 +4,7 @@ var SeaMiddleBg = cc.Layer.extend({
         
         var size = cc.winSize;
         
-        this.background = new cc.Sprite(seaImgRes.seaWater_png);
+        this.background = new cc.Sprite(seaImgRes.seaMiddle_png);
         this.background.attr({x: size.width / 2, y: size.height / 2});
         this.addChild(this.background);
     }

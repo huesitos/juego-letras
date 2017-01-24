@@ -17,9 +17,11 @@ SeaMap.getGameLayer = function (activityData, activity) {
                     xPos: xPos,
                     yPos: yPos
                 },
+                cc.winSize.width * .14,
                 activity
             );
             break;
+            
         case "rocks":
             var xPos = size.width * .27;
             var yPos = [100, 130, 100];
@@ -29,9 +31,11 @@ SeaMap.getGameLayer = function (activityData, activity) {
                     xPos: xPos,
                     yPos: yPos
                 },
+                cc.winSize.width * .14,
                 activity
             );
             break;
+            
         case "chests":
             var xPos = size.width * .27;
             var yPos = [100, 130, 100];
@@ -45,9 +49,11 @@ SeaMap.getGameLayer = function (activityData, activity) {
                     xPos: xPos,
                     yPos: yPos
                 },
+                cc.winSize.width * .14,
                 activity
             );
             break;
+            
         case "octopus":
             var xPos = size.width * .33;
             var yPos = [350, 370, 350];
@@ -57,6 +63,7 @@ SeaMap.getGameLayer = function (activityData, activity) {
                     xPos: xPos,
                     yPos: yPos
                 },
+                cc.winSize.width * .14,
                 activity
             );
             
@@ -72,6 +79,7 @@ SeaMap.getGameLayer = function (activityData, activity) {
                 });
             };
             break;
+            
         case "bubbles":
             var xPos = size.width * .27;
             var yPos = [250, 270, 250];
@@ -85,6 +93,7 @@ SeaMap.getGameLayer = function (activityData, activity) {
                     xPos: xPos,
                     yPos: yPos
                 },
+                cc.winSize.width * .14,
                 activity
             );
             
@@ -94,15 +103,59 @@ SeaMap.getGameLayer = function (activityData, activity) {
             
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
+                    button.hideLabel();
                     var startPos = button.getPosition();
                     button.setVisible(true);
                     button.setPositionY(-button.height);
-                    button.runAction(new cc.MoveTo(1, startPos));
+                    button.runAction(
+                        new cc.Sequence(
+                            new cc.MoveTo(1, startPos),
+                            new cc.DelayTime(0.5),
+                            new cc.CallFunc(button.showLabel, button)
+                        )
+                    );
                 });
             };
             break;
+            
         case "jellyfish":
+            var xPos = size.width * .32;
+            var yPos = [250, 250, 250];
+            
+            gameLayer = new GameLayer(
+                {
+                    initState: seaImgRes.volt_png,
+                    clickedState: seaImgRes.volt_png
+                },
+                {
+                    xPos: xPos,
+                    yPos: yPos
+                },
+                85,
+                activity
+            );
+            
+            gameLayer.optionButtons.forEach(function (button) {
+                button.setVisible(false);
+            });
+            
+            gameLayer.customIntroAnimation = function () {
+                this.optionButtons.forEach(function (button) {
+                    button.hideLabel();
+                    var startPos = button.getPosition();
+                    button.setVisible(true);
+                    button.runAction(
+                        new cc.Sequence(
+                            new cc.MoveTo(2, cc.p(startPos.x, -startPos.y)),
+                            new cc.DelayTime(0.5),
+                            new cc.Place(startPos),
+                            new cc.CallFunc(button.showLabel, button)
+                        )
+                    );
+                });
+            };
             break;
+            
         case "fisherman":
             break;
     }

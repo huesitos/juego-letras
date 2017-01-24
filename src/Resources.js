@@ -20,6 +20,11 @@ var seaImgRes = {
     rock3Normal_png: "res/sea/rock3_normal.png",
     rock3Cracked_png: "res/sea/rock3_cracked.png",
     
+    chestClosed_png: "res/sea/chest_closed.png",
+    chestOpened_png: "res/sea/chest_opened.png",
+    
+    bubble_png: "res/sea/bubble.png",
+    
     ink1_png: "res/sea/ink1.png",
     ink2_png: "res/sea/ink2.png",
     ink3_png: "res/sea/ink3.png",
@@ -30,13 +35,12 @@ var seaImgRes = {
     tentacle3_png: "res/sea/octopus_tentacle_3.png",
     tentacle4_png: "res/sea/octopus_tentacle_4.png",
     
-    chestClosed_png: "res/sea/chest_closed.png",
-    chestOpened_png: "res/sea/chest_opened.png",
-    
-    bubble_png: "res/sea/bubble.png",
+    jellyfish_png: "res/sea/medusa.png",
+    volt_png: "res/sea/volt.png",
     
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
+    seaMiddle_png: "res/sea/sea_middle.png",
     seaOctopus_png: "res/sea/sea_octopus.png"
 };
 
@@ -82,10 +86,10 @@ var stimuliRes = {
     "ei": "res/audio/stimuli/ei.mp3",
     "eo": "res/audio/stimuli/eo.mp3",
     "eu": "res/audio/stimuli/eu.mp3",
-//    "ia": "res/audio/stimuli/ia.mp3",
-//    "ie": "res/audio/stimuli/ie.mp3",
-//    "io": "res/audio/stimuli/io.mp3",
-//    "iu": "res/audio/stimuli/iu.mp3"
+    "ia": "res/audio/stimuli/ea.mp3",
+    "ie": "res/audio/stimuli/ei.mp3",
+    "io": "res/audio/stimuli/eo.mp3",
+    "iu": "res/audio/stimuli/eu.mp3"
 }
 
 var g_resources = [];

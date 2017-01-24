@@ -19,6 +19,8 @@
         "src/engine/Activity.js",
         "src/ui/backgrounds/SeaBottomBg.js",
         "src/ui/backgrounds/SeaMiddleBg.js",
+        "src/ui/backgrounds/SeaOctopusBg.js",
+        "src/ui/backgrounds/SeaJellyfishBg.js",
         "src/engine/Map.js",
         "src/engine/SeaMap.js",
         "src/engine/GameDirector.js",

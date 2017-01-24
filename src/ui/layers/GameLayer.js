@@ -1,6 +1,6 @@
 var GameLayer = cc.Layer.extend({
-    customIntroAnimation: function () {},
-    ctor: function (optionSrcs, optionsPos, activity) {
+    customIntroAnimation: null,
+    ctor: function (optionSrcs, optionsPos, gap, activity) {
         //////////////////////////////
         // 1. super init first
         this._super();
@@ -8,6 +8,7 @@ var GameLayer = cc.Layer.extend({
         this.activity = activity;
         
         var size = cc.winSize;
+        this.gap = gap;
         
         /////////////////////////////
         // 2. load question options
@@ -30,7 +31,7 @@ var GameLayer = cc.Layer.extend({
             this.optionButtons.push(optionButton);
             this.addChild(optionButton);
             
-            optionsPos.xPos += optionButton.getContentSize().width / 2 + size.width * .14;
+            optionsPos.xPos += optionButton.getContentSize().width / 2 + this.gap;
         }
         
         /////////////////////////////
@@ -81,6 +82,7 @@ var GameLayer = cc.Layer.extend({
         var returnToNormal = function () {
             this.optionButtons.forEach(function (button) {
                 button.changeToNormal();
+                button.showLabel();
             });
         };
         
@@ -96,20 +98,39 @@ var GameLayer = cc.Layer.extend({
             this.activity.playOptionAudio();
         };
         
-        this.runAction(new cc.Sequence(
-            new cc.DelayTime(3),
-            new cc.CallFunc(this.customIntroAnimation, this),
-            new cc.DelayTime(0.5),
-            new cc.CallFunc(turnClicked, this.optionButtons[0]),
-            new cc.DelayTime(0.5),
-            new cc.CallFunc(turnClicked, this.optionButtons[1]),
-            new cc.DelayTime(0.5),
-            new cc.CallFunc(turnClicked, this.optionButtons[2]),
-            new cc.DelayTime(0.5),
-            new cc.CallFunc(returnToNormal, this),
-            new cc.DelayTime(0.5),
-            new cc.CallFunc(startActivity, this)
-        ));
+        this.optionButtons.forEach(function (btn) {
+            btn.hideLabel();
+        });
+        
+        if (this.customIntroAnimation) {
+            this.runAction(new cc.Sequence(
+                new cc.DelayTime(1),
+                new cc.CallFunc(this.customIntroAnimation, this),
+                new cc.DelayTime(2.5),
+                new cc.CallFunc(turnClicked, this.optionButtons[0]),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(turnClicked, this.optionButtons[1]),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(turnClicked, this.optionButtons[2]),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(returnToNormal, this),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(startActivity, this)
+            ));
+        } else {
+            this.runAction(new cc.Sequence(
+                new cc.DelayTime(1),
+                new cc.CallFunc(turnClicked, this.optionButtons[0]),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(turnClicked, this.optionButtons[1]),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(turnClicked, this.optionButtons[2]),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(returnToNormal, this),
+                new cc.DelayTime(0.5),
+                new cc.CallFunc(startActivity, this)
+            ));
+        }
     },
     optionButtonTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
@@ -204,6 +225,11 @@ var GameLayer = cc.Layer.extend({
 
         if (this.activity.hasTimerFinished()) {
             this.unscheduleAllCallbacks();
+            
+            // hide all the labels
+            this.optionButtons.forEach(function (btn) {
+                btn.hideLabel();
+            });
                         
             // short pause
             this.activity.skipQuestion();

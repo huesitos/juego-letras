@@ -1,5 +1,5 @@
 var OctopusLayer = GameLayer.extend({
-    ctor: function (optionsPos, activity) {
+    ctor: function (optionsPos, gap, activity) {
         //////////////////////////////
         // 1. super init first
         var ink1 = {
@@ -7,7 +7,7 @@ var OctopusLayer = GameLayer.extend({
             clickedState: seaImgRes.ink1_png
         }
         
-        this._super(ink1, optionsPos, activity);
+        this._super(ink1, optionsPos, gap, activity);
         
         var size = cc.winSize;
         

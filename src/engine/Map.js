@@ -3,7 +3,9 @@ var ACTIVITY_FINISHED_EVENT = "activityFinished";
 
 var BACKGROUNDS = Object.freeze({
     "seaBottom": SeaBottomBg,
-    "seaMiddle": SeaMiddleBg
+    "seaMiddle": SeaMiddleBg,
+    "seaJellyfish": SeaJellyfishBg,
+    "seaOctopus": SeaOctopusBg
 });
 
 function Map(mapID) {
@@ -37,7 +39,7 @@ function Map(mapID) {
 
             // if there is another activity, load scene and return
             var scene = new GameScene();
-            var mapLayerBgO = BACKGROUNDS[mapData[currentLayer].background];
+            var mapLayerBgO = BACKGROUNDS[activityData.background];
             var background = new mapLayerBgO();
             scene.background = background;
             scene.addChild(background, 0);

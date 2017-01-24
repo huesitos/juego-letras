@@ -10,13 +10,13 @@ var UNIQUE_ANSWER = "UR";
 var world = {
     sea: [
         {
-            background: "seaBottom",
             activities: [
                 {
                     "stimuli": ["a", "e", "i", "o", "u"],
                     "distractions": ["a", "e", "i", "o", "u"],
                     "activityID": "rocks",
                     "type": UNIQUE_ANSWER,
+                    "background": "seaBottom",
                     "goal": 2
                 },
                 {
@@ -24,6 +24,7 @@ var world = {
                     "distractions": ["a", "e", "i", "o", "u"],
                     "activityID": "oysters",
                     "type": UNIQUE_ANSWER,
+                    "background": "seaBottom",
                     "goal": 2
                 },
                 {
@@ -31,36 +32,39 @@ var world = {
                     "distractions": ["a", "e", "i", "o", "u"],
                     "type": UNIQUE_ANSWER,
                     "activityID": "chests",
+                    "background": "seaBottom",
                     "goal": 2
                 },
             ]
         },
         {
-            background: "seaMiddle",
             activities: [
                 {
                     "stimuli": ["ea", "ei", "eo", "eu"],
                     "distractions": ["ae", "ai", "ao", "au"],
-                    "activityID": "octopus",
+                    "activityID": "bubbles",
                     "type": UNIQUE_ANSWER,
+                    "background": "seaMiddle",
                     "goal": 50
                 },
-//                {
-//                    "stimuli": ["ia", "ie", "io", "iu"],
-//                    "distractions": ["ea", "ei", "eo", "eu"],
-//                    "activityID": "jellyfish",
-//                    "type": TIMED_LEVEL,
-//                    "time": 10,
-//                    "goal": 50
-//                },
+                {
+                    "stimuli": ["ia", "ie", "io", "iu"],
+                    "distractions": ["ea", "ei", "eo", "eu"],
+                    "activityID": "jellyfish",
+                    "type": TIMED_LEVEL,
+                    "background": "seaJellyfish",
+                    "time": 10,
+                    "goal": 50
+                },
                 {
                     "stimuli": ["ia", "ie", "io", "iu",
                                 "ea", "ei", "eo", "eu"],
                     "distractions": ["ia", "ie", "io", "iu"],
-                    "activityID": "bubbles",
+                    "activityID": "octopus",
+                    "background": "seaOctopus",
                     "type": UNIQUE_ANSWER,
                     "goal": 50
-                },
+                }
             ]
         },
 //        {

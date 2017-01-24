@@ -1,5 +1,5 @@
 var RocksLayer = GameLayer.extend({
-    ctor: function (optionsPos, activity) {
+    ctor: function (optionsPos, gap, activity) {
         //////////////////////////////
         // 1. super init first
         var rock1 = {
@@ -7,7 +7,7 @@ var RocksLayer = GameLayer.extend({
             clickedState: rocksImgRes[0].cracked
         }
         
-        this._super(rock1, optionsPos, activity);
+        this._super(rock1, optionsPos, gap, activity);
         
         //////////////////////////////
         // 2. modify rocks so each is different
