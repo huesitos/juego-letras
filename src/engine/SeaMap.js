@@ -38,8 +38,8 @@ SeaMap.getGameLayer = function (activityData, activity) {
             
             gameLayer = new GameLayer(
                 {
-                    initState: seaImgRes.oysterClosed_png,
-                    clickedState: seaImgRes.oysterOpened_png
+                    initState: seaImgRes.chestClosed_png,
+                    clickedState: seaImgRes.chestOpened_png
                 },
                 {
                     xPos: xPos,

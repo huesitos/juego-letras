@@ -30,7 +30,8 @@ var seaImgRes = {
     tentacle3_png: "res/sea/octopus_tentacle_3.png",
     tentacle4_png: "res/sea/octopus_tentacle_4.png",
     
-    chest_png: "res/sea/chest.png",
+    chestClosed_png: "res/sea/chest_closed.png",
+    chestOpened_png: "res/sea/chest_opened.png",
     
     bubble_png: "res/sea/bubble.png",
     
@@ -73,27 +74,6 @@ var stimuliRes = {
 	"i": "res/audio/stimuli/i.mp3",
 	"o": "res/audio/stimuli/o.mp3",
 	"u": "res/audio/stimuli/u.mp3",
-	"b": "res/audio/stimuli/b.mp3",
-	"c": "res/audio/stimuli/c.mp3",
-	"d": "res/audio/stimuli/d.mp3",
-	"f": "res/audio/stimuli/f.mp3",
-	"g": "res/audio/stimuli/g.mp3",
-	"h": "res/audio/stimuli/h.mp3",
-	"j": "res/audio/stimuli/j.mp3",
-	"k": "res/audio/stimuli/k.mp3",
-	"l": "res/audio/stimuli/l.mp3",
-	"m": "res/audio/stimuli/m.mp3",
-	"n": "res/audio/stimuli/n.mp3",
-	"p": "res/audio/stimuli/p.mp3",
-	"q": "res/audio/stimuli/q.mp3",
-	"r": "res/audio/stimuli/r.mp3",
-	"s": "res/audio/stimuli/s.mp3",
-	"t": "res/audio/stimuli/t.mp3",
-	"v": "res/audio/stimuli/v.mp3",
-	"w": "res/audio/stimuli/w.mp3",
-	"x": "res/audio/stimuli/x.mp3",
-	"y": "res/audio/stimuli/y.mp3",
-	"z": "res/audio/stimuli/z.mp3",
     "ae": "res/audio/stimuli/ae.mp3",
     "ai": "res/audio/stimuli/ai.mp3",
     "ao": "res/audio/stimuli/ao.mp3",
@@ -102,10 +82,10 @@ var stimuliRes = {
     "ei": "res/audio/stimuli/ei.mp3",
     "eo": "res/audio/stimuli/eo.mp3",
     "eu": "res/audio/stimuli/eu.mp3",
-    "ia": "res/audio/stimuli/ia.mp3",
-    "ie": "res/audio/stimuli/ie.mp3",
-    "io": "res/audio/stimuli/io.mp3",
-    "iu": "res/audio/stimuli/iu.mp3"
+//    "ia": "res/audio/stimuli/ia.mp3",
+//    "ie": "res/audio/stimuli/ie.mp3",
+//    "io": "res/audio/stimuli/io.mp3",
+//    "iu": "res/audio/stimuli/iu.mp3"
 }
 
 var g_resources = [];
