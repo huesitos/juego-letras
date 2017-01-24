@@ -5,6 +5,7 @@ var BACKGROUNDS = Object.freeze({
     "seaBottom": SeaBottomBg,
     "seaMiddle": SeaMiddleBg,
     "seaJellyfish": SeaJellyfishBg,
+    "seaTop": SeaTopBg,
     "seaOctopus": SeaOctopusBg
 });
 

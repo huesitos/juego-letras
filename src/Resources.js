@@ -38,9 +38,17 @@ var seaImgRes = {
     jellyfish_png: "res/sea/medusa.png",
     volt_png: "res/sea/volt.png",
     
+    fish1Normal_png: "res/sea/fish1_normal.png",
+    fish1Selected_png: "res/sea/fish1_selected.png",
+    fish2Normal_png: "res/sea/fish2_normal.png",
+    fish2Selected_png: "res/sea/fish2_selected.png",
+    fish3Normal_png: "res/sea/fish3_normal.png",
+    fish3Selected_png: "res/sea/fish3_selected.png",
+    
     seaFloor_png: "res/sea/sea_floor.png",
     seaWater_png: "res/sea/sea_water.png",
     seaMiddle_png: "res/sea/sea_middle.png",
+    seaTop_png: "res/sea/sea_top.png",
     seaOctopus_png: "res/sea/sea_octopus.png"
 };
 
@@ -56,6 +64,21 @@ var rocksImgRes = [
     {
         normal: seaImgRes.rock3Normal_png,
         cracked: seaImgRes.rock3Cracked_png
+    }
+];
+
+var fishesImgRes = [
+    {
+        normal: seaImgRes.fish1Normal_png,
+        selected: seaImgRes.fish1Selected_png
+    },
+    {
+        normal: seaImgRes.fish2Normal_png,
+        selected: seaImgRes.fish2Selected_png
+    },
+    {
+        normal: seaImgRes.fish3Normal_png,
+        selected: seaImgRes.fish3Selected_png
     }
 ];
 
@@ -89,7 +112,15 @@ var stimuliRes = {
     "ia": "res/audio/stimuli/ea.mp3",
     "ie": "res/audio/stimuli/ei.mp3",
     "io": "res/audio/stimuli/eo.mp3",
-    "iu": "res/audio/stimuli/eu.mp3"
+    "iu": "res/audio/stimuli/eu.mp3",
+    "oa": "res/audio/stimuli/oa.mp3",
+    "oe": "res/audio/stimuli/oe.mp3",
+    "oi": "res/audio/stimuli/oi.mp3",
+    "ou": "res/audio/stimuli/ou.mp3",
+    "ua": "res/audio/stimuli/ua.mp3",
+    "ue": "res/audio/stimuli/ue.mp3",
+    "ui": "res/audio/stimuli/ui.mp3",
+    "uo": "res/audio/stimuli/uo.mp3"
 }
 
 var g_resources = [];

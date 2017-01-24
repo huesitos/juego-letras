@@ -19,6 +19,7 @@
         "src/engine/Activity.js",
         "src/ui/backgrounds/SeaBottomBg.js",
         "src/ui/backgrounds/SeaMiddleBg.js",
+        "src/ui/backgrounds/SeaTopBg.js",
         "src/ui/backgrounds/SeaOctopusBg.js",
         "src/ui/backgrounds/SeaJellyfishBg.js",
         "src/engine/Map.js",
@@ -30,6 +31,7 @@
         "src/ui/layers/GameLayer.js",
         "src/ui/layers/RocksLayer.js",
         "src/ui/layers/OctopusLayer.js",
+        "src/ui/layers/FishermanLayer.js",
         "src/ui/GameScene.js"
     ]
 }

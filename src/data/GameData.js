@@ -67,25 +67,27 @@ var world = {
                 }
             ]
         },
-//        {
-//            background: "seaTop",
-//            activities: [
-//                {
-//                    "stimuli": ["oa", "oe", "oi", "ou"],
-//                    "distractions": ["ia", "ie", "io", "iu"],
-//                    "activityID": "bubbles",
-//                    "type": "UR",
-//                    "goal": 50
-//                },
-//                {
-//                    "stimuli": ["ua", "ue", "ui", "uo"],
-//                    "distractions": ["oa", "oe", "oi", "ou"],
-//                    "activityID": "fisherman",
-//                    "type": "UR",
-//                    "goal": 100
-//                }
-//            ]
-//        }
+        {
+            
+            activities: [
+                {
+                    "stimuli": ["oa", "oe", "oi", "ou"],
+                    "distractions": ["ia", "ie", "io", "iu"],
+                    "activityID": "bubbles",
+                    "background": "seaTop",
+                    "type": UNIQUE_ANSWER,
+                    "goal": 50
+                },
+                {
+                    "stimuli": ["ua", "ue", "ui", "uo"],
+                    "distractions": ["oa", "oe", "oi", "ou"],
+                    "activityID": "fisherman",
+                    "background": "seaTop",
+                    "type": UNIQUE_ANSWER,
+                    "goal": 50
+                }
+            ]
+        }
     ]
 //    beach: [
 //        {

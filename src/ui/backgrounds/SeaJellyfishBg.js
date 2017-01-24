@@ -11,5 +11,7 @@ var SeaJellyfishBg = cc.Layer.extend({
         this.background = new cc.Sprite(seaImgRes.jellyfish_png);
         this.background.attr({x: size.width / 2, y: size.height / 2});
         this.addChild(this.background);
+        
+        return true;
     }
 });

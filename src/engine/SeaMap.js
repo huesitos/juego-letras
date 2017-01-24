@@ -157,6 +157,44 @@ SeaMap.getGameLayer = function (activityData, activity) {
             break;
             
         case "fisherman":
+            var xPos = size.width * .27;
+            var yPos = [230, 250, 230];
+            
+            gameLayer = new FishermanLayer(
+                {
+                    xPos: xPos,
+                    yPos: yPos
+                },
+                cc.winSize.width * .14,
+                activity
+            );
+            
+            gameLayer.optionButtons.forEach(function (button) {
+                button.setVisible(false);
+            });
+            
+            // appearance delay between fishes
+            var delay = 0.5;
+            
+            gameLayer.customIntroAnimation = function () {
+                this.optionButtons.forEach(function (button) {
+                    button.hideLabel();
+                    var startPos = button.getPosition();
+                    button.setVisible(true);
+                    button.runAction(
+                        new cc.Sequence(
+                            new cc.Place(cc.p(-button.width, startPos.y)),
+                            new cc.DelayTime(delay),
+                            new cc.MoveTo(2, cc.p(startPos.x, startPos.y)),
+                            new cc.DelayTime(1+delay),
+                            new cc.CallFunc(button.showLabel, button)
+                        )
+                    );
+                    
+                    delay += .5;
+                });
+            };
+            
             break;
     }
     
