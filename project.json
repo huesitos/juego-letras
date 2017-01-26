@@ -14,7 +14,7 @@
     "jsList" : [
         "src/Resources.js",
         "src/data/GameData.js",
-        "src/engine/GameState.js",
+        "src/engine/Storage.js",
         "src/engine/Utils.js",
         "src/engine/Activity.js",
         "src/ui/BackgroundLayer.js",
@@ -28,6 +28,7 @@
         "src/ui/layers/RocksLayer.js",
         "src/ui/layers/OctopusLayer.js",
         "src/ui/layers/FishermanLayer.js",
+        "src/ui/ActivityMenuLayer.js",
         "src/ui/GameScene.js"
     ]
 }

@@ -6,7 +6,8 @@ var uiImgRes = {
     replay_png: "res/replay.png",
     help_png: "res/help.png",
     fuelBarEmpty_png: "res/fuel_bar_empty.png",
-    fuelBarFull_png: "res/fuel_bar_full.png"
+    fuelBarFull_png: "res/fuel_bar_full.png",
+    labelRibbon_png: "res/label_ribbon.png"
 };
 
 var seaImgRes = {
@@ -92,7 +93,8 @@ var fonts = {
 
 var audioRes = {
     success: "res/audio/success.mp3",
-    failure: "res/audio/failure.mp3"
+    failure: "res/audio/failure.mp3",
+    cheering: "res/audio/cheering.mp3"
 };
 
 var stimuliRes = {

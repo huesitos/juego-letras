@@ -64,8 +64,10 @@ var HUDLayer = cc.Layer.extend({
         return true;
     },
     update: function (dt) {
-        var fuelGoal = GD.gameState.currentFuelGoal;
-        var fuelScore = GD.gameState.currentFuelScore;
+        var gameLayer = this.getParent().getChildByName("gameLayer");
+        
+        var fuelGoal = gameLayer.activity.getActivityGoal();
+        var fuelScore = gameLayer.activity.getActivityScore();
         
         // the score
         var ratio = (fuelScore * 100) / fuelGoal;
@@ -79,7 +81,8 @@ var HUDLayer = cc.Layer.extend({
     },
     onReplayTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            GD.currentLevel.playOptionAudio();
+            var gameLayer = this.getParent().getChildByName("gameLayer");
+            gameLayer.activity.playOptionAudio();
         }
     },
     onPauseTouch: function (sender, type) {
@@ -93,7 +96,6 @@ var HUDLayer = cc.Layer.extend({
             this.replayBtn.setVisible(false);
             this.helpBtn.setVisible(false);
             this.resumeBtn.setVisible(true);
-            cc.log("pausing game");
         }
     },
     onResumeTouch: function (sender, type) {
@@ -107,7 +109,6 @@ var HUDLayer = cc.Layer.extend({
             this.replayBtn.setVisible(true);
             this.helpBtn.setVisible(true);
             this.resumeBtn.setVisible(false);
-            cc.log("resuming game");
         }
     }
 });

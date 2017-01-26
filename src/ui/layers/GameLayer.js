@@ -6,6 +6,8 @@ var GameLayer = cc.Layer.extend({
         this._super();
         
         this.activity = activity;
+        // update the activity question
+        this.activity.changeQuestion();
         
         var size = cc.winSize;
         this.gap = gap;
@@ -15,12 +17,20 @@ var GameLayer = cc.Layer.extend({
         this.optionButtons = [];
         var questionOptions = this.activity.getQuestionOptions();
         
-        this.answerLabel = new cc.LabelTTF(this.activity.getRightOption(), _b_getFontName(fonts.gameFont), 60);
+        this.answerLabel = new cc.LabelTTF(
+            this.activity.getRightOption(),
+            _b_getFontName(fonts.gameFont),
+            60
+        );
         this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
         this.addChild(this.answerLabel);
         
         for (var i = 0; i < questionOptions.length; i++) {
-            var optionButton = new OptionButton(optionSrcs.initState, optionSrcs.clickedState, questionOptions[i]);
+            var optionButton = new OptionButton(
+                optionSrcs.initState,
+                optionSrcs.clickedState,
+                questionOptions[i]
+            );
             var pos = cc.p(optionsPos.xPos, optionsPos.yPos[i]);
             
             optionButton.setPosition(pos);
@@ -35,40 +45,15 @@ var GameLayer = cc.Layer.extend({
         }
         
         /////////////////////////////
-        // 3. register events
-        // activity completed
-        var aCompleted = function (event) {
-            cc.eventManager.pauseTarget(this, true);
-            this.getParent().hudLayer.setVisible(false);
-            cc.director.runScene(new cc.TransitionSlideInR(3, GD.getNextScene()));
-        };
-        
-        cc.eventManager.addListener({
-            event: cc.EventListener.CUSTOM,
-            eventName: ACTIVITY_FINISHED_EVENT,
-            callback: aCompleted.bind(this)
-        }, this);
-        
-        // level completed
-        var lCompleted = function (event) {
-            // ascend transition
-            cc.eventManager.pauseTarget(this, true);
-            this.getParent().hudLayer.setVisible(false);
-            cc.director.runScene(new cc.TransitionSlideInT(3, GD.getNextScene()));
-        };
-        
-        cc.eventManager.addListener({
-            event: cc.EventListener.CUSTOM,
-            eventName: MAP_LAYER_COMPLETED_EVENT,
-            callback: lCompleted.bind(this)
-        }, this);
-        
+        // 3. register events        
         // question checked and no transition
         cc.eventManager.addListener({
             event: cc.EventListener.CUSTOM,
             eventName: QUESTION_CHECKED,
             callback: this.resetQuestion.bind(this)
         }, this);
+        
+        this.scheduleUpdate();
         
         return true;
     },
@@ -93,7 +78,7 @@ var GameLayer = cc.Layer.extend({
             
             // check if level is timed and set an update
             this.configureTimedActivity();
-
+            
             // play current right answer audio
             this.activity.playOptionAudio();
         };
@@ -102,11 +87,13 @@ var GameLayer = cc.Layer.extend({
             btn.hideLabel();
         });
         
+        // TODO
+        // calculate the delay or set it, no magic numbers...
         if (this.customIntroAnimation) {
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(1),
                 new cc.CallFunc(this.customIntroAnimation, this),
-                new cc.DelayTime(2.5),
+                new cc.DelayTime(2),
                 new cc.CallFunc(turnClicked, this.optionButtons[0]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(turnClicked, this.optionButtons[1]),
@@ -119,7 +106,7 @@ var GameLayer = cc.Layer.extend({
             ));
         } else {
             this.runAction(new cc.Sequence(
-                new cc.DelayTime(1),
+                new cc.DelayTime(1.5),
                 new cc.CallFunc(turnClicked, this.optionButtons[0]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(turnClicked, this.optionButtons[1]),
@@ -194,31 +181,44 @@ var GameLayer = cc.Layer.extend({
         }
     },
     resetQuestion: function () {
-        for (var o in this.optionButtons) {
-            this.optionButtons[o].stopAllActions();
-        }
-        
-        // reset position and image
-        for (var o in this.optionButtons) {
-            var optionButton = this.optionButtons[o];
-            var initPos = optionButton.getUserData().initPos;
+        if (!this.activity.isActivityCompleted()) {
+            for (var o in this.optionButtons) {
+                this.optionButtons[o].stopAllActions();
+            }
 
-            optionButton.setPosition(initPos);
-        }
-        
-        var questionOptions = this.activity.getQuestionOptions();
-        
-        for (var i = 0; i < this.optionButtons.length; i++) {
-            var optionButton = this.optionButtons[i];
+            // reset position and image
+            for (var o in this.optionButtons) {
+                var optionButton = this.optionButtons[o];
+                var initPos = optionButton.getUserData().initPos;
+
+                optionButton.setPosition(initPos);
+            }
+
+            var questionOptions = this.activity.getQuestionOptions();
+
+            for (var i = 0; i < this.optionButtons.length; i++) {
+                var optionButton = this.optionButtons[i];
+
+                //reset answer
+                optionButton.setOption(questionOptions[i]);
+                optionButton.changeToNormal();
+                optionButton.showLabel();
+            }
+            this.answerLabel.setString(this.activity.getRightOption());
+            this.activity.playOptionAudio();
+            this.configureTimedActivity();
+        } else {
+            // end activity
+            var effectID = cc.audioEngine.playEffect(audioRes.cheering);
             
-            //reset answer
-            optionButton.setOption(questionOptions[i]);
-            optionButton.changeToNormal();
-            optionButton.showLabel();
+            this.runAction(new cc.Sequence(
+                new cc.DelayTime(5),
+                new cc.CallFunc(function () {
+                    cc.audioEngine.stopEffect(effectID);
+                    cc.director.runScene(ActivityMenuLayer.getScene());
+                })
+            ));
         }
-        this.answerLabel.setString(this.activity.getRightOption());
-        this.activity.playOptionAudio();
-        this.configureTimedActivity();
     },
     tick: function (dt) {
         this.activity.tick(dt);

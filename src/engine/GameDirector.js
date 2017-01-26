@@ -8,48 +8,17 @@ var Maps = {
 
 function GameDirector() {
     // load current map
-    var mapID = "sea";
-    var currentMap = Maps[mapID];
-    this.gameState = new GameState(currentMap.layerGoal);
+    this.currentMapID = "sea";
     
-    this.getNextScene = function () {
-        var nextScene = currentMap.getActivityScene();
-        
-        if (!nextScene) {
-            nextScene = new cc.Scene();
-
-            var layer = new cc.Layer();
-            var label = new cc.LabelTTF("End", _b_getFontName(fonts.gameFont), 50);
-            label.setPosition(cc.p(cc.winSize.width / 2, cc.winSize.height / 2));
-            layer.addChild(label);
-
-            nextScene.addChild(layer)
-        }
-        
-        return nextScene;
-    };
-        
-    this.update = function (dt) {
-        if (currentMap && !currentMap.isMapCompleted()) {
-            currentMap.update();
-        
-            // if map is completed, change to the next
-            if (currentMap.isMapCompleted()) {
-                var newMapID = mapTransitions[mapID];
-                
-                if (newMapID) {
-                    currenMap = Maps[newMapID];
-                    
-                    tthis.onNewLayer();
-                }
-            }
-        }
+    var currentMap = Maps[this.currentMapID];
+    
+    this.setCurrentMap = function (mapID) {
+        this.currentMapID = mapID;
+        currentMap = Maps[this.currentMapID];
     };
     
-    this.onNewLayer = function () {
-        this.gameState.setFuelGoal(
-            currentMap.layerGoal
-        );
+    this.getActivityScene = function (activity) {
+        return currentMap.getActivityScene(activity);
     };
 }
 

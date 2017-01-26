@@ -10,10 +10,18 @@ function OptionButton(spriteNormal, spriteClicked, option) {
 
     var label = new cc.LabelTTF(option, _b_getFontName(fonts.gameFont), 60);
     label.setColor(cc.color.BLACK);
-    optionButton.addChild(label);
+    optionButton.addChild(label, 2);
     label.setPosition(
-        cc.p(optionButton.width / 2, optionButton.height * 1.25)
+        cc.p(optionButton.width / 2, 0)
     );
+    
+    var labelRibbon = new cc.Sprite(uiImgRes.labelRibbon_png);
+    labelRibbon.attr({
+        x: optionButton.width / 2,
+        y: 0,
+        scale: .5
+    });
+    optionButton.addChild(labelRibbon, 1);
     
     optionButton.setOption = function (new_opt) {
         option = new_opt;
@@ -35,10 +43,12 @@ function OptionButton(spriteNormal, spriteClicked, option) {
     };
     
     optionButton.hideLabel = function () {
+        labelRibbon.setVisible(false);
         label.setVisible(false);
     };
     
     optionButton.showLabel = function () {
+        labelRibbon.setVisible(true);
         label.setVisible(true);
     };
     

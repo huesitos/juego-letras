@@ -3,7 +3,7 @@ var QUESTION_CHECKED = "questionChecked";
 
 function Activity(activityData) {
     //////////////////////////////
-    // 2. create members and initialize
+    // 1. create members and initialize
     var activityScore; // max is activity goal
     var scorePerAnswer; // score for each right answer
     var wrongsCount; // determines stars for activities
@@ -14,7 +14,7 @@ function Activity(activityData) {
     
     activityScore = 0;
     numberOfQuestions = 2;
-    scorePerAnswer = activityData.goal / numberOfQuestions;
+    scorePerAnswer = activityData["goal"] / numberOfQuestions;
     wrongsCount = 0;
     rightAnswer = "";
     progress = 0; // for timed activities
@@ -61,7 +61,7 @@ function Activity(activityData) {
     
     // picks a right answer, the distractions, and returns
     // a shuffled list with all that
-    function setQuestion() {
+    this.changeQuestion = function () {
         var stimulus = getRandomStimulus();
         rightAnswer = stimulus;
         
@@ -71,11 +71,9 @@ function Activity(activityData) {
         questionOptions = distractions;
         shuffle(questionOptions);
     };
-    setQuestion();
     
     function onRightAnswer() {
         activityScore += scorePerAnswer;
-        GD.gameState.currentFuelScore += scorePerAnswer;
         
         if (that.isTimedActivity()) {
             progress = 0;
@@ -86,32 +84,22 @@ function Activity(activityData) {
         wrongsCount++;
     };
     
-    // TODO: write a get activity summary for saving
-    // move saving to the map, and the map to a game
-    // storage
-//    function saveActivityResults() {
-//        var earnedStars;
-//        
-//        if (wrongsCount === 0) {
-//            earnedStars = 3;
-//        } else if (wrongsCount <= 3) {
-//            earnedStars = 2;
-//        } else if (wrongsCount <= 5) {
-//            earnedStars = 1;
-//        } else {
-//            earnedStars = 0;
-//        }
-//        
-//        var results = {
-//            stars: earnedStars
-//        }
-//        var itemKey = map + levelNum;
-//        
-////        cc.sys.localStorage.setItem(
-////            JSON.stringify(itemKey), 
-////            JSON.stringify(results)
-////        );
-//    };
+    // get earned stars based on the wrong answers cout
+    this.getEarnedStars = function () {
+        var earnedStars;
+        
+        if (wrongsCount === 0) {
+            earnedStars = 3;
+        } else if (wrongsCount <= 3) {
+            earnedStars = 2;
+        } else if (wrongsCount <= 5) {
+            earnedStars = 1;
+        } else {
+            earnedStars = 0;
+        }
+        
+        return earnedStars;
+    };
     
     this.getQuestionOptions = function () {    
         return questionOptions;
@@ -137,7 +125,7 @@ function Activity(activityData) {
             onWrongAnswer();
         }
         
-        setQuestion();
+        this.changeQuestion();
         
         // notify that the question has been checked
         event = new cc.EventCustom(QUESTION_CHECKED);
@@ -153,7 +141,7 @@ function Activity(activityData) {
         progress = 0;
         
         onWrongAnswer();
-        setQuestion();
+        this.changeQuestion();
     };
 
     this.tick = function (dt) {
@@ -170,5 +158,13 @@ function Activity(activityData) {
     
     this.isActivityCompleted = function () {
         return activityScore >= activityData["goal"];
-    }
+    };
+    
+    this.getActivityGoal = function () {
+        return activityData["goal"];
+    };
+    
+    this.getActivityScore = function () {
+        return activityScore;
+    };
 };

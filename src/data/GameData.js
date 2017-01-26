@@ -8,87 +8,74 @@ var TIMED_LEVEL = "T";
 var UNIQUE_ANSWER = "UR";
 
 var world = {
-    sea: [
-        {
-            activities: [
-                {
-                    "stimuli": ["a", "e", "i", "o", "u"],
-                    "distractions": ["a", "e", "i", "o", "u"],
-                    "activityID": "rocks",
-                    "type": UNIQUE_ANSWER,
-                    "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
-                    "goal": 2
-                },
-                {
-                    "stimuli": ["a", "e", "i", "o", "u"],
-                    "distractions": ["a", "e", "i", "o", "u"],
-                    "activityID": "oysters",
-                    "type": UNIQUE_ANSWER,
-                    "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
-                    "goal": 2
-                },
-                {
-                    "stimuli": ["ae", "ai", "ao", "au"],
-                    "distractions": ["a", "e", "i", "o", "u"],
-                    "type": UNIQUE_ANSWER,
-                    "activityID": "chests",
-                    "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
-                    "goal": 2
-                },
-            ]
+    sea: {
+        rocks: {
+            "stimuli": ["a", "e", "i", "o", "u"],
+            "distractions": ["a", "e", "i", "o", "u"],
+            "activityID": "rocks",
+            "type": UNIQUE_ANSWER,
+            "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
+            "goal": 2
         },
-        {
-            activities: [
-                {
-                    "stimuli": ["ea", "ei", "eo", "eu"],
-                    "distractions": ["ae", "ai", "ao", "au"],
-                    "activityID": "bubbles",
-                    "type": UNIQUE_ANSWER,
-                    "backgroundImgs": [seaImgRes.seaMiddle_png],
-                    "goal": 50
-                },
-                {
-                    "stimuli": ["ia", "ie", "io", "iu"],
-                    "distractions": ["ea", "ei", "eo", "eu"],
-                    "activityID": "jellyfish",
-                    "type": TIMED_LEVEL,
-                    "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.jellyfish_png],
-                    "time": 10,
-                    "goal": 50
-                },
-                {
-                    "stimuli": ["ia", "ie", "io", "iu",
-                                "ea", "ei", "eo", "eu"],
-                    "distractions": ["ia", "ie", "io", "iu"],
-                    "activityID": "octopus",
-                    "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.seaOctopus_png],
-                    "type": UNIQUE_ANSWER,
-                    "goal": 50
-                }
-            ]
+        oysters: {
+            "stimuli": ["a", "e", "i", "o", "u"],
+            "distractions": ["a", "e", "i", "o", "u"],
+            "activityID": "oysters",
+            "type": UNIQUE_ANSWER,
+            "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
+            "goal": 2
         },
-        {
-            
-            activities: [
-                {
-                    "stimuli": ["oa", "oe", "oi", "ou"],
-                    "distractions": ["ia", "ie", "io", "iu"],
-                    "activityID": "bubbles",
-                    "backgroundImgs": [seaImgRes.seaTop_png],
-                    "type": UNIQUE_ANSWER,
-                    "goal": 50
-                },
-                {
-                    "stimuli": ["ua", "ue", "ui", "uo"],
-                    "distractions": ["oa", "oe", "oi", "ou"],
-                    "activityID": "fisherman",
-                    "backgroundImgs": [seaImgRes.seaTop_png],
-                    "type": UNIQUE_ANSWER,
-                    "goal": 50
-                }
-            ]
+        chests: {
+            "stimuli": ["ae", "ai", "ao", "au"],
+            "distractions": ["a", "e", "i", "o", "u"],
+            "type": UNIQUE_ANSWER,
+            "activityID": "chests",
+            "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
+            "goal": 2
+        },
+        bubbles1: {
+            "stimuli": ["ea", "ei", "eo", "eu"],
+            "distractions": ["ae", "ai", "ao", "au"],
+            "activityID": "bubbles",
+            "type": UNIQUE_ANSWER,
+            "backgroundImgs": [seaImgRes.seaMiddle_png],
+            "goal": 50
+        },
+        jellyfish: {
+            "stimuli": ["ia", "ie", "io", "iu"],
+            "distractions": ["ea", "ei", "eo", "eu"],
+            "activityID": "jellyfish",
+            "type": TIMED_LEVEL,
+            "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.jellyfish_png],
+            "time": 10,
+            "goal": 50
+        },
+        octopus: {
+            "stimuli": ["ia", "ie", "io", "iu",
+                        "ea", "ei", "eo", "eu"],
+            "distractions": ["ia", "ie", "io", "iu"],
+            "activityID": "octopus",
+            "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.seaOctopus_png],
+            "type": UNIQUE_ANSWER,
+            "goal": 50
+        },
+        bubbles2: {
+            "stimuli": ["oa", "oe", "oi", "ou"],
+            "distractions": ["ia", "ie", "io", "iu"],
+            "activityID": "bubbles",
+            "backgroundImgs": [seaImgRes.seaTop_png],
+            "type": UNIQUE_ANSWER,
+            "goal": 50
+        },
+        fisherman: {
+            "stimuli": ["ua", "ue", "ui", "uo"],
+            "distractions": ["oa", "oe", "oi", "ou"],
+            "activityID": "fisherman",
+            "backgroundImgs": [seaImgRes.seaTop_png],
+            "type": UNIQUE_ANSWER,
+            "goal": 50
         }
-    ]
+    }
 //    beach: [
 //        {
 //            "stimuli": ["m", "n", "s"],

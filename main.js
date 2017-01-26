@@ -19,7 +19,7 @@ cc.game.onStart = function(){
 
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        cc.director.runScene(GD.getNextScene());
+        cc.director.runScene(ActivityMenuLayer.getScene());
     }, this);
 };
 cc.game.run();
