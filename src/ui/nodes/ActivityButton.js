@@ -1,6 +1,6 @@
 var ActivityButton = ccui.Button.extend({
     ctor: function (activityID) {
-        this._super(ACTIVITIES_IMGS[activityID]);
+        this._super(activitiesImgRes[activityID]);
         this.setUserData({activityID: activityID});
         this.addTouchEventListener(this.onActivityButtonTouch, this);
         

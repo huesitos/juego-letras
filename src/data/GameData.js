@@ -7,29 +7,15 @@ var MAP_TRANSITIONS = Object.freeze({
 var ACTIVITY_TRANSITIONS = Object.freeze({
     rocks: "oysters",
     oysters: "chests",
-    chests: "bubbles1",
-    bubbles1: "jellyfish",
+    chests: "bubbles",
+    bubbles: "jellyfish",
     jellyfish: "octopus",
-    octopus: "bubbles2",
-    bubbles2: "fisherman",
-    fisherman: "crabs",
-    crabs: "buckets",
-    buckets: "turtles"
-});
-
-var ACTIVITIES_IMGS = Object.freeze({
-    "rocks": seaImgRes.rockIcon_png,
-    "oysters": seaImgRes.oysterIcon_png,
-    "chests": seaImgRes.chestIcon_png,
-    "bubbles1": seaImgRes.bubbleIcon_png,
-    "jellyfish": seaImgRes.jellyfishIcon_png,
-    "octopus": seaImgRes.inkIcon_png,
-    "bubbles2": seaImgRes.bubbleIcon_png,
-    "fisherman": seaImgRes.fishermanIcon_png,
-    "buckets": beachImgRes.bucketIcon_png,
-    "crabs1": beachImgRes.crabIcon_png,
-    "crabs2": beachImgRes.crabIcon_png,
-    "turtles": beachImgRes.turtleIcon_png
+    octopus: "fisherman1",
+    fisherman1: "fisherman2",
+    fisherman2: "crabs1",
+    crabs1: "turtles",
+    turtles: "crabs2",
+    crabs2: "buckets"
 });
 
 var TIMED_LEVEL = "T";
@@ -64,10 +50,10 @@ var world = {
             "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
             "goal": 2
         },
-        bubbles1: {
+        bubbles: {
             "stimuli": ["ea", "ei", "eo", "eu"],
             "distractions": ["ae", "ai", "ao", "au"],
-            "activityID": "bubbles1",
+            "activityID": "bubbles",
             "activityType": "bubbles",
             "type": UNIQUE_ANSWER,
             "backgroundImgs": [seaImgRes.seaMiddle_png],
@@ -93,19 +79,19 @@ var world = {
             "type": UNIQUE_ANSWER,
             "goal": 2
         },
-        bubbles2: {
+        fisherman1: {
             "stimuli": ["oa", "oe", "oi", "ou"],
             "distractions": ["ia", "ie", "io", "iu"],
-            "activityID": "bubbles2",
-            "activityType": "bubbles",
+            "activityID": "fisherman1",
+            "activityType": "fisherman",
             "backgroundImgs": [seaImgRes.seaTop_png],
             "type": UNIQUE_ANSWER,
             "goal": 2
         },
-        fisherman: {
+        fisherman2: {
             "stimuli": ["ua", "ue", "ui", "uo"],
             "distractions": ["oa", "oe", "oi", "ou"],
-            "activityID": "fisherman",
+            "activityID": "fisherman2",
             "activityType": "fisherman",
             "backgroundImgs": [seaImgRes.seaTop_png],
             "type": UNIQUE_ANSWER,

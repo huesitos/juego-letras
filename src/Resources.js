@@ -11,6 +11,9 @@ var uiImgRes = {
     
     starOn_png: "res/imgs/activityMenu/starOn.png",
     starOff_png: "res/imgs/activityMenu/starOff.png",
+    
+    beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
+    seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
 };
 
 var seaImgRes = {
@@ -55,6 +58,7 @@ var seaImgRes = {
     seaTop_png: "res/imgs/sea/sea_top.png",
     seaOctopus_png: "res/imgs/sea/sea_octopus.png",
     
+    seaMap_png: "res/imgs/activityMenu/sea_map.png",
     bubbleIcon_png: "res/imgs/activityMenu/bubble_icon.png",
     chestIcon_png: "res/imgs/activityMenu/chest_icon.png",
     fishermanIcon_png: "res/imgs/activityMenu/fisherman_icon.png",
@@ -76,6 +80,7 @@ var beachImgRes = {
     beachTop_png: "res/imgs/beach/beach_top.png",
     beachSand_png: "res/imgs/beach/beach_sand.png",
     
+    beachMap_png: "res/imgs/activityMenu/beach_map.png",
     bucketIcon_png: "res/imgs/activityMenu/bucket_icon.png",
     crabIcon_png: "res/imgs/activityMenu/crab_icon.png",
     turtleIcon_png: "res/imgs/activityMenu/turtle_icon.png"
@@ -110,6 +115,26 @@ var fishesImgRes = [
         selected: seaImgRes.fish3Selected_png
     }
 ];
+
+var activitiesImgRes = {
+    rocks: seaImgRes.rockIcon_png,
+    oysters: seaImgRes.oysterIcon_png,
+    chests: seaImgRes.chestIcon_png,
+    jellyfish: seaImgRes.jellyfishIcon_png,
+    octopus: seaImgRes.inkIcon_png,
+    bubbles: seaImgRes.bubbleIcon_png,
+    fisherman1: seaImgRes.fishermanIcon_png,
+    fisherman2: seaImgRes.fishermanIcon_png,
+    buckets: beachImgRes.bucketIcon_png,
+    crabs1: beachImgRes.crabIcon_png,
+    crabs2: beachImgRes.crabIcon_png,
+    turtles: beachImgRes.turtleIcon_png
+};
+
+var mapsImgRes = {
+    sea: seaImgRes.seaMap_png,
+    beach: beachImgRes.beachMap_png
+};
 
 // fonts
 

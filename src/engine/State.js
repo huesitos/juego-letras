@@ -1,5 +1,16 @@
-function GameState() {    
+function GameState() {
+    // map that is being played
+    // defaults to sea
+    this.currentMapID;
+    // the last visited map
+    this.openedMapID;
+    this.currentActivity;
+    
     this.resetGameProgress = function () {
+        this.currentMapID = "sea";
+        this.openedMapID = "sea";
+        this.currentActivity = null;
+        
         this.gameProgress = {
             maps: {},
             activities: {}
@@ -13,6 +24,7 @@ function GameState() {
             Object.keys(world[map]).forEach(function (activity) {
                 this.gameProgress.activities[activity] = {};
                 this.gameProgress.activities[activity].unlocked = false;
+                this.gameProgress.activities[activity].played = false;
                 this.gameProgress.activities[activity].score = 0;
             }.bind(this));
         }.bind(this));
@@ -31,9 +43,18 @@ function GameState() {
             this.gameProgress = progress;
         else
             this.resetGameProgress();
+        
+        this.currentMapID = Storage.loadItem("currentMapID");
+        if (!this.currentMapID) {
+            this.currentMapID = "sea";
+        }
+        
+        this.openedMapID = this.currentMapID;
+        GD.loadMap(this.openedMapID);
     };
 
     this.saveGameProgress = function () {
+        Storage.saveItem("currentMapID", this.currentMapID);
         Storage.saveObject("gameProgress", this.gameProgress);
     };
     
@@ -42,6 +63,7 @@ function GameState() {
         
         if(prevScore < score) 
             this.gameProgress.activities[activity].score = score;
+        this.gameProgress.activities[activity].played = true;
         
         this.saveGameProgress();
     };
@@ -54,6 +76,9 @@ function GameState() {
     
     this.unlockMap = function (map) {
         this.gameProgress.maps[map].unlocked = true;
+        
+        GameState.currentMapID = map;
+        GameState.openedMapID = map;
         
         this.saveGameProgress();
     };

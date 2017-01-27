@@ -20,8 +20,8 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         GameState.loadGameProgress();
-//        GameState.resetGameProgress();
-        cc.director.runScene(ActivityMenuLayer.getScene(GD.currentMapID));
+        GameState.resetGameProgress();
+        cc.director.runScene(ActivityMenuLayer.getScene(GameState.currentMapID));
     }, this);
 };
 cc.game.run();

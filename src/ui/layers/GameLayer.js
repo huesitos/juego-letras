@@ -181,19 +181,19 @@ var GameLayer = cc.Layer.extend({
         }
     },
     resetQuestion: function () {
+        for (var o in this.optionButtons) {
+            this.optionButtons[o].stopAllActions();
+        }
+        
+        // reset position and image
+        for (var o in this.optionButtons) {
+            var optionButton = this.optionButtons[o];
+            var initPos = optionButton.getUserData().initPos;
+
+            optionButton.setPosition(initPos);
+        }
+        
         if (!this.activity.isActivityCompleted()) {
-            for (var o in this.optionButtons) {
-                this.optionButtons[o].stopAllActions();
-            }
-
-            // reset position and image
-            for (var o in this.optionButtons) {
-                var optionButton = this.optionButtons[o];
-                var initPos = optionButton.getUserData().initPos;
-
-                optionButton.setPosition(initPos);
-            }
-
             var questionOptions = this.activity.getQuestionOptions();
 
             for (var i = 0; i < this.optionButtons.length; i++) {
@@ -211,13 +211,28 @@ var GameLayer = cc.Layer.extend({
             // end activity
             var effectID = cc.audioEngine.playEffect(audioRes.cheering);
             
+            for (var i = 0; i < this.optionButtons.length; i++) {
+                var optionButton = this.optionButtons[i];
+
+                // animate button
+                optionButton.runAction(new cc.RepeatForever(
+                    new cc.Sequence(
+                        new cc.CallFunc(optionButton.changeToNormal, optionButton),
+                        new cc.DelayTime(0.5),
+                        new cc.CallFunc(optionButton.onClicked, optionButton),
+                        new cc.DelayTime(0.5)
+                    )
+                ));
+                optionButton.hideLabel();
+            }
+            
             GD.completeActivity(this.activity.getEarnedStars());
             
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(5.5),
                 new cc.CallFunc(function () {
                     cc.audioEngine.stopEffect(effectID);
-                    cc.director.runScene(ActivityMenuLayer.getScene(GD.currentMapID));
+                    cc.director.runScene(ActivityMenuLayer.getScene(GameState.openedMapID));
                 })
             ));
         }

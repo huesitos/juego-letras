@@ -158,7 +158,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             
         case "fisherman":
             var xPos = size.width * .27;
-            var yPos = [230, 250, 230];
+            var yPos = [200, 220, 200];
             
             gameLayer = new FishermanLayer(
                 {
