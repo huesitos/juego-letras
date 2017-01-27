@@ -8,11 +8,11 @@ function OptionButton(spriteNormal, spriteClicked, option) {
     };
     optionButton.setPosition(cc.p(0, 0));
 
-    var label = new cc.LabelTTF(option, _b_getFontName(fonts.gameFont), 60);
+    var label = new cc.LabelTTF(option, _b_getFontName(fonts.gameFont), 55);
     label.setColor(cc.color.BLACK);
     optionButton.addChild(label, 2);
     label.setPosition(
-        cc.p(optionButton.width / 2, 0)
+        cc.p(optionButton.width / 2, -5)
     );
     
     var labelRibbon = new cc.Sprite(uiImgRes.labelRibbon_png);

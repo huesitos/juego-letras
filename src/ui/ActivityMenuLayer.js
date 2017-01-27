@@ -1,14 +1,3 @@
-var ACTIVITIES_IMGS = Object.freeze({
-    "rocks": seaImgRes.rock1Normal_png,
-    "oysters": seaImgRes.oysterOpened_png,
-    "chests": seaImgRes.chestOpened_png,
-    "bubbles1": seaImgRes.bubble_png,
-    "jellyfish": seaImgRes.volt_png,
-    "octopus": seaImgRes.ink1_png,
-    "bubbles2": seaImgRes.bubble_png,
-    "fisherman": seaImgRes.fish2Normal_png,
-});
-
 var ActivityMenuLayer = cc.Layer.extend({
     ctor: function () {
         //////////////////////////////
@@ -28,27 +17,17 @@ var ActivityMenuLayer = cc.Layer.extend({
         var btnCount = 0;
         
         activitiesIDs.forEach(function (activityID) {
-            var button = new ccui.Button(ACTIVITIES_IMGS[activityID]);
+            var button = new ActivityButton(activityID);
             button.attr({
-                touchEnabled: true,
                 x: positions[btnCount].x,
-                y: positions[btnCount].y,
-                scale: .7
-            });
-            button.setUserData({activityID: activityID});
-            button.addTouchEventListener(this.onActivityButtonTouch, this);
+                y: positions[btnCount].y
+            });            
             this.addChild(button);
             
             btnCount++;
         }.bind(this));
         
         return true;
-    },
-    onActivityButtonTouch: function (sender, type) {
-        if (ccui.Widget.TOUCH_ENDED === type) {
-            var activityID = sender.getUserData().activityID;
-            cc.director.runScene(GD.getActivityScene(activityID));
-        }
     }
 });
 

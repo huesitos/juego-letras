@@ -211,8 +211,10 @@ var GameLayer = cc.Layer.extend({
             // end activity
             var effectID = cc.audioEngine.playEffect(audioRes.cheering);
             
+            GD.completeActivity(this.activity.getEarnedStars());
+            
             this.runAction(new cc.Sequence(
-                new cc.DelayTime(5),
+                new cc.DelayTime(5.5),
                 new cc.CallFunc(function () {
                     cc.audioEngine.stopEffect(effectID);
                     cc.director.runScene(ActivityMenuLayer.getScene());

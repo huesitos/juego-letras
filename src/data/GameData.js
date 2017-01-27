@@ -1,8 +1,29 @@
-var mapTransitions = {
+var MAP_TRANSITIONS = Object.freeze({
 //    sea: "beach",
 //    beach: "sky",
 //    sky: "space"
-};
+});
+
+var ACTIVITY_TRANSITIONS = Object.freeze({
+    rocks: "oysters",
+    oysters: "chests",
+    chests: "bubbles1",
+    bubbles1: "jellyfish",
+    jellyfish: "octopus",
+    octopus: "bubbles2",
+    bubbles2: "fisherman"
+});
+
+var ACTIVITIES_IMGS = Object.freeze({
+    "rocks": seaImgRes.rockIcon_png,
+    "oysters": seaImgRes.oysterIcon_png,
+    "chests": seaImgRes.chestIcon_png,
+    "bubbles1": seaImgRes.bubbleIcon_png,
+    "jellyfish": seaImgRes.jellyfishIcon_png,
+    "octopus": seaImgRes.inkIcon_png,
+    "bubbles2": seaImgRes.bubbleIcon_png,
+    "fisherman": seaImgRes.fishermanIcon_png
+});
 
 var TIMED_LEVEL = "T";
 var UNIQUE_ANSWER = "UR";
@@ -13,6 +34,7 @@ var world = {
             "stimuli": ["a", "e", "i", "o", "u"],
             "distractions": ["a", "e", "i", "o", "u"],
             "activityID": "rocks",
+            "activityType": "rocks",
             "type": UNIQUE_ANSWER,
             "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
             "goal": 2
@@ -21,6 +43,7 @@ var world = {
             "stimuli": ["a", "e", "i", "o", "u"],
             "distractions": ["a", "e", "i", "o", "u"],
             "activityID": "oysters",
+            "activityType": "oysters",
             "type": UNIQUE_ANSWER,
             "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
             "goal": 2
@@ -30,50 +53,56 @@ var world = {
             "distractions": ["a", "e", "i", "o", "u"],
             "type": UNIQUE_ANSWER,
             "activityID": "chests",
+            "activityType": "chests",
             "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
             "goal": 2
         },
         bubbles1: {
             "stimuli": ["ea", "ei", "eo", "eu"],
             "distractions": ["ae", "ai", "ao", "au"],
-            "activityID": "bubbles",
+            "activityID": "bubbles1",
+            "activityType": "bubbles",
             "type": UNIQUE_ANSWER,
             "backgroundImgs": [seaImgRes.seaMiddle_png],
-            "goal": 50
+            "goal": 2
         },
         jellyfish: {
             "stimuli": ["ia", "ie", "io", "iu"],
             "distractions": ["ea", "ei", "eo", "eu"],
             "activityID": "jellyfish",
+            "activityType": "jellyfish",
             "type": TIMED_LEVEL,
             "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.jellyfish_png],
             "time": 10,
-            "goal": 50
+            "goal": 2
         },
         octopus: {
             "stimuli": ["ia", "ie", "io", "iu",
                         "ea", "ei", "eo", "eu"],
             "distractions": ["ia", "ie", "io", "iu"],
             "activityID": "octopus",
+            "activityType": "octopus",
             "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.seaOctopus_png],
             "type": UNIQUE_ANSWER,
-            "goal": 50
+            "goal": 2
         },
         bubbles2: {
             "stimuli": ["oa", "oe", "oi", "ou"],
             "distractions": ["ia", "ie", "io", "iu"],
-            "activityID": "bubbles",
+            "activityID": "bubbles2",
+            "activityType": "bubbles",
             "backgroundImgs": [seaImgRes.seaTop_png],
             "type": UNIQUE_ANSWER,
-            "goal": 50
+            "goal": 2
         },
         fisherman: {
             "stimuli": ["ua", "ue", "ui", "uo"],
             "distractions": ["oa", "oe", "oi", "ou"],
             "activityID": "fisherman",
+            "activityType": "fisherman",
             "backgroundImgs": [seaImgRes.seaTop_png],
             "type": UNIQUE_ANSWER,
-            "goal": 50
+            "goal": 2
         }
     }
 //    beach: [
@@ -482,5 +511,4 @@ var world = {
 //    		"type": "UR",
 //    		"goal": 100
 //    	}
-//    ]
 };

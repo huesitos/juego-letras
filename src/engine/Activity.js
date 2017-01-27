@@ -1,7 +1,6 @@
-var FUEL_CHANGED_EVENT = "fuelChanged";
 var QUESTION_CHECKED = "questionChecked";
 
-function Activity(activityData) {
+function Activity(activityData) {    
     //////////////////////////////
     // 1. create members and initialize
     var activityScore; // max is activity goal

@@ -19,6 +19,7 @@ cc.game.onStart = function(){
 
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
+        GameState.loadGameProgress();
         cc.director.runScene(ActivityMenuLayer.getScene());
     }, this);
 };

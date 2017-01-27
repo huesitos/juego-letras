@@ -1,9 +1,9 @@
 var SeaMap = new Map("sea");
-SeaMap.getGameLayer = function (activityData, activity) {
+SeaMap.getGameLayer = function (activityType, activity) {
     var gameLayer;
     var size = cc.winSize;
     
-    switch (activityData.activityID) {
+    switch (activityType) {
         case "oysters":
             var xPos = size.width * .27;
             var yPos = [100, 130, 100];

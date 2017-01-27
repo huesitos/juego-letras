@@ -7,7 +7,10 @@ var uiImgRes = {
     help_png: "res/help.png",
     fuelBarEmpty_png: "res/fuel_bar_empty.png",
     fuelBarFull_png: "res/fuel_bar_full.png",
-    labelRibbon_png: "res/label_ribbon.png"
+    labelRibbon_png: "res/label_ribbon.png",
+    
+    starOn_png: "res/starOn.png",
+    starOff_png: "res/starOff.png",
 };
 
 var seaImgRes = {
@@ -50,7 +53,15 @@ var seaImgRes = {
     seaWater_png: "res/sea/sea_water.png",
     seaMiddle_png: "res/sea/sea_middle.png",
     seaTop_png: "res/sea/sea_top.png",
-    seaOctopus_png: "res/sea/sea_octopus.png"
+    seaOctopus_png: "res/sea/sea_octopus.png",
+    
+    bubbleIcon_png: "res/activityMenu/bubble_icon.png",
+    chestIcon_png: "res/activityMenu/chest_icon.png",
+    fishermanIcon_png: "res/activityMenu/fisherman_icon.png",
+    inkIcon_png: "res/activityMenu/ink_icon.png",
+    jellyfishIcon_png: "res/activityMenu/jellyfish_icon.png",
+    oysterIcon_png: "res/activityMenu/oyster_icon.png",
+    rockIcon_png: "res/activityMenu/rock_icon.png"
 };
 
 var rocksImgRes = [

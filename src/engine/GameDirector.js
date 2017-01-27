@@ -8,7 +8,9 @@ var Maps = {
 
 function GameDirector() {
     // load current map
+    // defaults to "sea"
     this.currentMapID = "sea";
+    this.currentActivity = "";
     
     var currentMap = Maps[this.currentMapID];
     
@@ -18,7 +20,17 @@ function GameDirector() {
     };
     
     this.getActivityScene = function (activity) {
+        this.currentActivity = activity;
         return currentMap.getActivityScene(activity);
+    };
+    
+    this.completeActivity = function (activityScore) {
+        GameState.saveActivityProgress(this.currentActivity, activityScore);
+        
+        var activityUnlock = ACTIVITY_TRANSITIONS[this.currentActivity];
+        if (activityUnlock) {
+            GameState.unlockActivity(activityUnlock);
+        }
     };
 }
 
