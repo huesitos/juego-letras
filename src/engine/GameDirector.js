@@ -1,7 +1,7 @@
 // map objects linked to their id
 var Maps = {
     "sea": SeaMap,
-    "beach": null,
+    "beach": BeachMap,
     "sky": null,
     "space": null
 };

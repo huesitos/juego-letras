@@ -17,13 +17,13 @@ var GameLayer = cc.Layer.extend({
         this.optionButtons = [];
         var questionOptions = this.activity.getQuestionOptions();
         
-        this.answerLabel = new cc.LabelTTF(
-            this.activity.getRightOption(),
-            _b_getFontName(fonts.gameFont),
-            60
-        );
-        this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
-        this.addChild(this.answerLabel);
+//        this.answerLabel = new cc.LabelTTF(
+//            this.activity.getRightOption(),
+//            _b_getFontName(fonts.gameFont),
+//            60
+//        );
+//        this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
+//        this.addChild(this.answerLabel);
         
         for (var i = 0; i < questionOptions.length; i++) {
             var optionButton = new OptionButton(
@@ -204,7 +204,7 @@ var GameLayer = cc.Layer.extend({
                 optionButton.changeToNormal();
                 optionButton.showLabel();
             }
-            this.answerLabel.setString(this.activity.getRightOption());
+//            this.answerLabel.setString(this.activity.getRightOption());
             this.activity.playOptionAudio();
             this.configureTimedActivity();
         } else {
@@ -217,7 +217,7 @@ var GameLayer = cc.Layer.extend({
                 new cc.DelayTime(5.5),
                 new cc.CallFunc(function () {
                     cc.audioEngine.stopEffect(effectID);
-                    cc.director.runScene(ActivityMenuLayer.getScene());
+                    cc.director.runScene(ActivityMenuLayer.getScene(GD.currentMapID));
                 })
             ));
         }

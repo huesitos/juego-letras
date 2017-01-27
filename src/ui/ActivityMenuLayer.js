@@ -1,5 +1,5 @@
 var ActivityMenuLayer = cc.Layer.extend({
-    ctor: function () {
+    ctor: function (mapID) {
         //////////////////////////////
         // 1. super init first
         this._super();
@@ -7,7 +7,7 @@ var ActivityMenuLayer = cc.Layer.extend({
         
         //////////////////////////////
         // 2. add the activity btns
-        var activitiesIDs = Object.keys(world[GD.currentMapID]);
+        var activitiesIDs = Object.keys(world[mapID]);
         
         var positions = [
             cc.p(180, 125), cc.p(512, 125), cc.p(844, 125),
@@ -31,15 +31,23 @@ var ActivityMenuLayer = cc.Layer.extend({
     }
 });
 
-ActivityMenuLayer.getScene = function () {
+ActivityMenuLayer.getScene = function (mapID) {
     var scene = new cc.Scene();
     
     var bg = new BackgroundLayer();
-    bg.addBackgroundImage(seaImgRes.seaWater_png);
-    bg.addBackgroundImage(seaImgRes.seaOctopus_png);
-
+    switch (mapID) {
+        case "sea":
+            bg.addBackgroundImage(seaImgRes.seaWater_png);
+            bg.addBackgroundImage(seaImgRes.seaOctopus_png);
+            break;
+            
+        case "beach":
+            bg.addBackgroundImage(beachImgRes.beachSand_png);
+            break;
+    }
     scene.addChild(bg, -1);
     
-    scene.addChild(new ActivityMenuLayer());
+    scene.addChild(new ActivityMenuLayer(mapID));
+    
     return scene;
 };

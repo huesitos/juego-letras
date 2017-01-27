@@ -1,5 +1,5 @@
 var MAP_TRANSITIONS = Object.freeze({
-//    sea: "beach",
+    sea: "beach",
 //    beach: "sky",
 //    sky: "space"
 });
@@ -11,7 +11,10 @@ var ACTIVITY_TRANSITIONS = Object.freeze({
     bubbles1: "jellyfish",
     jellyfish: "octopus",
     octopus: "bubbles2",
-    bubbles2: "fisherman"
+    bubbles2: "fisherman",
+    fisherman: "crabs",
+    crabs: "buckets",
+    buckets: "turtles"
 });
 
 var ACTIVITIES_IMGS = Object.freeze({
@@ -22,7 +25,11 @@ var ACTIVITIES_IMGS = Object.freeze({
     "jellyfish": seaImgRes.jellyfishIcon_png,
     "octopus": seaImgRes.inkIcon_png,
     "bubbles2": seaImgRes.bubbleIcon_png,
-    "fisherman": seaImgRes.fishermanIcon_png
+    "fisherman": seaImgRes.fishermanIcon_png,
+    "buckets": beachImgRes.bucketIcon_png,
+    "crabs1": beachImgRes.crabIcon_png,
+    "crabs2": beachImgRes.crabIcon_png,
+    "turtles": beachImgRes.turtleIcon_png
 });
 
 var TIMED_LEVEL = "T";
@@ -104,69 +111,104 @@ var world = {
             "type": UNIQUE_ANSWER,
             "goal": 2
         }
-    }
-//    beach: [
+    },
+    beach: {
 //        {
 //            "stimuli": ["m", "n", "s"],
 //    		"distractions": ['a', 'e', 'i', 'o', 'u'],
 //    		"type": "UR",
 //    		"goal": 100
 //    	},
-//        {
-//    		"stimuli": [
-//                "ma", "me", "mi", "mo", "mu",
-//                "na", "ne", "ni", "no", "nu",
-//                "sa", "se", "si", "so", "su"
-//            ],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
+        crabs1: {
+    		"stimuli": [
+                "ma", "me", "mi", "mo", "mu",
+                "na", "ne", "ni", "no", "nu",
+                "sa", "se", "si", "so", "su"
+            ],
+    		"distractions": [
+                "a", "e", "i", "o", "u", 
+                "ma", "me", "mi", "mo", "mu",
+                "na", "ne", "ni", "no", "nu",
+                "sa", "se", "si", "so", "su"
+            ],
+            "activityID": "crabs1",
+            "activityType": "crabs",
+            "backgroundImgs": [beachImgRes.beachFront_png],
+    		"type": UNIQUE_ANSWER,
+    		"goal": 2
+    	},
 //        {
 //            "stimuli": ["m", "n", "s", "l", "f", "p"],
 //    		"distractions": [".."],
 //    		"type": "UR",
 //    		"goal": 100
 //    	},
-//        {
-//    		"stimuli": [
-//                "la", "le", "li", "lo", "lu",
-//                "fa", "fe", "fi", "fo", "fu",
-//                "pa", "pe", "pi", "po", "pu"
-//            ],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
-//        {
-//    		"stimuli": [
-//                "ma", "me", "mi", "mo", "mu",
-//                "na", "ne", "ni", "no", "nu",
-//                "sa", "se", "si", "so", "su",
-//                "la", "le", "li", "lo", "lu",
-//                "fa", "fe", "fi", "fo", "fu",
-//                "pa", "pe", "pi", "po", "pu"
-//            ],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
+        turtles: {
+    		"stimuli": [
+                "la", "le", "li", "lo", "lu",
+                "fa", "fe", "fi", "fo", "fu",
+                "pa", "pe", "pi", "po", "pu"
+            ],
+    		"distractions": [
+                "a", "e", "i", "o", "u",
+                "ma", "me", "mi", "mo", "mu",
+                "na", "ne", "ni", "no", "nu",
+                "sa", "se", "si", "so", "su"
+            ],
+            "activityID": "turtles",
+            "activityType": "turtles",
+            "backgroundImgs": [beachImgRes.beachTop_png],
+    		"type": UNIQUE_ANSWER,
+    		"goal": 2
+    	},
+        crabs2: {
+    		"stimuli": [
+                "ma", "me", "mi", "mo", "mu",
+                "na", "ne", "ni", "no", "nu",
+                "sa", "se", "si", "so", "su",
+                "la", "le", "li", "lo", "lu",
+                "fa", "fe", "fi", "fo", "fu",
+                "pa", "pe", "pi", "po", "pu"
+            ],
+    		"distractions": [
+                "a", "e", "i", "o", "u",
+                "ma", "me", "mi", "mo", "mu",
+                "na", "ne", "ni", "no", "nu",
+                "sa", "se", "si", "so", "su",
+                "la", "le", "li", "lo", "lu",
+                "fa", "fe", "fi", "fo", "fu",
+                "pa", "pe", "pi", "po", "pu"
+            ],
+            "activityID": "crabs2",
+            "activityType": "crabs",
+            "backgroundImgs": [beachImgRes.beachFront_png],
+    		"type": UNIQUE_ANSWER,
+    		"goal": 2
+    	},
 //        {
 //    		"stimuli": ["t", "b", "d"],
 //    		"distractions": ['l', 'f', 'p', 'm', 'n'],
 //    		"type": "UR",
 //    		"goal": 100
 //    	},
-//        {
-//    		"stimuli": [
-//                "ta", "te", "ti", 'to', 'tu',
-//                'ba', 'be', 'bi', 'bo', 'bu',
-//                'da', 'de', 'di', 'do', 'du'
-//            ],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
+        buckets: {
+    		"stimuli": [
+                "ta", "te", "ti", 'to', 'tu',
+                'ba', 'be', 'bi', 'bo', 'bu',
+                'da', 'de', 'di', 'do', 'du'
+            ],
+    		"distractions": [
+                "a", "e", "i", "o", "u",
+                "ta", "te", "ti", "to", "tu",
+                "ba", "be", "bi", "bo", "bu",
+                "da", "de", "di", "do", "du"
+            ],
+            "activityID": "buckets",
+            "activityType": "buckets",
+            "backgroundImgs": [beachImgRes.beachFront_png],
+    		"type": UNIQUE_ANSWER,
+    		"goal": 2
+    	},
 //        {
 //    		"stimuli": [
 //                'am', 'em', 'im', 'om', 'um',
@@ -214,7 +256,7 @@ var world = {
 //    		"type": "UR",
 //    		"goal": 100
 //    	}
-//    ],
+    }
 //    sky: [
 //        {
 //            "stimuli": ["bla", "ble", "bli", "blo", "blu"],

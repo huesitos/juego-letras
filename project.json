@@ -19,8 +19,9 @@
         "src/engine/State.js",
         "src/engine/Utils.js",
         "src/engine/Activity.js",
-        "src/engine/Map.js",
-        "src/engine/SeaMap.js",
+        "src/engine/maps/Map.js",
+        "src/engine/maps/SeaMap.js",
+        "src/engine/maps/BeachMap.js",
         "src/engine/GameDirector.js",
         
         "src/ui/BackgroundLayer.js",
