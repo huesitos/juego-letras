@@ -65,8 +65,12 @@ var ActivityMenuLayer = cc.Layer.extend({
     },
     onNavigateToMap: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
+            var mapID = sender.getUserData().mapID;
+            GameState.openedMapID = mapID;
+            GD.openMap();
+                
             cc.director.runScene(
-                ActivityMenuLayer.getScene(sender.getUserData().mapID)
+                ActivityMenuLayer.getScene(mapID)
             );
         }
     }

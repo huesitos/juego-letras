@@ -50,7 +50,7 @@ function GameState() {
         }
         
         this.openedMapID = this.currentMapID;
-        GD.loadMap(this.openedMapID);
+        GD.openMap();
     };
 
     this.saveGameProgress = function () {
