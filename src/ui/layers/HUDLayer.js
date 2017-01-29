@@ -59,20 +59,48 @@ var HUDLayer = cc.Layer.extend({
         //////////////////////////////
         // 4. set update
         
-        this.scheduleUpdate();
+        cc.eventManager.addListener({
+            event: cc.EventListener.CUSTOM,
+            eventName: QUESTION_CHECKED,
+            callback: this.onQuestionChecked.bind(this)
+        }, this);
         
         return true;
     },
-    update: function (dt) {
+    onQuestionChecked: function (event) {
         var gameLayer = this.getParent().getChildByName("gameLayer");
         
         var fuelGoal = gameLayer.activity.getActivityGoal();
         var fuelScore = gameLayer.activity.getActivityScore();
         
         // the score
-        var ratio = (fuelScore * 100) / fuelGoal;
+        var percent = (fuelScore * 100) / fuelGoal;
         
-        this.fuelBar.setPercent(ratio);
+        var diff = percent - this.fuelBar.getPercent();
+        
+        if (diff > 0) {
+            this.animateBarLoading(diff);
+        }
+    },
+    animateBarLoading: function (ratio) {
+        var step = ratio / 10;
+        
+        var increase = function () {
+            this.fuelBar.setPercent(this.fuelBar.getPercent() + step);
+        };
+        
+        this.fuelBar.runAction(
+            new cc.Repeat(
+                new cc.Sequence(
+                    new cc.CallFunc(
+                        increase,
+                        this
+                    ),
+                    new cc.DelayTime(0.01)
+                ),
+                10
+            )
+        );
     },
     onHelpBtnTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
