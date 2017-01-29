@@ -1,5 +1,6 @@
 var GameLayer = cc.Layer.extend({
     customIntroAnimation: null,
+    customIntroAnimationDelay: 0,
     ctor: function (optionSrcs, optionsPos, gap, activity) {
         //////////////////////////////
         // 1. super init first
@@ -90,10 +91,11 @@ var GameLayer = cc.Layer.extend({
         // TODO
         // calculate the delay or set it, no magic numbers...
         if (this.customIntroAnimation) {
+            cc.log(this.customIntroAnimationDelay);
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(1),
                 new cc.CallFunc(this.customIntroAnimation, this),
-                new cc.DelayTime(2),
+                new cc.DelayTime(this.customIntroAnimationDelay),
                 new cc.CallFunc(turnClicked, this.optionButtons[0]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(turnClicked, this.optionButtons[1]),
@@ -101,12 +103,12 @@ var GameLayer = cc.Layer.extend({
                 new cc.CallFunc(turnClicked, this.optionButtons[2]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(returnToNormal, this),
-                new cc.DelayTime(0.5),
+                new cc.DelayTime(0.25),
                 new cc.CallFunc(startActivity, this)
             ));
         } else {
             this.runAction(new cc.Sequence(
-                new cc.DelayTime(1.5),
+                new cc.DelayTime(1),
                 new cc.CallFunc(turnClicked, this.optionButtons[0]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(turnClicked, this.optionButtons[1]),
@@ -114,7 +116,7 @@ var GameLayer = cc.Layer.extend({
                 new cc.CallFunc(turnClicked, this.optionButtons[2]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(returnToNormal, this),
-                new cc.DelayTime(0.5),
+                new cc.DelayTime(0.25),
                 new cc.CallFunc(startActivity, this)
             ));
         }

@@ -48,7 +48,9 @@ var ActivityButton = ccui.Button.extend({
     onActivityButtonTouch: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
             var activityID = sender.getUserData().activityID;
-            cc.director.runScene(GD.getActivityScene(activityID));
+            cc.director.runScene(
+                new cc.TransitionFade(1, GD.getActivityScene(activityID))
+            );
         }
     }
 });

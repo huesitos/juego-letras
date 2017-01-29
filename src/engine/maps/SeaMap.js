@@ -67,6 +67,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
                 activity
             );
             
+            gameLayer.customIntroAnimationDelay = .5;
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
                     var startPos = button.getPosition();
@@ -101,17 +102,16 @@ SeaMap.getGameLayer = function (activityType, activity) {
                 button.setVisible(false);
             });
             
+            gameLayer.customIntroAnimationDelay = 1.5;
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
-                    button.hideLabel();
                     var startPos = button.getPosition();
                     button.setVisible(true);
                     button.setPositionY(-button.height);
                     button.runAction(
                         new cc.Sequence(
                             new cc.MoveTo(1, startPos),
-                            new cc.DelayTime(0.5),
-                            new cc.CallFunc(button.showLabel, button)
+                            new cc.DelayTime(0.5)
                         )
                     );
                 });
@@ -139,17 +139,16 @@ SeaMap.getGameLayer = function (activityType, activity) {
                 button.setVisible(false);
             });
             
+            gameLayer.customIntroAnimationDelay = 2.5;
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
-                    button.hideLabel();
                     var startPos = button.getPosition();
                     button.setVisible(true);
                     button.runAction(
                         new cc.Sequence(
                             new cc.MoveTo(2, cc.p(startPos.x, -startPos.y)),
                             new cc.DelayTime(0.5),
-                            new cc.Place(startPos),
-                            new cc.CallFunc(button.showLabel, button)
+                            new cc.Place(startPos)
                         )
                     );
                 });
@@ -176,6 +175,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             // appearance delay between fishes
             var delay = 0.5;
             
+            gameLayer.customIntroAnimationDelay = 3 + delay * 2;
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
                     button.hideLabel();
@@ -186,12 +186,11 @@ SeaMap.getGameLayer = function (activityType, activity) {
                             new cc.Place(cc.p(-button.width, startPos.y)),
                             new cc.DelayTime(delay),
                             new cc.MoveTo(2, cc.p(startPos.x, startPos.y)),
-                            new cc.DelayTime(1+delay),
-                            new cc.CallFunc(button.showLabel, button)
+                            new cc.DelayTime(1+delay)
                         )
                     );
                     
-                    delay += .5;
+                    delay += 0.5;
                 });
             };
             
