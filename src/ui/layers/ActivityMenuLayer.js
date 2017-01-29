@@ -16,12 +16,15 @@ var ActivityMenuLayer = cc.Layer.extend({
         ];
         var btnCount = 0;
         
+        var btns = {};
+        
         activitiesIDs.forEach(function (activityID) {
             var button = new ActivityButton(activityID);
             button.attr({
                 x: positions[btnCount].x,
                 y: positions[btnCount].y
             });            
+            btns[activityID] = button;
             this.addChild(button);
             
             btnCount++;
@@ -60,6 +63,26 @@ var ActivityMenuLayer = cc.Layer.extend({
             prevMapBtn.addTouchEventListener(this.onNavigateToMap, this);
             this.addChild(prevMapBtn);
         };
+        
+        // animate the opened activity
+        if (GameState.openedActivity) {
+            var particles = new cc.ParticleSystem(effectsRes.particles_plist);
+            particles.setScale(0.5);
+            this.addChild(particles);
+            
+            particles.setPosition(
+                btns[GameState.openedActivity].getPosition()
+            );
+            
+            btns[GameState.openedActivity].runAction(
+                new cc.Sequence(
+                    new cc.ScaleTo(0.25, 1.2),
+                    new cc.ScaleTo(0.25, 1)
+                )
+            );
+            
+            GameState.openedActivity = null;
+        }
         
         return true;
     },

@@ -5,6 +5,7 @@ function GameState() {
     // the last visited map
     this.openedMapID;
     this.currentActivity;
+    this.openedActivity;
     
     this.resetGameProgress = function () {
         this.currentMapID = "sea";
@@ -70,6 +71,7 @@ function GameState() {
     
     this.unlockActivity = function (activity) {
         this.gameProgress.activities[activity].unlocked = true;
+        this.openedActivity = activity;
         
         this.saveGameProgress();
     };

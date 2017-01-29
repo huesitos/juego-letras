@@ -223,6 +223,11 @@ var stimuliRes = {
     "du": "res/audio/stimuli/du.mp3"
 }
 
+var effectsRes = {
+    particles_plist: "res/particle_texture.plist",
+    particles_png: "res/particle_texture.png"
+}
+
 var g_resources = [];
 for (var i in uiImgRes) {
     g_resources.push(uiImgRes[i]);
@@ -246,6 +251,10 @@ for (var i in stimuliRes) {
 
 for (var i in fonts) {
     g_resources.push(fonts[i]);
+}
+
+for (var i in effectsRes) {
+    g_resources.push(effectsRes[i]);
 }
 
 var _b_getFontName = function(resource) {

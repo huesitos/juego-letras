@@ -24,131 +24,176 @@ var UNIQUE_ANSWER = "UR";
 var world = {
     sea: {
         rocks: {
-            "stimuli": ["a", "e", "i", "o", "u"],
-            "distractions": ["a", "e", "i", "o", "u"],
-            "activityID": "rocks",
-            "activityType": "rocks",
-            "type": UNIQUE_ANSWER,
-            "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
-            "goal": 2
+            stimuli: ["a", "e", "i", "o", "u"],
+            distractions: ["a", "e", "i", "o", "u"],
+            activityID: "rocks",
+            activityType: "rocks",
+            backgroundImgs: [
+                seaImgRes.seaWater_png,
+                seaImgRes.seaFloor_png
+            ],
+            type: UNIQUE_ANSWER,
+            goal: 2
         },
         oysters: {
-            "stimuli": ["a", "e", "i", "o", "u"],
-            "distractions": ["a", "e", "i", "o", "u"],
-            "activityID": "oysters",
-            "activityType": "oysters",
-            "type": UNIQUE_ANSWER,
-            "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
-            "goal": 2
+            stimuli: ["ae", "ai", "ao", "au"],
+            review: ["a", "e", "i", "o", "u"],
+            distractions: ["a", "e", "i", "o", "u"],
+            activityID: "oysters",
+            activityType: "oysters",
+            backgroundImgs: [
+                seaImgRes.seaWater_png,
+                seaImgRes.seaFloor_png
+            ],
+            type: UNIQUE_ANSWER,
+            goal: 2
         },
         chests: {
-            "stimuli": ["ae", "ai", "ao", "au"],
-            "distractions": ["a", "e", "i", "o", "u"],
-            "type": UNIQUE_ANSWER,
-            "activityID": "chests",
-            "activityType": "chests",
-            "backgroundImgs": [seaImgRes.seaWater_png, seaImgRes.seaFloor_png],
-            "goal": 2
+            stimuli: ["ea", "ei", "eo", "eu"],
+            review: ["ae", "ai", "ao", "au"],
+            distractions: [
+                "a", "e", "i", "o", "u",
+                "ae", "ai", "ao", "au"
+            ],
+            activityID: "chests",
+            activityType: "chests",
+            backgroundImgs: [
+                seaImgRes.seaWater_png,
+                seaImgRes.seaFloor_png
+            ],
+            type: UNIQUE_ANSWER,
+            goal: 2
         },
         bubbles: {
-            "stimuli": ["ea", "ei", "eo", "eu"],
-            "distractions": ["ae", "ai", "ao", "au"],
-            "activityID": "bubbles",
-            "activityType": "bubbles",
-            "type": UNIQUE_ANSWER,
-            "backgroundImgs": [seaImgRes.seaMiddle_png],
-            "goal": 2
+            stimuli: ["ia", "ie", "io", "iu"],
+            review: [
+                "ea", "ei", "eo", "eu"
+            ],
+            distractions: [
+                "ae", "ai", "ao", "au",
+                "ea", "ei", "eo", "eu"
+            ],
+            activityID: "bubbles",
+            activityType: "bubbles",
+            backgroundImgs: [
+                seaImgRes.seaMiddle_png
+            ],
+            type: UNIQUE_ANSWER,
+            goal: 2
         },
         jellyfish: {
-            "stimuli": ["ia", "ie", "io", "iu"],
-            "distractions": ["ea", "ei", "eo", "eu"],
-            "activityID": "jellyfish",
-            "activityType": "jellyfish",
-            "type": TIMED_LEVEL,
-            "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.jellyfish_png],
-            "time": 10,
-            "goal": 2
+            stimuli: [
+                "ia", "ie", "io", "iu",
+                "ea", "ei", "eo", "eu",
+                "ae", "ai", "ao", "au",
+                "a", "e", "i", "o", "u"
+            ],
+            distractions: [
+                "a", "e", "i", "o", "u",
+                "ia", "ie", "io", "iu",
+                "ae", "ai", "ao", "au",
+                "ea", "ei", "eo", "eu"
+            ],
+            activityID: "jellyfish",
+            activityType: "jellyfish",
+            backgroundImgs: [
+                seaImgRes.seaMiddle_png,
+                seaImgRes.jellyfish_png
+            ],
+            type: TIMED_LEVEL,
+            time: 10,
+            goal: 2
         },
         octopus: {
-            "stimuli": ["ia", "ie", "io", "iu",
-                        "ea", "ei", "eo", "eu"],
-            "distractions": ["ia", "ie", "io", "iu"],
-            "activityID": "octopus",
-            "activityType": "octopus",
-            "backgroundImgs": [seaImgRes.seaMiddle_png, seaImgRes.seaOctopus_png],
-            "type": UNIQUE_ANSWER,
-            "goal": 2
+            stimuli: ["oa", "oe", "oi", "ou"],
+            review: ["ia", "ie", "io", "iu"],
+            distractions: [
+                "ia", "ie", "io", "iu",
+                "ae", "ai", "ao", "au",
+                "ea", "ei", "eo", "eu"
+            ],
+            activityID: "octopus",
+            activityType: "octopus",
+            backgroundImgs: [
+                seaImgRes.seaMiddle_png,
+                seaImgRes.seaOctopus_png
+            ],
+            type: UNIQUE_ANSWER,
+            goal: 2
         },
         fisherman1: {
-            "stimuli": ["oa", "oe", "oi", "ou"],
-            "distractions": ["ia", "ie", "io", "iu"],
-            "activityID": "fisherman1",
-            "activityType": "fisherman",
-            "backgroundImgs": [seaImgRes.seaTop_png],
-            "type": UNIQUE_ANSWER,
-            "goal": 2
+            stimuli: ["ua", "ue", "ui", "uo"],
+            review: ["oa", "oe", "oi", "ou"],
+            distractions: ["ia", "ie", "io", "iu"],
+            activityID: "fisherman1",
+            activityType: "fisherman",
+            backgroundImgs: [seaImgRes.seaTop_png],
+            type: UNIQUE_ANSWER,
+            goal: 2
         },
         fisherman2: {
-            "stimuli": ["ua", "ue", "ui", "uo"],
-            "distractions": ["oa", "oe", "oi", "ou"],
-            "activityID": "fisherman2",
-            "activityType": "fisherman",
-            "backgroundImgs": [seaImgRes.seaTop_png],
-            "type": UNIQUE_ANSWER,
-            "goal": 2
+            stimuli: [
+                "a", "e", "i", "o", "u",
+                "ua", "ue", "ui", "uo",
+                "oa", "oe", "oi", "ou",
+                "ia", "ie", "io", "iu",
+                "ae", "ai", "ao", "au",
+                "ea", "ei", "eo", "eu"
+            ],
+            distractions: [
+                "a", "e", "i", "o", "u",
+                "ua", "ue", "ui", "uo",
+                "oa", "oe", "oi", "ou",
+                "ia", "ie", "io", "iu",
+                "ae", "ai", "ao", "au",
+                "ea", "ei", "eo", "eu"
+            ],
+            activityID: "fisherman2",
+            activityType: "fisherman",
+            backgroundImgs: [seaImgRes.seaTop_png],
+            type: UNIQUE_ANSWER,
+            goal: 2
         }
     },
     beach: {
-//        {
-//            "stimuli": ["m", "n", "s"],
-//    		"distractions": ['a', 'e', 'i', 'o', 'u'],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
         crabs1: {
-    		"stimuli": [
+    		stimuli: [
                 "ma", "me", "mi", "mo", "mu",
                 "na", "ne", "ni", "no", "nu",
                 "sa", "se", "si", "so", "su"
             ],
-    		"distractions": [
+    		distractions: [
                 "a", "e", "i", "o", "u", 
                 "ma", "me", "mi", "mo", "mu",
                 "na", "ne", "ni", "no", "nu",
                 "sa", "se", "si", "so", "su"
             ],
-            "activityID": "crabs1",
-            "activityType": "crabs",
-            "backgroundImgs": [beachImgRes.beachFront_png],
-    		"type": UNIQUE_ANSWER,
-    		"goal": 2
+            activityID: "crabs1",
+            activityType: "crabs",
+            backgroundImgs: [beachImgRes.beachFront_png],
+    		type: UNIQUE_ANSWER,
+    		goal: 2
     	},
-//        {
-//            "stimuli": ["m", "n", "s", "l", "f", "p"],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
         turtles: {
-    		"stimuli": [
+    		stimuli: [
                 "la", "le", "li", "lo", "lu",
                 "fa", "fe", "fi", "fo", "fu",
                 "pa", "pe", "pi", "po", "pu"
             ],
-    		"distractions": [
+    		distractions: [
                 "a", "e", "i", "o", "u",
                 "ma", "me", "mi", "mo", "mu",
                 "na", "ne", "ni", "no", "nu",
                 "sa", "se", "si", "so", "su"
             ],
-            "activityID": "turtles",
-            "activityType": "turtles",
-            "backgroundImgs": [beachImgRes.beachTop_png],
-    		"type": UNIQUE_ANSWER,
-    		"goal": 2
+            activityID: "turtles",
+            activityType: "turtles",
+            backgroundImgs: [beachImgRes.beachTop_png],
+    		type: UNIQUE_ANSWER,
+    		goal: 2
     	},
         crabs2: {
-    		"stimuli": [
+    		stimuli: [
                 "ma", "me", "mi", "mo", "mu",
                 "na", "ne", "ni", "no", "nu",
                 "sa", "se", "si", "so", "su",
@@ -156,7 +201,7 @@ var world = {
                 "fa", "fe", "fi", "fo", "fu",
                 "pa", "pe", "pi", "po", "pu"
             ],
-    		"distractions": [
+    		distractions: [
                 "a", "e", "i", "o", "u",
                 "ma", "me", "mi", "mo", "mu",
                 "na", "ne", "ni", "no", "nu",
@@ -165,35 +210,29 @@ var world = {
                 "fa", "fe", "fi", "fo", "fu",
                 "pa", "pe", "pi", "po", "pu"
             ],
-            "activityID": "crabs2",
-            "activityType": "crabs",
-            "backgroundImgs": [beachImgRes.beachFront_png],
-    		"type": UNIQUE_ANSWER,
-    		"goal": 2
+            activityID: "crabs2",
+            activityType: "crabs",
+            backgroundImgs: [beachImgRes.beachFront_png],
+    		type: UNIQUE_ANSWER,
+    		goal: 2
     	},
-//        {
-//    		"stimuli": ["t", "b", "d"],
-//    		"distractions": ['l', 'f', 'p', 'm', 'n'],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
         buckets: {
-    		"stimuli": [
+    		stimuli: [
                 "ta", "te", "ti", 'to', 'tu',
                 'ba', 'be', 'bi', 'bo', 'bu',
                 'da', 'de', 'di', 'do', 'du'
             ],
-    		"distractions": [
+    		distractions: [
                 "a", "e", "i", "o", "u",
                 "ta", "te", "ti", "to", "tu",
                 "ba", "be", "bi", "bo", "bu",
                 "da", "de", "di", "do", "du"
             ],
-            "activityID": "buckets",
-            "activityType": "buckets",
-            "backgroundImgs": [beachImgRes.beachFront_png],
-    		"type": UNIQUE_ANSWER,
-    		"goal": 2
+            activityID: "buckets",
+            activityType: "buckets",
+            backgroundImgs: [beachImgRes.beachFront_png],
+    		type: UNIQUE_ANSWER,
+    		goal: 2
     	},
 //        {
 //    		"stimuli": [
@@ -265,15 +304,6 @@ var world = {
 //    		"goal": 100
 //    	},
 //        {
-//            "stimuli": [
-//                "m", "n", "s", "l", "f", "p",
-//                "a", "e", "i", "o", "u"
-//            ],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
-//        {
 //    		"stimuli": [
 //                'ca', 'que', 'qui', 'co', 'cu'
 //            ],
@@ -281,16 +311,6 @@ var world = {
 //                "ma", "me", "mi", "mo", "mu",
 //                "na", "ne", "ni", "no", "nu",
 //            ],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
-//        {
-//    		"stimuli": [
-//                "m", "n", "s", "l", "f", "p",
-//                "a", "e", "i", "o", "u", 't',
-//                'b', 'd', 'c', 'q'
-//            ],
-//    		"distractions": [".."],
 //    		"type": "UR",
 //    		"goal": 100
 //    	},
@@ -327,17 +347,6 @@ var world = {
 //                'cla', 'cle', 'cli', 'clo', 'clu'
 //            ],
 //    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
-//        {
-//    		"stimuli": [
-//                'g'
-//            ],
-//    		"distractions": [
-//                "m", "n", "s", "l", "f", "p",
-//                "a", "e", "i", "o", "u"
-//            ],
 //    		"type": "UR",
 //    		"goal": 100
 //    	},
@@ -383,16 +392,6 @@ var world = {
 //    	}
 //    ],
 //    space: [
-//        {
-//            "stimuli": ['r', 'j', 'z'],
-//    		"distractions": [
-//                "m", "n", "s", "l", "f", "p",
-//                "a", "e", "i", "o", "u", 'v',
-//                'y', 'd', 'b'
-//            ],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
 //        {
 //    		"stimuli": [
 //                "ra", "re", "ri", "ro", "ru",
@@ -501,18 +500,6 @@ var world = {
 //                "pa", "pe", "pi", "po", "pu",
 //                "ga", "gue", "gui", "go", "gu",
 //                "ta", "te", "ti", "to", "tu"
-//            ],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
-//        {
-//    		"stimuli": [
-//                "ñ", 'k', 'w', 'x',
-//            ],
-//    		"distractions": [
-//                'r', 'j', 'z', 'a', 'm', 'e',
-//                'n', 'o', 's', 'i', 'l', 'f',
-//                'p', 'v', 'll', 'y', 'd', 'b'
 //            ],
 //    		"type": "UR",
 //    		"goal": 100

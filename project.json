@@ -17,6 +17,7 @@
         
         "src/engine/Storage.js",
         "src/engine/State.js",
+        "src/engine/StimuliPicker.js",
         "src/engine/Utils.js",
         "src/engine/Activity.js",
         "src/engine/maps/Map.js",

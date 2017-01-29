@@ -11,8 +11,17 @@ function Activity(activityData) {
     var numberOfQuestions; // number of questions to answer complete activity
     var progress; // keeps track of time for timed activities
     
+    // set stimuli picker for the activity
+    var stimuliPicker = new StimuliPicker();
+    stimuliPicker.buildStimuliList(
+        activityData["stimuli"],
+        activityData["review"]
+    );
+    
     activityScore = 0;
-    numberOfQuestions = 2;
+    // the minimum amount of questions is determined
+    // by the amount of repetitions
+    numberOfQuestions = stimuliPicker.getStimuliLength();
     scorePerAnswer = activityData["goal"] / numberOfQuestions;
     wrongsCount = 0;
     rightAnswer = "";
@@ -22,15 +31,6 @@ function Activity(activityData) {
     
     //////////////////////////////
     // 2. create methods
-    
-    // returns a new stimulus to be tested
-    // return String
-    function getRandomStimulus() {
-        var randomPick = Math.random() * activityData["stimuli"].length;
-        randomPick = Math.floor(randomPick); // only integers
-        
-        return activityData["stimuli"][randomPick];
-    };
     
     // returns an array with two stimulus differnt from the right answer
     // @param stimulus - the chosen right answer
@@ -61,7 +61,7 @@ function Activity(activityData) {
     // picks a right answer, the distractions, and returns
     // a shuffled list with all that
     this.changeQuestion = function () {
-        var stimulus = getRandomStimulus();
+        var stimulus = stimuliPicker.getNextStimuli();
         rightAnswer = stimulus;
         
         var distractions = getRandomDistractions(stimulus);
