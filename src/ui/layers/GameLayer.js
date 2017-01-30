@@ -10,7 +10,7 @@ var GameLayer = cc.Layer.extend({
         // update the activity question
         this.activity.changeQuestion();
         
-        var size = cc.winSize;
+        this.size = cc.winSize;
         this.gap = gap;
         
         /////////////////////////////
@@ -213,6 +213,69 @@ var GameLayer = cc.Layer.extend({
             // end activity
             var effectID = cc.audioEngine.playEffect(audioRes.cheering);
             
+            var earnedStars = this.activity.getEarnedStars();
+            GD.completeActivity(earnedStars);
+            
+            // show starts based on score
+            var starsUnlocked = [
+                earnedStars >= 1,
+                earnedStars >= 2,
+                earnedStars == 3
+            ];
+            var star1Res = starsUnlocked[0] ? uiImgRes.starOnB_png : uiImgRes.starOffB_png;
+            var star2Res = starsUnlocked[1] ? uiImgRes.starOnB_png : uiImgRes.starOffB_png;
+            var star3Res = starsUnlocked[2] ? uiImgRes.starOnB_png : uiImgRes.starOffB_png;
+
+            var star1 = new cc.Sprite(star1Res);
+            var star2 = new cc.Sprite(star2Res);
+            var star3 = new cc.Sprite(star3Res);
+            
+            var height = this.size.height * .8,
+                gap = 50;
+            
+            star1.attr({
+                x: this.size.width / 2 - star1.width - gap,
+                y: height,
+                scale: 0
+            });
+            star2.attr({
+                x: this.size.width / 2,
+                y: height,
+                scale: 0
+            });
+            star3.attr({
+                x: this.size.width / 2 + star1.width + gap,
+                y: height,
+                scale: 0
+            });
+
+            this.addChild(star1);
+            this.addChild(star2);
+            this.addChild(star3);
+            
+            var starAnimation = new cc.ScaleTo(0.25, 1);
+            
+            star1.runAction(new cc.EaseBackOut(starAnimation));
+            star2.runAction(
+                new cc.Sequence(
+                    new cc.DelayTime(0.25),
+                    new cc.EaseBackOut(starAnimation.clone())
+                )
+            );
+            star3.runAction(
+                new cc.Sequence(
+                    new cc.DelayTime(.5),
+                    new cc.EaseBackOut(starAnimation.clone())
+                )
+            );
+            
+            if (starsUnlocked[0] || starsUnlocked[1] || starsUnlocked[2]) {
+                var particles = Effects.createSimpleParticles(
+                    star2.getPosition()
+                );
+                this.addChild(particles);
+            }      
+            
             for (var i = 0; i < this.optionButtons.length; i++) {
                 var optionButton = this.optionButtons[i];
 
@@ -227,8 +290,6 @@ var GameLayer = cc.Layer.extend({
                 ));
                 optionButton.hideLabel();
             }
-            
-            GD.completeActivity(this.activity.getEarnedStars());
             
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(5.5),

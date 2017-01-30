@@ -10,7 +10,9 @@ var uiImgRes = {
     labelRibbon_png: "res/imgs/label_ribbon.png",
     
     starOn_png: "res/imgs/activityMenu/starOn.png",
+    starOnB_png: "res/imgs/starOn.png",
     starOff_png: "res/imgs/activityMenu/starOff.png",
+    starOffB_png: "res/imgs/starOff.png",
     
     beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
     seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"

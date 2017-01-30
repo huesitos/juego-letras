@@ -36,6 +36,7 @@
         "src/ui/layers/OctopusLayer.js",
         "src/ui/layers/FishermanLayer.js",
         
+        "src/ui/Effects.js",
         "src/ui/ActivityMenuScene.js",
         "src/ui/GameScene.js"
     ]

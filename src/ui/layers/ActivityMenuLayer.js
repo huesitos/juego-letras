@@ -66,18 +66,15 @@ var ActivityMenuLayer = cc.Layer.extend({
         
         // animate the opened activity
         if (GameState.openedActivity) {
-            var particles = new cc.ParticleSystem(effectsRes.particles_plist);
-            particles.setScale(0.5);
-            this.addChild(particles);
-            
-            particles.setPosition(
+            var particles = Effects.createSimpleParticles(
                 btns[GameState.openedActivity].getPosition()
             );
+            this.addChild(particles);
             
             btns[GameState.openedActivity].runAction(
                 new cc.Sequence(
-                    new cc.ScaleTo(0.25, 1.2),
-                    new cc.ScaleTo(0.25, 1)
+                    new cc.ScaleTo(0.2, 1.2),
+                    new cc.ScaleTo(0.2, 1)
                 )
             );
             
