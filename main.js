@@ -21,7 +21,7 @@ cc.game.onStart = function(){
     cc.LoaderScene.preload(g_resources, function () {
         GameState.loadGameProgress();
 //        GameState.resetGameProgress();
-        cc.director.runScene(ActivityMenuLayer.getScene(GameState.currentMapID));
+        cc.director.runScene(new MenuScene());
     }, this);
 };
 cc.game.run();

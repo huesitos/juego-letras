@@ -11,7 +11,7 @@ var HUDLayer = cc.Layer.extend({
         // 2. create fuel bar
         var emptyFuelBar = new cc.Sprite(uiImgRes.fuelBarEmpty_png);
         emptyFuelBar.setPosition(
-            cc.p(size.width * .04, size.height * .10)
+            cc.p(size.width * .04, size.height * .06)
         );
         emptyFuelBar.setAnchorPoint(cc.p(0, 0));
         this.addChild(emptyFuelBar, 0);
@@ -19,7 +19,7 @@ var HUDLayer = cc.Layer.extend({
         this.fuelBar = new ccui.LoadingBar();
         this.fuelBar.loadTexture(uiImgRes.fuelBarFull_png);
         this.fuelBar.setPosition(
-            cc.p(size.width * .04 + emptyFuelBar.width, size.height * .10)
+            cc.p(size.width * .04 + emptyFuelBar.width, size.height * .06)
         );
         this.fuelBar.setAnchorPoint(cc.p(0, 0));
         this.fuelBar.setRotation(270);

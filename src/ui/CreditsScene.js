@@ -1,23 +1,21 @@
-var GameScene = cc.Scene.extend({
+var CreditsScene = cc.Scene.extend({
     onEnter: function () {
         //////////////////////////////
         // 1. super init first
         this._super();
         this.size = cc.winSize;
         
-        //////////////////////////////
-        // 2. add hud layer
-        this.hudLayer = new HUDLayer();
-        this.hudLayer.setVisible(false);
-        this.addChild(this.hudLayer, 100);
+        var bg = new cc.Sprite(seaImgRes.seaTop_png);
+        bg.setPosition(
+            cc.p(this.size.width / 2, this.size.height / 2)
+        );
+        this.addChild(bg);
         
         //////////////////////////////
-        // 3. begin layer activity
-        this.gameLayer.beginActivity();
-        
+        // 2. nav btns        
         var backBtn = new ccui.Button(uiImgRes.back_png);
         backBtn.setPosition(
-            cc.p(this.size.width * .05, this.size.height * .95)
+            cc.p(this.size.width * .05, this.size.height * .9)
         );
         backBtn.addTouchEventListener(this.onBackBtn, this);
         this.addChild(backBtn);
@@ -27,7 +25,7 @@ var GameScene = cc.Scene.extend({
             cc.director.runScene(
                 new cc.TransitionFade(
                     1,
-                    ActivityMenuLayer.getScene(GameState.openedMapID)
+                    new MenuScene()
                 )
             );
         }

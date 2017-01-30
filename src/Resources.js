@@ -5,6 +5,7 @@ var uiImgRes = {
     resume_png: "res/imgs/resume.png",
     replay_png: "res/imgs/replay.png",
     help_png: "res/imgs/help.png",
+    back_png: "res/imgs/back.png",
     fuelBarEmpty_png: "res/imgs/fuel_bar_empty.png",
     fuelBarFull_png: "res/imgs/fuel_bar_full.png",
     labelRibbon_png: "res/imgs/label_ribbon.png",
@@ -226,8 +227,8 @@ var stimuliRes = {
 }
 
 var effectsRes = {
-    particles_plist: "res/particle_texture.plist",
-    particles_png: "res/particle_texture.png"
+    particles_plist: "res/imgs/particle_texture.plist",
+    particles_png: "res/imgs/particle_texture.png"
 }
 
 var g_resources = [];

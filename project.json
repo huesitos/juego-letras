@@ -38,6 +38,8 @@
         
         "src/ui/Effects.js",
         "src/ui/ActivityMenuScene.js",
+        "src/ui/MenuScene.js",
+        "src/ui/CreditsScene.js",
         "src/ui/GameScene.js"
     ]
 }

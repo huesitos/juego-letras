@@ -81,6 +81,13 @@ var ActivityMenuLayer = cc.Layer.extend({
             GameState.openedActivity = null;
         }
         
+        var backBtn = new ccui.Button(uiImgRes.back_png);
+        backBtn.setPosition(
+            cc.p(this.size.width * .05, this.size.height * .9)
+        );
+        backBtn.addTouchEventListener(this.onBackBtn, this);
+        this.addChild(backBtn);
+        
         return true;
     },
     onNavigateToMap: function (sender, type) {
@@ -91,6 +98,16 @@ var ActivityMenuLayer = cc.Layer.extend({
                 
             cc.director.runScene(
                 ActivityMenuLayer.getScene(mapID)
+            );
+        }
+    },
+    onBackBtn: function (sender, type) {
+        if (type === ccui.Widget.TOUCH_ENDED) {
+            cc.director.runScene(
+                new cc.TransitionFade(
+                    1,
+                    new MenuScene()
+                )
             );
         }
     }

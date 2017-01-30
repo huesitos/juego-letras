@@ -76,7 +76,8 @@ var world = {
             activityID: "bubbles",
             activityType: "bubbles",
             backgroundImgs: [
-                seaImgRes.seaMiddle_png
+                seaImgRes.seaMiddle_png,
+                seaImgRes.seaOctopus_png
             ],
             type: UNIQUE_ANSWER,
             goal: 10

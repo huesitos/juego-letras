@@ -91,7 +91,6 @@ var GameLayer = cc.Layer.extend({
         // TODO
         // calculate the delay or set it, no magic numbers...
         if (this.customIntroAnimation) {
-            cc.log(this.customIntroAnimationDelay);
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(1),
                 new cc.CallFunc(this.customIntroAnimation, this),

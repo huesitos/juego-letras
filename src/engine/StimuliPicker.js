@@ -1,5 +1,5 @@
-var REPETITIONS_DEFAULT = 1,
-    REVIEW_REPETITIONS_DEFAULT = 1;
+var REPETITIONS_DEFAULT = 5,
+    REVIEW_REPETITIONS_DEFAULT = 2;
 
 function StimuliPicker() {
     var stimuliList,
