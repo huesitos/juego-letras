@@ -83,7 +83,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             
         case "bubbles":
             var xPos = size.width * .27;
-            var yPos = [250, 270, 250];
+            var yPos = [210, 230, 210];
             
             gameLayer = new GameLayer(
                 {
@@ -132,7 +132,8 @@ SeaMap.getGameLayer = function (activityType, activity) {
                     yPos: yPos
                 },
                 85,
-                activity
+                activity,
+                DOWN_DIRECTION
             );
             
             gameLayer.optionButtons.forEach(function (button) {
@@ -153,6 +154,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
                     );
                 });
             };
+            
             break;
             
         case "fisherman":
@@ -165,7 +167,8 @@ SeaMap.getGameLayer = function (activityType, activity) {
                     yPos: yPos
                 },
                 cc.winSize.width * .14,
-                activity
+                activity,
+                DOWN_DIRECTION
             );
             
             gameLayer.optionButtons.forEach(function (button) {

@@ -15,8 +15,13 @@ var ACTIVITY_TRANSITIONS = Object.freeze({
     fisherman2: "crabs1",
     crabs1: "turtles",
     turtles: "crabs2",
-    crabs2: "buckets"
+    crabs2: "buckets",
+    buckets: "turtles2"
 });
+
+// possible timed activity options directions
+var DOWN_DIRECTION = 0;
+var RIGHT_DIRECTION = 1;
 
 var TIMED_LEVEL = "T";
 var UNIQUE_ANSWER = "UR";
@@ -152,7 +157,8 @@ var world = {
             activityID: "fisherman2",
             activityType: "fisherman",
             backgroundImgs: [seaImgRes.seaTop_png],
-            type: UNIQUE_ANSWER,
+            type: TIMED_LEVEL,
+            time: 10,
             goal: 10
         }
     },
@@ -214,7 +220,8 @@ var world = {
             activityID: "crabs2",
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
+    		type: TIMED_LEVEL,
+            time: 10,
     		goal: 10
     	},
         buckets: {
@@ -235,16 +242,24 @@ var world = {
     		type: UNIQUE_ANSWER,
     		goal: 10
     	},
-//        {
-//    		"stimuli": [
-//                'am', 'em', 'im', 'om', 'um',
-//                'as', 'es', 'is', 'os', 'us',
-//                'ap', 'ep', 'ip', 'op', 'up'
-//            ],
-//    		"distractions": [".."],
-//    		"type": "UR",
-//    		"goal": 100
-//    	},
+        turtles2: {
+    		stimuli: [
+                'am', 'em', 'im', 'om', 'um',
+                'as', 'es', 'is', 'os', 'us',
+                'ap', 'ep', 'ip', 'op', 'up'
+            ],
+    		"distractions": [
+                "ma", "me", "mi", "mo", "mu",
+                "na", "ne", "ni", "no", "nu",
+                "pa", "pe", "pi", "po", "pu"
+            ],
+            activityID: "turtles2",
+            activityType: "turtles",
+            backgroundImgs: [beachImgRes.beachTop_png],
+    		type: UNIQUE_ANSWER,
+//            time: 10,
+    		"goal": 10
+    	}
 //        {
 //    		"stimuli": [
 //                'am', 'em', 'im', 'om', 'um',

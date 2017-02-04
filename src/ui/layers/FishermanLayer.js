@@ -1,5 +1,5 @@
 var FishermanLayer = GameLayer.extend({
-    ctor: function (optionsPos, gap, activity) {
+    ctor: function (optionsPos, gap, activity, direction) {
         //////////////////////////////
         // 1. super init first
         var fish1 = {
@@ -7,7 +7,7 @@ var FishermanLayer = GameLayer.extend({
             clickedState: fishesImgRes[0].selected
         }
         
-        this._super(fish1, optionsPos, gap, activity);
+        this._super(fish1, optionsPos, gap, activity, direction);
         
         //////////////////////////////
         // 2. modify rocks so each is different

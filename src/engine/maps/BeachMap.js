@@ -18,8 +18,10 @@ BeachMap.getGameLayer = function (activityType, activity) {
                     yPos: yPos
                 },
                 cc.winSize.width * .14,
-                activity
+                activity,
+                DOWN_DIRECTION
             );
+            
             break;
             
         case "buckets":
@@ -38,6 +40,7 @@ BeachMap.getGameLayer = function (activityType, activity) {
                 cc.winSize.width * .14,
                 activity
             );
+            
             break;
             
         case "turtles":
@@ -56,7 +59,7 @@ BeachMap.getGameLayer = function (activityType, activity) {
                 cc.winSize.width * .14,
                 activity
             );
-                        
+            
             break;
     }
     

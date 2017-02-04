@@ -131,7 +131,8 @@ var activitiesImgRes = {
     buckets: beachImgRes.bucketIcon_png,
     crabs1: beachImgRes.crabIcon_png,
     crabs2: beachImgRes.crabIcon_png,
-    turtles: beachImgRes.turtleIcon_png
+    turtles: beachImgRes.turtleIcon_png,
+    turtles2: beachImgRes.turtleIcon_png
 };
 
 var mapsImgRes = {
@@ -223,7 +224,22 @@ var stimuliRes = {
     "de": "res/audio/stimuli/de.mp3",
     "di": "res/audio/stimuli/di.mp3",
     "do": "res/audio/stimuli/do.mp3",
-    "du": "res/audio/stimuli/du.mp3"
+    "du": "res/audio/stimuli/du.mp3",
+    "am": "res/audio/stimuli/am.mp3",
+    "em": "res/audio/stimuli/em.mp3",
+    "im": "res/audio/stimuli/im.mp3",
+    "om": "res/audio/stimuli/om.mp3",
+    "um": "res/audio/stimuli/um.mp3",
+    "as": "res/audio/stimuli/as.mp3",
+    "es": "res/audio/stimuli/es.mp3",
+    "is": "res/audio/stimuli/is.mp3",
+    "os": "res/audio/stimuli/os.mp3",
+    "us": "res/audio/stimuli/us.mp3",
+    "ap": "res/audio/stimuli/ap.mp3",
+    "ep": "res/audio/stimuli/ep.mp3",
+    "ip": "res/audio/stimuli/ip.mp3",
+    "op": "res/audio/stimuli/op.mp3",
+    "up": "res/audio/stimuli/up.mp3"
 }
 
 var effectsRes = {

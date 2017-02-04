@@ -1,7 +1,7 @@
 var GameLayer = cc.Layer.extend({
     customIntroAnimation: null,
     customIntroAnimationDelay: 0,
-    ctor: function (optionSrcs, optionsPos, gap, activity) {
+    ctor: function (optionSrcs, optionsPos, gap, activity, direction) {
         //////////////////////////////
         // 1. super init first
         this._super();
@@ -12,6 +12,7 @@ var GameLayer = cc.Layer.extend({
         
         this.size = cc.winSize;
         this.gap = gap;
+        this.direction = direction;
         
         /////////////////////////////
         // 2. load question options
@@ -126,6 +127,13 @@ var GameLayer = cc.Layer.extend({
             cc.eventManager.pauseTarget(this, true);
             this.unscheduleAllCallbacks();
             
+            // stop buttons animations (for timed activities)
+            if (this.activity.isTimedActivity()) {
+                this.optionButtons.forEach(function (btn) {
+                    btn.stopAllActions();
+                });
+            }
+            
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
                 cc.audioEngine.playEffect(audioRes.success);
@@ -168,14 +176,27 @@ var GameLayer = cc.Layer.extend({
             for (var o in this.optionButtons) {
                 var optionButton = this.optionButtons[o];
                 
-                // move out of the bottom of the screen
-                var moveAction = new cc.MoveTo(
-                    this.activity.getTotalTime(),
-                    cc.p(
-                        optionButton.x,
-                        -optionButton.height
-                    )
-                );
+                // depending of the direction, move option
+                // out of the bottom of the screen
+                // or out of the right side of the screen
+                var moveAction;
+                if (this.direction === DOWN_DIRECTION) {
+                    moveAction = new cc.MoveTo(
+                        this.activity.getTotalTime(),
+                        cc.p(
+                            optionButton.x,
+                            -optionButton.height
+                        )
+                    );
+                } else {
+                    moveAction = new cc.MoveTo(
+                        this.activity.getTotalTime(),
+                        cc.p(
+                            -optionButton.x,
+                            optionButton.height
+                        )
+                    );
+                }
                 
                 optionButton.runAction(moveAction);
             }
