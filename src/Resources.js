@@ -82,6 +82,8 @@ var beachImgRes = {
     bucketSelected_png: "res/imgs/beach/bucket_selected.png",
     turtleNormal_png: "res/imgs/beach/turtle_normal.png",
     turtleSelected_png: "res/imgs/beach/turtle_selected.png",
+    turtleTimedNormal_png: "res/imgs/beach/turtle_normal_timed.png",
+    turtleTimedSelected_png: "res/imgs/beach/turtle_selected_timed.png",
     
     beachFront_png: "res/imgs/beach/beach_front.png",
     beachTop_png: "res/imgs/beach/beach_top.png",

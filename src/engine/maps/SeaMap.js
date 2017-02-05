@@ -56,7 +56,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             
         case "octopus":
             var xPos = size.width * .33;
-            var yPos = [350, 370, 350];
+            var yPos = [290, 310, 290];
             
             gameLayer = new OctopusLayer(
                 {
@@ -83,7 +83,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             
         case "bubbles":
             var xPos = size.width * .27;
-            var yPos = [210, 230, 210];
+            var yPos = [200, 220, 200];
             
             gameLayer = new GameLayer(
                 {

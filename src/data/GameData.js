@@ -256,9 +256,9 @@ var world = {
             activityID: "turtles2",
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-//            time: 10,
-    		"goal": 10
+    		type: TIMED_LEVEL,
+            time: 10,
+    		goal: 10
     	}
 //        {
 //    		"stimuli": [

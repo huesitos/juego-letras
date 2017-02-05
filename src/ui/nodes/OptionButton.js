@@ -75,8 +75,10 @@ function OptionButton(spriteNormal, spriteClicked, option) {
         label.setVisible(true);
     };
     
-    optionButton.getLabelPosition = function () {
-        
+    optionButton.getCrystalPosition = function () {
+        var posX = optionButton.x;
+        var posY = optionButton.y + optionButton.height + label.height + 50;
+        return cc.p(posX, posY);
     };
     
     return optionButton;

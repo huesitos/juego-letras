@@ -119,12 +119,12 @@ var GameLayer = cc.Layer.extend({
     animateEnergyCrystal: function (correct) {
         // create an energy sprite at the position of the correct option
         var energyCrystal = new cc.Sprite(uiImgRes.energyCrystal_png);
-        energyCrystal.setPosition(
-            this.optionButtons.filter(function (btn) {
-                if (this.activity.getRightOption() === btn.getOption())
-                    return btn.getPosition();
-            }.bind(this))[0]
-        );
+        var pos = this.optionButtons.filter(function (btn) {
+            if (this.activity.getRightOption() === btn.getOption()) {
+                return btn;
+            }
+        }.bind(this))[0].getCrystalPosition();
+        energyCrystal.setPosition(pos);
         this.addChild(energyCrystal);
         
         if (correct) {
@@ -232,7 +232,7 @@ var GameLayer = cc.Layer.extend({
                     moveAction = new cc.MoveTo(
                         this.activity.getTotalTime(),
                         cc.p(
-                            -optionButton.x,
+                            this.size.width + optionButton.x,
                             optionButton.height
                         )
                     );
@@ -292,7 +292,7 @@ var GameLayer = cc.Layer.extend({
         var star2 = new cc.Sprite(star2Res);
         var star3 = new cc.Sprite(star3Res);
 
-        var height = this.size.height * .8,
+        var height = this.size.height * .83,
             gap = 50;
 
         star1.attr({

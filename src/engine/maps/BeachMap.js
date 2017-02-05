@@ -6,7 +6,7 @@ BeachMap.getGameLayer = function (activityType, activity) {
     switch (activityType) {
         case "crabs":
             var xPos = size.width * .27;
-            var yPos = [100, 130, 100];
+            var yPos = [150, 180, 150];
             
             gameLayer = new GameLayer(
                 {
@@ -45,19 +45,28 @@ BeachMap.getGameLayer = function (activityType, activity) {
             
         case "turtles":
             var xPos = size.width * .27;
-            var yPos = [100, 130, 100];
+            var yPos = [150, 180, 150];
+            var res = {
+                initState: beachImgRes.turtleNormal_png,
+                clickedState: beachImgRes.turtleSelected_png
+            };
+            
+            if (activity.isTimedActivity()) {
+                res = {
+                    initState: beachImgRes.turtleTimedNormal_png,
+                    clickedState: beachImgRes.turtleTimedSelected_png
+                };
+            }
             
             gameLayer = new GameLayer(
-                {
-                    initState: beachImgRes.turtleNormal_png,
-                    clickedState: beachImgRes.turtleSelected_png
-                },
+                res,
                 {
                     xPos: xPos,
                     yPos: yPos
                 },
                 cc.winSize.width * .14,
-                activity
+                activity,
+                DOWN_DIRECTION
             );
             
             break;

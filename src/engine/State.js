@@ -10,6 +10,7 @@ function GameState() {
     this.resetGameProgress = function () {
         this.currentMapID = "sea";
         this.openedMapID = "sea";
+        this.openedActivity = "rocks";
         this.currentActivity = null;
         
         this.gameProgress = {
