@@ -76,7 +76,6 @@ var GameLayer = cc.Layer.extend({
             if (selection) {
                 cc.audioEngine.playEffect(audioRes.success);
                 sender.onClicked();
-                sender.hideLabel();
                 
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
@@ -87,6 +86,7 @@ var GameLayer = cc.Layer.extend({
                 sender.runAction(jumpAction);
             } else {
                 cc.audioEngine.playEffect(audioRes.failure);
+                
                 var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
                 var moveLeft = new cc.MoveBy(0.05, cc.p(-10, 0));

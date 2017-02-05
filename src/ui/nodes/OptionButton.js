@@ -15,17 +15,30 @@ function OptionButton(spriteNormal, spriteClicked, option) {
     );
     label.setColor(cc.color.BLACK);
     optionButton.addChild(label, 2);
-    label.setPosition(
-        cc.p(optionButton.width / 2, -5)
-    );
+    label.attr({
+        x: optionButton.width / 2,
+        y: optionButton.height + 50
+    });
     
     var labelRibbon = new cc.Sprite(uiImgRes.labelRibbon_png);
     labelRibbon.attr({
         x: optionButton.width / 2,
-        y: -5,
+        y: optionButton.height + 50,
         scale: .5
     });
     optionButton.addChild(labelRibbon, 1);
+    
+    var setLabelsPositions = function () {
+        // reset labels positions
+        labelRibbon.attr({
+            x: optionButton.width / 2,
+            y: optionButton.height + 50
+        });
+        label.attr({
+            x: optionButton.width / 2,
+            y: optionButton.height + 50
+        });
+    };
     
     optionButton.setOption = function (new_opt) {
         option = new_opt;
@@ -40,10 +53,16 @@ function OptionButton(spriteNormal, spriteClicked, option) {
     
     optionButton.onClicked = function () {
         this.loadTextures(spriteClicked, spriteClicked);
+        
+        // reset labels positions
+        setLabelsPositions();
     };
     
     optionButton.changeToNormal = function () {
         this.loadTextures(spriteNormal, spriteNormal);
+        
+        // reset labels positions
+        setLabelsPositions();
     };
     
     optionButton.hideLabel = function () {
@@ -54,6 +73,10 @@ function OptionButton(spriteNormal, spriteClicked, option) {
     optionButton.showLabel = function () {
         labelRibbon.setVisible(true);
         label.setVisible(true);
+    };
+    
+    optionButton.getLabelPosition = function () {
+        
     };
     
     return optionButton;
