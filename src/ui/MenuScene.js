@@ -36,6 +36,8 @@ var MenuScene = cc.Scene.extend({
     },
     onPlayBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
+            cc.audioEngine.playEffect(audioRes.click);
+            
             sender.loadTextureNormal(sender.selectedRes);
             cc.director.runScene(
                 new cc.TransitionFade(
@@ -47,6 +49,8 @@ var MenuScene = cc.Scene.extend({
     },
     onCreditsBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
+            cc.audioEngine.playEffect(audioRes.click);
+            
             cc.director.runScene(
                 new cc.TransitionFade(
                     1,

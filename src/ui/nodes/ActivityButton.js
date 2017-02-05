@@ -47,6 +47,8 @@ var ActivityButton = ccui.Button.extend({
     },
     onActivityButtonTouch: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
+            cc.audioEngine.playEffect(audioRes.click);
+            
             var activityID = sender.getUserData().activityID;
             cc.director.runScene(
                 new cc.TransitionFade(1, GD.getActivityScene(activityID))

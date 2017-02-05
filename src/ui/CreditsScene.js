@@ -198,6 +198,8 @@ var CreditsScene = cc.Scene.extend({
     },
     onBackBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
+            cc.audioEngine.playEffect(audioRes.click);
+            
             cc.director.runScene(
                 new cc.TransitionFade(
                     1,

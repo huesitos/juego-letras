@@ -67,7 +67,7 @@ var GameLayer = cc.Layer.extend({
         return true;
     },
     optionButtonTouch: function (sender, type) {
-        if (type === ccui.Widget.TOUCH_ENDED) {
+        if (type === ccui.Widget.TOUCH_ENDED) {            
             var selection = this.activity.getRightOption() === sender.getOption();
             cc.eventManager.pauseTarget(this, true);
             this.unscheduleAllCallbacks();
