@@ -8,7 +8,12 @@ var Storage = new function () {
     };
     
     this.loadObject = function (id) {
-        return JSON.parse(cc.sys.localStorage.getItem(id));
+        var data = cc.sys.localStorage.getItem(id);
+        
+        if (data)
+            data = JSON.parse(data);
+        
+        return data;
     };
     
     this.saveObject = function (id, object) {

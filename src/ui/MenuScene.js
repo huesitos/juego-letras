@@ -27,7 +27,7 @@ var MenuScene = cc.Scene.extend({
         var creditsBtn = new ccui.Button();
         creditsBtn.setTitleText("Creditos");
         creditsBtn.setTitleFontSize(40);
-        creditsBtn.setTitleFontName(fonts.gameFont);
+        creditsBtn.setTitleFontName(_b_getFontName(fonts.gameFont));
         creditsBtn.setPosition(
             cc.p(this.size.width / 2, this.size.height * .3)
         );
