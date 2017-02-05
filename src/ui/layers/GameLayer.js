@@ -59,6 +59,87 @@ var GameLayer = cc.Layer.extend({
         
         return true;
     },
+    optionButtonTouch: function (sender, type) {
+        if (type === ccui.Widget.TOUCH_ENDED) {
+            var selection = this.activity.getRightOption() === sender.getOption();
+            cc.eventManager.pauseTarget(this, true);
+            this.unscheduleAllCallbacks();
+            
+            // stop buttons animations (for timed activities)
+            if (this.activity.isTimedActivity()) {
+                this.optionButtons.forEach(function (btn) {
+                    btn.stopAllActions();
+                });
+            }
+            
+            // animations and feedback depending on the correctnes of the answer
+            if (selection) {
+                cc.audioEngine.playEffect(audioRes.success);
+                sender.onClicked();
+                sender.hideLabel();
+                
+                var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
+                var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
+                var moveDown = new cc.MoveBy(0.05, cc.p(0, -10));
+                
+                var jumpAction = new cc.Sequence(moveUp, moveCenter, moveDown, moveUp);
+                
+                sender.runAction(jumpAction);
+            } else {
+                cc.audioEngine.playEffect(audioRes.failure);
+                var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
+                var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
+                var moveLeft = new cc.MoveBy(0.05, cc.p(-10, 0));
+                
+                var jerkAction = new cc.Sequence(moveRight, moveCenter, moveLeft, moveRight);
+                
+                sender.runAction(jerkAction);
+            }
+            // show the energy crystal
+            this.animateEnergyCrystal(selection);
+            
+            var delay = new cc.DelayTime(1);
+
+            function checkAnswer() {
+                cc.eventManager.resumeTarget(this, true);
+                this.activity.checkAnswer(sender.getOption());
+            };
+            var actionFunc = new cc.CallFunc(checkAnswer, this);
+
+            this.runAction(new cc.Sequence(delay, actionFunc));
+        }
+    },
+    animateEnergyCrystal: function (correct) {
+        // create an energy sprite at the position of the correct option
+        var energyCrystal = new cc.Sprite(uiImgRes.energyCrystal_png);
+        energyCrystal.setPosition(
+            this.optionButtons.filter(function (btn) {
+                if (this.activity.getRightOption() === btn.getOption())
+                    return btn.getPosition();
+            }.bind(this))[0]
+        );
+        this.addChild(energyCrystal);
+        
+        if (correct) {
+            energyCrystal.runAction(new cc.Sequence(
+                new cc.RotateTo(0.25, -10),
+                new cc.RotateTo(0.25, 10),
+                new cc.RotateTo(0.25, 0),
+                new cc.MoveTo(
+                    0.25,
+                    cc.p(this.size.width * .04, this.size.height / 2)
+                ),
+                new cc.RemoveSelf(true)
+            ));
+        } else {
+            energyCrystal.runAction(new cc.Sequence(
+                new cc.RotateTo(0.25, -10),
+                new cc.RotateTo(0.25, 10),
+                new cc.RotateTo(0.25, 0),
+                new cc.RemoveSelf(true)
+            ));
+        }
+    },
     beginActivity: function () {
         cc.eventManager.pauseTarget(this, true);
         
@@ -119,54 +200,6 @@ var GameLayer = cc.Layer.extend({
                 new cc.DelayTime(0.25),
                 new cc.CallFunc(startActivity, this)
             ));
-        }
-    },
-    optionButtonTouch: function (sender, type) {
-        if (type === ccui.Widget.TOUCH_ENDED) {
-            var selection = this.activity.getRightOption() === sender.getOption();
-            cc.eventManager.pauseTarget(this, true);
-            this.unscheduleAllCallbacks();
-            
-            // stop buttons animations (for timed activities)
-            if (this.activity.isTimedActivity()) {
-                this.optionButtons.forEach(function (btn) {
-                    btn.stopAllActions();
-                });
-            }
-            
-            // animations and feedback depending on the correctnes of the answer
-            if (selection) {
-                cc.audioEngine.playEffect(audioRes.success);
-                sender.onClicked();
-                sender.hideLabel();
-                
-                var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
-                var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
-                var moveDown = new cc.MoveBy(0.05, cc.p(0, -10));
-                
-                var jumpAction = new cc.Sequence(moveUp, moveCenter, moveDown, moveUp);
-                
-                sender.runAction(jumpAction);
-            } else {
-                cc.audioEngine.playEffect(audioRes.failure);
-                var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
-                var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
-                var moveLeft = new cc.MoveBy(0.05, cc.p(-10, 0));
-                
-                var jerkAction = new cc.Sequence(moveRight, moveCenter, moveLeft, moveRight);
-                
-                sender.runAction(jerkAction);
-            }
-            
-            var delay = new cc.DelayTime(1);
-
-            function checkAnswer() {
-                cc.eventManager.resumeTarget(this, true);
-                this.activity.checkAnswer(sender.getOption());
-            };
-            var actionFunc = new cc.CallFunc(checkAnswer, this);
-
-            this.runAction(new cc.Sequence(delay, actionFunc));
         }
     },
     configureTimedActivity: function () {
@@ -242,9 +275,9 @@ var GameLayer = cc.Layer.extend({
                 earnedStars >= 2,
                 earnedStars == 3
             ];
-            var star1Res = starsUnlocked[0] ? uiImgRes.starOnB_png : uiImgRes.starOffB_png;
-            var star2Res = starsUnlocked[1] ? uiImgRes.starOnB_png : uiImgRes.starOffB_png;
-            var star3Res = starsUnlocked[2] ? uiImgRes.starOnB_png : uiImgRes.starOffB_png;
+            var star1Res = starsUnlocked[0] ? res.starOnB_png : res.starOffB_png;
+            var star2Res = starsUnlocked[1] ? res.starOnB_png : res.starOffB_png;
+            var star3Res = starsUnlocked[2] ? res.starOnB_png : res.starOffB_png;
 
             var star1 = new cc.Sprite(star1Res);
             var star2 = new cc.Sprite(star2Res);

@@ -1,5 +1,15 @@
 // images
 
+var res = {
+    starOn_png: "res/imgs/activityMenu/starOn.png",
+    starOnB_png: "res/imgs/starOn.png",
+    starOff_png: "res/imgs/activityMenu/starOff.png",
+    starOffB_png: "res/imgs/starOff.png",
+    
+    beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
+    seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
+};
+
 var uiImgRes = {
     pause_png: "res/imgs/pause.png",
     resume_png: "res/imgs/resume.png",
@@ -10,13 +20,7 @@ var uiImgRes = {
     fuelBarFull_png: "res/imgs/fuel_bar_full.png",
     labelRibbon_png: "res/imgs/label_ribbon.png",
     
-    starOn_png: "res/imgs/activityMenu/starOn.png",
-    starOnB_png: "res/imgs/starOn.png",
-    starOff_png: "res/imgs/activityMenu/starOff.png",
-    starOffB_png: "res/imgs/starOff.png",
-    
-    beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
-    seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
+    energyCrystal_png: "res/imgs/energy.png"
 };
 
 var seaImgRes = {
@@ -144,7 +148,7 @@ var mapsImgRes = {
 
 var fonts = {
     gameFont: {type:"font", name: "AndikaNewBasic-B", srcs: ["res/fonts/AndikaNewBasic-B.tff"]}
-}
+};
 
 // audios
 
@@ -240,14 +244,18 @@ var stimuliRes = {
     "ip": "res/audio/stimuli/ip.mp3",
     "op": "res/audio/stimuli/op.mp3",
     "up": "res/audio/stimuli/up.mp3"
-}
+};
 
 var effectsRes = {
     particles_plist: "res/imgs/particle_texture.plist",
     particles_png: "res/imgs/particle_texture.png"
-}
+};
 
 var g_resources = [];
+for (var i in res) {
+    g_resources.push(res[i]);
+}
+
 for (var i in uiImgRes) {
     g_resources.push(uiImgRes[i]);
 }

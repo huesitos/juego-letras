@@ -18,9 +18,9 @@ var ActivityButton = ccui.Button.extend({
             GameState.gameProgress.activities[activityID].score >= 2,
             GameState.gameProgress.activities[activityID].score == 3
         ];
-        var star1Res = starsUnlocked[0] ? uiImgRes.starOn_png : uiImgRes.starOff_png;
-        var star2Res = starsUnlocked[1] ? uiImgRes.starOn_png : uiImgRes.starOff_png;
-        var star3Res = starsUnlocked[2] ? uiImgRes.starOn_png : uiImgRes.starOff_png;
+        var star1Res = starsUnlocked[0] ? res.starOn_png : res.starOff_png;
+        var star2Res = starsUnlocked[1] ? res.starOn_png : res.starOff_png;
+        var star3Res = starsUnlocked[2] ? res.starOn_png : res.starOff_png;
         
         var star1 = new cc.Sprite(star1Res);
         var star2 = new cc.Sprite(star2Res);
