@@ -55,6 +55,13 @@ var GameLayer = cc.Layer.extend({
             callback: this.resetQuestion.bind(this)
         }, this);
         
+        // run activity completed animation
+        cc.eventManager.addListener({
+            event: cc.EventListener.CUSTOM,
+            eventName: ACTIVITY_COMPLETED,
+            callback: this.onActivityCompleted.bind(this)
+        }, this);
+        
         this.scheduleUpdate();
         
         return true;
@@ -122,9 +129,9 @@ var GameLayer = cc.Layer.extend({
         
         if (correct) {
             energyCrystal.runAction(new cc.Sequence(
-                new cc.RotateTo(0.25, -10),
-                new cc.RotateTo(0.25, 10),
-                new cc.RotateTo(0.25, 0),
+                new cc.RotateTo(0.15, -10),
+                new cc.RotateTo(0.15, 10),
+                new cc.RotateTo(0.15, 0),
                 new cc.MoveTo(
                     0.25,
                     cc.p(this.size.width * .04, this.size.height / 2)
@@ -262,96 +269,97 @@ var GameLayer = cc.Layer.extend({
 //            this.answerLabel.setString(this.activity.getRightOption());
             this.activity.playOptionAudio();
             this.configureTimedActivity();
-        } else {
-            // end activity
-            var effectID = cc.audioEngine.playEffect(audioRes.cheering);
-            
-            var earnedStars = this.activity.getEarnedStars();
-            GD.completeActivity(earnedStars);
-            
-            // show starts based on score
-            var starsUnlocked = [
-                earnedStars >= 1,
-                earnedStars >= 2,
-                earnedStars == 3
-            ];
-            var star1Res = starsUnlocked[0] ? res.starOnB_png : res.starOffB_png;
-            var star2Res = starsUnlocked[1] ? res.starOnB_png : res.starOffB_png;
-            var star3Res = starsUnlocked[2] ? res.starOnB_png : res.starOffB_png;
-
-            var star1 = new cc.Sprite(star1Res);
-            var star2 = new cc.Sprite(star2Res);
-            var star3 = new cc.Sprite(star3Res);
-            
-            var height = this.size.height * .8,
-                gap = 50;
-            
-            star1.attr({
-                x: this.size.width / 2 - star1.width - gap,
-                y: height,
-                scale: 0
-            });
-            star2.attr({
-                x: this.size.width / 2,
-                y: height,
-                scale: 0
-            });
-            star3.attr({
-                x: this.size.width / 2 + star1.width + gap,
-                y: height,
-                scale: 0
-            });
-
-            this.addChild(star1);
-            this.addChild(star2);
-            this.addChild(star3);
-            
-            var starAnimation = new cc.ScaleTo(0.25, 1);
-            
-            star1.runAction(new cc.EaseBackOut(starAnimation));
-            star2.runAction(
-                new cc.Sequence(
-                    new cc.DelayTime(0.25),
-                    new cc.EaseBackOut(starAnimation.clone())
-                )
-            );
-            star3.runAction(
-                new cc.Sequence(
-                    new cc.DelayTime(.5),
-                    new cc.EaseBackOut(starAnimation.clone())
-                )
-            );
-            
-            if (starsUnlocked[0] || starsUnlocked[1] || starsUnlocked[2]) {
-                var particles = Effects.createSimpleParticles(
-                    star2.getPosition()
-                );
-                this.addChild(particles);
-            }      
-            
-            for (var i = 0; i < this.optionButtons.length; i++) {
-                var optionButton = this.optionButtons[i];
-
-                // animate button
-                optionButton.runAction(new cc.RepeatForever(
-                    new cc.Sequence(
-                        new cc.CallFunc(optionButton.changeToNormal, optionButton),
-                        new cc.DelayTime(0.5),
-                        new cc.CallFunc(optionButton.onClicked, optionButton),
-                        new cc.DelayTime(0.5)
-                    )
-                ));
-                optionButton.hideLabel();
-            }
-            
-            this.runAction(new cc.Sequence(
-                new cc.DelayTime(5.5),
-                new cc.CallFunc(function () {
-                    cc.audioEngine.stopEffect(effectID);
-                    cc.director.runScene(ActivityMenuLayer.getScene(GameState.openedMapID));
-                })
-            ));
         }
+    },
+    onActivityCompleted: function (event) {
+        // end activity
+        var effectID = cc.audioEngine.playEffect(audioRes.cheering);
+
+        var earnedStars = this.activity.getEarnedStars();
+        GD.completeActivity(earnedStars);
+
+        // show starts based on score
+        var starsUnlocked = [
+            earnedStars >= 1,
+            earnedStars >= 2,
+            earnedStars == 3
+        ];
+        var star1Res = starsUnlocked[0] ? res.starOnB_png : res.starOffB_png;
+        var star2Res = starsUnlocked[1] ? res.starOnB_png : res.starOffB_png;
+        var star3Res = starsUnlocked[2] ? res.starOnB_png : res.starOffB_png;
+
+        var star1 = new cc.Sprite(star1Res);
+        var star2 = new cc.Sprite(star2Res);
+        var star3 = new cc.Sprite(star3Res);
+
+        var height = this.size.height * .8,
+            gap = 50;
+
+        star1.attr({
+            x: this.size.width / 2 - star1.width - gap,
+            y: height,
+            scale: 0
+        });
+        star2.attr({
+            x: this.size.width / 2,
+            y: height,
+            scale: 0
+        });
+        star3.attr({
+            x: this.size.width / 2 + star1.width + gap,
+            y: height,
+            scale: 0
+        });
+
+        this.addChild(star1);
+        this.addChild(star2);
+        this.addChild(star3);
+
+        var starAnimation = new cc.ScaleTo(0.25, 1);
+
+        star1.runAction(new cc.EaseBackOut(starAnimation));
+        star2.runAction(
+            new cc.Sequence(
+                new cc.DelayTime(0.25),
+                new cc.EaseBackOut(starAnimation.clone())
+            )
+        );
+        star3.runAction(
+            new cc.Sequence(
+                new cc.DelayTime(.5),
+                new cc.EaseBackOut(starAnimation.clone())
+            )
+        );
+
+        if (starsUnlocked[0] || starsUnlocked[1] || starsUnlocked[2]) {
+            var particles = Effects.createSimpleParticles(
+                star2.getPosition()
+            );
+            this.addChild(particles);
+        }      
+
+        for (var i = 0; i < this.optionButtons.length; i++) {
+            var optionButton = this.optionButtons[i];
+
+            // animate button
+            optionButton.runAction(new cc.RepeatForever(
+                new cc.Sequence(
+                    new cc.CallFunc(optionButton.changeToNormal, optionButton),
+                    new cc.DelayTime(0.5),
+                    new cc.CallFunc(optionButton.onClicked, optionButton),
+                    new cc.DelayTime(0.5)
+                )
+            ));
+            optionButton.hideLabel();
+        }
+
+        this.runAction(new cc.Sequence(
+            new cc.DelayTime(5.5),
+            new cc.CallFunc(function () {
+                cc.audioEngine.stopEffect(effectID);
+                cc.director.runScene(ActivityMenuLayer.getScene(GameState.openedMapID));
+            })
+        ));
     },
     tick: function (dt) {
         this.activity.tick(dt);

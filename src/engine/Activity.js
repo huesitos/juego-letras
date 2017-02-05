@@ -1,4 +1,5 @@
 var QUESTION_CHECKED = "questionChecked";
+var ACTIVITY_COMPLETED = "activityCompleted";
 
 function Activity(activityData) {    
     //////////////////////////////
@@ -130,6 +131,9 @@ function Activity(activityData) {
         event = new cc.EventCustom(QUESTION_CHECKED);
         event.setUserData({correctness: correctness});
         cc.eventManager.dispatchEvent(event);
+        
+        if (this.isActivityCompleted())
+            cc.eventManager.dispatchCustomEvent(ACTIVITY_COMPLETED);
     };
         
     this.isTimedActivity = function () {

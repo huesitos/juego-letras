@@ -73,6 +73,13 @@ var HUDLayer = cc.Layer.extend({
             callback: this.onQuestionChecked.bind(this)
         }, this);
         
+        // run activity completed animation
+        cc.eventManager.addListener({
+            event: cc.EventListener.CUSTOM,
+            eventName: ACTIVITY_COMPLETED,
+            callback: this.onActivityCompleted.bind(this)
+        }, this);
+        
         return true;
     },
     onQuestionChecked: function (event) {
@@ -166,4 +173,12 @@ var HUDLayer = cc.Layer.extend({
             );
         }
     },
+    onActivityCompleted: function (event) {
+        // hide all btns
+        this.pauseBtn.setVisible(false);
+        this.replayBtn.setVisible(false);
+        this.helpBtn.setVisible(false);
+        this.resumeBtn.setVisible(false);
+        this.backBtn.setVisible(false);
+    }
 });
