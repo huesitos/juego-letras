@@ -14,22 +14,5 @@ var GameScene = cc.Scene.extend({
         //////////////////////////////
         // 3. begin layer activity
         this.gameLayer.beginActivity();
-        
-        var backBtn = new ccui.Button(uiImgRes.back_png);
-        backBtn.setPosition(
-            cc.p(this.size.width * .05, this.size.height * .95)
-        );
-        backBtn.addTouchEventListener(this.onBackBtn, this);
-        this.addChild(backBtn);
-    },
-    onBackBtn: function (sender, type) {
-        if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.director.runScene(
-                new cc.TransitionFade(
-                    1,
-                    ActivityMenuLayer.getScene(GameState.openedMapID)
-                )
-            );
-        }
     }
 });

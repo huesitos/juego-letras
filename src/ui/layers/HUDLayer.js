@@ -51,10 +51,18 @@ var HUDLayer = cc.Layer.extend({
         this.addChild(this.pauseBtn);
         
         this.resumeBtn = new ccui.Button(uiImgRes.resume_png);
-        this.resumeBtn.setPosition(cc.p(size.width * .95, yPos));
+        this.resumeBtn.setPosition(cc.p(size.width * .5, size.height * .5));
         this.resumeBtn.addTouchEventListener(this.onResumeTouch, this);
         this.resumeBtn.setVisible(false);
         this.addChild(this.resumeBtn);
+        
+        this.backBtn = new ccui.Button(uiImgRes.back_png);
+        this.backBtn.setPosition(
+            cc.p(size.width * .05, size.height * .95)
+        );
+        this.backBtn.addTouchEventListener(this.onBackTouch, this);
+        this.backBtn.setVisible(false);
+        this.addChild(this.backBtn);
         
         //////////////////////////////
         // 4. set update
@@ -119,11 +127,17 @@ var HUDLayer = cc.Layer.extend({
             var gameLayer = this.getParent().getChildByName("gameLayer");
             gameLayer.pause();
             
+            var grayLayer = new cc.LayerColor(new cc.Color(0, 0, 0, 150));
+            grayLayer.setPosition(0, 0);
+            grayLayer.setName("grayLayer");
+            this.addChild(grayLayer, -1);
+            
             // resume button instead of pause
             this.pauseBtn.setVisible(false);
             this.replayBtn.setVisible(false);
             this.helpBtn.setVisible(false);
             this.resumeBtn.setVisible(true);
+            this.backBtn.setVisible(true);
         }
     },
     onResumeTouch: function (sender, type) {
@@ -132,11 +146,24 @@ var HUDLayer = cc.Layer.extend({
             var gameLayer = this.getParent().getChildByName("gameLayer");
             gameLayer.resume();
             
+            this.removeChild(this.getChildByName("grayLayer"));
+            
             // pause button instead of resume
             this.pauseBtn.setVisible(true);
             this.replayBtn.setVisible(true);
             this.helpBtn.setVisible(true);
             this.resumeBtn.setVisible(false);
+            this.backBtn.setVisible(false);
         }
-    }
+    },
+    onBackTouch: function (sender, type) {
+        if (type === ccui.Widget.TOUCH_ENDED) {
+            cc.director.runScene(
+                new cc.TransitionFade(
+                    1,
+                    ActivityMenuLayer.getScene(GameState.openedMapID)
+                )
+            );
+        }
+    },
 });
