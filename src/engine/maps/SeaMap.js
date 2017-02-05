@@ -178,7 +178,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             // appearance delay between fishes
             var delay = 0.5;
             
-            gameLayer.customIntroAnimationDelay = 3 + delay * 2;
+            gameLayer.customIntroAnimationDelay = 1.5 + delay * 2;
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
                     button.hideLabel();
@@ -188,8 +188,8 @@ SeaMap.getGameLayer = function (activityType, activity) {
                         new cc.Sequence(
                             new cc.Place(cc.p(-button.width, startPos.y)),
                             new cc.DelayTime(delay),
-                            new cc.MoveTo(2, cc.p(startPos.x, startPos.y)),
-                            new cc.DelayTime(1+delay)
+                            new cc.MoveTo(1, cc.p(startPos.x, startPos.y)),
+                            new cc.DelayTime(0.5+delay)
                         )
                     );
                     

@@ -358,6 +358,7 @@ var GameLayer = cc.Layer.extend({
 
         if (this.activity.hasTimerFinished()) {
             this.unscheduleAllCallbacks();
+            cc.audioEngine.playEffect(audioRes.failure);
             
             // hide all the labels
             this.optionButtons.forEach(function (btn) {
