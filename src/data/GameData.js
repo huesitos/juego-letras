@@ -26,6 +26,7 @@ var RIGHT_DIRECTION = 1;
 var TIMED_LEVEL = "T";
 var UNIQUE_ANSWER = "UR";
 
+// 93 activities
 var world = {
     sea: {
         rocks: {
