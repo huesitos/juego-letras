@@ -110,7 +110,7 @@ function Activity(activityData) {
     };
     
     this.playOptionAudio = function () {
-        cc.audioEngine.playEffect(stimuliRes[rightAnswer]);
+        audioManager.playStimuli(stimuliRes[rightAnswer]);
     };
     
     this.checkAnswer = function (option) {

@@ -15,6 +15,7 @@
         "src/Resources.js",
         "src/data/GameData.js",
         
+        "src/engine/AudioManager.js",
         "src/engine/Storage.js",
         "src/engine/State.js",
         "src/engine/StimuliPicker.js",

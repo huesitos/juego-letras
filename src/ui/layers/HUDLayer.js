@@ -119,14 +119,14 @@ var HUDLayer = cc.Layer.extend({
     },
     onHelpBtnTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             cc.log("asking for help");
         }
     },
     onReplayTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             var gameLayer = this.getParent().getChildByName("gameLayer");
             gameLayer.activity.playOptionAudio();
@@ -134,7 +134,7 @@ var HUDLayer = cc.Layer.extend({
     },
     onPauseTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             // pause game layer
             var gameLayer = this.getParent().getChildByName("gameLayer");
@@ -155,7 +155,7 @@ var HUDLayer = cc.Layer.extend({
     },
     onResumeTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             // remove game layer
             var gameLayer = this.getParent().getChildByName("gameLayer");
@@ -173,7 +173,7 @@ var HUDLayer = cc.Layer.extend({
     },
     onBackTouch: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             cc.director.runScene(
                 new cc.TransitionFade(

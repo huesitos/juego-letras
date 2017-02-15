@@ -39,7 +39,7 @@ var MenuScene = cc.Scene.extend({
     },
     onPlayBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             GameState.openedMapID = GameState.currentMapID;
             
@@ -54,7 +54,7 @@ var MenuScene = cc.Scene.extend({
     },
     onCreditsBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             sender.loadTextureNormal(sender.selectedRes);
             
