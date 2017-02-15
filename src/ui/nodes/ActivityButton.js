@@ -10,8 +10,13 @@ var ActivityButton = ccui.Button.extend({
             lockStatus
         );
         if (!lockStatus)
-            this.setColor(new cc.Color(100, 100, 100))
+            this.setColor(new cc.Color(100, 100, 100));
         
+        var starsBg = new cc.Sprite(res.starsBg_png);
+        starsBg.setPosition(cc.p(this.width / 2, -5));
+        starsBg.setColor(staticRes.ribbonColor);
+        this.addChild(starsBg);
+            
         // show starts based on score
         var starsUnlocked = [
             GameState.gameProgress.activities[activityID].score >= 1,

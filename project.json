@@ -23,6 +23,7 @@
         "src/engine/maps/Map.js",
         "src/engine/maps/SeaMap.js",
         "src/engine/maps/BeachMap.js",
+        "src/engine/maps/EarthMap.js",
         "src/engine/GameDirector.js",
         
         "src/ui/nodes/OptionButton.js",

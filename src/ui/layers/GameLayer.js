@@ -277,7 +277,7 @@ var GameLayer = cc.Layer.extend({
 
         var earnedStars = this.activity.getEarnedStars();
         GD.completeActivity(earnedStars);
-
+        
         // show starts based on score
         var starsUnlocked = [
             earnedStars >= 1,
@@ -294,7 +294,12 @@ var GameLayer = cc.Layer.extend({
 
         var height = this.size.height * .83,
             gap = 50;
-
+        
+        var starsBg = new cc.Sprite(res.starsBgB_png);
+        starsBg.setPosition(cc.p(this.size.width / 2, height * 1.02));
+        starsBg.setColor(staticRes.ribbonColor);
+        this.addChild(starsBg);
+        
         star1.attr({
             x: this.size.width / 2 - star1.width - gap,
             y: height,

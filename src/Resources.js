@@ -5,6 +5,8 @@ var res = {
     starOnB_png: "res/imgs/starOn.png",
     starOff_png: "res/imgs/activityMenu/starOff.png",
     starOffB_png: "res/imgs/starOff.png",
+    starsBgB_png: "res/imgs/stars_bg.png",
+    starsBg_png: "res/imgs/activityMenu/stars_bg.png",
     
     beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
     seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
@@ -65,7 +67,8 @@ var seaImgRes = {
     seaTop_png: "res/imgs/sea/sea_top.png",
     seaOctopus_png: "res/imgs/sea/sea_octopus.png",
     
-    seaMap_png: "res/imgs/activityMenu/sea_map.png",
+    seaMapBg_png: "res/imgs/activityMenu/sea_map_bg.png",
+    seaMapBtn_png: "res/imgs/activityMenu/sea_map.png",
     bubbleIcon_png: "res/imgs/activityMenu/bubble_icon.png",
     chestIcon_png: "res/imgs/activityMenu/chest_icon.png",
     fishermanIcon_png: "res/imgs/activityMenu/fisherman_icon.png",
@@ -89,10 +92,34 @@ var beachImgRes = {
     beachTop_png: "res/imgs/beach/beach_top.png",
     beachSand_png: "res/imgs/beach/beach_sand.png",
     
-    beachMap_png: "res/imgs/activityMenu/beach_map.png",
+    beachMapBg_png: "res/imgs/activityMenu/beach_map_bg.png",
+    beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
     bucketIcon_png: "res/imgs/activityMenu/bucket_icon.png",
     crabIcon_png: "res/imgs/activityMenu/crab_icon.png",
     turtleIcon_png: "res/imgs/activityMenu/turtle_icon.png"
+};
+
+var earthImgRes = {
+    chestNormal_png: "res/imgs/earth/chest_normal.png",
+    chestSelected_png: "res/imgs/earth/chest_selected.png",
+    poolNormal_png: "res/imgs/earth/pool_normal.png",
+    poolSelected_png: "res/imgs/earth/pool_selected.png",
+    plantNormal_png: "res/imgs/earth/plant_normal.png",
+    plantSelected_png: "res/imgs/earth/plant_selected.png",
+    snailNormal_png: "res/imgs/earth/snail_normal.png",
+    snailSelected_png: "res/imgs/earth/snail_selected.png",
+    topoNormal_png: "res/imgs/earth/topo_normal.png",
+    topoSelected_png: "res/imgs/earth/topo_selected.png",
+    
+    mainLand_png: "res/imgs/earth/main_land.png",
+    
+    earthMapBg_png: "res/imgs/activityMenu/earth_map_bg.png",
+    earthMapBtn_png: "res/imgs/activityMenu/earth_map.png",
+    chestIcon_png: "res/imgs/activityMenu/chest_earth_icon.png",
+    poolIcon_png: "res/imgs/activityMenu/pool_icon.png",
+    plantIcon_png: "res/imgs/activityMenu/plant_icon.png",
+    snailIcon_png: "res/imgs/activityMenu/snail_icon.png",
+    topoIcon_png: "res/imgs/activityMenu/topo_icon.png"
 };
 
 var rocksImgRes = [
@@ -137,19 +164,31 @@ var activitiesImgRes = {
     buckets: beachImgRes.bucketIcon_png,
     crabs1: beachImgRes.crabIcon_png,
     crabs2: beachImgRes.crabIcon_png,
-    turtles: beachImgRes.turtleIcon_png,
-    turtles2: beachImgRes.turtleIcon_png
+    turtles1: beachImgRes.turtleIcon_png,
+    turtles2: beachImgRes.turtleIcon_png,
+    topo: earthImgRes.topoIcon_png,
+    plant: earthImgRes.plantIcon_png,
+    pool: earthImgRes.poolIcon_png,
+    snail: earthImgRes.snailIcon_png,
+    hidden_chests: earthImgRes.chestIcon_png
 };
 
 var mapsImgRes = {
-    sea: seaImgRes.seaMap_png,
-    beach: beachImgRes.beachMap_png
+    sea: seaImgRes.seaMapBtn_png,
+    beach: beachImgRes.beachMapBtn_png,
+    earth: earthImgRes.earthMapBtn_png
 };
 
 // fonts
 
 var fonts = {
     gameFont: {type:"font", name: "AndikaNewBasic-B", srcs: ["res/fonts/AndikaNewBasic-B.tff"]}
+};
+
+// static res - colors, data
+
+var staticRes = {
+    ribbonColor: new cc.Color(150, 130, 130)
 };
 
 // audios
@@ -246,7 +285,180 @@ var stimuliRes = {
     "ep": "res/audio/stimuli/ep.mp3",
     "ip": "res/audio/stimuli/ip.mp3",
     "op": "res/audio/stimuli/op.mp3",
-    "up": "res/audio/stimuli/up.mp3"
+    "up": "res/audio/stimuli/up.mp3",
+    "al": "res/audio/stimuli/al.mp3",
+    "el": "res/audio/stimuli/el.mp3",
+    "il": "res/audio/stimuli/il.mp3",
+    "ol": "res/audio/stimuli/ol.mp3",
+    "ul": "res/audio/stimuli/ul.mp3",
+    "an": "res/audio/stimuli/an.mp3",
+    "en": "res/audio/stimuli/en.mp3",
+    "in": "res/audio/stimuli/in.mp3",
+    "on": "res/audio/stimuli/on.mp3",
+    "un": "res/audio/stimuli/un.mp3",
+    "ab": "res/audio/stimuli/ab.mp3",
+    "eb": "res/audio/stimuli/eb.mp3",
+    "ib": "res/audio/stimuli/ib.mp3",
+    "ob": "res/audio/stimuli/ob.mp3",
+    "ub": "res/audio/stimuli/ub.mp3",
+    "ad": "res/audio/stimuli/ad.mp3",
+    "ed": "res/audio/stimuli/ed.mp3",
+    "id": "res/audio/stimuli/id.mp3",
+    "od": "res/audio/stimuli/od.mp3",
+    "ud": "res/audio/stimuli/ud.mp3",
+    "bla": "res/audio/stimuli/bla.mp3",
+    "ble": "res/audio/stimuli/ble.mp3",
+    "bli": "res/audio/stimuli/bli.mp3",
+    "blo": "res/audio/stimuli/blo.mp3",
+    "blu": "res/audio/stimuli/blu.mp3",
+    "fla": "res/audio/stimuli/fla.mp3",
+    "fle": "res/audio/stimuli/fle.mp3",
+    "fli": "res/audio/stimuli/fli.mp3",
+    "flo": "res/audio/stimuli/flo.mp3",
+    "flu": "res/audio/stimuli/flu.mp3",
+    "pla": "res/audio/stimuli/pla.mp3",
+    "ple": "res/audio/stimuli/ple.mp3",
+    "pli": "res/audio/stimuli/pli.mp3",
+    "plo": "res/audio/stimuli/plo.mp3",
+    "plu": "res/audio/stimuli/plu.mp3",
+    "ca": "res/audio/stimuli/ca.mp3",
+    "ce": "res/audio/stimuli/ce.mp3",
+    "ci": "res/audio/stimuli/ci.mp3",
+    "co": "res/audio/stimuli/co.mp3",
+    "cu": "res/audio/stimuli/cu.mp3",
+    "que": "res/audio/stimuli/que.mp3",
+    "qui": "res/audio/stimuli/qui.mp3",
+    "va": "res/audio/stimuli/va.mp3",
+    "ve": "res/audio/stimuli/ve.mp3",
+    "vi": "res/audio/stimuli/vi.mp3",
+    "vo": "res/audio/stimuli/vo.mp3",
+    "vu": "res/audio/stimuli/vu.mp3",
+    "lla": "res/audio/stimuli/lla.mp3",
+    "lle": "res/audio/stimuli/lle.mp3",
+    "lli": "res/audio/stimuli/lli.mp3",
+    "llo": "res/audio/stimuli/llo.mp3",
+    "llu": "res/audio/stimuli/llu.mp3",
+    "ha": "res/audio/stimuli/ha.mp3",
+    "he": "res/audio/stimuli/he.mp3",
+    "hi": "res/audio/stimuli/hi.mp3",
+    "ho": "res/audio/stimuli/ho.mp3",
+    "hu": "res/audio/stimuli/hu.mp3",
+    "ya": "res/audio/stimuli/ya.mp3",
+    "ye": "res/audio/stimuli/ye.mp3",
+    "yi": "res/audio/stimuli/yi.mp3",
+    "yo": "res/audio/stimuli/yo.mp3",
+    "yu": "res/audio/stimuli/yu.mp3",
+    "cha": "res/audio/stimuli/cha.mp3",
+    "che": "res/audio/stimuli/che.mp3",
+    "chi": "res/audio/stimuli/chi.mp3",
+    "cho": "res/audio/stimuli/cho.mp3",
+    "chu": "res/audio/stimuli/chu.mp3",
+    "cla": "res/audio/stimuli/cla.mp3",
+    "cle": "res/audio/stimuli/cle.mp3",
+    "cli": "res/audio/stimuli/cli.mp3",
+    "clo": "res/audio/stimuli/clo.mp3",
+    "clu": "res/audio/stimuli/clu.mp3",
+    "ga": "res/audio/stimuli/ga.mp3",
+    "gue": "res/audio/stimuli/gue.mp3",
+    "gui": "res/audio/stimuli/gui.mp3",
+    "go": "res/audio/stimuli/go.mp3",
+    "gu": "res/audio/stimuli/gu.mp3",
+    "güe": "res/audio/stimuli/guue.mp3", 
+    "güi": "res/audio/stimuli/guui.mp3",
+    "ra": "res/audio/stimuli/ra.mp3",
+    "re": "res/audio/stimuli/re.mp3",
+    "ri": "res/audio/stimuli/ri.mp3",
+    "ro": "res/audio/stimuli/ro.mp3",
+    "ru": "res/audio/stimuli/ru.mp3",
+    "ja": "res/audio/stimuli/ja.mp3",
+    "je": "res/audio/stimuli/je.mp3",
+    "ji": "res/audio/stimuli/ji.mp3",
+    "jo": "res/audio/stimuli/jo.mp3",
+    "ju": "res/audio/stimuli/ju.mp3",
+    "za": "res/audio/stimuli/za.mp3",
+    "ze": "res/audio/stimuli/ze.mp3",
+    "zi": "res/audio/stimuli/zi.mp3",
+    "zo": "res/audio/stimuli/zo.mp3",
+    "zu": "res/audio/stimuli/zu.mp3",
+    "ara": "res/audio/stimuli/ara.mp3",
+    "are": "res/audio/stimuli/are.mp3",
+    "ari": "res/audio/stimuli/ari.mp3",
+    "aro": "res/audio/stimuli/aro.mp3",
+    "aru": "res/audio/stimuli/aru.mp3",
+    "era": "res/audio/stimuli/era.mp3",
+    "ere": "res/audio/stimuli/ere.mp3",
+    "eri": "res/audio/stimuli/eri.mp3",
+    "ero": "res/audio/stimuli/ero.mp3",
+    "eru": "res/audio/stimuli/eru.mp3",
+    "ira": "res/audio/stimuli/ira.mp3",
+    "ire": "res/audio/stimuli/ire.mp3",
+    "iri": "res/audio/stimuli/iri.mp3",
+    "iro": "res/audio/stimuli/iro.mp3",
+    "iru": "res/audio/stimuli/iru.mp3",
+    "arra": "res/audio/stimuli/arra.mp3",
+    "arre": "res/audio/stimuli/arre.mp3",
+    "arri": "res/audio/stimuli/arri.mp3",
+    "arro": "res/audio/stimuli/arro.mp3",
+    "urru": "res/audio/stimuli/urru.mp3",
+    "bra": "res/audio/stimuli/bra.mp3",
+    "bre": "res/audio/stimuli/bre.mp3",
+    "bri": "res/audio/stimuli/bri.mp3",
+    "bro": "res/audio/stimuli/bro.mp3",
+    "bru": "res/audio/stimuli/bru.mp3",
+    "cra": "res/audio/stimuli/cra.mp3",
+    "cre": "res/audio/stimuli/cre.mp3",
+    "cri": "res/audio/stimuli/cri.mp3",
+    "cro": "res/audio/stimuli/cro.mp3",
+    "cru": "res/audio/stimuli/cru.mp3",
+    "dra": "res/audio/stimuli/dra.mp3",
+    "dre": "res/audio/stimuli/dre.mp3",
+    "dri": "res/audio/stimuli/dri.mp3",
+    "dro": "res/audio/stimuli/dro.mp3",
+    "dru": "res/audio/stimuli/dru.mp3",
+    "fra": "res/audio/stimuli/fra.mp3",
+    "fre": "res/audio/stimuli/fre.mp3",
+    "fri": "res/audio/stimuli/fri.mp3",
+    "fro": "res/audio/stimuli/fro.mp3",
+    "fru": "res/audio/stimuli/fru.mp3",
+    "gra": "res/audio/stimuli/gra.mp3",
+    "gre": "res/audio/stimuli/gre.mp3",
+    "gri": "res/audio/stimuli/gri.mp3",
+    "gro": "res/audio/stimuli/gro.mp3",
+    "gru": "res/audio/stimuli/gru.mp3",
+    "pra": "res/audio/stimuli/pra.mp3",
+    "pre": "res/audio/stimuli/pre.mp3",
+    "pri": "res/audio/stimuli/pri.mp3",
+    "pro": "res/audio/stimuli/pro.mp3",
+    "pru": "res/audio/stimuli/pru.mp3",
+    "tra": "res/audio/stimuli/tra.mp3",
+    "tre": "res/audio/stimuli/tre.mp3",
+    "tri": "res/audio/stimuli/tri.mp3",
+    "tro": "res/audio/stimuli/tro.mp3",
+    "tru": "res/audio/stimuli/tru.mp3",
+    "ña": "res/audio/stimuli/nna.mp3",
+    "ñe": "res/audio/stimuli/nne.mp3",
+    "ñi": "res/audio/stimuli/nni.mp3",
+    "ño": "res/audio/stimuli/nno.mp3",
+    "ñu": "res/audio/stimuli/nnu.mp3",
+    "ka": "res/audio/stimuli/ka.mp3",
+    "ke": "res/audio/stimuli/ke.mp3",
+    "ki": "res/audio/stimuli/ki.mp3",
+    "ko": "res/audio/stimuli/ko.mp3",
+    "ku": "res/audio/stimuli/ku.mp3",
+    "wa": "res/audio/stimuli/wa.mp3",
+    "we": "res/audio/stimuli/we.mp3",
+    "wi": "res/audio/stimuli/wi.mp3",
+    "wo": "res/audio/stimuli/wo.mp3",
+    "ax": "res/audio/stimuli/ax.mp3",
+    "ex": "res/audio/stimuli/ex.mp3",
+    "ix": "res/audio/stimuli/ix.mp3",
+    "ox": "res/audio/stimuli/ox.mp3",
+    "ux": "res/audio/stimuli/ux.mp3",
+    "ac": "res/audio/stimuli/ac.mp3",
+    "ec": "res/audio/stimuli/ec.mp3",
+    "ic": "res/audio/stimuli/ic.mp3",
+    "oc": "res/audio/stimuli/oc.mp3",
+    "uc": "res/audio/stimuli/uc.mp3"
 };
 
 var effectsRes = {
@@ -269,6 +481,10 @@ for (var i in seaImgRes) {
 
 for (var i in beachImgRes) {
     g_resources.push(beachImgRes[i]);
+}
+
+for (var i in earthImgRes) {
+    g_resources.push(earthImgRes[i]);
 }
 
 for (var i in audioRes) {

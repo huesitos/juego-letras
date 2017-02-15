@@ -2,6 +2,7 @@
 var Maps = {
     "sea": SeaMap,
     "beach": BeachMap,
+    "earth": EarthMap,
     "sky": null,
     "space": null
 };

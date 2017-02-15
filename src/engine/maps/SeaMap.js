@@ -102,7 +102,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
                 button.setVisible(false);
             });
             
-            gameLayer.customIntroAnimationDelay = 1.5;
+//            gameLayer.customIntroAnimationDelay = .5;
             gameLayer.customIntroAnimation = function () {
                 this.optionButtons.forEach(function (button) {
                     var startPos = button.getPosition();

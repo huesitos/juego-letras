@@ -33,10 +33,17 @@ var MenuScene = cc.Scene.extend({
         );
         creditsBtn.addTouchEventListener(this.onCreditsBtn, this);
         this.addChild(creditsBtn);
+        
+        cc.log(ACTIVITY_TRANSITIONS);
+        cc.log("ACTIVITY_TRANSITIONS");
+        
+        return true;
     },
     onPlayBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
             cc.audioEngine.playEffect(audioRes.click);
+            
+            GameState.openedMapID = GameState.currentMapID;
             
             sender.loadTextureNormal(sender.selectedRes);
             cc.director.runScene(
