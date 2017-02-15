@@ -56,7 +56,10 @@ var ActivityButton = ccui.Button.extend({
             
             var activityID = sender.getUserData().activityID;
             cc.director.runScene(
-                new cc.TransitionFade(1, GD.getActivityScene(activityID))
+                new cc.TransitionFade(
+                    config.sceneTransitionSpeed,
+                    GD.getActivityScene(activityID)
+                )
             );
         }
     }

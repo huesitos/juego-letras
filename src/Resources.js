@@ -8,7 +8,13 @@ var res = {
     starsBgB_png: "res/imgs/stars_bg.png",
     starsBg_png: "res/imgs/activityMenu/stars_bg.png",
     
+    playBtnNormal_png: "res/imgs/play_normal.png",
+    playBtnSelected_png: "res/imgs/play_selected.png",
+    creditsBtnNormal_png: "res/imgs/credits_normal.png",
+    creditsBtnSelected_png: "res/imgs/credits_selected.png",
+    
     creditsBg_png: "res/imgs/credits_bg.png",
+    menuBg_png: "res/imgs/menu_bg.png",
     beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
     seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
 };

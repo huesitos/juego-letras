@@ -18,7 +18,7 @@ cc.game.onStart = function(){
     cc.view.resizeWithBrowserSize(true);
 
     //load resources
-    cc.LoaderScene.preload(g_resources, function () {
+    cc.LoaderScene.preload(g_resources, function () {        
         GameState.loadGameProgress();
 //        GameState.resetGameProgress();
         cc.director.runScene(new MenuScene());

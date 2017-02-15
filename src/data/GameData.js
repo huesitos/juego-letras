@@ -1051,5 +1051,3 @@ var prev;
 });
 
 ACTIVITY_TRANSITIONS = Object.freeze(ACTIVITY_TRANSITIONS);
-cc.log(ACTIVITY_TRANSITIONS);
-cc.log("hola");

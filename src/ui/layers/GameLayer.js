@@ -181,7 +181,7 @@ var GameLayer = cc.Layer.extend({
         // calculate the delay or set it, no magic numbers...
         if (this.customIntroAnimation) {
             this.runAction(new cc.Sequence(
-                new cc.DelayTime(1),
+                new cc.DelayTime(config.sceneTransitionSpeed),
                 new cc.CallFunc(this.customIntroAnimation, this),
                 new cc.DelayTime(this.customIntroAnimationDelay),
                 new cc.CallFunc(turnClicked, this.optionButtons[0]),
@@ -196,7 +196,7 @@ var GameLayer = cc.Layer.extend({
             ));
         } else {
             this.runAction(new cc.Sequence(
-                new cc.DelayTime(1),
+                new cc.DelayTime(config.sceneTransitionSpeed),
                 new cc.CallFunc(turnClicked, this.optionButtons[0]),
                 new cc.DelayTime(0.5),
                 new cc.CallFunc(turnClicked, this.optionButtons[1]),

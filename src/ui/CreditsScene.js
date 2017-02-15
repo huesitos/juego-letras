@@ -198,7 +198,7 @@ var CreditsScene = cc.Scene.extend({
             
             cc.director.runScene(
                 new cc.TransitionFade(
-                    1,
+                    config.sceneTransitionSpeed,
                     new MenuScene()
                 )
             );

@@ -60,7 +60,7 @@ var ActivityMenuLayer = cc.Layer.extend({
                 y: this.size.height * .1
             });
             prevMapBtn.setUserData({mapID: prevMap});
-            prevMapBtn.addTouchEventListener(this.onNavigateToMap, this);
+            prevMapBtn.addTouchEventListener(this.onNavigateToPrevMap, this);
             this.addChild(prevMapBtn);
         };
         
@@ -86,6 +86,16 @@ var ActivityMenuLayer = cc.Layer.extend({
             cc.p(this.size.width * .05, this.size.height * .9)
         );
         backBtn.addTouchEventListener(this.onBackBtn, this);
+        backBtn.setVisible(false);
+        // delay the apperance of the btn until the transition is over
+        backBtn.runAction(
+            new cc.Sequence(
+                new cc.DelayTime(config.mapTransitionSpeed),
+                new cc.CallFunc(function () {
+                    this.setVisible(true)
+                }, backBtn)
+            )
+        );
         this.addChild(backBtn);
         
         return true;
@@ -99,7 +109,26 @@ var ActivityMenuLayer = cc.Layer.extend({
             GD.openMap();
                 
             cc.director.runScene(
-                ActivityMenuLayer.getScene(mapID)
+                new cc.TransitionSlideInT(
+                    config.mapTransitionSpeed,
+                    ActivityMenuLayer.getScene(mapID)
+                )
+            );
+        }
+    },
+    onNavigateToPrevMap: function (sender, type) {
+        if (ccui.Widget.TOUCH_ENDED === type) {
+            cc.audioEngine.playEffect(audioRes.click);
+            
+            var mapID = sender.getUserData().mapID;
+            GameState.openedMapID = mapID;
+            GD.openMap();
+                
+            cc.director.runScene(
+                new cc.TransitionSlideInB(
+                    config.mapTransitionSpeed,
+                    ActivityMenuLayer.getScene(mapID)
+                )
             );
         }
     },
@@ -109,7 +138,7 @@ var ActivityMenuLayer = cc.Layer.extend({
             
             cc.director.runScene(
                 new cc.TransitionFade(
-                    1,
+                    config.sceneTransitionSpeed,
                     new MenuScene()
                 )
             );

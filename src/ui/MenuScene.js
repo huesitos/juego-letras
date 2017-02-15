@@ -5,7 +5,7 @@ var MenuScene = cc.Scene.extend({
         this._super();
         this.size = cc.winSize;
         
-        var bg = new cc.Sprite(seaImgRes.seaTop_png);
+        var bg = new cc.Sprite(res.menuBg_png);
         bg.setPosition(
             cc.p(this.size.width / 2, this.size.height / 2)
         );
@@ -14,28 +14,26 @@ var MenuScene = cc.Scene.extend({
         //////////////////////////////
         // 2. nav btns
         var playBtn = new ccui.Button(
-            seaImgRes.fish1Normal_png,
-            seaImgRes.fish1Selected_png
+            res.playBtnNormal_png,
+            res.playBtnSelected_png
         );
-        playBtn.selectedRes = seaImgRes.fish1Selected_png;
+        playBtn.selectedRes = res.playBtnSelected_png;
         playBtn.setPosition(
-            cc.p(this.size.width / 2, this.size.height / 2)
+            cc.p(this.size.width / 2, this.size.height * .35)
         );
         playBtn.addTouchEventListener(this.onPlayBtn, this);
         this.addChild(playBtn);
         
-        var creditsBtn = new ccui.Button();
-        creditsBtn.setTitleText("Creditos");
-        creditsBtn.setTitleFontSize(40);
-        creditsBtn.setTitleFontName(_b_getFontName(fonts.gameFont));
+        var creditsBtn = new ccui.Button(
+            res.creditsBtnNormal_png,
+            res.creditsBtnSelected_png
+        );
+        creditsBtn.selectedRes = res.playBtnSelected_png;
         creditsBtn.setPosition(
-            cc.p(this.size.width / 2, this.size.height * .3)
+            cc.p(this.size.width / 2, this.size.height * .15)
         );
         creditsBtn.addTouchEventListener(this.onCreditsBtn, this);
         this.addChild(creditsBtn);
-        
-        cc.log(ACTIVITY_TRANSITIONS);
-        cc.log("ACTIVITY_TRANSITIONS");
         
         return true;
     },
@@ -48,7 +46,7 @@ var MenuScene = cc.Scene.extend({
             sender.loadTextureNormal(sender.selectedRes);
             cc.director.runScene(
                 new cc.TransitionFade(
-                    1,
+                    config.sceneTransitionSpeed,
                     ActivityMenuLayer.getScene(GameState.currentMapID)
                 )
             );
@@ -58,9 +56,11 @@ var MenuScene = cc.Scene.extend({
         if (type === ccui.Widget.TOUCH_ENDED) {
             cc.audioEngine.playEffect(audioRes.click);
             
+            sender.loadTextureNormal(sender.selectedRes);
+            
             cc.director.runScene(
                 new cc.TransitionFade(
-                    1,
+                    config.sceneTransitionSpeed,
                     new CreditsScene()
                 )
             );
