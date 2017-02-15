@@ -9,11 +9,70 @@ var ActivityMenuLayer = cc.Layer.extend({
         // 2. add the activity btns
         var activitiesIDs = Object.keys(world[mapID]);
         
-        var positions = [
-            cc.p(200, 125), cc.p(512, 125), cc.p(830, 125),
-            cc.p(830, 325), cc.p(512, 325), cc.p(200, 325),
-            cc.p(200, 475), cc.p(512, 475)
-        ];
+        var positions;
+        switch(mapID) {
+            case "sea":
+                positions = [
+                    cc.p(160, this.size.height - 110),
+                    cc.p(165, this.size.height - 255),
+                    cc.p(114, this.size.height - 410),
+                    cc.p(200, this.size.height - 517),
+                    cc.p(355, this.size.height - 478),
+                    cc.p(451, this.size.height - 306),
+                    cc.p(372, this.size.height - 190),
+                    cc.p(327, this.size.height - 337),
+                    cc.p(505, this.size.height - 438),
+                    cc.p(620, this.size.height - 380),
+                    cc.p(640, this.size.height - 144),
+                    cc.p(502, this.size.height - 142),
+                    cc.p(925, this.size.height - 297),
+                    cc.p(890, this.size.height - 490),
+                    cc.p(760, this.size.height - 380),
+                    cc.p(883, this.size.height - 148)
+                ];
+                break;
+            case "beach":
+                positions = [
+                    cc.p(825, this.size.height - 350),
+                    cc.p(650, this.size.height - 400),
+                    cc.p(760, this.size.height - 510),
+                    cc.p(960, this.size.height - 295),
+                    cc.p(875, this.size.height - 145),
+                    cc.p(680, this.size.height - 150),
+                    cc.p(585, this.size.height - 280),
+                    cc.p(510, this.size.height - 490),
+                    cc.p(350, this.size.height - 540),
+                    cc.p(290, this.size.height - 415),
+                    cc.p(435, this.size.height - 300),
+                    cc.p(510, this.size.height - 135),
+                    cc.p(380, this.size.height - 60),
+                    cc.p(100, this.size.height - 220),
+                    cc.p(260, this.size.height - 270),
+                    cc.p(230, this.size.height - 140)
+                ];
+                break;
+            case "earth":
+                positions = [
+                    cc.p(80, this.size.height - 475),
+                    cc.p(170, this.size.height - 355),
+                    cc.p(325, this.size.height - 322),
+                    cc.p(490, this.size.height - 460),
+                    cc.p(330, this.size.height - 460),
+                    cc.p(575, this.size.height - 380),
+                    cc.p(665, this.size.height - 510),
+                    cc.p(840, this.size.height - 515),
+                    cc.p(860, this.size.height - 250),
+                    cc.p(690, this.size.height - 285),
+                    cc.p(785, this.size.height - 415),
+                    cc.p(880, this.size.height - 130),
+                    cc.p(650, this.size.height - 100),
+                    cc.p(450, this.size.height - 170),
+                    cc.p(265, this.size.height - 230),
+                    cc.p(180, this.size.height - 110)
+                ];
+                break;
+        }
+        
         var btnCount = 0;
         
         var btns = {};
@@ -71,10 +130,11 @@ var ActivityMenuLayer = cc.Layer.extend({
             );
             this.addChild(particles);
             
+            var prevScale = btns[GameState.openedActivity].getScale();
             btns[GameState.openedActivity].runAction(
                 new cc.Sequence(
-                    new cc.ScaleTo(0.2, 1.2),
-                    new cc.ScaleTo(0.2, 1)
+                    new cc.ScaleTo(0.2, prevScale + 0.2),
+                    new cc.ScaleTo(0.2, prevScale)
                 )
             );
             

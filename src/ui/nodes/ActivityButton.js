@@ -48,11 +48,13 @@ var ActivityButton = ccui.Button.extend({
         this.addChild(star2);
         this.addChild(star3);
         
+        this.setScale(0.7);
+        
         return true;
     },
     onActivityButtonTouch: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             var activityID = sender.getUserData().activityID;
             cc.director.runScene(
