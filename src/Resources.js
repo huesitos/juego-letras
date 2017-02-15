@@ -8,6 +8,7 @@ var res = {
     starsBgB_png: "res/imgs/stars_bg.png",
     starsBg_png: "res/imgs/activityMenu/stars_bg.png",
     
+    creditsBg_png: "res/imgs/credits_bg.png",
     beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
     seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
 };
@@ -182,7 +183,10 @@ var mapsImgRes = {
 // fonts
 
 var fonts = {
-    gameFont: {type:"font", name: "AndikaNewBasic-B", srcs: ["res/fonts/AndikaNewBasic-B.tff"]}
+    gameFont: {type:"font", name: "AndikaNewBasicR", srcs: ["res/fonts/AndikaNewBasicR.ttf"]},
+    titleFont: {type:"font", name: "AndikaNewBasicB", srcs: ["res/fonts/AndikaNewBasicB.ttf"]},
+    subTitleFont: {type:"font", name: "AndikaNewBasicBI", srcs: ["res/fonts/AndikaNewBasicBI.ttf"]},
+    textItalic: {type:"font", name: "AndikaNewBasicI", srcs: ["res/fonts/AndikaNewBasicI.ttf"]}
 };
 
 // static res - colors, data
