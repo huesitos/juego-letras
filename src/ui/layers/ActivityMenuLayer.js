@@ -111,7 +111,7 @@ var ActivityMenuLayer = cc.Layer.extend({
     },
     onNavigateToMap: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             var mapID = sender.getUserData().mapID;
             GameState.openedMapID = mapID;
@@ -127,7 +127,7 @@ var ActivityMenuLayer = cc.Layer.extend({
     },
     onNavigateToPrevMap: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             var mapID = sender.getUserData().mapID;
             GameState.openedMapID = mapID;
@@ -143,7 +143,7 @@ var ActivityMenuLayer = cc.Layer.extend({
     },
     onBackBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
-            cc.audioEngine.playEffect(audioRes.click);
+            audioManager.playEffect(audioRes.click);
             
             cc.director.runScene(
                 new cc.TransitionFade(

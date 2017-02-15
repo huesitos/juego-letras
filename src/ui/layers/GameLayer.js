@@ -81,7 +81,7 @@ var GameLayer = cc.Layer.extend({
             
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
-                cc.audioEngine.playEffect(audioRes.success);
+                audioManager.playEffect(audioRes.success);
                 sender.onClicked();
                 
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
@@ -92,7 +92,7 @@ var GameLayer = cc.Layer.extend({
                 
                 sender.runAction(jumpAction);
             } else {
-                cc.audioEngine.playEffect(audioRes.failure);
+                audioManager.playEffect(audioRes.failure);
                 
                 var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
@@ -273,7 +273,7 @@ var GameLayer = cc.Layer.extend({
     },
     onActivityCompleted: function (event) {
         // end activity
-        var effectID = cc.audioEngine.playEffect(audioRes.cheering);
+        var effectID = audioManager.playEffect(audioRes.cheering);
 
         var earnedStars = this.activity.getEarnedStars();
         GD.completeActivity(earnedStars);
@@ -361,7 +361,7 @@ var GameLayer = cc.Layer.extend({
         this.runAction(new cc.Sequence(
             new cc.DelayTime(5.5),
             new cc.CallFunc(function () {
-                cc.audioEngine.stopEffect(effectID);
+                audioManager.stopEffect(effectID);
                 cc.director.runScene(ActivityMenuLayer.getScene(GameState.openedMapID));
             })
         ));
@@ -371,7 +371,7 @@ var GameLayer = cc.Layer.extend({
 
         if (this.activity.hasTimerFinished()) {
             this.unscheduleAllCallbacks();
-            cc.audioEngine.playEffect(audioRes.failure);
+            audioManager.playEffect(audioRes.failure);
             
             // hide all the labels
             this.optionButtons.forEach(function (btn) {
