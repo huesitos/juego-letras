@@ -71,8 +71,8 @@ var seaImgRes = {
     seaFloor_png: "res/imgs/sea/sea_floor.png",
     seaWater_png: "res/imgs/sea/sea_water.png",
     seaMiddle_png: "res/imgs/sea/sea_middle.png",
+    seaMiddleFg_png: "res/imgs/sea/sea_middle_forground.png",
     seaTop_png: "res/imgs/sea/sea_top.png",
-    seaOctopus_png: "res/imgs/sea/sea_octopus.png",
     
     seaMapBg_png: "res/imgs/activityMenu/sea_map_bg.png",
     seaMapBtn_png: "res/imgs/activityMenu/sea_map.png",
@@ -127,63 +127,6 @@ var earthImgRes = {
     plantIcon_png: "res/imgs/activityMenu/plant_icon.png",
     snailIcon_png: "res/imgs/activityMenu/snail_icon.png",
     topoIcon_png: "res/imgs/activityMenu/topo_icon.png"
-};
-
-var rocksImgRes = [
-    {
-        normal: seaImgRes.rock1Normal_png,
-        cracked: seaImgRes.rock1Cracked_png
-    },
-    {
-        normal: seaImgRes.rock2Normal_png,
-        cracked: seaImgRes.rock2Cracked_png
-    },
-    {
-        normal: seaImgRes.rock3Normal_png,
-        cracked: seaImgRes.rock3Cracked_png
-    }
-];
-
-var fishesImgRes = [
-    {
-        normal: seaImgRes.fish1Normal_png,
-        selected: seaImgRes.fish1Selected_png
-    },
-    {
-        normal: seaImgRes.fish2Normal_png,
-        selected: seaImgRes.fish2Selected_png
-    },
-    {
-        normal: seaImgRes.fish3Normal_png,
-        selected: seaImgRes.fish3Selected_png
-    }
-];
-
-var activitiesImgRes = {
-    rocks: seaImgRes.rockIcon_png,
-    oysters: seaImgRes.oysterIcon_png,
-    chests: seaImgRes.chestIcon_png,
-    jellyfish: seaImgRes.jellyfishIcon_png,
-    octopus: seaImgRes.inkIcon_png,
-    bubbles: seaImgRes.bubbleIcon_png,
-    fisherman1: seaImgRes.fishermanIcon_png,
-    fisherman2: seaImgRes.fishermanIcon_png,
-    buckets: beachImgRes.bucketIcon_png,
-    crabs1: beachImgRes.crabIcon_png,
-    crabs2: beachImgRes.crabIcon_png,
-    turtles1: beachImgRes.turtleIcon_png,
-    turtles2: beachImgRes.turtleIcon_png,
-    topo: earthImgRes.topoIcon_png,
-    plant: earthImgRes.plantIcon_png,
-    pool: earthImgRes.poolIcon_png,
-    snail: earthImgRes.snailIcon_png,
-    hidden_chests: earthImgRes.chestIcon_png
-};
-
-var mapsImgRes = {
-    sea: seaImgRes.seaMapBtn_png,
-    beach: beachImgRes.beachMapBtn_png,
-    earth: earthImgRes.earthMapBtn_png
 };
 
 // fonts

@@ -14,6 +14,7 @@
     "jsList" : [
         "src/Resources.js",
         "src/data/GameData.js",
+        "src/data/ImagesData.js",
         
         "src/engine/AudioManager.js",
         "src/engine/Storage.js",

@@ -39,7 +39,7 @@ function GameState() {
 
         // the default unlocked activity and map
         this.gameProgress.maps["sea"].unlocked = true;
-        this.gameProgress.activities["rocks"].unlocked = true;
+        this.gameProgress.activities["rocks1"].unlocked = true;
         
         this.saveGameProgress();
     };
