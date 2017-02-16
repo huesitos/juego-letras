@@ -48,7 +48,11 @@ cc.LoaderScene = cc.Scene.extend({
         var logoHeight = 200;
 
         // bg
-        var bgLayer = self._bgLayer = new cc.LayerColor(cc.color(32, 32, 32, 255));
+        var bgLayer = self._bgLayer = new cc.LayerGradient(
+            cc.color(30, 156, 170, 255),
+            cc.color(38, 37, 99),
+            cc.p(0, 0)
+        );
         self.addChild(bgLayer, 0);
 
         //image move to CCSceneFile.js
@@ -64,9 +68,8 @@ cc.LoaderScene = cc.Scene.extend({
             lblHeight = -logoHeight / 2 - 10;
         }
         //loading percent
-        var label = self._label = new cc.LabelTTF("Loading... 0%", "Arial", fontSize);
+        var label = self._label = new cc.LabelTTF("0%","Arial", fontSize);
         label.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, lblHeight)));
-        label.setColor(cc.color(180, 180, 180));
         bgLayer.addChild(this._label, 10);
         return true;
     },
@@ -95,7 +98,7 @@ cc.LoaderScene = cc.Scene.extend({
      */
     onExit: function () {
         cc.Node.prototype.onExit.call(this);
-        var tmpStr = "Loading... 0%";
+        var tmpStr = "0%";
         this._label.setString(tmpStr);
     },
 
@@ -121,7 +124,7 @@ cc.LoaderScene = cc.Scene.extend({
             function (result, count, loadedCount) {
                 var percent = (loadedCount / count * 100) | 0;
                 percent = Math.min(percent, 100);
-                self._label.setString("Loading... " + percent + "%");
+                self._label.setString(percent + "%");
             }, function () {
                 if (self.cb)
                     self.cb.call(self.target);
