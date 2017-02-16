@@ -12,7 +12,7 @@ function GameState() {
         this.firstTime = true;
         this.currentMapID = "sea";
         this.openedMapID = "sea";
-        this.openedActivity = "rocks";
+        this.openedActivity = "rocks1";
         this.currentActivity = null;
         
         this.gameProgress = {

@@ -42,12 +42,17 @@ var MenuScene = cc.Scene.extend({
         
         return true;
     },
+    onExitTransitionDidStart: function () {
+        this._super();
+        
+        // if instructions is playing
+        cc.audioEngine.stopAllEffects();
+    },
     onPlayBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
             audioManager.playEffect(audioRes.click);
             
             GameState.openedMapID = GameState.currentMapID;
-            GameState.completeFirstTime();
             
             sender.loadTextureNormal(sender.selectedRes);
             cc.director.runScene(

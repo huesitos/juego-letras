@@ -273,7 +273,7 @@ var GameLayer = cc.Layer.extend({
     },
     onActivityCompleted: function (event) {
         // end activity
-        var effectID = audioManager.playEffect(audioRes.cheering);
+        audioManager.playEffect(audioRes.cheering);
 
         var earnedStars = this.activity.getEarnedStars();
         GD.completeActivity(earnedStars);
@@ -313,7 +313,7 @@ var GameLayer = cc.Layer.extend({
         this.runAction(new cc.Sequence(
             new cc.DelayTime(5.5),
             new cc.CallFunc(function () {
-                cc.audioEngine.stopEffect(effectID);
+                cc.audioEngine.stopEffect();
                 cc.director.runScene(
                     new cc.TransitionFade(
                         config.sceneTransitionSpeed,

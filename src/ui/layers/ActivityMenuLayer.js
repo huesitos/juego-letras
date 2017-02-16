@@ -112,6 +112,20 @@ var ActivityMenuLayer = cc.Layer.extend({
         
         return true;
     },
+    onEnter: function () {
+        this._super();
+        
+        if (GameState.firstTime) {
+            audioManager.playEffect(audioRes.instructions);
+            GameState.completeFirstTime();
+        }
+    },
+    onExitTransitionDidStart: function () {
+        this._super();
+        
+        // if instructions is playing
+        cc.audioEngine.stopAllEffects();
+    },
     onNavigateToMap: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
             audioManager.playEffect(audioRes.click);
@@ -145,7 +159,7 @@ var ActivityMenuLayer = cc.Layer.extend({
         }
     },
     onBackBtn: function (sender, type) {
-        if (type === ccui.Widget.TOUCH_ENDED) {
+        if (type === ccui.Widget.TOUCH_ENDED) {            
             audioManager.playEffect(audioRes.click);
             
             cc.director.runScene(
