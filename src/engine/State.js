@@ -6,8 +6,10 @@ function GameState() {
     this.openedMapID;
     this.currentActivity;
     this.openedActivity;
+    this.firstTime;
     
     this.resetGameProgress = function () {
+        this.firstTime = true;
         this.currentMapID = "sea";
         this.openedMapID = "sea";
         this.openedActivity = "rocks";
@@ -21,9 +23,9 @@ function GameState() {
         // create an object with the game progress
         Object.keys(world).forEach(function (map) {
             this.gameProgress.maps[map] = {};
-//            this.gameProgress.maps[map].unlocked = false;
+            this.gameProgress.maps[map].unlocked = false;
             //unlocked
-            this.gameProgress.maps[map].unlocked = true;
+//            this.gameProgress.maps[map].unlocked = true;
             
             Object.keys(world[map]).forEach(function (activity) {
                 this.gameProgress.activities[activity] = {};
@@ -45,6 +47,10 @@ function GameState() {
     };
     
     this.loadGameProgress = function () {
+        this.firstTime = Storage.loadItem("firstTime") === "false" ? 
+            false : true;
+        
+        // load activities progress
         var progress = Storage.loadObject("gameProgress");
         
         if (progress)
@@ -57,6 +63,7 @@ function GameState() {
             this.currentMapID = "sea";
         }
         
+        // open last map
         this.openedMapID = this.currentMapID;
         GD.openMap();
     };
@@ -90,6 +97,11 @@ function GameState() {
         GameState.openedMapID = map;
         
         this.saveGameProgress();
+    };
+    
+    this.completeFirstTime = function () {
+        this.firstTime = false;
+        Storage.saveItem("firstTime", this.firstTime);
     };
     
     this.getActivityScore = function (activityID) {

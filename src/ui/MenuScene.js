@@ -24,6 +24,11 @@ var MenuScene = cc.Scene.extend({
         playBtn.addTouchEventListener(this.onPlayBtn, this);
         this.addChild(playBtn);
         
+        if (GameState.firstTime) {
+            playBtn.runAction(Effects.createJerkAnimation());
+            audioManager.playEffect(audioRes.greetings);
+        }
+        
         var creditsBtn = new ccui.Button(
             res.creditsBtnNormal_png,
             res.creditsBtnSelected_png
@@ -42,6 +47,7 @@ var MenuScene = cc.Scene.extend({
             audioManager.playEffect(audioRes.click);
             
             GameState.openedMapID = GameState.currentMapID;
+            GameState.completeFirstTime();
             
             sender.loadTextureNormal(sender.selectedRes);
             cc.director.runScene(
