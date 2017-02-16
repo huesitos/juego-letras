@@ -40,6 +40,20 @@ var MenuScene = cc.Scene.extend({
         creditsBtn.addTouchEventListener(this.onCreditsBtn, this);
         this.addChild(creditsBtn);
         
+        //////////////////////////////
+        // 3. title
+        
+        var name = new cc.LabelTTF(
+            "Juego Letras",
+            _b_getFontName(fonts.subTitleFont),
+            50
+        );
+        name.setPosition(cc.p(
+            this.size.width / 2,
+            this.size.height * .85
+        ));
+        this.addChild(name);
+        
         return true;
     },
     onExitTransitionDidStart: function () {
