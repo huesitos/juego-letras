@@ -121,7 +121,16 @@ var HUDLayer = cc.Layer.extend({
         if (type === ccui.Widget.TOUCH_ENDED) {
             audioManager.playEffect(audioRes.click);
             
-            cc.log("asking for help");
+            this.pauseGame();
+            
+            this.runAction(new cc.Sequence(
+                new cc.DelayTime(8.5),
+                new cc.CallFunc(function () {
+                    this.resumeGame();
+                }, this)
+            ));
+            
+            audioManager.playEffect(audioRes.help);
         }
     },
     onReplayTouch: function (sender, type) {
@@ -136,14 +145,7 @@ var HUDLayer = cc.Layer.extend({
         if (type === ccui.Widget.TOUCH_ENDED) {
             audioManager.playEffect(audioRes.click);
             
-            // pause game layer
-            var gameLayer = this.getParent().getChildByName("gameLayer");
-            gameLayer.pause();
-            
-            var grayLayer = new cc.LayerColor(new cc.Color(0, 0, 0, 150));
-            grayLayer.setPosition(0, 0);
-            grayLayer.setName("grayLayer");
-            this.addChild(grayLayer, -1);
+            this.pauseGame();
             
             // resume button instead of pause
             this.pauseBtn.setVisible(false);
@@ -157,11 +159,7 @@ var HUDLayer = cc.Layer.extend({
         if (type === ccui.Widget.TOUCH_ENDED) {
             audioManager.playEffect(audioRes.click);
             
-            // remove game layer
-            var gameLayer = this.getParent().getChildByName("gameLayer");
-            gameLayer.resume();
-            
-            this.removeChild(this.getChildByName("grayLayer"));
+            this.resumeGame();
             
             // pause button instead of resume
             this.pauseBtn.setVisible(true);
@@ -190,5 +188,22 @@ var HUDLayer = cc.Layer.extend({
         this.helpBtn.setVisible(false);
         this.resumeBtn.setVisible(false);
         this.backBtn.setVisible(false);
+    },
+    pauseGame: function () {
+        // pause game layer
+        var gameLayer = this.getParent().getChildByName("gameLayer");
+        gameLayer.pause();
+
+        var grayLayer = new cc.LayerColor(new cc.Color(0, 0, 0, 150));
+        grayLayer.setPosition(0, 0);
+        grayLayer.setName("grayLayer");
+        this.addChild(grayLayer, -1);
+    },
+    resumeGame: function () {
+        // remove game layer
+        var gameLayer = this.getParent().getChildByName("gameLayer");
+        gameLayer.resume();
+
+        this.removeChild(this.getChildByName("grayLayer"));
     }
 });

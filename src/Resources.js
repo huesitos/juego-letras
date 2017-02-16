@@ -150,7 +150,8 @@ var audioRes = {
     success: "res/audio/success.mp3",
     failure: "res/audio/failure.mp3",
     cheering: "res/audio/cheering.mp3",
-    click: "res/audio/button-click.mp3"
+    click: "res/audio/button-click.mp3",
+    help: "res/audio/help.mp3"
 };
 
 var stimuliRes = {
