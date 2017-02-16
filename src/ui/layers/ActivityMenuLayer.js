@@ -41,7 +41,7 @@ var ActivityMenuLayer = cc.Layer.extend({
         //////////////////////////////
         // 3. add navigation btn to other maps
         var nextMap = MAP_TRANSITIONS[mapID];
-        if (nextMap && GameState.gameProgress.maps[nextMap].unlocked) {
+        if (nextMap && GameState.isMapUnlocked(nextMap)) {
             var nextMapBtn = new ccui.Button(mapsImgRes[nextMap]);
             nextMapBtn.attr({
                 x: this.size.width * .95,
@@ -74,14 +74,17 @@ var ActivityMenuLayer = cc.Layer.extend({
         
         // animate the opened activity
         if (GameState.openedActivity) {
+            var prevScale = btns[GameState.openedActivity].getScale();
             var particles = Effects.createSimpleParticles(
                 btns[GameState.openedActivity].getPosition()
             );
-            this.addChild(particles);
             
-            var prevScale = btns[GameState.openedActivity].getScale();
             btns[GameState.openedActivity].runAction(
                 new cc.Sequence(
+                    new cc.DelayTime(config.sceneTransitionSpeed),
+                    new cc.CallFunc(function () {
+                        this.addChild(particles);
+                    }.bind(this)),
                     new cc.ScaleTo(0.2, prevScale + 0.2),
                     new cc.ScaleTo(0.2, prevScale)
                 )

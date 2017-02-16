@@ -1129,18 +1129,22 @@ var ACTIVITY_TRANSITIONS = {};
 
 var prev;
 [].concat.apply([], Object.keys(world).map(function (map) {
-    var activities = Object.keys(map).map(function (activity) {
-        return activity;
-    });
+    var activities = Object.keys(world[map]).map(
+        function (activity) {
+            return world[map][activity].activityID;
+        }
+    );
 
     return activities;
 })).forEach(function (activity) {
-    if (!prev)
+    if (!prev) {
+        prev = activity;
         return;
-    else
+    }
+    else {
         ACTIVITY_TRANSITIONS[prev] = activity;
-    
-    prev = activity;
+        prev = activity;
+    }
 });
 
 ACTIVITY_TRANSITIONS = Object.freeze(ACTIVITY_TRANSITIONS);

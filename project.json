@@ -31,6 +31,7 @@
         
         "src/ui/nodes/OptionButton.js",
         "src/ui/nodes/ActivityButton.js",
+        "src/ui/nodes/StarsRibbon.js",
         
         "src/ui/layers/BackgroundLayer.js",
         "src/ui/layers/ActivityMenuLayer.js",

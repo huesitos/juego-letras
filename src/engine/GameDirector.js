@@ -16,7 +16,7 @@ function GameDirector() {
         var activitiesID = Object.keys(world[GameState.currentMapID]);
         
         var mapCompleted = activitiesID.map(function (id) {
-            return GameState.gameProgress.activities[id].played;
+            return GameState.isActivityPlayed(id);
         }).reduce(function (x, y) { return x && y; });
         
         if (mapCompleted) {

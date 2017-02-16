@@ -27,13 +27,13 @@ function GameState() {
             
             Object.keys(world[map]).forEach(function (activity) {
                 this.gameProgress.activities[activity] = {};
-//                this.gameProgress.activities[activity].unlocked = false;
-//                this.gameProgress.activities[activity].played = false;
-//                this.gameProgress.activities[activity].score = 0;
+                this.gameProgress.activities[activity].unlocked = false;
+                this.gameProgress.activities[activity].played = false;
+                this.gameProgress.activities[activity].score = 0;
                 // unlocked
-                this.gameProgress.activities[activity].unlocked = true;
-                this.gameProgress.activities[activity].played = true;
-                this.gameProgress.activities[activity].score = 3;
+//                this.gameProgress.activities[activity].unlocked = true;
+//                this.gameProgress.activities[activity].played = true;
+//                this.gameProgress.activities[activity].score = 3;
             }.bind(this));
         }.bind(this));
 
@@ -90,6 +90,22 @@ function GameState() {
         GameState.openedMapID = map;
         
         this.saveGameProgress();
+    };
+    
+    this.getActivityScore = function (activityID) {
+        return this.gameProgress.activities[activityID].score;
+    };
+    
+    this.isMapUnlocked = function (mapID) {
+        return this.gameProgress.maps[mapID].unlocked;
+    };
+    
+    this.isActivityPlayed = function (activityID) {
+        return this.gameProgress.activities[activityID].played;
+    };
+    
+    this.isActivityUnlocked = function (activityID) {
+        return this.gameProgress.activities[activityID].unlocked;
     };
 };
 
