@@ -33,7 +33,7 @@ var MenuScene = cc.Scene.extend({
             res.creditsBtnNormal_png,
             res.creditsBtnSelected_png
         );
-        creditsBtn.selectedRes = res.playBtnSelected_png;
+        creditsBtn.selectedRes = res.creditsBtnSelected_png;
         creditsBtn.setPosition(
             cc.p(this.size.width / 2, this.size.height * .15)
         );

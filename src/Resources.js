@@ -141,7 +141,7 @@ var fonts = {
 // static res - colors, data
 
 var staticRes = {
-    ribbonColor: new cc.Color(150, 130, 130)
+    ribbonColor: new cc.Color(180, 175, 175)
 };
 
 // audios

@@ -30,20 +30,21 @@ var HUDLayer = cc.Layer.extend({
         // 3. create game buttons
         
         var yPos = size.height * .85;
+        var gap = 30;
         
         this.helpBtn = new ccui.Button(uiImgRes.help_png);
         this.helpBtn.setPosition(cc.p(size.width * .95, yPos));
         this.helpBtn.addTouchEventListener(this.onHelpBtnTouch, this);
         this.addChild(this.helpBtn);
         
-        yPos -= (this.helpBtn.height / 2 + size.height * .05);
+        yPos -= (this.helpBtn.height / 2 + size.height * .05 + gap);
         
         this.replayBtn = new ccui.Button(uiImgRes.replay_png);
         this.replayBtn.setPosition(cc.p(size.width * .95, yPos));
         this.replayBtn.addTouchEventListener(this.onReplayTouch, this);
         this.addChild(this.replayBtn);
         
-        yPos -= (this.replayBtn.height / 2 + size.height * .05);
+        yPos -= (this.replayBtn.height / 2 + size.height * .05 + gap);
         
         this.pauseBtn = new ccui.Button(uiImgRes.pause_png);
         this.pauseBtn.setPosition(cc.p(size.width * .95, yPos));
