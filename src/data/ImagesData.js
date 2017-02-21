@@ -57,7 +57,7 @@ var activitiesImgRes = {
     earth_crabs: beachImgRes.crabIcon_png,
     turtles: beachImgRes.turtleIcon_png,
     star: beachImgRes.starIcon_png,
-    sea_pool: beachImgRes.poolIcon_png,
+    beach_pool: beachImgRes.poolIcon_png,
     topo: earthImgRes.topoIcon_png,
     plant: earthImgRes.plantIcon_png,
     pool: earthImgRes.poolIcon_png,

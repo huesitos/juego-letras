@@ -511,12 +511,12 @@ var world = {
     		type: UNIQUE_ANSWER,
     		goal: 10
     	},
-        pool1: {
+        beach_pool1: {
     		stimuli: ["ad", "ed", "id", "od", "ud"],
             review: ["an", "en", "in", "on", "un"],
             distractions: ["da", "de", "di", "do", "du"],
-            activityID: "pool1",
-            activityType: "sea_pool",
+            activityID: "beach_pool1",
+            activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
     		type: UNIQUE_ANSWER,
     		goal: 10

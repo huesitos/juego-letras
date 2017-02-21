@@ -71,7 +71,7 @@ BeachMap.getGameLayer = function (activityType, activity) {
             
             break;
         
-        case "pool":
+        case "beach_pool":
             var xPos = size.width * .27;
             var yPos = [100, 130, 100];
             

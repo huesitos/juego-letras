@@ -57,9 +57,9 @@ function GameState() {
     
     this.loadSavedGames = function () {        
         // load activities progress
-        var savedGames = Storage.loadObject("savedGames");
+        this.savedGames = Storage.loadObject("savedGames");
         
-        if (!savedGames)
+        if (!this.savedGames)
             this.resetGameProgress();
     };
 
