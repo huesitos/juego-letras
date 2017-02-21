@@ -26,7 +26,13 @@ SeaMap.getGameLayer = function (activityType, activity) {
             var xPos = size.width * .27;
             var yPos = [100, 130, 100];
             
-            gameLayer = new RocksLayer(
+            var rock1 = {
+                initState: seaRocksImgRes[0].normal,
+                clickedState: seaRocksImgRes[0].selected
+            }
+            
+            gameLayer = new GameLayer(
+                rock1,
                 {
                     xPos: xPos,
                     yPos: yPos
@@ -34,6 +40,19 @@ SeaMap.getGameLayer = function (activityType, activity) {
                 cc.winSize.width * .14,
                 activity
             );
+            
+            gameLayer.optionButtons[1].setStatesTextures(
+                seaRocksImgRes[1].normal,
+                seaRocksImgRes[1].selected
+            );
+            gameLayer.optionButtons[1].changeToNormal();
+
+            gameLayer.optionButtons[2].setStatesTextures(
+                seaRocksImgRes[2].normal,
+                seaRocksImgRes[2].selected
+            );
+            gameLayer.optionButtons[2].changeToNormal();
+            
             break;
             
         case "chests":
@@ -161,7 +180,13 @@ SeaMap.getGameLayer = function (activityType, activity) {
             var xPos = size.width * .27;
             var yPos = [180, 200, 180];
             
-            gameLayer = new FishermanLayer(
+            var fish1 = {
+                initState: fishesImgRes[0].normal,
+                clickedState: fishesImgRes[0].selected
+            }
+            
+            gameLayer = new GameLayer(
+                fish1,
                 {
                     xPos: xPos,
                     yPos: yPos
@@ -170,6 +195,18 @@ SeaMap.getGameLayer = function (activityType, activity) {
                 activity,
                 DOWN_DIRECTION
             );
+            
+            gameLayer.optionButtons[1].setStatesTextures(
+                fishesImgRes[1].normal,
+                fishesImgRes[1].selected
+            );
+            gameLayer.optionButtons[1].changeToNormal();
+
+            gameLayer.optionButtons[2].setStatesTextures(
+                fishesImgRes[2].normal,
+                fishesImgRes[2].selected
+            );
+            gameLayer.optionButtons[2].changeToNormal();
             
             gameLayer.optionButtons.forEach(function (button) {
                 button.setVisible(false);

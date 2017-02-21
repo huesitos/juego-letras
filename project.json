@@ -37,9 +37,7 @@
         "src/ui/layers/ActivityMenuLayer.js",
         "src/ui/layers/HUDLayer.js",
         "src/ui/layers/GameLayer.js",
-        "src/ui/layers/RocksLayer.js",
         "src/ui/layers/OctopusLayer.js",
-        "src/ui/layers/FishermanLayer.js",
         
         "src/ui/Effects.js",
         "src/ui/ActivityMenuScene.js",

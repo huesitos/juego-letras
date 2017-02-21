@@ -28,7 +28,13 @@ EarthMap.getGameLayer = function (activityType, activity) {
             var xPos = size.width * .27;
             var yPos = [180, 210, 180];
             
-            gameLayer = new RocksLayer(
+            var rock1 = {
+                initState: earthRocksImgRes[0].normal,
+                clickedState: earthRocksImgRes[0].selected
+            }
+            
+            gameLayer = new GameLayer(
+                rock1,
                 {
                     xPos: xPos,
                     yPos: yPos
@@ -36,6 +42,19 @@ EarthMap.getGameLayer = function (activityType, activity) {
                 cc.winSize.width * .14,
                 activity
             );
+            
+            gameLayer.optionButtons[1].setStatesTextures(
+                earthRocksImgRes[1].normal,
+                earthRocksImgRes[1].selected
+            );
+            gameLayer.optionButtons[1].changeToNormal();
+
+            gameLayer.optionButtons[2].setStatesTextures(
+                earthRocksImgRes[2].normal,
+                earthRocksImgRes[2].selected
+            );
+            gameLayer.optionButtons[2].changeToNormal();
+            
             break;
             
         case "hidden_chests":

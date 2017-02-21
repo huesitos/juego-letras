@@ -1,15 +1,30 @@
-var rocksImgRes = [
+var seaRocksImgRes = [
     {
         normal: seaImgRes.rock1Normal_png,
-        cracked: seaImgRes.rock1Cracked_png
+        selected: seaImgRes.rock1Selected_png
     },
     {
         normal: seaImgRes.rock2Normal_png,
-        cracked: seaImgRes.rock2Cracked_png
+        selected: seaImgRes.rock2Selected_png
     },
     {
         normal: seaImgRes.rock3Normal_png,
-        cracked: seaImgRes.rock3Cracked_png
+        selected: seaImgRes.rock3Selected_png
+    }
+];
+
+var earthRocksImgRes = [
+    {
+        normal: earthImgRes.rock1Normal_png,
+        selected: earthImgRes.rock1Selected_png
+    },
+    {
+        normal: earthImgRes.rock2Normal_png,
+        selected: earthImgRes.rock2Selected_png
+    },
+    {
+        normal: earthImgRes.rock3Normal_png,
+        selected: earthImgRes.rock3Selected_png
     }
 ];
 

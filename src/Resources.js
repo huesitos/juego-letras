@@ -37,11 +37,11 @@ var seaImgRes = {
     oysterClosed_png: "res/imgs/sea/oyster_closed.png",
     
     rock1Normal_png: "res/imgs/sea/rock1_normal.png",
-    rock1Cracked_png: "res/imgs/sea/rock1_cracked.png",
+    rock1Selected_png: "res/imgs/sea/rock1_cracked.png",
     rock2Normal_png: "res/imgs/sea/rock2_normal.png",
-    rock2Cracked_png: "res/imgs/sea/rock2_cracked.png",
+    rock2Selected_png: "res/imgs/sea/rock2_cracked.png",
     rock3Normal_png: "res/imgs/sea/rock3_normal.png",
-    rock3Cracked_png: "res/imgs/sea/rock3_cracked.png",
+    rock3Selected_png: "res/imgs/sea/rock3_cracked.png",
     
     chestClosed_png: "res/imgs/sea/chest_closed.png",
     chestOpened_png: "res/imgs/sea/chest_opened.png",
@@ -109,14 +109,25 @@ var beachImgRes = {
 var earthImgRes = {
     chestNormal_png: "res/imgs/earth/chest_normal.png",
     chestSelected_png: "res/imgs/earth/chest_selected.png",
+    
     poolNormal_png: "res/imgs/earth/pool_normal.png",
     poolSelected_png: "res/imgs/earth/pool_selected.png",
+    
     plantNormal_png: "res/imgs/earth/plant_normal.png",
     plantSelected_png: "res/imgs/earth/plant_selected.png",
+    
     snailNormal_png: "res/imgs/earth/snail_normal.png",
     snailSelected_png: "res/imgs/earth/snail_selected.png",
+    
     topoNormal_png: "res/imgs/earth/topo_normal.png",
     topoSelected_png: "res/imgs/earth/topo_selected.png",
+    
+    rock1Normal_png: "res/imgs/earth/earth_rock1_normal.png",
+    rock1Selected_png: "res/imgs/earth/earth_rock1_selected.png",
+    rock2Normal_png: "res/imgs/earth/earth_rock2_normal.png",
+    rock2Selected_png: "res/imgs/earth/earth_rock2_selected.png",
+    rock3Normal_png: "res/imgs/earth/earth_rock3_normal.png",
+    rock3Selected_png: "res/imgs/earth/earth_rock3_selected.png",
     
     mainLand_png: "res/imgs/earth/main_land.png",
     
