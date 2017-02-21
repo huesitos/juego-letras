@@ -941,7 +941,7 @@ var world = {
     		stimuli: ["za", "ze", "zi", "zo", "zu"],
             review: ["ja", "je", "ji", "jo", "ju"],
             distractions: ["la", "li", "le", "lo", "lu"],
-            activityID: "oyster26",
+            activityID: "earth_crabs4",
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
