@@ -165,7 +165,7 @@ var ActivityMenuLayer = cc.Layer.extend({
             cc.director.runScene(
                 new cc.TransitionFade(
                     config.sceneTransitionSpeed,
-                    new MenuScene()
+                    SavedSelectionLayer.getScene()
                 )
             );
         }

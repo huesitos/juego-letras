@@ -19,19 +19,19 @@ function GameState() {
         // create an object with the game progress
         Object.keys(world).forEach(function (map) {
             gameProgress.maps[map] = {};
-//            gameProgress.maps[map].unlocked = false;
+            gameProgress.maps[map].unlocked = false;
             //unlocked
-            gameProgress.maps[map].unlocked = true;
+            // gameProgress.maps[map].unlocked = true;
             
             Object.keys(world[map]).forEach(function (activity) {
                 gameProgress.activities[activity] = {};
-//                gameProgress.activities[activity].unlocked = false;
-//                gameProgress.activities[activity].played = false;
-//                gameProgress.activities[activity].score = 0;
+                gameProgress.activities[activity].unlocked = false;
+                gameProgress.activities[activity].played = false;
+                gameProgress.activities[activity].score = 0;
                 // unlocked
-                gameProgress.activities[activity].unlocked = true;
-                gameProgress.activities[activity].played = true;
-                gameProgress.activities[activity].score = 3;
+                // gameProgress.activities[activity].unlocked = true;
+                // gameProgress.activities[activity].played = true;
+                // gameProgress.activities[activity].score = 3;
             });
         });
 

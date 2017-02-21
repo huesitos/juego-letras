@@ -79,7 +79,7 @@ EarthMap.getGameLayer = function (activityType, activity) {
             
         case "plant":
             var xPos = size.width * .27;
-            var yPos = [180, 210, 180];
+            var yPos = [150, 180, 150];
             
             gameLayer = new GameLayer(
                 {
