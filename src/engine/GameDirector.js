@@ -13,18 +13,18 @@ function GameDirector() {
     
     var checkUnlockMap = function () {
         // check if the map is completed
-        var activitiesID = Object.keys(world[GameState.currentMapID]);
+        var activitiesID = Object.keys(world[GameState.getCurrentMapID()]);
         
         var mapCompleted = activitiesID.map(function (id) {
             return GameState.isActivityPlayed(id);
         }).reduce(function (x, y) { return x && y; });
         
         if (mapCompleted) {
-            var mapUnlock = MAP_TRANSITIONS[GameState.currentMapID];
+            var mapUnlock = MAP_TRANSITIONS[GameState.getCurrentMapID()];
             
             if (mapUnlock) {
                 GameState.unlockMap(mapUnlock);
-                this.openMap(GameState.openedMapID);
+                this.openMap(GameState.getOpenedMapID());
             } else {
                 // finish game
             }
@@ -33,9 +33,14 @@ function GameDirector() {
     
     this.openMap = function (mapID) {
         if (!mapID)
-            currentMap = Maps[GameState.openedMapID];
+            currentMap = Maps[GameState.getOpenedMapID()];
         else
             currentMap = Maps[mapID];
+    };
+    
+    this.openCurrentMap = function () {
+        GameState.setOpenedMapID(GameState.getCurrentMapID());
+        this.openMap(GameState.getOpenedMapID());
     };
         
     this.getActivityScene = function (activity) {
@@ -55,7 +60,7 @@ function GameDirector() {
         }
         
         checkUnlockMap();
-    };    
+    };
 }
 
 var GD = new GameDirector();

@@ -6,6 +6,7 @@ var res = {
     starOff_png: "res/imgs/activityMenu/starOff.png",
     starOffB_png: "res/imgs/starOff.png",
     starsBgB_png: "res/imgs/stars_bg.png",
+    starsBgM_png: "res/imgs/stars_bg_medium.png",
     starsBg_png: "res/imgs/activityMenu/stars_bg.png",
     
     playBtnNormal_png: "res/imgs/play_normal.png",
@@ -34,7 +35,7 @@ var uiImgRes = {
 
 var seaImgRes = {
     oysterOpened_png: "res/imgs/sea/oyster_opened.png",
-    oysterClosed_png: "res/imgs/sea/oyster_closed.png",
+    oysterSelected_png: "res/imgs/sea/oyster_closed.png",
     
     rock1Normal_png: "res/imgs/sea/rock1_normal.png",
     rock1Selected_png: "res/imgs/sea/rock1_cracked.png",
@@ -44,7 +45,7 @@ var seaImgRes = {
     rock3Selected_png: "res/imgs/sea/rock3_cracked.png",
     
     chestClosed_png: "res/imgs/sea/chest_closed.png",
-    chestOpened_png: "res/imgs/sea/chest_opened.png",
+    chestSelected_png: "res/imgs/sea/chest_opened.png",
     
     bubble_png: "res/imgs/sea/bubble.png",
     
@@ -152,7 +153,8 @@ var fonts = {
 // static res - colors, data
 
 var staticRes = {
-    ribbonColor: new cc.Color(180, 175, 175)
+    ribbonColor: new cc.Color(180, 175, 175),
+    textColor: cc.color.BLACK
 };
 
 // audios

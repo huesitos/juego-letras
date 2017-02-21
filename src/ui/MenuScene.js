@@ -24,10 +24,8 @@ var MenuScene = cc.Scene.extend({
         playBtn.addTouchEventListener(this.onPlayBtn, this);
         this.addChild(playBtn);
         
-        if (GameState.firstTime) {
-            playBtn.runAction(Effects.createJerkAnimation());
-            audioManager.playEffect(audioRes.greetings);
-        }
+        playBtn.runAction(Effects.createJerkAnimation());
+        audioManager.playEffect(audioRes.greetings);
         
         var creditsBtn = new ccui.Button(
             res.creditsBtnNormal_png,
@@ -65,16 +63,14 @@ var MenuScene = cc.Scene.extend({
     onPlayBtn: function (sender, type) {
         if (type === ccui.Widget.TOUCH_ENDED) {
             audioManager.playEffect(audioRes.click);
-            
-            GameState.openedMapID = GameState.currentMapID;
-            
             sender.loadTextureNormal(sender.selectedRes);
+                        
             cc.director.runScene(
                 new cc.TransitionFade(
                     config.sceneTransitionSpeed,
-                    ActivityMenuLayer.getScene(GameState.currentMapID)
+                    SavedSelectionLayer.getScene()
                 )
-            );
+            )
         }
     },
     onCreditsBtn: function (sender, type) {

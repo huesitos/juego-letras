@@ -177,7 +177,7 @@ var HUDLayer = cc.Layer.extend({
             cc.director.runScene(
                 new cc.TransitionFade(
                     config.sceneTransitionSpeed,
-                    ActivityMenuLayer.getScene(GameState.openedMapID)
+                    ActivityMenuLayer.getScene(GameState.getOpenedMapID())
                 )
             );
         }

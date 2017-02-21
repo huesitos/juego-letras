@@ -115,7 +115,7 @@ var ActivityMenuLayer = cc.Layer.extend({
     onEnter: function () {
         this._super();
         
-        if (GameState.firstTime) {
+        if (GameState.isFirstTime()) {
             audioManager.playEffect(audioRes.instructions);
             GameState.completeFirstTime();
         }
@@ -131,7 +131,7 @@ var ActivityMenuLayer = cc.Layer.extend({
             audioManager.playEffect(audioRes.click);
             
             var mapID = sender.getUserData().mapID;
-            GameState.openedMapID = mapID;
+            GameState.setOpenedMapID(mapID);
             GD.openMap();
                 
             cc.director.runScene(
@@ -147,7 +147,7 @@ var ActivityMenuLayer = cc.Layer.extend({
             audioManager.playEffect(audioRes.click);
             
             var mapID = sender.getUserData().mapID;
-            GameState.openedMapID = mapID;
+            GameState.setOpenedMapID(mapID);
             GD.openMap();
                 
             cc.director.runScene(

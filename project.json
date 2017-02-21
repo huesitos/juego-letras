@@ -32,12 +32,14 @@
         "src/ui/nodes/OptionButton.js",
         "src/ui/nodes/ActivityButton.js",
         "src/ui/nodes/StarsRibbon.js",
+        "src/ui/nodes/SavedGameButton.js",
         
         "src/ui/layers/BackgroundLayer.js",
         "src/ui/layers/ActivityMenuLayer.js",
         "src/ui/layers/HUDLayer.js",
         "src/ui/layers/GameLayer.js",
         "src/ui/layers/OctopusLayer.js",
+        "src/ui/layers/SavedSelectionLayer.js",
         
         "src/ui/Effects.js",
         "src/ui/ActivityMenuScene.js",

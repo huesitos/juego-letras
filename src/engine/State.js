@@ -1,123 +1,171 @@
-function GameState() {
-    // map that is being played
-    // defaults to sea
-    this.currentMapID;
-    // the last visited map
-    this.openedMapID;
-    this.currentActivity;
-    this.openedActivity;
-    this.firstTime;
-    
-    this.resetGameProgress = function () {
-        this.firstTime = true;
-        this.currentMapID = "sea";
-        this.openedMapID = "sea";
-        this.openedActivity = "rocks1";
-        this.currentActivity = null;
-        
-        this.gameProgress = {
-            maps: {},
-            activities: {}
-        };
+var GAME_PROGRESS_PROTOTYPE = {
+    maps: {}, // data for each map
+    activities: {}, // data for each activity
+    firstTime: true,
+    currentMapID: "sea" // map that is being played
+};
+var MAX_SAVED_GAMES = 15;
 
+function GameState() {
+    // the last visited map
+    var openedMapID;
+    this.openedActivityID;
+    this.currentActivity;
+    var selectedSavedGame;
+    
+    function createGameProgressObject() {
+        var gameProgress = copyObject(GAME_PROGRESS_PROTOTYPE);
+        
         // create an object with the game progress
         Object.keys(world).forEach(function (map) {
-            this.gameProgress.maps[map] = {};
-            this.gameProgress.maps[map].unlocked = false;
+            gameProgress.maps[map] = {};
+            gameProgress.maps[map].unlocked = false;
             //unlocked
-//            this.gameProgress.maps[map].unlocked = true;
+//            gameProgress.maps[map].unlocked = true;
             
             Object.keys(world[map]).forEach(function (activity) {
-                this.gameProgress.activities[activity] = {};
-                this.gameProgress.activities[activity].unlocked = false;
-                this.gameProgress.activities[activity].played = false;
-                this.gameProgress.activities[activity].score = 0;
+                gameProgress.activities[activity] = {};
+                gameProgress.activities[activity].unlocked = false;
+                gameProgress.activities[activity].played = false;
+                gameProgress.activities[activity].score = 0;
                 // unlocked
-//                this.gameProgress.activities[activity].unlocked = true;
-//                this.gameProgress.activities[activity].played = true;
-//                this.gameProgress.activities[activity].score = 3;
-            }.bind(this));
-        }.bind(this));
+//                gameProgress.activities[activity].unlocked = true;
+//                gameProgress.activities[activity].played = true;
+//                gameProgress.activities[activity].score = 3;
+            });
+        });
 
         // the default unlocked activity and map
-        this.gameProgress.maps["sea"].unlocked = true;
-        this.gameProgress.activities["rocks1"].unlocked = true;
+        gameProgress.maps["sea"].unlocked = true;
+        gameProgress.activities["rocks1"].unlocked = true;
         
-        this.saveGameProgress();
-    };
+        return gameProgress;
+    }
     
-    this.loadGameProgress = function () {
-        this.firstTime = Storage.loadItem("firstTime") === "false" ? 
-            false : true;
+    this.resetGameProgress = function () {
+        openedMapID = "sea";
+        this.openedActivityID = "rocks1";
+        this.currentActivity = null;
+        this.savedGames = {};
         
-        // load activities progress
-        var progress = Storage.loadObject("gameProgress");
-        
-        if (progress)
-            this.gameProgress = progress;
-        else
-            this.resetGameProgress();
-        
-        this.currentMapID = Storage.loadItem("currentMapID");
-        if (!this.currentMapID) {
-            this.currentMapID = "sea";
+        for (var i = 1; i <= MAX_SAVED_GAMES; i++) {
+            this.savedGames[i] = createGameProgressObject();
         }
         
-        // open last map
-        this.openedMapID = this.currentMapID;
-        GD.openMap();
+        this.saveGames();
+    };
+    
+    this.loadSavedGames = function () {        
+        // load activities progress
+        var savedGames = Storage.loadObject("savedGames");
+        
+        if (!savedGames)
+            this.resetGameProgress();
     };
 
-    this.saveGameProgress = function () {
-        Storage.saveItem("currentMapID", this.currentMapID);
-        Storage.saveObject("gameProgress", this.gameProgress);
+    this.saveGames = function () {
+        Storage.saveObject("savedGames", this.savedGames);
     };
     
     this.saveActivityProgress = function (activity, score) {
-        var prevScore = this.gameProgress.activities[activity].score;
+        var prevScore = this.savedGames[
+            selectedSavedGame
+        ].activities[activity].score;
         
-        if(prevScore < score) 
-            this.gameProgress.activities[activity].score = score;
-        this.gameProgress.activities[activity].played = true;
+        // save new score if it's better than previous one
+        if  (prevScore < score)
+            this.savedGames[
+                selectedSavedGame
+            ].activities[activity].score = score;
         
-        this.saveGameProgress();
+        // set activity as played
+        this.savedGames[
+            selectedSavedGame
+        ].activities[activity].played = true;
+        
+        this.saveGames();
     };
     
     this.unlockActivity = function (activity) {
-        this.gameProgress.activities[activity].unlocked = true;
-        this.openedActivity = activity;
+        this.savedGames[
+            selectedSavedGame
+        ].activities[activity].unlocked = true;
+        this.openedActivityID = activity;
         
-        this.saveGameProgress();
+        this.saveGames();
     };
     
     this.unlockMap = function (map) {
-        this.gameProgress.maps[map].unlocked = true;
+        this.savedGames[
+            selectedSavedGame
+        ].maps[map].unlocked = true;
         
-        GameState.currentMapID = map;
-        GameState.openedMapID = map;
+        this.savedGames[
+            selectedSavedGame
+        ].currentMapID = map;
+        openedMapID = map;
         
-        this.saveGameProgress();
+        this.saveGames();
     };
     
     this.completeFirstTime = function () {
-        this.firstTime = false;
-        Storage.saveItem("firstTime", this.firstTime);
+        this.savedGames[
+            selectedSavedGame
+        ].firstTime = false;
+        
+        this.saveGames();
     };
     
     this.getActivityScore = function (activityID) {
-        return this.gameProgress.activities[activityID].score;
+        return this.savedGames[
+            selectedSavedGame
+        ].activities[activityID].score;
+    };
+    
+    this.getCurrentMapID = function () {
+        return this.savedGames[
+            selectedSavedGame
+        ].currentMapID;
+    };
+    
+    this.getOpenedMapID = function () {
+        return openedMapID;
+    };
+    
+    this.getSavedGameProgress = function (saveID) {
+        return this.savedGames[saveID];
+    };
+    
+    this.setOpenedMapID = function (map) {
+        openedMapID = map;
+    };
+    
+    this.setSelectedSavedGame = function (savedGameID) {
+        selectedSavedGame = savedGameID;
+    };
+    
+    this.isFirstTime = function () {
+        return this.savedGames[
+            selectedSavedGame
+        ].firstTime;
     };
     
     this.isMapUnlocked = function (mapID) {
-        return this.gameProgress.maps[mapID].unlocked;
+        return this.savedGames[
+            selectedSavedGame
+        ].maps[mapID].unlocked;
     };
     
     this.isActivityPlayed = function (activityID) {
-        return this.gameProgress.activities[activityID].played;
+        return this.savedGames[
+            selectedSavedGame
+        ].activities[activityID].played;
     };
     
     this.isActivityUnlocked = function (activityID) {
-        return this.gameProgress.activities[activityID].unlocked;
+        return this.savedGames[
+            selectedSavedGame
+        ].activities[activityID].unlocked;
     };
 };
 

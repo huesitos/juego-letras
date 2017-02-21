@@ -13,7 +13,7 @@ function OptionButton(spriteNormal, spriteClicked, option) {
         _b_getFontName(fonts.gameFont), 
         50
     );
-    label.setColor(cc.color.BLACK);
+    label.setColor(staticRes.textColor);
     optionButton.addChild(label, 2);
     label.attr({
         x: optionButton.width / 2,
