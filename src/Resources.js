@@ -89,12 +89,21 @@ var seaImgRes = {
 var beachImgRes = {
     crabNormal_png: "res/imgs/beach/crab_normal.png",
     crabSelected_png: "res/imgs/beach/crab_selected.png",
+    
     bucketNormal_png: "res/imgs/beach/bucket_normal.png",
     bucketSelected_png: "res/imgs/beach/bucket_selected.png",
+    
     turtleNormal_png: "res/imgs/beach/turtle_normal.png",
     turtleSelected_png: "res/imgs/beach/turtle_selected.png",
+    
     turtleTimedNormal_png: "res/imgs/beach/turtle_normal_timed.png",
     turtleTimedSelected_png: "res/imgs/beach/turtle_selected_timed.png",
+    
+    poolNormal_png: "res/imgs/beach/sea_pool_normal.png",
+    poolSelected_png: "res/imgs/beach/sea_pool_selected.png",
+    
+    starNormal_png: "res/imgs/beach/star_normal.png",
+    starSelected_png: "res/imgs/beach/star_selected.png",
     
     beachFront_png: "res/imgs/beach/beach_front.png",
     beachTop_png: "res/imgs/beach/beach_top.png",
@@ -102,6 +111,8 @@ var beachImgRes = {
     
     beachMapBg_png: "res/imgs/activityMenu/beach_map_bg.png",
     beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
+    poolIcon_png: "res/imgs/activityMenu/beach_pool_icon.png",
+    starIcon_png: "res/imgs/activityMenu/star_icon.png",
     bucketIcon_png: "res/imgs/activityMenu/bucket_icon.png",
     crabIcon_png: "res/imgs/activityMenu/crab_icon.png",
     turtleIcon_png: "res/imgs/activityMenu/turtle_icon.png"

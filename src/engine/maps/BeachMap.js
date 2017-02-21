@@ -70,6 +70,44 @@ BeachMap.getGameLayer = function (activityType, activity) {
             );
             
             break;
+        
+        case "pool":
+            var xPos = size.width * .27;
+            var yPos = [100, 130, 100];
+            
+            gameLayer = new GameLayer(
+                {
+                    initState: beachImgRes.poolNormal_png,
+                    clickedState: beachImgRes.poolSelected_png
+                },
+                {
+                    xPos: xPos,
+                    yPos: yPos
+                },
+                cc.winSize.width * .14,
+                activity
+            );
+            
+            break;
+        
+        case "star":
+            var xPos = size.width * .27;
+            var yPos = [150, 180, 150];
+            
+            gameLayer = new GameLayer(
+                {
+                    initState: beachImgRes.starNormal_png,
+                    clickedState: beachImgRes.starSelected_png
+                },
+                {
+                    xPos: xPos,
+                    yPos: yPos
+                },
+                cc.winSize.width * .14,
+                activity
+            );
+            
+            break;
     }
     
     return gameLayer;

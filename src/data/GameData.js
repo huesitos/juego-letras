@@ -461,12 +461,12 @@ var world = {
             time: 10,
     		goal: 10
     	},
-        turtles1: {
+        star1: {
     		stimuli: ["ab", "eb", "ib", "ob", "ub"],
             review: ["am", "em", "im", "om", "um"],
             distractions: ["ap", "ep", "ip", "op", "up"],
-            activityID: "turtles1",
-            activityType: "turtles",
+            activityID: "star1",
+            activityType: "star",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: UNIQUE_ANSWER,
     		goal: 10
@@ -511,12 +511,12 @@ var world = {
     		type: UNIQUE_ANSWER,
     		goal: 10
     	},
-        crabs3: {
+        pool1: {
     		stimuli: ["ad", "ed", "id", "od", "ud"],
             review: ["an", "en", "in", "on", "un"],
             distractions: ["da", "de", "di", "do", "du"],
-            activityID: "crabs3",
-            activityType: "crabs",
+            activityID: "pool1",
+            activityType: "sea_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
     		type: UNIQUE_ANSWER,
     		goal: 10
