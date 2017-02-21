@@ -132,6 +132,7 @@ var GameLayer = cc.Layer.extend({
                 new cc.RotateTo(0.15, -10),
                 new cc.RotateTo(0.15, 10),
                 new cc.RotateTo(0.15, 0),
+                new cc.DelayTime(.25),
                 new cc.MoveTo(
                     0.25,
                     cc.p(this.size.width * .04, this.size.height / 2)
