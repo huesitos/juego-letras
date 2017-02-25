@@ -41,7 +41,7 @@ function StimuliPicker() {
         }
         
         // randomize the order of stimuli
-        shuffle(stimuliList);
+        Utils.shuffle(stimuliList);
     };
     
     this.setRepetitionValues = function (rep, revRep) {

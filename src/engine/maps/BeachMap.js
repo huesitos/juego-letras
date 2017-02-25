@@ -1,4 +1,4 @@
-var BeachMap = new Map("beach");
+var BeachMap = new Map();
 BeachMap.getGameLayer = function (activityType, activity) {
     var gameLayer;
     var size = cc.winSize;

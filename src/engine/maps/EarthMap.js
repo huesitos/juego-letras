@@ -1,4 +1,4 @@
-var EarthMap = new Map("earth");
+var EarthMap = new Map();
 EarthMap.getGameLayer = function (activityType, activity) {
     var gameLayer;
     var size = cc.winSize;

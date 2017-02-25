@@ -1,4 +1,4 @@
-var SeaMap = new Map("sea");
+var SeaMap = new Map();
 SeaMap.getGameLayer = function (activityType, activity) {
     var gameLayer;
     var size = cc.winSize;

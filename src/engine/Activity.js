@@ -51,7 +51,7 @@ function Activity(activityData) {
         var pickIndex; // distraction index random pick
         
         for (var i = 0; i < amount; i++) {
-            pickIndex = randomNumber(0, distractions.length);
+            pickIndex = Utils.randomNumber(0, distractions.length);
             selectedDist.push(distractions[pickIndex]);
             distractions.splice(pickIndex, 1); // don't repeat distractions
         }
@@ -69,7 +69,7 @@ function Activity(activityData) {
         distractions.push(stimulus);
         
         questionOptions = distractions;
-        shuffle(questionOptions);
+        Utils.shuffle(questionOptions);
     };
     
     function onRightAnswer() {

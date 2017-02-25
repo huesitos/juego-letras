@@ -15,9 +15,7 @@ var res = {
     creditsBtnSelected_png: "res/imgs/credits_selected.png",
     
     creditsBg_png: "res/imgs/credits_bg.png",
-    menuBg_png: "res/imgs/menu_bg.png",
-    beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
-    seaMapBtn_png: "res/imgs/activityMenu/sea_map.png"
+    menuBg_png: "res/imgs/menu_bg.png"
 };
 
 var uiImgRes = {
@@ -75,15 +73,19 @@ var seaImgRes = {
     seaMiddleFg_png: "res/imgs/sea/sea_middle_forground.png",
     seaTop_png: "res/imgs/sea/sea_top.png",
     
-    seaMapBg_png: "res/imgs/activityMenu/sea_map_bg.png",
-    seaMapBtn_png: "res/imgs/activityMenu/sea_map.png",
-    bubbleIcon_png: "res/imgs/activityMenu/bubble_icon.png",
-    chestIcon_png: "res/imgs/activityMenu/chest_icon.png",
-    fishermanIcon_png: "res/imgs/activityMenu/fisherman_icon.png",
-    inkIcon_png: "res/imgs/activityMenu/ink_icon.png",
-    jellyfishIcon_png: "res/imgs/activityMenu/jellyfish_icon.png",
-    oysterIcon_png: "res/imgs/activityMenu/oyster_icon.png",
-    rockIcon_png: "res/imgs/activityMenu/rock_icon.png"
+    seaMapBg1_png: "res/imgs/activityMenu/maps/sea_map_bg_1.png",
+    seaMapBg2_png: "res/imgs/activityMenu/maps/sea_map_bg_2.png",
+    seaMapBg3_png: "res/imgs/activityMenu/maps/sea_map_bg_3.png",
+    seaMapBtn1_png: "res/imgs/activityMenu/sea_map1.png",
+    seaMapBtn2_png: "res/imgs/activityMenu/sea_map2.png",
+    seaMapBtn3_png: "res/imgs/activityMenu/sea_map3.png",
+    bubbleIcon_png: "res/imgs/activityMenu/activities/bubble_icon.png",
+    chestIcon_png: "res/imgs/activityMenu/activities/chest_icon.png",
+    fishermanIcon_png: "res/imgs/activityMenu/activities/fisherman_icon.png",
+    inkIcon_png: "res/imgs/activityMenu/activities/ink_icon.png",
+    jellyfishIcon_png: "res/imgs/activityMenu/activities/jellyfish_icon.png",
+    oysterIcon_png: "res/imgs/activityMenu/activities/oyster_icon.png",
+    rockIcon_png: "res/imgs/activityMenu/activities/rock_icon.png"
 };
 
 var beachImgRes = {
@@ -109,13 +111,17 @@ var beachImgRes = {
     beachTop_png: "res/imgs/beach/beach_top.png",
     beachSand_png: "res/imgs/beach/beach_sand.png",
     
-    beachMapBg_png: "res/imgs/activityMenu/beach_map_bg.png",
-    beachMapBtn_png: "res/imgs/activityMenu/beach_map.png",
-    poolIcon_png: "res/imgs/activityMenu/beach_pool_icon.png",
-    starIcon_png: "res/imgs/activityMenu/star_icon.png",
-    bucketIcon_png: "res/imgs/activityMenu/bucket_icon.png",
-    crabIcon_png: "res/imgs/activityMenu/crab_icon.png",
-    turtleIcon_png: "res/imgs/activityMenu/turtle_icon.png"
+    beachMapBg1_png: "res/imgs/activityMenu/maps/beach_map_bg_1.png",
+    beachMapBg2_png: "res/imgs/activityMenu/maps/beach_map_bg_2.png",
+    beachMapBg3_png: "res/imgs/activityMenu/maps/beach_map_bg_3.png",
+    beachMapBtn1_png: "res/imgs/activityMenu/beach_map1.png",
+    beachMapBtn2_png: "res/imgs/activityMenu/beach_map2.png",
+    beachMapBtn3_png: "res/imgs/activityMenu/beach_map3.png",
+    poolIcon_png: "res/imgs/activityMenu/activities/beach_pool_icon.png",
+    starIcon_png: "res/imgs/activityMenu/activities/star_icon.png",
+    bucketIcon_png: "res/imgs/activityMenu/activities/bucket_icon.png",
+    crabIcon_png: "res/imgs/activityMenu/activities/crab_icon.png",
+    turtleIcon_png: "res/imgs/activityMenu/activities/turtle_icon.png"
 };
 
 var earthImgRes = {
@@ -143,13 +149,17 @@ var earthImgRes = {
     
     mainLand_png: "res/imgs/earth/main_land.png",
     
-    earthMapBg_png: "res/imgs/activityMenu/earth_map_bg.png",
-    earthMapBtn_png: "res/imgs/activityMenu/earth_map.png",
-    chestIcon_png: "res/imgs/activityMenu/chest_earth_icon.png",
-    poolIcon_png: "res/imgs/activityMenu/pool_icon.png",
-    plantIcon_png: "res/imgs/activityMenu/plant_icon.png",
-    snailIcon_png: "res/imgs/activityMenu/snail_icon.png",
-    topoIcon_png: "res/imgs/activityMenu/topo_icon.png"
+    earthMapBg1_png: "res/imgs/activityMenu/maps/earth_map_bg_1.png",
+    earthMapBg2_png: "res/imgs/activityMenu/maps/earth_map_bg_2.png",
+    earthMapBg3_png: "res/imgs/activityMenu/maps/earth_map_bg_3.png",
+    earthMapBtn1_png: "res/imgs/activityMenu/earth_map1.png",
+    earthMapBtn2_png: "res/imgs/activityMenu/earth_map2.png",
+    earthMapBtn3_png: "res/imgs/activityMenu/earth_map3.png",
+    chestIcon_png: "res/imgs/activityMenu/activities/chest_earth_icon.png",
+    poolIcon_png: "res/imgs/activityMenu/activities/pool_icon.png",
+    plantIcon_png: "res/imgs/activityMenu/activities/plant_icon.png",
+    snailIcon_png: "res/imgs/activityMenu/activities/snail_icon.png",
+    topoIcon_png: "res/imgs/activityMenu/activities/topo_icon.png"
 };
 
 // fonts

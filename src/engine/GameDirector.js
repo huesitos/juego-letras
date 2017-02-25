@@ -13,7 +13,7 @@ function GameDirector() {
     
     var checkUnlockMap = function () {
         // check if the map is completed
-        var activitiesID = Object.keys(world[GameState.getCurrentMapID()]);
+        var activitiesID = Object.keys(WORLD[GameState.getCurrentMapID()]);
         
         var mapCompleted = activitiesID.map(function (id) {
             return GameState.isActivityPlayed(id);
@@ -33,9 +33,10 @@ function GameDirector() {
     
     this.openMap = function (mapID) {
         if (!mapID)
-            currentMap = Maps[GameState.getOpenedMapID()];
+            currentMap = Maps[GameState.getOpenedMapID().replace(/[0-9]/g, '')];
         else
-            currentMap = Maps[mapID];
+            currentMap = Maps[mapID.replace(/[0-9]/g, '')];
+        currentMap.setMapID(mapID);
     };
     
     this.openCurrentMap = function () {

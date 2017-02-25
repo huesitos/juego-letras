@@ -7,20 +7,9 @@ var ActivityMenuLayer = cc.Layer.extend({
         
         //////////////////////////////
         // 2. add the activity btns
-        var activitiesIDs = Object.keys(world[mapID]);
+        var activitiesIDs = Object.keys(WORLD[mapID]);
         
-        var positions;
-        switch(mapID) {
-            case "sea":
-                positions = seaPositions;
-                break;
-            case "beach":
-                positions = beachPositions;
-                break;
-            case "earth":
-                positions = earthPositions;
-                break;
-        }
+        var positions = positionsByMaps[mapID];
         
         var btnCount = 0;
         
@@ -42,7 +31,7 @@ var ActivityMenuLayer = cc.Layer.extend({
         // 3. add navigation btn to other maps
         var nextMap = MAP_TRANSITIONS[mapID];
         if (nextMap && GameState.isMapUnlocked(nextMap)) {
-            var nextMapBtn = new ccui.Button(mapsImgRes[nextMap]);
+            var nextMapBtn = new ccui.Button(mapsImgRes[nextMap].btn);
             nextMapBtn.attr({
                 x: this.size.width * .95,
                 y: this.size.height * .9
@@ -59,10 +48,10 @@ var ActivityMenuLayer = cc.Layer.extend({
             }
         });
         
-        if (prevMap) {
+        if (prevMap.length > 0) {
             prevMap = prevMap[0];
             
-            var prevMapBtn = new ccui.Button(mapsImgRes[prevMap]);
+            var prevMapBtn = new ccui.Button(mapsImgRes[prevMap].btn);
             prevMapBtn.attr({
                 x: this.size.width * .95,
                 y: this.size.height * .1
@@ -73,13 +62,13 @@ var ActivityMenuLayer = cc.Layer.extend({
         };
         
         // animate the opened activity
-        if (GameState.openedActivity) {
-            var prevScale = btns[GameState.openedActivity].getScale();
+        if (GameState.openedActivityID) {
+            var prevScale = btns[GameState.openedActivityID].getScale();
             var particles = Effects.createSimpleParticles(
-                btns[GameState.openedActivity].getPosition()
+                btns[GameState.openedActivityID].getPosition()
             );
             
-            btns[GameState.openedActivity].runAction(
+            btns[GameState.openedActivityID].runAction(
                 new cc.Sequence(
                     new cc.DelayTime(config.sceneTransitionSpeed),
                     new cc.CallFunc(function () {
@@ -90,7 +79,7 @@ var ActivityMenuLayer = cc.Layer.extend({
                 )
             );
             
-            GameState.openedActivity = null;
+            GameState.openedActivityID = null;
         }
         
         var backBtn = new ccui.Button(uiImgRes.back_png);

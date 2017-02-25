@@ -1,4 +1,6 @@
-function copyObject(object) {
+var Utils = {};
+
+Utils.copyObject = function (object) {
     return JSON.parse(JSON.stringify(object));
 }
 
@@ -8,7 +10,7 @@ function copyObject(object) {
 * @param {int} end Right most boundary and not inclusive
 */
 
-function randomNumber(start, end) {
+Utils.randomNumber = function (start, end) {
 	
 	if (start > end) {
 		throw "Start must be less than end";
@@ -23,7 +25,7 @@ function randomNumber(start, end) {
  * Shuffles array in place.
  * @param {Array} a items The array containing the items.
  */
-function shuffle(a) {
+Utils.shuffle = function (a) {
     var j, x, i;
     for (i = a.length; i; i--) {
         j = Math.floor(Math.random() * i);

@@ -5,10 +5,14 @@ function Map(mapID) {
     
     // methods
     
+    this.setMapID = function (map) {
+        mapID = map
+    };
+    
     // return the activity scene to be played by cc.director
     this.getActivityScene = function (activityID) {
         currentActivity = activityID;
-        var activityData = copyObject(world[mapID][activityID]);
+        var activityData = Utils.copyObject(WORLD[mapID][activityID]);
         
         var scene = new GameScene();
         var background = new BackgroundLayer();
@@ -32,9 +36,4 @@ function Map(mapID) {
 
         return scene;
     };
-    
-    // returns if the map has been completed
-//    this.isMapCompleted = function () {
-//        return currentLayer >= this.mapActivities.length;
-//    };
 };

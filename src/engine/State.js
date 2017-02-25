@@ -2,7 +2,7 @@ var GAME_PROGRESS_PROTOTYPE = {
     maps: {}, // data for each map
     activities: {}, // data for each activity
     firstTime: true,
-    currentMapID: "sea" // map that is being played
+    currentMapID: "sea1" // map that is being played
 };
 var MAX_SAVED_GAMES = 15;
 
@@ -14,16 +14,16 @@ function GameState() {
     var selectedSavedGame;
     
     function createGameProgressObject() {
-        var gameProgress = copyObject(GAME_PROGRESS_PROTOTYPE);
+        var gameProgress = Utils.copyObject(GAME_PROGRESS_PROTOTYPE);
         
         // create an object with the game progress
-        Object.keys(world).forEach(function (map) {
+        Object.keys(WORLD).forEach(function (map) {
             gameProgress.maps[map] = {};
             gameProgress.maps[map].unlocked = false;
             //unlocked
             // gameProgress.maps[map].unlocked = true;
             
-            Object.keys(world[map]).forEach(function (activity) {
+            Object.keys(WORLD[map]).forEach(function (activity) {
                 gameProgress.activities[activity] = {};
                 gameProgress.activities[activity].unlocked = false;
                 gameProgress.activities[activity].played = false;
@@ -36,14 +36,14 @@ function GameState() {
         });
 
         // the default unlocked activity and map
-        gameProgress.maps["sea"].unlocked = true;
+        gameProgress.maps["sea1"].unlocked = true;
         gameProgress.activities["rocks1"].unlocked = true;
         
         return gameProgress;
     }
     
     this.resetGameProgress = function () {
-        openedMapID = "sea";
+        openedMapID = "sea1";
         this.openedActivityID = "rocks1";
         this.currentActivity = null;
         this.savedGames = {};
@@ -170,6 +170,3 @@ function GameState() {
 };
 
 var GameState = new GameState();
-
-
-
