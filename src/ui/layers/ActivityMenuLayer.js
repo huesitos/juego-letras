@@ -121,7 +121,7 @@ var ActivityMenuLayer = cc.Layer.extend({
             
             var mapID = sender.getUserData().mapID;
             GameState.setOpenedMapID(mapID);
-            GD.openMap();
+            GD.openMap(mapID);
                 
             cc.director.runScene(
                 new cc.TransitionSlideInT(
@@ -137,7 +137,7 @@ var ActivityMenuLayer = cc.Layer.extend({
             
             var mapID = sender.getUserData().mapID;
             GameState.setOpenedMapID(mapID);
-            GD.openMap();
+            GD.openMap(mapID);
                 
             cc.director.runScene(
                 new cc.TransitionSlideInB(

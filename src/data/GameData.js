@@ -197,8 +197,6 @@ var WORLD = {
         rocks5: {
     		stimuli: ["fa", "fe", "fi", "fo", "fu"],
             review: [
-                "ma", "me", "mi", "mo", "mu",
-                "na", "ne", "ni", "no", "nu",
                 "sa", "se", "si", "so", "su"
             ],
             distractions: ["sa", "se", "si", "so", "su"],
@@ -291,7 +289,8 @@ var WORLD = {
             activityType: "jellyfish",
             backgroundImgs: [
                 seaImgRes.seaMiddle_png,
-                seaImgRes.seaMiddleFg_png
+                seaImgRes.seaMiddleFg_png,
+                seaImgRes.jellyfish_png
             ],
     		type: TIMED_LEVEL,
             time: 10,
@@ -333,7 +332,8 @@ var WORLD = {
             activityType: "jellyfish",
             backgroundImgs: [
                 seaImgRes.seaMiddle_png,
-                seaImgRes.seaMiddleFg_png
+                seaImgRes.seaMiddleFg_png,
+                seaImgRes.jellyfish_png
             ],
     		type: TIMED_LEVEL,
             time: 10,
@@ -386,7 +386,8 @@ var WORLD = {
             activityType: "jellyfish",
             backgroundImgs: [
                 seaImgRes.seaMiddle_png,
-                seaImgRes.seaMiddleFg_png
+                seaImgRes.seaMiddleFg_png,
+                seaImgRes.jellyfish_png
             ],
     		type: TIMED_LEVEL,
             time: 10,
@@ -812,7 +813,7 @@ var WORLD = {
             review: ["ara", "are", "ari", "aro", "aru"],
             distractions: ["ira", "ire", "iri", "iro", "iru"],
             activityID: "earth_crabs2",
-            activityType: "crabs",
+            activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
             time: 10,

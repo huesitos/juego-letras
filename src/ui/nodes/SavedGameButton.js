@@ -6,7 +6,6 @@ var SavedGameButton = ccui.Button.extend({
         var gameProgress = GameState.getSavedGameProgress(number);
         
         var iconResNormal, iconResSelected;
-        this.iconResSelected = iconResSelected;
         var currentMap = gameProgress.currentMapID;
         
         if (currentMap.includes("sea")) {
@@ -19,6 +18,7 @@ var SavedGameButton = ccui.Button.extend({
             iconResNormal = earthImgRes.topoNormal_png;
             iconResSelected = earthImgRes.topoSelected_png;
         }
+        this.iconResSelected = iconResSelected;
         
         // set button image based on the current map
         this._super(iconResNormal, iconResSelected);

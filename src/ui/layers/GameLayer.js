@@ -19,13 +19,15 @@ var GameLayer = cc.Layer.extend({
         this.optionButtons = [];
         var questionOptions = this.activity.getQuestionOptions();
         
-//        this.answerLabel = new cc.LabelTTF(
-//            this.activity.getRightOption(),
-//            _b_getFontName(fonts.gameFont),
-//            60
-//        );
-//        this.answerLabel.setPosition(cc.p(size.width / 2, size.height * .75));
-//        this.addChild(this.answerLabel);
+        this.answerLabel = new cc.LabelTTF(
+            this.activity.getRightOption(),
+            _b_getFontName(fonts.gameFont),
+            60
+        );
+        this.answerLabel.setPosition(
+            cc.p(this.size.width / 2, this.size.height * .75)
+        );
+        this.addChild(this.answerLabel);
         
         for (var i = 0; i < questionOptions.length; i++) {
             var optionButton = new OptionButton(
@@ -178,8 +180,6 @@ var GameLayer = cc.Layer.extend({
             btn.hideLabel();
         });
         
-        // TODO
-        // calculate the delay or set it, no magic numbers...
         if (this.customIntroAnimation) {
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(config.sceneTransitionSpeed),
@@ -267,7 +267,7 @@ var GameLayer = cc.Layer.extend({
                 optionButton.changeToNormal();
                 optionButton.showLabel();
             }
-//            this.answerLabel.setString(this.activity.getRightOption());
+            this.answerLabel.setString(this.activity.getRightOption());
             this.activity.playOptionAudio();
             this.configureTimedActivity();
         }

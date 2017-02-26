@@ -53,7 +53,7 @@ BeachMap.getGameLayer = function (activityType, activity) {
             
             if (activity.isTimedActivity()) {
                 res = {
-                    initState: beachImgRes.turtleTimedNormal_png,
+                    initState: beachImgRes.turtleTimedSelected_png,
                     clickedState: beachImgRes.turtleTimedSelected_png
                 };
             }
