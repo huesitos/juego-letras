@@ -10,6 +10,7 @@ var Maps = {
 function GameDirector() {
     // the map that is being played
     var currentMap;
+    this.gameCompleted = false;
     
     var checkUnlockMap = function () {
         // check if the map is completed
@@ -26,7 +27,7 @@ function GameDirector() {
                 GameState.unlockMap(mapUnlock);
                 this.openMap(GameState.getOpenedMapID());
             } else {
-                // finish game
+                this.gameCompleted = true;
             }
         }
     }.bind(this);

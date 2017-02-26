@@ -143,8 +143,8 @@ var WORLD = {
             activityID: "bubbles1",
             activityType: "bubbles",
             backgroundImgs: [
-                seaImgRes.seaWater_png,
-                seaImgRes.seaFloor_png
+                seaImgRes.seaMiddle_png,
+                seaImgRes.seaMiddleFg_png
             ],
             type: UNIQUE_ANSWER,
     		goal: 10
@@ -538,8 +538,8 @@ var WORLD = {
     		stimuli: ["fla", "fle", "fli", "flo", "flu"],
             review: ["pa", "pe", "pi", "po", "pu"],
             distractions: ["fa", "fe", "fi", "fo", "fu"],
-            activityID: "buckets3",
-            activityType: "buckets",
+            activityID: "crabs2",
+            activityType: "crabs",
             backgroundImgs: [beachImgRes.beachFront_png],
     		type: TIMED_LEVEL,
             time: 10,
@@ -551,7 +551,7 @@ var WORLD = {
             distractions: ["pa", "pe", "pi", "po", "pu"],
             activityID: "turtles2",
             activityType: "turtles",
-            backgroundImgs: [beachImgRes.beachFront_png],
+            backgroundImgs: [beachImgRes.beachTop_png],
     		type: UNIQUE_ANSWER,
     		goal: 10
     	}
@@ -596,7 +596,7 @@ var WORLD = {
             distractions: ["ca", "que", "qui", "co", "cu"],
             activityID: "turtles3",
             activityType: "turtles",
-            backgroundImgs: [beachImgRes.beachFront_png],
+            backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
             time: 10,
     		goal: 10
@@ -658,7 +658,7 @@ var WORLD = {
             distractions: ["sa", "se", "si", "so", "su"],
             activityID: "turtles4",
             activityType: "turtles",
-            backgroundImgs: [beachImgRes.beachFront_png],
+            backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
             time: 10,
     		goal: 10
@@ -712,7 +712,7 @@ var WORLD = {
             distractions: ["ca", "que", "qui", "co", "cu"],
             activityID: "turtles5",
             activityType: "turtles",
-            backgroundImgs: [beachImgRes.beachFront_png],
+            backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
             time: 10,
     		goal: 10
@@ -764,7 +764,7 @@ var WORLD = {
             distractions: ["ca", "que", "qui", "co", "cu"],
             activityID: "turtles6",
             activityType: "turtles",
-            backgroundImgs: [beachImgRes.beachFront_png],
+            backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
             time: 10,
     		goal: 10

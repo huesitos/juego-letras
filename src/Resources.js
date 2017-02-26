@@ -46,6 +46,7 @@ var seaImgRes = {
     chestSelected_png: "res/imgs/sea/chest_opened.png",
     
     bubble_png: "res/imgs/sea/bubble.png",
+    bubble_selected_png: "res/imgs/sea/bubble_selected.png",
     
     ink1_png: "res/imgs/sea/ink1.png",
     ink2_png: "res/imgs/sea/ink2.png",
@@ -59,6 +60,7 @@ var seaImgRes = {
     
     jellyfish_png: "res/imgs/sea/medusa.png",
     volt_png: "res/imgs/sea/volt.png",
+    voltSelected_png: "res/imgs/sea/volt_selected.png",
     
     fish1Normal_png: "res/imgs/sea/fish1_normal.png",
     fish1Selected_png: "res/imgs/sea/fish1_selected.png",

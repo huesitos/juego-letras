@@ -18,14 +18,19 @@ var MenuScene = cc.Scene.extend({
             res.playBtnSelected_png
         );
         playBtn.selectedRes = res.playBtnSelected_png;
-        playBtn.setPosition(
-            cc.p(this.size.width / 2, this.size.height * .35)
-        );
+        playBtn.setPosition(cc.p(this.size.width / 2, -playBtn.height));
         playBtn.addTouchEventListener(this.onPlayBtn, this);
         this.addChild(playBtn);
         
         playBtn.runAction(Effects.createJerkAnimation());
         audioManager.playEffect(audioRes.greetings);
+        
+        playBtn.runAction(new cc.EaseBackOut(
+            new cc.MoveTo(
+                .5,
+                cc.p(this.size.width / 2, this.size.height * .35)
+            )
+        ));
         
         var creditsBtn = new ccui.Button(
             res.creditsBtnNormal_png,
@@ -33,10 +38,19 @@ var MenuScene = cc.Scene.extend({
         );
         creditsBtn.selectedRes = res.creditsBtnSelected_png;
         creditsBtn.setPosition(
-            cc.p(this.size.width / 2, this.size.height * .15)
+            cc.p(this.size.width / 2, -creditsBtn.height)
         );
         creditsBtn.addTouchEventListener(this.onCreditsBtn, this);
         this.addChild(creditsBtn);
+        creditsBtn.runAction(new cc.Sequence(
+            new cc.DelayTime(.25),
+            new cc.EaseBackOut(
+                new cc.MoveTo(
+                    .5,
+                    cc.p(this.size.width / 2, this.size.height * .15)
+                )
+            )
+        ));
         
         //////////////////////////////
         // 3. title

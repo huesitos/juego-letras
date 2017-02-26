@@ -8,7 +8,7 @@ var SavedSelectionLayer = cc.Layer.extend({
             xStart = this.size.width * .1,
             xPos = xStart,
             yPos = this.size.height - yGap;
-        
+                
         Object.keys(GameState.savedGames).forEach(
             function (savedGame) {
                 var sGButton = new SavedGameButton(savedGame);
@@ -32,15 +32,18 @@ var SavedSelectionLayer = cc.Layer.extend({
         backBtn.setPosition(
             cc.p(this.size.width * .05, this.size.height * .9)
         );
+        backBtn.setPosition(cc.p(-backBtn.width, this.size.height * .9));
         backBtn.addTouchEventListener(this.onBackBtn, this);
-        backBtn.setVisible(false);
         // delay the apperance of the btn until the transition is over
         backBtn.runAction(
             new cc.Sequence(
                 new cc.DelayTime(config.mapTransitionSpeed),
-                new cc.CallFunc(function () {
-                    this.setVisible(true)
-                }, backBtn)
+                new cc.EaseBackOut(
+                    new cc.MoveTo(
+                        0.25,
+                        cc.p(this.size.width * .05, this.size.height * .9)
+                    )
+                )
             )
         );
         this.addChild(backBtn);

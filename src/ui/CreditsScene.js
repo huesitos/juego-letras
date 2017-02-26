@@ -11,6 +11,9 @@ var CreditsScene = cc.Scene.extend({
         );
         this.addChild(bg);
         
+        var fadeInAction = new cc.FadeIn(1);
+        var delayTime = .5;
+        
         var title = new cc.LabelTTF(
             "Creditos",
             _b_getFontName(fonts.titleFont),
@@ -19,7 +22,13 @@ var CreditsScene = cc.Scene.extend({
         title.setPosition(
             cc.p(this.size.width * .5, this.size.height * .9)
         );
+        title.setOpacity(0);
         this.addChild(title);
+        title.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction
+        ));
+        delayTime += 1;
         
         //////////////////////////////
         // 2. nav btns        
@@ -33,6 +42,7 @@ var CreditsScene = cc.Scene.extend({
         //////////////////////////////
         // 3. labels
         // investigation
+        
         var label1 = new cc.LabelTTF(
             "Investigación",
             _b_getFontName(fonts.subTitleFont),
@@ -40,9 +50,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label1.attr({
             x: this.size.width * .25,
-            y: this.size.height * .77
+            y: this.size.height * .77,
+            opacity: 0
         });
         this.addChild(label1);
+        label1.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         var label2 = new cc.LabelTTF(
             "Laura V. Sánchez-Vincitore",
@@ -51,9 +67,14 @@ var CreditsScene = cc.Scene.extend({
         );
         label2.attr({
             x: this.size.width * .25,
-            y: this.size.height * .69
+            y: this.size.height * .69,
+            opacity: 0
         });
         this.addChild(label2);
+        label2.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
         
         var label3 = new cc.LabelTTF(
             "José A. Aguasvivas Manzano",
@@ -62,9 +83,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label3.attr({
             x: this.size.width * .25,
-            y: this.size.height * .64
+            y: this.size.height * .64,
+            opacity: 0
         });
         this.addChild(label3);
+        label3.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         // design
         var label4 = new cc.LabelTTF(
@@ -74,9 +101,19 @@ var CreditsScene = cc.Scene.extend({
         );
         label4.attr({
             x: this.size.width * .75,
-            y: this.size.height * .77
+            y: this.size.height * .77,
+            opacity: 0
         });
         this.addChild(label4);
+        label4.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        label4.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         var label5 = new cc.LabelTTF(
             "Laura V. Sánchez-Vincitore",
@@ -85,9 +122,14 @@ var CreditsScene = cc.Scene.extend({
         );
         label5.attr({
             x: this.size.width * .75,
-            y: this.size.height * .69
+            y: this.size.height * .69,
+            opacity: 0
         });
         this.addChild(label5);
+        label5.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
         
         var label6 = new cc.LabelTTF(
             "José A. Aguasvivas Manzano",
@@ -96,9 +138,14 @@ var CreditsScene = cc.Scene.extend({
         );
         label6.attr({
             x: this.size.width * .75,
-            y: this.size.height * .64
+            y: this.size.height * .64,
+            opacity: 0
         });
         this.addChild(label6);
+        label6.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
         
         var label7 = new cc.LabelTTF(
             "Denisse M. Lara Martín",
@@ -107,9 +154,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label7.attr({
             x: this.size.width * .75,
-            y: this.size.height * .59
+            y: this.size.height * .59,
+            opacity: 0
         });
         this.addChild(label7);
+        label7.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         // programming
         var label8 = new cc.LabelTTF(
@@ -119,9 +172,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label8.attr({
             x: this.size.width * .25,
-            y: this.size.height * .47
+            y: this.size.height * .47,
+            opacity: 0
         });
         this.addChild(label8);
+        label8.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         var label9 = new cc.LabelTTF(
             "Denisse M. Lara Martín",
@@ -130,9 +189,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label9.attr({
             x: this.size.width * .25,
-            y: this.size.height * .39
+            y: this.size.height * .39,
+            opacity: 0
         });
         this.addChild(label9);
+        label9.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         // graphic
         var label10 = new cc.LabelTTF(
@@ -142,9 +207,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label10.attr({
             x: this.size.width * .75,
-            y: this.size.height * .47
+            y: this.size.height * .47,
+            opacity: 0
         });
         this.addChild(label10);
+        label10.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         var label11 = new cc.LabelTTF(
             "Arlyn García",
@@ -153,9 +224,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label11.attr({
             x: this.size.width * .75,
-            y: this.size.height * .39
+            y: this.size.height * .39,
+            opacity: 0
         });
         this.addChild(label11);
+        label11.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         // technical team
         var label12 = new cc.LabelTTF(
@@ -165,9 +242,15 @@ var CreditsScene = cc.Scene.extend({
         );
         label12.attr({
             x: this.size.width * .5,
-            y: this.size.height * .25
+            y: this.size.height * .25,
+            opacity: 0
         });
         this.addChild(label12);
+        label12.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        delayTime += 1;
         
         var label13 = new cc.LabelTTF(
             "Analía Henríquez Cross",
@@ -176,9 +259,14 @@ var CreditsScene = cc.Scene.extend({
         );
         label13.attr({
             x: this.size.width * .5,
-            y: this.size.height * .17
+            y: this.size.height * .17,
+            opacity: 0
         });
         this.addChild(label13);
+        label13.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
         
         var label14 = new cc.LabelTTF(
             "Carolina Marte",
@@ -187,9 +275,14 @@ var CreditsScene = cc.Scene.extend({
         );
         label14.attr({
             x: this.size.width * .5,
-            y: this.size.height * .12
+            y: this.size.height * .12,
+            opacity: 0
         });
         this.addChild(label14);
+        label14.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
         
     },
     onBackBtn: function (sender, type) {

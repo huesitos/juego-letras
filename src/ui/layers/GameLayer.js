@@ -83,6 +83,7 @@ var GameLayer = cc.Layer.extend({
             
             // animations and feedback depending on the correctnes of the answer
             if (selection) {
+                cc.audioEngine.stopAllEffects();
                 audioManager.playEffect(audioRes.success);
                 sender.onClicked();
                 
@@ -94,6 +95,7 @@ var GameLayer = cc.Layer.extend({
                 
                 sender.runAction(jumpAction);
             } else {
+                cc.audioEngine.stopAllEffects();
                 audioManager.playEffect(audioRes.failure);
                 
                 var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
@@ -167,7 +169,7 @@ var GameLayer = cc.Layer.extend({
         var startActivity = function () {
             cc.eventManager.resumeTarget(this, true);
             
-            this.getParent().hudLayer.setVisible(true);
+            this.getParent().hudLayer.runIntroAnimation();
             
             // check if level is timed and set an update
             this.configureTimedActivity();
@@ -310,7 +312,11 @@ var GameLayer = cc.Layer.extend({
             ));
             optionButton.hideLabel();
         }
-
+        
+        var scene = GD.gameCompleted ?
+            new CreditsScene() :
+            ActivityMenuLayer.getScene(GameState.getOpenedMapID());
+        
         this.runAction(new cc.Sequence(
             new cc.DelayTime(5.5),
             new cc.CallFunc(function () {
@@ -318,7 +324,7 @@ var GameLayer = cc.Layer.extend({
                 cc.director.runScene(
                     new cc.TransitionFade(
                         config.sceneTransitionSpeed,
-                        ActivityMenuLayer.getScene(GameState.getOpenedMapID())
+                        scene
                     )
                 );
             })
@@ -329,6 +335,7 @@ var GameLayer = cc.Layer.extend({
 
         if (this.activity.hasTimerFinished()) {
             this.unscheduleAllCallbacks();
+            cc.audioEngine.stopAllEffects();
             audioManager.playEffect(audioRes.failure);
             
             // hide all the labels

@@ -34,8 +34,21 @@ var ActivityMenuLayer = cc.Layer.extend({
             var nextMapBtn = new ccui.Button(mapsImgRes[nextMap].btn);
             nextMapBtn.attr({
                 x: this.size.width * .95,
-                y: this.size.height * .9
+                y: this.size.height + nextMapBtn.height
             });
+            nextMapBtn.setVisible(false);
+            nextMapBtn.runAction(
+                new cc.Sequence(
+                    new cc.DelayTime(config.mapTransitionSpeed),
+                    new cc.CallFunc(function () {nextMapBtn.setVisible(true)}),
+                    new cc.EaseBackOut(
+                        new cc.MoveTo(
+                            0.25,
+                            cc.p(this.size.width * .95, this.size.height * .9)
+                        )
+                    )
+                )
+            );
             nextMapBtn.setUserData({mapID: nextMap});
             nextMapBtn.addTouchEventListener(this.onNavigateToMap, this);
             this.addChild(nextMapBtn);
@@ -54,8 +67,21 @@ var ActivityMenuLayer = cc.Layer.extend({
             var prevMapBtn = new ccui.Button(mapsImgRes[prevMap].btn);
             prevMapBtn.attr({
                 x: this.size.width * .95,
-                y: this.size.height * .1
+                y: -prevMapBtn.height
             });
+            prevMapBtn.setVisible(false);
+            prevMapBtn.runAction(
+                new cc.Sequence(
+                    new cc.DelayTime(config.mapTransitionSpeed),
+                    new cc.CallFunc(function () {prevMapBtn.setVisible(true)}),
+                    new cc.EaseBackOut(
+                        new cc.MoveTo(
+                            0.25,
+                            cc.p(this.size.width * .95, this.size.height * .1)
+                        )
+                    )
+                )
+            );
             prevMapBtn.setUserData({mapID: prevMap});
             prevMapBtn.addTouchEventListener(this.onNavigateToPrevMap, this);
             this.addChild(prevMapBtn);
@@ -83,18 +109,18 @@ var ActivityMenuLayer = cc.Layer.extend({
         }
         
         var backBtn = new ccui.Button(uiImgRes.back_png);
-        backBtn.setPosition(
-            cc.p(this.size.width * .05, this.size.height * .9)
-        );
+        backBtn.setPosition(cc.p(-backBtn.width, this.size.height * .9));
         backBtn.addTouchEventListener(this.onBackBtn, this);
-        backBtn.setVisible(false);
         // delay the apperance of the btn until the transition is over
         backBtn.runAction(
             new cc.Sequence(
                 new cc.DelayTime(config.mapTransitionSpeed),
-                new cc.CallFunc(function () {
-                    this.setVisible(true)
-                }, backBtn)
+                new cc.EaseBackOut(
+                    new cc.MoveTo(
+                        0.25,
+                        cc.p(this.size.width * .05, this.size.height * .9)
+                    )
+                )
             )
         );
         this.addChild(backBtn);
@@ -115,20 +141,23 @@ var ActivityMenuLayer = cc.Layer.extend({
         // if instructions is playing
         cc.audioEngine.stopAllEffects();
     },
+    transitionToTopMap: function (mapID) {
+        GameState.setOpenedMapID(mapID);
+        GD.openMap(mapID);
+
+        cc.director.runScene(
+            new cc.TransitionSlideInT(
+                config.mapTransitionSpeed,
+                ActivityMenuLayer.getScene(mapID)
+            )
+        );
+    },
     onNavigateToMap: function (sender, type) {
         if (ccui.Widget.TOUCH_ENDED === type) {
             audioManager.playEffect(audioRes.click);
             
             var mapID = sender.getUserData().mapID;
-            GameState.setOpenedMapID(mapID);
-            GD.openMap(mapID);
-                
-            cc.director.runScene(
-                new cc.TransitionSlideInT(
-                    config.mapTransitionSpeed,
-                    ActivityMenuLayer.getScene(mapID)
-                )
-            );
+            this.transitionToTopMap(mapID);
         }
     },
     onNavigateToPrevMap: function (sender, type) {

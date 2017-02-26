@@ -8,7 +8,6 @@ var GameScene = cc.Scene.extend({
         //////////////////////////////
         // 2. add hud layer
         this.hudLayer = new HUDLayer();
-        this.hudLayer.setVisible(false);
         this.addChild(this.hudLayer, 100);
         
         //////////////////////////////

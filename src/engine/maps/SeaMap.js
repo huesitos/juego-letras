@@ -107,7 +107,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             gameLayer = new GameLayer(
                 {
                     initState: seaImgRes.bubble_png,
-                    clickedState: seaImgRes.bubble_png
+                    clickedState: seaImgRes.bubble_selected_png
                 },
                 {
                     xPos: xPos,
@@ -144,7 +144,7 @@ SeaMap.getGameLayer = function (activityType, activity) {
             gameLayer = new GameLayer(
                 {
                     initState: seaImgRes.volt_png,
-                    clickedState: seaImgRes.volt_png
+                    clickedState: seaImgRes.voltSelected_png
                 },
                 {
                     xPos: xPos,
