@@ -156,19 +156,41 @@ var positionsByMaps = {
     ],
     sea2: map1,
     sea3: map2,
-    beach1: map3,
-    beach2: map1,
+    beach1: [
+        cc.p(240, screenHeight - 320),
+        cc.p(215, screenHeight - 80),
+        cc.p(80, screenHeight - 230),
+        cc.p(290, screenHeight - 500),
+        cc.p(510, screenHeight - 490),
+        cc.p(485, screenHeight - 135),
+        cc.p(915, screenHeight - 340),
+        cc.p(830, screenHeight - 490),
+        cc.p(730, screenHeight - 350),
+        cc.p(865, screenHeight - 150)
+    ],
+    beach2: [
+        cc.p(760, screenHeight - 340),
+        cc.p(760, screenHeight - 520),
+        cc.p(920, screenHeight - 230),
+        cc.p(630, screenHeight - 180),
+        cc.p(510, screenHeight - 470),
+        cc.p(281, screenHeight - 505),
+        cc.p(455, screenHeight - 295),
+        cc.p(410, screenHeight - 60),
+        cc.p(115, screenHeight - 250),
+        cc.p(250, screenHeight - 160)
+    ],
     beach3: [
         cc.p(140, screenHeight - 350),
-        cc.p(380, screenHeight - 520),
-        cc.p(550, screenHeight - 390),
-        cc.p(720, screenHeight - 525),
+        cc.p(370, screenHeight - 505),
+        cc.p(550, screenHeight - 380),
+        cc.p(720, screenHeight - 515),
         cc.p(820, screenHeight - 245),
         cc.p(730, screenHeight - 390),
-        cc.p(890, screenHeight - 120),
-        cc.p(560, screenHeight - 105),
-        cc.p(330, screenHeight - 260),
-        cc.p(85, screenHeight - 160)
+        cc.p(870, screenHeight - 100),
+        cc.p(560, screenHeight - 85),
+        cc.p(330, screenHeight - 200),
+        cc.p(100, screenHeight - 160)
     ],
     earth1: [
         cc.p(240, screenHeight - 310),
@@ -178,22 +200,22 @@ var positionsByMaps = {
         cc.p(580, screenHeight - 430),
         cc.p(485, screenHeight - 135),
         cc.p(915, screenHeight - 340),
-        cc.p(830, screenHeight - 505),
+        cc.p(830, screenHeight - 490),
         cc.p(730, screenHeight - 350),
         cc.p(865, screenHeight - 150)
     ],
     earth2: map1,
     earth3: [
-        cc.p(140, screenHeight - 360),
-        cc.p(400, screenHeight - 530),
+        cc.p(140, screenHeight - 350),
+        cc.p(380, screenHeight - 510),
         cc.p(550, screenHeight - 390),
-        cc.p(730, screenHeight - 535),
-        cc.p(820, screenHeight - 260),
-        cc.p(730, screenHeight - 400),
-        cc.p(890, screenHeight - 120),
-        cc.p(560, screenHeight - 130),
-        cc.p(330, screenHeight - 260),
-        cc.p(85, screenHeight - 160)
+        cc.p(730, screenHeight - 500),
+        cc.p(820, screenHeight - 240),
+        cc.p(730, screenHeight - 370),
+        cc.p(890, screenHeight - 100),
+        cc.p(560, screenHeight - 90),
+        cc.p(330, screenHeight - 200),
+        cc.p(95, screenHeight - 160)
     ]
 };
     

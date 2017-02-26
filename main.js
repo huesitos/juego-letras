@@ -21,7 +21,7 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {        
         GameState.loadSavedGames();
-//        GameState.resetGameProgress();
+        GameState.resetGameProgress();
         cc.director.runScene(new MenuScene());
     }, this);
 };
