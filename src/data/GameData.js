@@ -18,7 +18,7 @@ var WORLD = {
                 seaImgRes.seaFloor_png
             ],
             type: UNIQUE_ANSWER,
-            goal: 10
+    
         },
         oysters1: {
             stimuli: ["ae", "ai", "ao", "au"],
@@ -31,7 +31,7 @@ var WORLD = {
                 seaImgRes.seaFloor_png
             ],
             type: UNIQUE_ANSWER,
-            goal: 10
+    
         },
         chests1: {
             stimuli: ["ea", "ei", "eo", "eu"],
@@ -44,7 +44,7 @@ var WORLD = {
                 seaImgRes.seaFloor_png
             ],
             type: UNIQUE_ANSWER,
-            goal: 10
+    
         },
         rocks2: {
             stimuli: ["ia", "ei", "eo", "eu"],
@@ -57,7 +57,7 @@ var WORLD = {
                 seaImgRes.seaFloor_png
             ],
             type: UNIQUE_ANSWER,
-            goal: 10
+    
         },
         oysters2: {
             stimuli: ["oa", "oe", "oi", "ou"],
@@ -71,7 +71,7 @@ var WORLD = {
             ],
             type: UNIQUE_ANSWER,
             time: 10,
-            goal: 10
+    
         },
         chests2: {
             stimuli: ["ua", "ue", "ui", "uo"],
@@ -84,7 +84,7 @@ var WORLD = {
                 seaImgRes.seaFloor_png
             ],
             type: UNIQUE_ANSWER,
-            goal: 10
+    
         },
         rocks3: {
             stimuli: ["a", "e", "i", "o", "u"],
@@ -104,7 +104,7 @@ var WORLD = {
                 seaImgRes.seaFloor_png
             ],
             type: UNIQUE_ANSWER,
-            goal: 10
+    
         },
         oysters3: {
             stimuli: ["ma", "me", "mi", "mo", "mu"],
@@ -118,7 +118,7 @@ var WORLD = {
             ],
             type: UNIQUE_ANSWER,
             time: 10,
-            goal: 10
+    
         },
         chests3: {
     		stimuli: ["na", "ne", "ni", "no", "nu"],
@@ -130,8 +130,7 @@ var WORLD = {
                 seaImgRes.seaWater_png,
                 seaImgRes.seaFloor_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	},
         bubbles1: {
     		stimuli: ["sa", "se", "si", "so", "su"],
@@ -146,8 +145,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	}
     },
     sea2: {
@@ -171,8 +169,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	},
         fisherman1: {
     		stimuli: ["la", "le", "li", "lo", "lu"],
@@ -191,8 +188,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	},
         jellyfish1: {
     		stimuli: ["fa", "fe", "fi", "fo", "fu"],
@@ -208,8 +204,7 @@ var WORLD = {
                 seaImgRes.jellyfish_png
             ],
             type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         bubbles2: {
     		stimuli: ["pa", "pe", "pi", "po", "pu"],
@@ -225,8 +220,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	},
         octopus2: {
     		stimuli: ["ma", "me", "mi", "mo", "mu"],
@@ -238,8 +232,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	},
         fisherman2: {
     		stimuli: ["na", "ne", "ni", "no", "nu"],
@@ -251,8 +244,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         jellyfish2: {
     		stimuli: ["sa", "se", "si", "so", "su"],
@@ -266,8 +258,7 @@ var WORLD = {
                 seaImgRes.jellyfish_png
             ],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         bubbles3: {
     		stimuli: ["la", "le", "li", "lo", "lu"],
@@ -282,8 +273,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-            type: UNIQUE_ANSWER,
-    		goal: 10
+            type: UNIQUE_ANSWER
     	},
         octopus3: {
     		stimuli: ["fa", "fe", "fi", "fo", "fu"],
@@ -295,8 +285,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         fisherman3: {
             stimuli: ["pa", "pe", "pi", "po", "pu"],
@@ -308,8 +297,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	}
     },
     sea3: {
@@ -323,8 +311,7 @@ var WORLD = {
                 seaImgRes.seaWater_png,
                 seaImgRes.seaFloor_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         oysters4: {
     		stimuli: ["ba", "be", "bi", "bo", "bu"],
@@ -336,8 +323,7 @@ var WORLD = {
                 seaImgRes.seaWater_png,
                 seaImgRes.seaFloor_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         jellyfish3: {
     		stimuli: ["da", "de", "di", "do", "du"],
@@ -351,8 +337,7 @@ var WORLD = {
                 seaImgRes.jellyfish_png
             ],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         octopus4: {
     		stimuli: ["am", "em", "im", "om", "um"],
@@ -364,8 +349,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         rocks4: {
     		stimuli: ["as", "es", "is", "os", "us"],
@@ -377,8 +361,7 @@ var WORLD = {
                 seaImgRes.seaWater_png,
                 seaImgRes.seaFloor_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         fisherman4: {
     		stimuli: ["ap", "ep", "ip", "op", "up"],
@@ -390,8 +373,7 @@ var WORLD = {
                 seaImgRes.seaTop_png
             ],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         bubbles5: {
     		stimuli: ["am", "em", "im", "om", "um"],
@@ -403,8 +385,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         octopus5: {
     		stimuli: ["as", "es", "is", "os", "us"],
@@ -416,8 +397,7 @@ var WORLD = {
                 seaImgRes.seaMiddle_png,
                 seaImgRes.seaMiddleFg_png
             ],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         jellyfish4: {
     		stimuli: ["ap", "ep", "ip", "op", "up"],
@@ -431,8 +411,7 @@ var WORLD = {
                 seaImgRes.jellyfish_png
             ],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         fisherman5: {
     		stimuli: ["an", "en", "in", "on", "un"],
@@ -444,8 +423,7 @@ var WORLD = {
                 seaImgRes.seaTop_png
             ],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	}
     },
     beach1: {
@@ -456,8 +434,7 @@ var WORLD = {
             activityID: "buckets1",
             activityType: "buckets",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         crabs1: {
     		stimuli: ["ab", "eb", "ib", "ob", "ub"],
@@ -467,8 +444,7 @@ var WORLD = {
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         beach_pool1: {
     		stimuli: ["ad", "ed", "id", "od", "ud"],
@@ -477,8 +453,7 @@ var WORLD = {
             activityID: "beach_pool1",
             activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         star1: {
     		stimuli: ["an", "en", "in", "on", "un"],
@@ -487,8 +462,7 @@ var WORLD = {
             activityID: "star1",
             activityType: "star",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         turtles1: {
     		stimuli: ["al", "el", "il", "ol", "ul"],
@@ -498,8 +472,7 @@ var WORLD = {
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         buckets2: {
     		stimuli: ["ab", "eb", "ib", "ob", "ub"],
@@ -508,8 +481,7 @@ var WORLD = {
             activityID: "buckets2",
             activityType: "buckets",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         beach_pool2: {
     		stimuli: ["ad", "ed", "id", "od", "ud"],
@@ -518,8 +490,7 @@ var WORLD = {
             activityID: "beach_pool2",
             activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         star2: {
     		stimuli: ["bla", "ble", "bli", "blo", "blu"],
@@ -531,8 +502,7 @@ var WORLD = {
             activityID: "star2",
             activityType: "star",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         crabs2: {
     		stimuli: ["fla", "fle", "fli", "flo", "flu"],
@@ -542,8 +512,7 @@ var WORLD = {
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachFront_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         turtles2: {
     		stimuli: ["pla", "ple", "pli", "plo", "plu"],
@@ -552,8 +521,7 @@ var WORLD = {
             activityID: "turtles2",
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	}
     },
     beach2: {
@@ -567,8 +535,7 @@ var WORLD = {
             activityID: "buckets3",
             activityType: "buckets",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         crabs3: {
     		stimuli: ["va", "ve", "vi", "vo", "vu"],
@@ -577,8 +544,7 @@ var WORLD = {
             activityID: "crabs3",
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         beach_pool3: {
     		stimuli: ["lla", "lle", "lli", "llo", "llu"],
@@ -587,8 +553,7 @@ var WORLD = {
             activityID: "beach_pool3",
             activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         turtles3: {
     		stimuli: ["ha", "he", "hi", "ho", "hu"],
@@ -598,8 +563,7 @@ var WORLD = {
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         star3: {
     		stimuli: ["ya", "ye", "yi", "yo", "yu"],
@@ -608,8 +572,7 @@ var WORLD = {
             activityID: "star3",
             activityType: "star",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         buckets4: {
     		stimuli: ["cha", "che", "chi", "cho", "chu"],
@@ -618,8 +581,7 @@ var WORLD = {
             activityID: "buckets4",
             activityType: "buckets",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         beach_pool4: {
     		stimuli: ["cla", "cle", "cli", "clo", "clu"],
@@ -628,8 +590,7 @@ var WORLD = {
             activityID: "beach_pool4",
             activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         crabs4: {
     		stimuli: ["fla", "fle", "fli", "flo", "flu"],
@@ -639,8 +600,7 @@ var WORLD = {
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         star4: {
     		stimuli: ["pla", "ple", "pli", "plo", "plu"],
@@ -649,8 +609,7 @@ var WORLD = {
             activityID: "star4",
             activityType: "star",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         turtles4: {
     		stimuli: ["ca", "que", "qui", "co", "cu"],
@@ -660,8 +619,7 @@ var WORLD = {
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	}
     },
     beach3: {
@@ -672,8 +630,7 @@ var WORLD = {
             activityID: "buckets5",
             activityType: "buckets",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         crabs5: {
     		stimuli: ["lla", "lle", "lli", "llo", "llu"],
@@ -683,8 +640,7 @@ var WORLD = {
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachFront_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         beach_pool5: {
     		stimuli: ["ha", "he", "hi", "ho", "hu"],
@@ -693,8 +649,7 @@ var WORLD = {
             activityID: "beach_pool5",
             activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         star5: {
     		stimuli: ["ya", "ye", "yi", "yo", "yu"],
@@ -703,8 +658,7 @@ var WORLD = {
             activityID: "star5",
             activityType: "star",
             backgroundImgs: [beachImgRes.beachTop_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         turtles5: {
     		stimuli: ["cha", "che", "chi", "cho", "chu"],
@@ -714,8 +668,7 @@ var WORLD = {
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         buckets6: {
     		stimuli: ["cla", "cle", "cli", "clo", "clu"],
@@ -724,8 +677,7 @@ var WORLD = {
             activityID: "buckets6",
             activityType: "buckets",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         beach_pool6: {
     		stimuli: ["ga", "gue", "gui", "go", "gu"],
@@ -734,8 +686,7 @@ var WORLD = {
             activityID: "beach_pool6",
             activityType: "beach_pool",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         star6: {
     		stimuli: ["ga", "gue", "gui", "go", "gu"],
@@ -744,8 +695,7 @@ var WORLD = {
             activityID: "star6",
             activityType: "star",
             backgroundImgs: [beachImgRes.beachFront_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         crabs6: {
     		stimuli: ["ga", "gue", "gui", "go", "gu"],
@@ -755,8 +705,7 @@ var WORLD = {
             activityType: "crabs",
             backgroundImgs: [beachImgRes.beachFront_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         turtles6: {
     		stimuli: ["ga", "gue", "gui", "go", "gu"],
@@ -766,8 +715,7 @@ var WORLD = {
             activityType: "turtles",
             backgroundImgs: [beachImgRes.beachTop_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	}
     },
     earth1: {
@@ -778,8 +726,7 @@ var WORLD = {
             activityID: "hidden_chests1",
             activityType: "hidden_chests",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_rocks1: {
     		stimuli: ["güe", "güi"],
@@ -788,8 +735,7 @@ var WORLD = {
             activityID: "earth_rocks1",
             activityType: "earth_rocks",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         plant1: {
     		stimuli: ["ra", "re", "ri", "ro", "ru"],
@@ -799,8 +745,7 @@ var WORLD = {
             activityType: "plant",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         earth_crabs1: {
     		stimuli: ["ja", "je", "ji", "jo", "ju"],
@@ -810,8 +755,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         pool1: {
     		stimuli: ["za", "ze", "zi", "zo", "zu"],
@@ -820,8 +764,7 @@ var WORLD = {
             activityID: "pool1",
             activityType: "pool",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         snail1: {
     		stimuli: ["ara", "are", "ari", "aro", "aru"],
@@ -830,8 +773,7 @@ var WORLD = {
             activityID: "snail1",
             activityType: "snail",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         topo1: {
     		stimuli: ["era", "ere", "eri", "ero", "eru"],
@@ -840,8 +782,7 @@ var WORLD = {
             activityID: "topo1",
             activityType: "topo",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_crabs2: {
     		stimuli: ["ira", "ire", "iri", "iro", "iru"],
@@ -851,8 +792,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         hidden_chests2: {
     		stimuli: ["ara", "ere", "iri", "oro", "uru"],
@@ -861,8 +801,7 @@ var WORLD = {
             activityID: "hidden_chests2",
             activityType: "hidden_chests",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_rocks2: {
     		stimuli: ["arra", "arre", "arri", "arro", "urru"],
@@ -871,8 +810,7 @@ var WORLD = {
             activityID: "earth_rocks2",
             activityType: "earth_rocks",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	}
     },
     earth2: {
@@ -887,8 +825,7 @@ var WORLD = {
             activityID: "plant2",
             activityType: "plant2",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_crabs3: {
     		stimuli: ["ga", "gi", "ce", "ci"],
@@ -901,8 +838,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         pool2: {
     		stimuli: ["ra", "re", "ri", "ro", "ru"],
@@ -911,8 +847,7 @@ var WORLD = {
             activityID: "pool2",
             activityType: "pool",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         snail2: {
     		stimuli: ["ja", "je", "ji", "jo", "ju"],
@@ -921,8 +856,7 @@ var WORLD = {
             activityID: "snail2",
             activityType: "snail",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         topo2: {
     		stimuli: ["za", "ze", "zi", "zo", "zu"],
@@ -931,8 +865,7 @@ var WORLD = {
             activityID: "topo2",
             activityType: "topo",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_crabs4: {
     		stimuli: ["ara", "are", "ari", "aro", "aru"],
@@ -942,8 +875,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         hidden_chests3: {
     		stimuli: ["ga", "gue", "gui", "go", "gu"],
@@ -952,8 +884,7 @@ var WORLD = {
             activityID: "hidden_chests3",
             activityType: "hidden_chests",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_rocks3: {
     		stimuli: ["arra", "arre", "arri", "arro", "urru"],
@@ -962,8 +893,7 @@ var WORLD = {
             activityID: "earth_rocks3",
             activityType: "earth_rocks",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         plant3: {
             stimuli: ["bra", "bre", "bri", "bro", "bru"],
@@ -972,8 +902,7 @@ var WORLD = {
             activityID: "plant3",
             activityType: "plant",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_crabs5: {
     		stimuli: ["cra", "cre", "cri", "cro", "cru"],
@@ -983,8 +912,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	}
     },
     earth3: {
@@ -995,8 +923,7 @@ var WORLD = {
             activityID: "pool3",
             activityType: "pool",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         snail3: {
     		stimuli: ["fra", "fre", "fri", "fro", "fru"],
@@ -1005,8 +932,7 @@ var WORLD = {
             activityID: "snail3",
             activityType: "snail",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         topo3: {
     		stimuli: ["gra", "gre", "gri", "gro", "gru"],
@@ -1015,8 +941,7 @@ var WORLD = {
             activityID: "topo3",
             activityType: "topo",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_crabs6: {
     		stimuli: ["pra", "pre", "pri", "pro", "pru"],
@@ -1026,8 +951,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	},
         hidden_chests4: {
     		stimuli: ["tra", "tre", "tri", "tro", "tru"],
@@ -1036,8 +960,7 @@ var WORLD = {
             activityID: "hidden_chests4",
             activityType: "hidden_chests",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_rocks4: {
     		stimuli: ["ña", "ñe", "ñi", "ño", "ñu"],
@@ -1046,8 +969,7 @@ var WORLD = {
             activityID: "earth_rocks4",
             activityType: "earth_rocks",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         plant4: {
     		stimuli: ["ka", "ke", "ki", "ko", "ku"],
@@ -1056,8 +978,7 @@ var WORLD = {
             activityID: "plant4",
             activityType: "plant",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         pool4: {
     		stimuli: ["wa", "we", "wi", "wo"],
@@ -1066,8 +987,7 @@ var WORLD = {
             activityID: "pool4",
             activityType: "pool",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         snail4: {
     		stimuli: ["ax", "ex", "ix", "ox", "ux"],
@@ -1079,8 +999,7 @@ var WORLD = {
             activityID: "snail4",
             activityType: "snail",
             backgroundImgs: [earthImgRes.mainLand_png],
-    		type: UNIQUE_ANSWER,
-    		goal: 10
+    		type: UNIQUE_ANSWER
     	},
         earth_crabs7: {
     		stimuli: ["ac", "ec", "ic", "oc", "uc"],
@@ -1093,8 +1012,7 @@ var WORLD = {
             activityType: "earth_crabs",
             backgroundImgs: [earthImgRes.mainLand_png],
     		type: TIMED_LEVEL,
-            time: 10,
-    		goal: 10
+            time: 10
     	}
     }
 };

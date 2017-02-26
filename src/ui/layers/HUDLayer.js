@@ -136,11 +136,10 @@ var HUDLayer = cc.Layer.extend({
     onQuestionChecked: function (event) {
         var gameLayer = this.getParent().getChildByName("gameLayer");
         
-        var fuelGoal = gameLayer.activity.getActivityGoal();
         var fuelScore = gameLayer.activity.getActivityScore();
         
         // the score
-        var percent = (fuelScore * 100) / fuelGoal;
+        var percent = fuelScore;
         
         var diff = percent - this.fuelBar.getPercent();
         

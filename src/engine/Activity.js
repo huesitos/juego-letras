@@ -11,6 +11,7 @@ function Activity(activityData) {
     var questionOptions; // array with distractions and answer
     var numberOfQuestions; // number of questions to answer complete activity
     var progress; // keeps track of time for timed activities
+    var activityGoal; // the goal to reach
     
     // set stimuli picker for the activity
     var stimuliPicker = new StimuliPicker();
@@ -20,10 +21,11 @@ function Activity(activityData) {
     );
     
     activityScore = 0;
+    activityGoal = 100;
     // the minimum amount of questions is determined
     // by the amount of repetitions
     numberOfQuestions = stimuliPicker.getStimuliLength();
-    scorePerAnswer = activityData["goal"] / numberOfQuestions;
+    scorePerAnswer = activityGoal / numberOfQuestions;
     wrongsCount = 0;
     rightAnswer = "";
     progress = 0; // for timed activities
@@ -160,7 +162,7 @@ function Activity(activityData) {
     };
     
     this.isActivityCompleted = function () {
-        return activityScore >= activityData["goal"];
+        return activityScore >= activityGoal;
     };
     
     this.getActivityGoal = function () {
