@@ -76,12 +76,14 @@ var StarsRibbon = cc.Sprite.extend({
             )
         );
         
-        if (this.starSize === StarsRibbon.BIG_STAR) {
-            if (this.isOneStarUnlocked) {
-                var particles = Effects.createSimpleParticles(
-                    this.star2.getPosition()
-                );
-                this.addChild(particles);
+        if (!cc.sys.isNative) {
+            if (this.starSize === StarsRibbon.BIG_STAR) {
+                if (this.isOneStarUnlocked) {
+                    var particles = Effects.createSimpleParticles(
+                        this.star2.getPosition()
+                    );
+                    this.addChild(particles);
+                }
             }
         }
     }

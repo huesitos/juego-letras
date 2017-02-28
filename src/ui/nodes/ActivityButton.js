@@ -1,9 +1,9 @@
 var ActivityButton = ccui.Button.extend({
-    ctor: function (activityID) {
-        this._super(activitiesImgRes[activityID.replace(/[0-9]/g, '')]);
+    ctor: function (activityID, type) {
+        this._super(activitiesImgRes[type]);
         this.setUserData({activityID: activityID});
         this.addTouchEventListener(this.onActivityButtonTouch, this);
-        
+            
         // only unlocked activities are playeable
         var lockStatus = GameState.isActivityUnlocked(activityID);
         this.setTouchEnabled(

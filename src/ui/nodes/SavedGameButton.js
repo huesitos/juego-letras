@@ -8,16 +8,21 @@ var SavedGameButton = ccui.Button.extend({
         var iconResNormal, iconResSelected;
         var currentMap = gameProgress.currentMapID;
         
-        if (currentMap.includes("sea")) {
-            iconResNormal = seaImgRes.chestClosed_png;
-            iconResSelected = seaImgRes.chestSelected_png;
-        } else if (currentMap.includes("beach")) {
-            iconResNormal = beachImgRes.crabNormal_png;
-            iconResSelected = beachImgRes.crabSelected_png;
-        } else if (currentMap.includes("earth")) {
-            iconResNormal = earthImgRes.topoNormal_png;
-            iconResSelected = earthImgRes.topoSelected_png;
+        switch (WORLD[currentMap].type) {
+            case "sea":
+                iconResNormal = seaImgRes.chestClosed_png;
+                iconResSelected = seaImgRes.chestSelected_png;
+                break;
+            case "beach":
+                iconResNormal = beachImgRes.crabNormal_png;
+                iconResSelected = beachImgRes.crabSelected_png;
+                break;
+            case "earth":
+                iconResNormal = earthImgRes.topoNormal_png;
+                iconResSelected = earthImgRes.topoSelected_png;
+                break;
         }
+        
         this.iconResSelected = iconResSelected;
         
         // set button image based on the current map

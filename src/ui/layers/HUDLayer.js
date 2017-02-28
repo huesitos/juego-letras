@@ -103,7 +103,7 @@ var HUDLayer = cc.Layer.extend({
         this.emptyFuelBar.runAction(
             new cc.EaseBackOut(
                 new cc.MoveTo(
-                    0.5,
+                    0.25,
                     this.emptyFuelBar.pos
                 )
             )

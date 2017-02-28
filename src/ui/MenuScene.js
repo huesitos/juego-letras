@@ -25,12 +25,17 @@ var MenuScene = cc.Scene.extend({
         playBtn.runAction(Effects.createJerkAnimation());
         audioManager.playEffect(audioRes.greetings);
         
-        playBtn.runAction(new cc.EaseBackOut(
-            new cc.MoveTo(
-                .5,
-                cc.p(this.size.width / 2, this.size.height * .35)
+        playBtn.runAction(
+            new cc.Sequence(
+                new cc.DelayTime(config.mapTransitionSpeed),
+                new cc.EaseBackOut(
+                    new cc.MoveTo(
+                        .5,
+                        cc.p(this.size.width / 2, this.size.height * .35)
+                    )
+                )
             )
-        ));
+        );
         
         var creditsBtn = new ccui.Button(
             res.creditsBtnNormal_png,
@@ -43,7 +48,7 @@ var MenuScene = cc.Scene.extend({
         creditsBtn.addTouchEventListener(this.onCreditsBtn, this);
         this.addChild(creditsBtn);
         creditsBtn.runAction(new cc.Sequence(
-            new cc.DelayTime(.25),
+            new cc.DelayTime(config.sceneTransitionSpeed + .5),
             new cc.EaseBackOut(
                 new cc.MoveTo(
                     .5,

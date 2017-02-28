@@ -19,15 +19,15 @@ var GameLayer = cc.Layer.extend({
         this.optionButtons = [];
         var questionOptions = this.activity.getQuestionOptions();
         
-//        this.answerLabel = new cc.LabelTTF(
-//            this.activity.getRightOption(),
-//            _b_getFontName(fonts.gameFont),
-//            60
-//        );
-//        this.answerLabel.setPosition(
-//            cc.p(this.size.width / 2, this.size.height * .75)
-//        );
-//        this.addChild(this.answerLabel);
+        this.answerLabel = new cc.LabelTTF(
+            this.activity.getRightOption(),
+            _b_getFontName(fonts.gameFont),
+            60
+        );
+        this.answerLabel.setPosition(
+            cc.p(this.size.width / 2, this.size.height * .75)
+        );
+        this.addChild(this.answerLabel);
         
         for (var i = 0; i < questionOptions.length; i++) {
             var optionButton = new OptionButton(
@@ -87,6 +87,10 @@ var GameLayer = cc.Layer.extend({
                 audioManager.playEffect(audioRes.success);
                 sender.onClicked();
                 
+                GameState.addStimulusSuccessRecord(
+                    sender.getOption()
+                );
+                
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
                 var moveDown = new cc.MoveBy(0.05, cc.p(0, -10));
@@ -97,6 +101,10 @@ var GameLayer = cc.Layer.extend({
             } else {
                 cc.audioEngine.stopAllEffects();
                 audioManager.playEffect(audioRes.failure);
+                
+                GameState.addStimulusTryRecord(
+                    sender.getOption()
+                );
                 
                 var moveRight = new cc.MoveBy(0.05, cc.p(10, 0));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(-10, 0));
@@ -269,7 +277,7 @@ var GameLayer = cc.Layer.extend({
                 optionButton.changeToNormal();
                 optionButton.showLabel();
             }
-//            this.answerLabel.setString(this.activity.getRightOption());
+            this.answerLabel.setString(this.activity.getRightOption());
             this.activity.playOptionAudio();
             this.configureTimedActivity();
         }
@@ -302,31 +310,36 @@ var GameLayer = cc.Layer.extend({
             var optionButton = this.optionButtons[i];
 
             // animate button
-            optionButton.runAction(new cc.RepeatForever(
+            optionButton.runAction(new cc.Repeat(
                 new cc.Sequence(
                     new cc.CallFunc(optionButton.changeToNormal, optionButton),
                     new cc.DelayTime(0.5),
                     new cc.CallFunc(optionButton.onClicked, optionButton),
                     new cc.DelayTime(0.5)
-                )
+                ), 10
             ));
             optionButton.hideLabel();
         }
         
-        var scene = GD.gameCompleted ?
-            new CreditsScene() :
-            ActivityMenuLayer.getScene(GameState.getOpenedMapID());
-        
         this.runAction(new cc.Sequence(
             new cc.DelayTime(5.5),
             new cc.CallFunc(function () {
-                cc.audioEngine.stopEffect();
-                cc.director.runScene(
-                    new cc.TransitionFade(
-                        config.sceneTransitionSpeed,
-                        scene
-                    )
-                );
+                cc.audioEngine.stopAllEffects();
+                
+                if (GD.gameCompleted) {
+                    cc.director.runScene(
+                        new cc.TransitionFade(
+                            .8, new CreditsScene()
+                        )
+                    );
+                } else {
+                    cc.director.runScene(
+                        new cc.TransitionFade(
+                            .8,
+                            ActivityMenuLayer.getScene(GameState.getOpenedMapID())
+                        )
+                    );
+                }
             })
         ));
     },

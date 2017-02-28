@@ -1,4 +1,5 @@
 var GAME_PROGRESS_PROTOTYPE = {
+    records: {},
     maps: {}, // data for each map
     activities: {}, // data for each activity
     firstTime: true,
@@ -12,6 +13,10 @@ function GameState() {
     this.openedActivityID;
     this.currentActivity;
     var selectedSavedGame;
+    var statisticsRecord;
+    var that = this;
+    
+    var todaysDate = new Date().toDateString();
     
     function createGameProgressObject() {
         var gameProgress = Utils.copyObject(GAME_PROGRESS_PROTOTYPE);
@@ -23,7 +28,7 @@ function GameState() {
             //unlocked
 //             gameProgress.maps[map].unlocked = true;
             
-            Object.keys(WORLD[map]).forEach(function (activity) {
+            Object.keys(WORLD[map].activities).forEach(function (activity) {
                 gameProgress.activities[activity] = {};
                 gameProgress.activities[activity].unlocked = false;
                 gameProgress.activities[activity].played = false;
@@ -40,6 +45,46 @@ function GameState() {
         gameProgress.activities["rocks1"].unlocked = true;
         
         return gameProgress;
+    }
+    
+    function isTodaysRecordCreated() {
+        // check if there are records for today
+        var todaysDate = new Date().toDateString();
+        
+        return that.savedGames[
+            selectedSavedGame
+        ].records.hasOwnProperty(todaysDate);
+    }
+    
+    function createRecordObject() {
+        that.savedGames[
+            selectedSavedGame
+        ].records[todaysDate] = {
+            "stimuli": {},
+            "playedActivities": []
+        };
+        
+        that.saveGames();
+    }
+    
+    function isStimulusRecordCreated(st) {
+        // check if there are records for today        
+        return that.savedGames[
+            selectedSavedGame
+        ].records[
+            todaysDate
+        ].stimuli.hasOwnProperty(st);
+    }
+    
+    function createStimuliRecord(st) {
+        that.savedGames[
+            selectedSavedGame
+        ].records[todaysDate].stimuli[st] = {
+            "tries": 0,
+            "successes": 0
+        };
+        
+        that.saveGames();
     }
     
     this.resetGameProgress = function () {
@@ -83,6 +128,17 @@ function GameState() {
             selectedSavedGame
         ].activities[activity].played = true;
         
+        // record the activity as played today
+        if (!isTodaysRecordCreated()) {
+            createRecordObject();
+        }
+        
+        this.savedGames[
+            selectedSavedGame
+        ].records[
+            todaysDate
+        ].playedActivities.push(activity);
+        
         this.saveGames();
     };
     
@@ -91,6 +147,44 @@ function GameState() {
             selectedSavedGame
         ].activities[activity].unlocked = true;
         this.openedActivityID = activity;
+        
+        this.saveGames();
+    };
+    
+    this.addStimulusTryRecord = function (stimulus) {
+        // record the activity as played today
+        if (!isTodaysRecordCreated()) {
+            createRecordObject();
+        }
+        
+        if (!isStimulusRecordCreated(stimulus)) {
+            createStimuliRecord(stimulus)
+        }
+        
+        this.savedGames[
+            selectedSavedGame
+        ].records[
+            todaysDate
+        ].stimuli[stimulus].tries += 1;
+        
+        this.saveGames();
+    };
+    
+    this.addStimulusSuccessRecord = function (stimulus) {
+        // record the activity as played today
+        if (!isTodaysRecordCreated()) {
+            createRecordObject();
+        }
+        
+        if (!isStimulusRecordCreated(stimulus)) {
+            createStimuliRecord(stimulus)
+        }
+        
+        this.savedGames[
+            selectedSavedGame
+        ].records[
+            todaysDate
+        ].stimuli[stimulus].successes += 1;
         
         this.saveGames();
     };

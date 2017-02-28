@@ -12,7 +12,9 @@ function Map(mapID) {
     // return the activity scene to be played by cc.director
     this.getActivityScene = function (activityID) {
         currentActivity = activityID;
-        var activityData = Utils.copyObject(WORLD[mapID][activityID]);
+        var activityData = Utils.copyObject(
+            WORLD[mapID].activities[activityID]
+        );
         
         var scene = new GameScene();
         var background = new BackgroundLayer();

@@ -1,6 +1,6 @@
 var config = Object.freeze({
-    effectsVolume: .3,
-    stimuliVolume: .5,
+    effectsVolume: .2,
+    stimuliVolume: .7,
     mapTransitionSpeed: 1,
     sceneTransitionSpeed: .8
 });

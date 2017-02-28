@@ -7,7 +7,7 @@ var ActivityMenuLayer = cc.Layer.extend({
         
         //////////////////////////////
         // 2. add the activity btns
-        var activitiesIDs = Object.keys(WORLD[mapID]);
+        var activitiesIDs = Object.keys(WORLD[mapID].activities);
         
         var positions = positionsByMaps[mapID];
         
@@ -16,10 +16,13 @@ var ActivityMenuLayer = cc.Layer.extend({
         var btns = {};
         
         activitiesIDs.forEach(function (activityID) {
-            var button = new ActivityButton(activityID);
+            var button = new ActivityButton(
+                activityID,
+                WORLD[mapID].activities[activityID].activityType
+            );
             button.attr({
                 x: positions[btnCount].x,
-                y: positions[btnCount].y
+                y: this.size.height - positions[btnCount].y
             });            
             btns[activityID] = button;
             this.addChild(button);
@@ -94,16 +97,18 @@ var ActivityMenuLayer = cc.Layer.extend({
                 btns[GameState.openedActivityID].getPosition()
             );
             
-            btns[GameState.openedActivityID].runAction(
-                new cc.Sequence(
-                    new cc.DelayTime(config.sceneTransitionSpeed),
-                    new cc.CallFunc(function () {
-                        this.addChild(particles);
-                    }.bind(this)),
-                    new cc.ScaleTo(0.2, prevScale + 0.2),
-                    new cc.ScaleTo(0.2, prevScale)
-                )
-            );
+            if (!cc.sys.isNative) {
+                btns[GameState.openedActivityID].runAction(
+                    new cc.Sequence(
+                        new cc.DelayTime(config.sceneTransitionSpeed),
+                        new cc.CallFunc(function () {
+                            this.addChild(particles);
+                        }.bind(this)),
+                        new cc.ScaleTo(0.2, prevScale + 0.2),
+                        new cc.ScaleTo(0.2, prevScale)
+                    )
+                );
+            }
             
             GameState.openedActivityID = null;
         }

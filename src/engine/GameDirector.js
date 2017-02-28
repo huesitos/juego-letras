@@ -14,14 +14,16 @@ function GameDirector() {
     
     var checkUnlockMap = function () {
         // check if the map is completed
-        var activitiesID = Object.keys(WORLD[GameState.getCurrentMapID()]);
+        var activitiesID = Object.keys(
+            WORLD[GameState.getOpenedMapID()].activities
+        );
         
         var mapCompleted = activitiesID.map(function (id) {
             return GameState.isActivityPlayed(id);
         }).reduce(function (x, y) { return x && y; });
         
         if (mapCompleted) {
-            var mapUnlock = MAP_TRANSITIONS[GameState.getCurrentMapID()];
+            var mapUnlock = MAP_TRANSITIONS[GameState.getOpenedMapID()];
             
             if (mapUnlock) {
                 GameState.unlockMap(mapUnlock);
@@ -33,10 +35,13 @@ function GameDirector() {
     }.bind(this);
     
     this.openMap = function (mapID) {
-        if (!mapID)
-            currentMap = Maps[GameState.getOpenedMapID().replace(/[0-9]/g, '')];
+        var mapType;
+        if (!mapType)
+            mapType = WORLD[GameState.getOpenedMapID()].type;
         else
-            currentMap = Maps[mapID.replace(/[0-9]/g, '')];
+            mapType = WORLD[mapID].type;
+        
+        currentMap = Maps[mapType];
         currentMap.setMapID(mapID);
     };
     
