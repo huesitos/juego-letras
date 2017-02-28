@@ -2,7 +2,7 @@ var audioManager = {
     stimuliId: '',
     playStimuli: function (res) {
         cc.audioEngine.stopEffect(this.stimuliId);
-        cc.audioEngine.setEffectsVolume(config.stimuliVolume);
+        this.stimuliId = cc.audioEngine.setEffectsVolume(config.stimuliVolume);
         
         cc.audioEngine.playEffect(res);
     },

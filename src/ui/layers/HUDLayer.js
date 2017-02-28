@@ -148,7 +148,7 @@ var HUDLayer = cc.Layer.extend({
         }
     },
     animateBarLoading: function (ratio) {
-        var step = Math.floor(ratio / 10);
+        var step = ratio / 10;
         
         var increase = function () {
             this.fuelBar.setPercent(this.fuelBar.getPercent() + step);
