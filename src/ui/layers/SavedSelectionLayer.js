@@ -1,5 +1,5 @@
 var SavedSelectionLayer = cc.Layer.extend({
-    ctor: function () {
+    ctor: function (isRecordsScreen) {
         this._super();
         this.size = cc.winSize;
         
@@ -11,7 +11,10 @@ var SavedSelectionLayer = cc.Layer.extend({
                 
         Object.keys(GameState.savedGames).forEach(
             function (savedGame) {
-                var sGButton = new SavedGameButton(savedGame);
+                var sGButton = new SavedGameButton(
+                    savedGame,
+                    isRecordsScreen
+                );
                 sGButton.attr({
                     x: xPos,
                     y: yPos
@@ -64,13 +67,13 @@ var SavedSelectionLayer = cc.Layer.extend({
     }
 });
 
-SavedSelectionLayer.getScene = function () {
+SavedSelectionLayer.getScene = function (isRecordsScreen) {
     var scene = new cc.Scene();
     
     var bg = new BackgroundLayer();
     bg.addBackgroundImage(res.creditsBg_png);
     scene.addChild(bg);
     
-    scene.addChild(new SavedSelectionLayer());
+    scene.addChild(new SavedSelectionLayer(isRecordsScreen));
     return scene;
 };

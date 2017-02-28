@@ -9,12 +9,12 @@ var res = {
     starsBgM_png: "res/imgs/stars_bg_medium.png",
     starsBg_png: "res/imgs/activityMenu/stars_bg.png",
     
-    playBtnNormal_png: "res/imgs/play_normal.png",
-    playBtnSelected_png: "res/imgs/play_selected.png",
-    creditsBtnNormal_png: "res/imgs/credits_normal.png",
-    creditsBtnSelected_png: "res/imgs/credits_selected.png",
+    playBtn_png: "res/imgs/play.png",
+    creditsBtn_png: "res/imgs/credits.png",
+    recordsBtn_png: "res/imgs/records.png",
     
     creditsBg_png: "res/imgs/credits_bg.png",
+    recordPageBg_png: "res/imgs/record_page.png",
     menuBg_png: "res/imgs/menu_bg.png"
 };
 
@@ -27,6 +27,9 @@ var uiImgRes = {
     fuelBarEmpty_png: "res/imgs/fuel_bar_empty.png",
     fuelBarFull_png: "res/imgs/fuel_bar_full.png",
     labelRibbon_png: "res/imgs/label_ribbon.png",
+    
+    up_png: "res/imgs/up.png",
+    down_png: "res/imgs/down.png",
     
     energyCrystal_png: "res/imgs/energy.png"
 };

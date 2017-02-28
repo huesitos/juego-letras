@@ -33,6 +33,7 @@
         "src/ui/nodes/ActivityButton.js",
         "src/ui/nodes/StarsRibbon.js",
         "src/ui/nodes/SavedGameButton.js",
+        "src/ui/nodes/RecordPage.js",
         
         "src/ui/layers/BackgroundLayer.js",
         "src/ui/layers/ActivityMenuLayer.js",
@@ -45,6 +46,7 @@
         "src/ui/ActivityMenuScene.js",
         "src/ui/MenuScene.js",
         "src/ui/CreditsScene.js",
+        "src/ui/RecordsScene.js",
         "src/ui/GameScene.js"
     ]
 }

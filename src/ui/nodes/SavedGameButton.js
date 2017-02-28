@@ -1,5 +1,5 @@
 var SavedGameButton = ccui.Button.extend({
-    ctor: function (number) {
+    ctor: function (number, isRecordsScreen) {
         this.number = number;
         
         // load game based on number
@@ -49,7 +49,10 @@ var SavedGameButton = ccui.Button.extend({
         
         this.setScale(.7);
         
-        this.addTouchEventListener(this.onLoadSelectedGame, this);
+        if (isRecordsScreen)
+            this.addTouchEventListener(this.onLoadRecordScreen, this);
+        else
+            this.addTouchEventListener(this.onLoadSelectedGame, this);
         
         return true;
     },
@@ -64,6 +67,18 @@ var SavedGameButton = ccui.Button.extend({
                 new cc.TransitionFade(
                     config.sceneTransitionSpeed,
                     ActivityMenuLayer.getScene(GameState.getCurrentMapID())
+                )
+            );
+        }
+    },
+    onLoadRecordScreen: function (sender, type) {
+        if (ccui.Widget.TOUCH_ENDED === type) {
+            sender.loadTextureNormal(sender.iconResSelected);
+            
+            cc.director.runScene(
+                new cc.TransitionFade(
+                    config.sceneTransitionSpeed,
+                    new RecordsScene(this.number)
                 )
             );
         }

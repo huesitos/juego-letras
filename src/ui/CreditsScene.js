@@ -31,12 +31,23 @@ var CreditsScene = cc.Scene.extend({
         delayTime += 1;
         
         //////////////////////////////
-        // 2. nav btns        
+        // 2. nav btns
         var backBtn = new ccui.Button(uiImgRes.back_png);
         backBtn.setPosition(
-            cc.p(this.size.width * .05, this.size.height * .9)
+            cc.p(-backBtn.width, this.size.height * .9)
         );
         backBtn.addTouchEventListener(this.onBackBtn, this);
+        backBtn.runAction(
+            new cc.Sequence(
+                new cc.DelayTime(config.mapTransitionSpeed),
+                new cc.EaseBackOut(
+                    new cc.MoveTo(
+                        0.25,
+                        cc.p(this.size.width * .05, this.size.height * .9)
+                    )
+                )
+            )
+        );
         this.addChild(backBtn);
         
         //////////////////////////////

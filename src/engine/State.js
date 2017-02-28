@@ -230,6 +230,12 @@ function GameState() {
         return this.savedGames[saveID];
     };
     
+    this.getRecord = function (recordNumber) {
+        return this.savedGames[
+            recordNumber
+        ].records;
+    };
+    
     this.setOpenedMapID = function (map) {
         openedMapID = map;
     };
