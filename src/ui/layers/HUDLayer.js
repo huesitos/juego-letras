@@ -82,7 +82,7 @@ var HUDLayer = cc.Layer.extend({
         this.addChild(this.backBtn);
         
         //////////////////////////////
-        // 4. set update
+        // 4. set events callbacks
         
         cc.eventManager.addListener({
             event: cc.EventListener.CUSTOM,
@@ -100,6 +100,8 @@ var HUDLayer = cc.Layer.extend({
         return true;
     },
     runIntroAnimation: function () {
+        // animation to be played when the activity starts
+        // and after the GameLayer animation finishes
         this.emptyFuelBar.runAction(
             new cc.EaseBackOut(
                 new cc.MoveTo(
@@ -134,6 +136,7 @@ var HUDLayer = cc.Layer.extend({
         );
     },
     onQuestionChecked: function (event) {
+        // everytime a question is checked, update the fuel bar
         var gameLayer = this.getParent().getChildByName("gameLayer");
         
         var fuelScore = gameLayer.activity.getActivityScore();
@@ -141,6 +144,8 @@ var HUDLayer = cc.Layer.extend({
         // the score
         var percent = fuelScore;
         
+        // if there is a difference between the current score
+        // and the previous score, update
         var diff = percent - this.fuelBar.getPercent();
         
         if (diff > 0) {
@@ -148,6 +153,7 @@ var HUDLayer = cc.Layer.extend({
         }
     },
     animateBarLoading: function (ratio) {
+        // steps should be less than 10%
         var step = ratio / 10;
         
         var increase = function () {
@@ -176,6 +182,7 @@ var HUDLayer = cc.Layer.extend({
             cc.eventManager.pauseTarget(this, true);
             audioManager.playEffect(audioRes.help);
             
+            // wait until the help audio finishes to resume the game
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(8.5),
                 new cc.CallFunc(function () {
@@ -191,6 +198,7 @@ var HUDLayer = cc.Layer.extend({
             
             var gameLayer = this.getParent().getChildByName("gameLayer");
             
+            // wait after the click audio finishes to play the stimulus
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(0.25),
                 new cc.CallFunc(function () {

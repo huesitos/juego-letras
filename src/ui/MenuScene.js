@@ -13,6 +13,7 @@ var MenuScene = cc.Scene.extend({
         
         //////////////////////////////
         // 2. nav btns
+        // goes to game selection scene
         var playBtn = new ccui.Button(
             res.playBtn_png
         );
@@ -35,6 +36,7 @@ var MenuScene = cc.Scene.extend({
             )
         );
         
+        // goes to credits scene
         var creditsBtn = new ccui.Button(
             res.creditsBtn_png
         );
@@ -53,6 +55,7 @@ var MenuScene = cc.Scene.extend({
             )
         ));
         
+        // goes to record scene
         var recordBtn = new ccui.Button(
             res.recordsBtn_png
         );

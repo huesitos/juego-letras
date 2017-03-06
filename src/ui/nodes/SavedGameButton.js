@@ -5,6 +5,7 @@ var SavedGameButton = ccui.Button.extend({
         // load game based on number
         var gameProgress = GameState.getSavedGameProgress(number);
         
+        // set icon based on the farthest unlocked map
         var iconResNormal, iconResSelected;
         var currentMap = gameProgress.currentMapID;
         

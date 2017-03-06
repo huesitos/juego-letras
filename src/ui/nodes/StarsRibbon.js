@@ -2,7 +2,10 @@ var StarsRibbon = cc.Sprite.extend({
     ctor: function (starsLockStatus, size) {
         var bgRes, starOnRes, starOffRes, hgap, vgap;
         
-        this.isOneStarUnlocked = starsLockStatus[0];        
+        // saves whether there is at least one unlocked star
+        this.isOneStarUnlocked = starsLockStatus[0];
+        
+        // use different resources based on the size of the star
         this.starSize = size;        
         if (this.starSize === StarsRibbon.SMALL_STAR) {
             bgRes = res.starsBg_png;
@@ -24,6 +27,7 @@ var StarsRibbon = cc.Sprite.extend({
         this._super(bgRes);
         this.setColor(staticRes.ribbonColor);
         
+        // load stars based on the level's result
         var star1Res = starsLockStatus[0] ? starOnRes : starOffRes;
         var star2Res = starsLockStatus[1] ? starOnRes : starOffRes;
         var star3Res = starsLockStatus[2] ? starOnRes : starOffRes;

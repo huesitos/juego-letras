@@ -502,6 +502,10 @@ for (var i in effectsRes) {
     g_resources.push(effectsRes[i]);
 }
 
+/*
+* Return font based on whether game is run on web or native device
+* @param {string} name of the font
+*/
 var _b_getFontName = function(resource) {
     if(cc.sys.isNative) {
         return resource.srcs[0];

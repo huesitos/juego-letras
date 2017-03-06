@@ -38,6 +38,7 @@ var RecordsScene = cc.Scene.extend({
         this.records = GameState.getRecord(number);
         var rCount = 1;
         
+        // each page shows the stats for a day
         if (Object.keys(this.records).length > 0) {
             Object.keys(this.records).forEach(function (day) {
                 var recordPage = new RecordPage(day, this.records[day]);
@@ -96,6 +97,7 @@ var RecordsScene = cc.Scene.extend({
         }
     },
     onUpBtn: function (sender, type) {
+        // show the previous two pages
         if (type === ccui.Widget.TOUCH_ENDED) {
             var length = Object.keys(this.records).length;
             
@@ -117,6 +119,7 @@ var RecordsScene = cc.Scene.extend({
         }
     },
     onDownBtn: function (sender, type) {
+        // show the next two pages
         if (type === ccui.Widget.TOUCH_ENDED) {
             var length = Object.keys(this.records).length;
             

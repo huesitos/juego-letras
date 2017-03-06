@@ -1,4 +1,12 @@
+/*
+* SavedSelectionLayer is used to display the possible saved games
+* slot, as well as the record pages selection scene for each saved game
+*/
 var SavedSelectionLayer = cc.Layer.extend({
+    /*
+    * Creates the layer
+    * @param {boolean} defines if the layer is the records scene
+    */
     ctor: function (isRecordsScreen) {
         this._super();
         this.size = cc.winSize;
@@ -8,7 +16,7 @@ var SavedSelectionLayer = cc.Layer.extend({
             xStart = this.size.width * .1,
             xPos = xStart,
             yPos = this.size.height - yGap;
-                
+        
         Object.keys(GameState.savedGames).forEach(
             function (savedGame) {
                 var sGButton = new SavedGameButton(

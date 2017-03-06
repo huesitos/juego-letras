@@ -25,6 +25,7 @@ var RecordPage = ccui.ScrollView.extend({
         });
         this.addChild(dateLabel);
         
+        // show list of stimuli and it's tries and successes
         var stimuli = new cc.LabelTTF(
             "Stimuli",
             _b_getFontName(fonts.gameFont),
@@ -61,6 +62,7 @@ var RecordPage = ccui.ScrollView.extend({
         
         yPos -= yGap;
         
+        // show list of played activities for the day
         var playedActivities = new cc.LabelTTF(
             "Played activities",
             _b_getFontName(fonts.gameFont),

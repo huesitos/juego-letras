@@ -17,6 +17,12 @@ function StimuliPicker() {
         return stimuli[randomPick];
     };
     
+    /*
+    * Creates a random sorted list of stimuli from a list of stimuli
+    * and a list of reviews
+    * @param {list} stimuli list
+    * @param {list} stimuli review list
+    */
     this.buildStimuliList = function (s, sr) {
         if (!stimuliRepetitions)
             stimuliRepetitions = REPETITIONS_DEFAULT;
@@ -44,11 +50,19 @@ function StimuliPicker() {
         Utils.shuffle(stimuliList);
     };
     
+    /*
+    * Set the amount of repetitions for new and review stimuli
+    * @param {int} repetitions for stimuli
+    * @param {int} repetitions for review
+    */
     this.setRepetitionValues = function (rep, revRep) {
         stimuliRepetitions = rep;
         stimuliReviewRep = revRep;
     };
     
+    /*
+    * If there are any stimulus left, return one
+    */
     this.getNextStimuli = function () {
         var stimuli = stimuliList.pop();
         
