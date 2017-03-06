@@ -173,14 +173,16 @@ var HUDLayer = cc.Layer.extend({
             
             this.pauseGame();
             
+            cc.eventManager.pauseTarget(this, true);
+            audioManager.playEffect(audioRes.help);
+            
             this.runAction(new cc.Sequence(
                 new cc.DelayTime(8.5),
                 new cc.CallFunc(function () {
+                    cc.eventManager.resumeTarget(this, true);
                     this.resumeGame();
                 }, this)
             ));
-            
-            audioManager.playEffect(audioRes.help);
         }
     },
     onReplayTouch: function (sender, type) {
@@ -188,7 +190,13 @@ var HUDLayer = cc.Layer.extend({
             audioManager.playEffect(audioRes.click);
             
             var gameLayer = this.getParent().getChildByName("gameLayer");
-            gameLayer.activity.playOptionAudio();
+            
+            this.runAction(new cc.Sequence(
+                new cc.DelayTime(0.25),
+                new cc.CallFunc(function () {
+                    gameLayer.activity.playOptionAudio();
+                })
+            ));
         }
     },
     onPauseTouch: function (sender, type) {
@@ -218,12 +226,7 @@ var HUDLayer = cc.Layer.extend({
             
             this.resumeBtn.setScale(0);
             this.resumeBtn.runAction(
-                new cc.EaseBackOut(
-                    new cc.ScaleTo(
-                        0.25,
-                        1
-                    )
-                )
+                new cc.EaseBackOut(new cc.ScaleTo(0.25,1))
             );
         }
     },
