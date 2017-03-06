@@ -11,7 +11,7 @@ var CreditsScene = cc.Scene.extend({
         );
         this.addChild(bg);
         
-        var fadeInAction = new cc.FadeIn(1);
+        var fadeInAction = new cc.FadeIn(0.5);
         var delayTime = .5;
         
         var title = new cc.LabelTTF(
@@ -243,17 +243,15 @@ var CreditsScene = cc.Scene.extend({
             new cc.DelayTime(delayTime),
             fadeInAction.clone()
         ));
-        delayTime += 1;
         
-        // technical team
         var label12 = new cc.LabelTTF(
-            "Equipo Técnico",
-            _b_getFontName(fonts.subTitleFont),
-            30
+            "Íconos: Nich Roach",
+            _b_getFontName(fonts.gameFont),
+            25
         );
         label12.attr({
-            x: this.size.width * .5,
-            y: this.size.height * .25,
+            x: this.size.width * .75,
+            y: this.size.height * .34,
             opacity: 0
         });
         this.addChild(label12);
@@ -263,14 +261,15 @@ var CreditsScene = cc.Scene.extend({
         ));
         delayTime += 1;
         
+        // technical team
         var label13 = new cc.LabelTTF(
-            "Analía Henríquez Cross",
-            _b_getFontName(fonts.gameFont),
-            25
+            "Equipo Técnico",
+            _b_getFontName(fonts.subTitleFont),
+            30
         );
         label13.attr({
             x: this.size.width * .5,
-            y: this.size.height * .17,
+            y: this.size.height * .25,
             opacity: 0
         });
         this.addChild(label13);
@@ -278,19 +277,36 @@ var CreditsScene = cc.Scene.extend({
             new cc.DelayTime(delayTime),
             fadeInAction.clone()
         ));
+        delayTime += 1;
         
         var label14 = new cc.LabelTTF(
-            "Carolina Marte",
+            "Analía Henríquez Cross",
             _b_getFontName(fonts.gameFont),
             25
         );
         label14.attr({
             x: this.size.width * .5,
-            y: this.size.height * .12,
+            y: this.size.height * .17,
             opacity: 0
         });
         this.addChild(label14);
         label14.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        
+        var label15 = new cc.LabelTTF(
+            "Carolina Marte",
+            _b_getFontName(fonts.gameFont),
+            25
+        );
+        label15.attr({
+            x: this.size.width * .5,
+            y: this.size.height * .12,
+            opacity: 0
+        });
+        this.addChild(label15);
+        label15.runAction(new cc.Sequence(
             new cc.DelayTime(delayTime),
             fadeInAction.clone()
         ));
