@@ -78,7 +78,7 @@ var MenuScene = cc.Scene.extend({
         // 3. title
         
         var name = new cc.LabelTTF(
-            "Juego Letras",
+            "Aventura de letras",
             _b_getFontName(fonts.subTitleFont),
             50
         );
