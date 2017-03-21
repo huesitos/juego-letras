@@ -4,7 +4,7 @@ var OctopusLayer = GameLayer.extend({
         // 1. super init first
         var ink1 = {
             initState: seaImgRes.ink1_png,
-            clickedState: seaImgRes.ink1_png
+            clickedState: seaImgRes.ink1Selected_png
         }
         
         this._super(ink1, optionsPos, gap, activity);
@@ -18,14 +18,14 @@ var OctopusLayer = GameLayer.extend({
         
         this.optionButtons[1].setStatesTextures(
             seaImgRes.ink2_png,
-            seaImgRes.ink2_png
+            seaImgRes.ink2Selected_png
         );
         this.optionButtons[1].changeToNormal();
         this.optionButtons[1].setVisible(false);
         
         this.optionButtons[2].setStatesTextures(
             seaImgRes.ink3_png,
-            seaImgRes.ink3_png
+            seaImgRes.ink3Selected_png
         );
         this.optionButtons[2].changeToNormal();
         this.optionButtons[2].setVisible(false);

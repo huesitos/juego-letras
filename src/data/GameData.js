@@ -326,7 +326,7 @@ var WORLD = {
                 review: ["ta", "te", "ti", "to", "tu"],
                 distractions: ["pa", "pe", "pi", "po", "pu"],
                 activityID: "oysters4",
-                activityType: "oysters4",
+                activityType: "oysters",
                 backgroundImgs: [
                     seaImgRes.seaWater_png,
                     seaImgRes.seaFloor_png
@@ -763,9 +763,7 @@ var WORLD = {
                 distractions: ["la", "li", "le", "lo", "lu"],
                 activityID: "plant1",
                 activityType: "plant",
-                backgroundImgs: [earthImgRes.mainLand_png],
-                type: TIMED_LEVEL,
-                time: 10
+                backgroundImgs: [earthImgRes.mainLand_png]
             },
             earth_crabs1: {
                 stimuli: ["ja", "je", "ji", "jo", "ju"],
@@ -846,7 +844,7 @@ var WORLD = {
                     "ha", "he", "hi", "ho", "hu"
                 ],
                 activityID: "plant2",
-                activityType: "plant2",
+                activityType: "plant",
                 backgroundImgs: [earthImgRes.mainLand_png],
                 type: UNIQUE_ANSWER
             },

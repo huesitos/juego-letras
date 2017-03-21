@@ -54,6 +54,9 @@ var seaImgRes = {
     ink1_png: "res/imgs/sea/ink1.png",
     ink2_png: "res/imgs/sea/ink2.png",
     ink3_png: "res/imgs/sea/ink3.png",
+    ink1Selected_png: "res/imgs/sea/ink1_selected.png",
+    ink2Selected_png: "res/imgs/sea/ink2_selected.png",
+    ink3Selected_png: "res/imgs/sea/ink3_selected.png",
     
     octopus_png: "res/imgs/sea/octopus.png",
     tentacle1_png: "res/imgs/sea/octopus_tentacle_1.png",
@@ -103,8 +106,8 @@ var beachImgRes = {
     turtleNormal_png: "res/imgs/beach/turtle_normal.png",
     turtleSelected_png: "res/imgs/beach/turtle_selected.png",
     
-    turtleTimedNormal_png: "res/imgs/beach/turtle_normal_timed.png",
-    turtleTimedSelected_png: "res/imgs/beach/turtle_selected_timed.png",
+    turtleTimedNormal_png: "res/imgs/beach/turtle_timed_normal.png",
+    turtleTimedSelected_png: "res/imgs/beach/turtle_timed_selected.png",
     
     poolNormal_png: "res/imgs/beach/sea_pool_normal.png",
     poolSelected_png: "res/imgs/beach/sea_pool_selected.png",

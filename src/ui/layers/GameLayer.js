@@ -25,7 +25,7 @@ var GameLayer = cc.Layer.extend({
 //            60
 //        );
 //        this.answerLabel.setPosition(
-//            cc.p(this.size.width / 2, this.size.height * .75)
+//            cc.p(this.size.width / 2, this.size.height * .85)
 //        );
 //        this.addChild(this.answerLabel);
         
