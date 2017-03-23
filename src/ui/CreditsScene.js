@@ -182,7 +182,7 @@ var CreditsScene = cc.Scene.extend({
             30
         );
         label8.attr({
-            x: this.size.width * .25,
+            x: this.size.width * .21,
             y: this.size.height * .47,
             opacity: 0
         });
@@ -199,7 +199,7 @@ var CreditsScene = cc.Scene.extend({
             25
         );
         label9.attr({
-            x: this.size.width * .25,
+            x: this.size.width * .21,
             y: this.size.height * .39,
             opacity: 0
         });
@@ -217,7 +217,7 @@ var CreditsScene = cc.Scene.extend({
             30
         );
         label10.attr({
-            x: this.size.width * .75,
+            x: this.size.width * .79,
             y: this.size.height * .47,
             opacity: 0
         });
@@ -234,7 +234,7 @@ var CreditsScene = cc.Scene.extend({
             25
         );
         label11.attr({
-            x: this.size.width * .75,
+            x: this.size.width * .79,
             y: this.size.height * .39,
             opacity: 0
         });
@@ -250,7 +250,7 @@ var CreditsScene = cc.Scene.extend({
             25
         );
         label12.attr({
-            x: this.size.width * .75,
+            x: this.size.width * .79,
             y: this.size.height * .34,
             opacity: 0
         });
@@ -269,7 +269,7 @@ var CreditsScene = cc.Scene.extend({
         );
         label13.attr({
             x: this.size.width * .5,
-            y: this.size.height * .25,
+            y: this.size.height * .37,
             opacity: 0
         });
         this.addChild(label13);
@@ -286,7 +286,7 @@ var CreditsScene = cc.Scene.extend({
         );
         label14.attr({
             x: this.size.width * .5,
-            y: this.size.height * .17,
+            y: this.size.height * .30,
             opacity: 0
         });
         this.addChild(label14);
@@ -302,11 +302,31 @@ var CreditsScene = cc.Scene.extend({
         );
         label15.attr({
             x: this.size.width * .5,
-            y: this.size.height * .12,
+            y: this.size.height * .24,
             opacity: 0
         });
         this.addChild(label15);
         label15.runAction(new cc.Sequence(
+            new cc.DelayTime(delayTime),
+            fadeInAction.clone()
+        ));
+        
+         delayTime += .5;
+        
+        var fundsLabel = new cc.LabelTTF(
+            "Este proyecto fue financiado por el Fondo Nacional de Innovación y Desarrollo Científico y Tecnológico (FONDOCYT) del Ministerio de Educación Superior Ciencia y Tecnología (MESCYT) de la República Dominicana.",
+            _b_getFontName(fonts.gameFont),
+            18
+        );
+        fundsLabel.attr({
+            x: this.size.width * .5,
+            y: this.size.height * .12,
+            opacity: 0,
+            textAlign: cc.TEXT_ALIGNMENT_CENTER
+        });
+        fundsLabel.setDimensions(cc.size(this.size.width * .84, 80));
+        this.addChild(fundsLabel);
+        fundsLabel.runAction(new cc.Sequence(
             new cc.DelayTime(delayTime),
             fadeInAction.clone()
         ));
