@@ -115,6 +115,9 @@ var beachImgRes = {
     starNormal_png: "res/imgs/beach/star_normal.png",
     starSelected_png: "res/imgs/beach/star_selected.png",
     
+    bottleNormal_png: "res/imgs/beach/bottle_normal.png",
+    bottleSelected_png: "res/imgs/beach/bottle_selected.png",
+    
     beachFront_png: "res/imgs/beach/beach_front.png",
     beachTop_png: "res/imgs/beach/beach_top.png",
     beachSand_png: "res/imgs/beach/beach_sand.png",
@@ -129,6 +132,7 @@ var beachImgRes = {
     starIcon_png: "res/imgs/activityMenu/activities/star_icon.png",
     bucketIcon_png: "res/imgs/activityMenu/activities/bucket_icon.png",
     crabIcon_png: "res/imgs/activityMenu/activities/crab_icon.png",
+    bottleIcon_png: "res/imgs/activityMenu/activities/bottle_icon.png",
     turtleIcon_png: "res/imgs/activityMenu/activities/turtle_icon.png"
 };
 

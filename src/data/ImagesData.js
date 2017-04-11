@@ -54,6 +54,7 @@ var activitiesImgRes = {
     fisherman: seaImgRes.fishermanIcon_png,
     buckets: beachImgRes.bucketIcon_png,
     crabs: beachImgRes.crabIcon_png,
+    bottles: beachImgRes.bottleIcon_png,
     earth_crabs: beachImgRes.crabIcon_png,
     turtles: beachImgRes.turtleIcon_png,
     star: beachImgRes.starIcon_png,

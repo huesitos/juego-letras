@@ -551,12 +551,12 @@ var WORLD = {
                 backgroundImgs: [beachImgRes.beachFront_png],
                 type: UNIQUE_ANSWER
             },
-            crabs3: {
+            bottles4: {
                 stimuli: ["va", "ve", "vi", "vo", "vu"],
                 review: ["la", "le", "li", "lo", "lu"],
                 distractions: ["fa", "fe", "fi", "fo", "fu"],
-                activityID: "crabs3",
-                activityType: "crabs",
+                activityID: "bottles4",
+                activityType: "bottles",
                 backgroundImgs: [beachImgRes.beachTop_png],
                 type: UNIQUE_ANSWER
             },
@@ -588,12 +588,12 @@ var WORLD = {
                 backgroundImgs: [beachImgRes.beachTop_png],
                 type: UNIQUE_ANSWER
             },
-            buckets4: {
+            bottles3: {
                 stimuli: ["cha", "che", "chi", "cho", "chu"],
                 review: ["sa", "se", "si", "so", "su"],
                 distractions: ["ca", "que", "qui", "co", "cu"],
-                activityID: "buckets4",
-                activityType: "buckets",
+                activityID: "bottles3",
+                activityType: "bottles",
                 backgroundImgs: [beachImgRes.beachFront_png],
                 type: UNIQUE_ANSWER
             },
@@ -668,12 +668,12 @@ var WORLD = {
                 backgroundImgs: [beachImgRes.beachFront_png],
                 type: UNIQUE_ANSWER
             },
-            star5: {
+            bottles2: {
                 stimuli: ["ya", "ye", "yi", "yo", "yu"],
                 review: ["pla", "ple", "pli", "plo", "plu"],
                 distractions: ["sa", "se", "si", "so", "su"],
-                activityID: "star5",
-                activityType: "star",
+                activityID: "bottles2",
+                activityType: "bottles",
                 backgroundImgs: [beachImgRes.beachTop_png],
                 type: UNIQUE_ANSWER
             },
@@ -696,12 +696,12 @@ var WORLD = {
                 backgroundImgs: [beachImgRes.beachFront_png],
                 type: UNIQUE_ANSWER
             },
-            beach_pool6: {
+            bottles1: {
                 stimuli: ["ga", "gue", "gui", "go", "gu"],
                 review: ["va", "ve", "vi", "vo", "vu"],
                 distractions: ["ba", "be", "bi", "bo", "bu"],
-                activityID: "beach_pool6",
-                activityType: "beach_pool",
+                activityID: "bottles1",
+                activityType: "bottles",
                 backgroundImgs: [beachImgRes.beachFront_png],
                 type: UNIQUE_ANSWER
             },

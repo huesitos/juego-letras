@@ -108,6 +108,25 @@ BeachMap.getGameLayer = function (activityType, activity) {
             );
             
             break;
+        
+        case "bottles":
+            var xPos = size.width * .27;
+            var yPos = [150, 180, 150];
+            
+            gameLayer = new GameLayer(
+                {
+                    initState: beachImgRes.bottleNormal_png,
+                    clickedState: beachImgRes.bottleSelected_png
+                },
+                {
+                    xPos: xPos,
+                    yPos: yPos
+                },
+                cc.winSize.width * .14,
+                activity
+            );
+            
+            break;
     }
     
     return gameLayer;

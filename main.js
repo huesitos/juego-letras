@@ -19,7 +19,7 @@ cc.game.onStart = function(){
     
     cc._loaderImage = loaderImg;
     //load resources
-    cc.LoaderScene.preload(g_resources, function () {        
+    cc.LoaderScene.preload(g_resources, function () {
         GameState.loadSavedGames();
         cc.director.runScene(new MenuScene());
     }, this);
