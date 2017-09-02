@@ -16,18 +16,22 @@
         "src/data/GameData.js",
         "src/data/ImagesData.js",
         
-        "src/engine/AudioManager.js",
-        "src/engine/Storage.js",
-        "src/engine/State.js",
-        "src/engine/StimuliPicker.js",
-        "src/engine/Utils.js",
-        "src/engine/Config.js",
-        "src/engine/Activity.js",
-        "src/engine/maps/Map.js",
-        "src/engine/maps/SeaMap.js",
-        "src/engine/maps/BeachMap.js",
-        "src/engine/maps/EarthMap.js",
-        "src/engine/GameDirector.js",
+        "src/engine/gameplay/StimuliPicker.js",
+        "src/engine/gameplay/Activity.js",
+        "src/engine/gameplay/maps/Map.js",
+        "src/engine/gameplay/maps/SeaMap.js",
+        "src/engine/gameplay/maps/BeachMap.js",
+        "src/engine/gameplay/maps/EarthMap.js",
+        "src/engine/gameplay/GameDirector.js",
+        
+        "src/engine/persistence/Storage.js",
+        "src/engine/persistence/State.js",
+        
+        "src/engine/utils/AudioManager.js",
+        "src/engine/utils/Utils.js",
+        "src/engine/utils/Config.js",
+        
+        
         
         "src/ui/nodes/OptionButton.js",
         "src/ui/nodes/ActivityButton.js",
