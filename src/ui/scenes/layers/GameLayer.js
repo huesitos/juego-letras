@@ -91,6 +91,10 @@ var GameLayer = cc.Layer.extend({
                     sender.getOption()
                 );
                 
+                GameState.addStimulusTryRecord(
+                    sender.getOption()
+                );
+                
                 var moveUp = new cc.MoveBy(0.05, cc.p(0, 10));
                 var moveCenter = new cc.MoveBy(0.05, cc.p(0, -10));
                 var moveDown = new cc.MoveBy(0.05, cc.p(0, -10));
