@@ -36,7 +36,7 @@ var uiImgRes = {
 
 var seaImgRes = {
     oysterOpened_png: "res/imgs/sea/oyster_opened.png",
-    oysterSelected_png: "res/imgs/sea/oyster_closed.png",
+    oysterClosed_png: "res/imgs/sea/oyster_closed.png",
     
     rock1Normal_png: "res/imgs/sea/rock1_normal.png",
     rock1Selected_png: "res/imgs/sea/rock1_cracked.png",

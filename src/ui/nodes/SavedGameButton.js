@@ -11,8 +11,13 @@ var SavedGameButton = ccui.Button.extend({
         
         switch (WORLD[currentMap].type) {
             case "sea":
-                iconResNormal = seaImgRes.chestClosed_png;
-                iconResSelected = seaImgRes.chestSelected_png;
+                if (gameProgress.firstTime) {
+                    iconResNormal = seaImgRes.chestClosed_png;
+                    iconResSelected = seaImgRes.chestSelected_png;
+                } else {
+                    iconResNormal = seaImgRes.fish1Normal_png;
+                    iconResSelected = seaImgRes.fish1Selected_png;
+                }
                 break;
             case "beach":
                 iconResNormal = beachImgRes.crabNormal_png;
