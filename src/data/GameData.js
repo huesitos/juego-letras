@@ -160,9 +160,6 @@ var WORLD = {
                     "na", "ne", "ni", "no", "nu",
                     "sa", "se", "si", "so", "su"
                 ],
-                review: [
-                    "a", "e", "i", "o", "u"
-                ],
                 distractions: [
                     "ma", "me", "mi", "mo", "mu",
                     "na", "ne", "ni", "no", "nu",
@@ -311,7 +308,7 @@ var WORLD = {
         activities: {
             chests4: {
                 stimuli: ["ta", "te", "ti", "to", "tu"],
-                review: ["a", "e", "i", "o", "u"],
+                review: ["pa", "pe", "pi", "po", "pu"],
                 distractions: ["pa", "pe", "pi", "po", "pu"],
                 activityID: "chests4",
                 activityType: "chests",
