@@ -91,7 +91,7 @@ var ActivityMenuLayer = cc.Layer.extend({
         };
         
         // animate the opened activity
-        if (GameState.openedActivityID) {
+        if (GameState.openedActivityID && !GameState.isActivityUnlocked(GameState.openedActivityID)) {
             var prevScale = btns[GameState.openedActivityID].getScale();
             var particles = Effects.createSimpleParticles(
                 btns[GameState.openedActivityID].getPosition()

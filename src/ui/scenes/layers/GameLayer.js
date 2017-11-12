@@ -330,7 +330,7 @@ var GameLayer = cc.Layer.extend({
             new cc.CallFunc(function () {
                 cc.audioEngine.stopAllEffects();
                 
-                if (GD.gameCompleted) {
+                if (GD.gameCompleted && !GameState.isGameWon()) {
                     cc.director.runScene(
                         new cc.TransitionFade(
                             .8, new CreditsScene()

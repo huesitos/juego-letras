@@ -3,6 +3,7 @@ var GAME_PROGRESS_PROTOTYPE = {
     maps: {}, // data for each map
     activities: {}, // data for each activity
     firstTime: true,
+    completedFirstTime: false,
     currentMapID: "sea1" // map that is being played
 };
 var MAX_SAVED_GAMES = 15;
@@ -21,28 +22,39 @@ function GameState() {
     function createGameProgressObject() {
         var gameProgress = Utils.copyObject(GAME_PROGRESS_PROTOTYPE);
         
+        // unlock everything so players can skip what they want...
+        gameProgress.completedFirstTime = true;
+        gameProgress.firstTime = false;
+        
         // create an object with the game progress
         Object.keys(WORLD).forEach(function (map) {
             gameProgress.maps[map] = {};
-            gameProgress.maps[map].unlocked = false;
+//            gameProgress.maps[map].unlocked = false;
             //unlocked
-//             gameProgress.maps[map].unlocked = true;
+            gameProgress.maps[map].unlocked = true;
             
             Object.keys(WORLD[map].activities).forEach(function (activity) {
                 gameProgress.activities[activity] = {};
-                gameProgress.activities[activity].unlocked = false;
-                gameProgress.activities[activity].played = false;
-                gameProgress.activities[activity].score = 0;
+//                gameProgress.activities[activity].unlocked = false;
+//                gameProgress.activities[activity].played = false;
+//                gameProgress.activities[activity].score = 0;
                 // unlocked
-//                 gameProgress.activities[activity].unlocked = true;
-//                 gameProgress.activities[activity].played = true;
-//                 gameProgress.activities[activity].score = 3;
+                gameProgress.activities[activity].unlocked = true;
+                gameProgress.activities[activity].played = true;
+                gameProgress.activities[activity].score = 0;
             });
         });
 
         // the default unlocked activity and map
-        gameProgress.maps["sea1"].unlocked = true;
-        gameProgress.activities["rocks1"].unlocked = true;
+        // unlock all maps and activities as default
+        Object.keys(gameProgress.maps).forEach(function (map) {
+            gameProgress.maps[map].unlocked = true;
+        });
+//        gameProgress.maps["sea1"].unlocked = true;
+        Object.keys(gameProgress.activities).forEach(function (activity) {
+            gameProgress.activities[activity].unlocked = true;
+        });
+//        gameProgress.activities["rocks1"].unlocked = true;
         
         return gameProgress;
     }
@@ -244,6 +256,14 @@ function GameState() {
         selectedSavedGame = savedGameID;
     };
     
+    this.setGameCompleted = function () {
+        return this.savedGames[
+            selectedSavedGame
+        ].completedFirstTime = true;
+        
+        this.saveGames();
+    };
+    
     this.isFirstTime = function () {
         return this.savedGames[
             selectedSavedGame
@@ -266,6 +286,12 @@ function GameState() {
         return this.savedGames[
             selectedSavedGame
         ].activities[activityID].unlocked;
+    };
+    
+    this.isGameWon = function () {
+        return this.savedGames[
+            selectedSavedGame
+        ].completedFirstTime;
     };
 };
 

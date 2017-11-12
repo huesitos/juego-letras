@@ -1,4 +1,4 @@
-var REPETITIONS_DEFAULT = 3,
+var REPETITIONS_DEFAULT = 1,
     REVIEW_REPETITIONS_DEFAULT = 1;
 
 function StimuliPicker() {

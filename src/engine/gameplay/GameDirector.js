@@ -22,7 +22,7 @@ function GameDirector() {
             return GameState.isActivityPlayed(id);
         }).reduce(function (x, y) { return x && y; });
         
-        if (mapCompleted) {
+        if (mapCompleted && !GameState.isGameWon()) {
             var mapUnlock = MAP_TRANSITIONS[GameState.getOpenedMapID()];
             
             if (mapUnlock) {
@@ -30,6 +30,7 @@ function GameDirector() {
                 this.openMap(GameState.getOpenedMapID());
             } else {
                 this.gameCompleted = true;
+                GameState.setGameCompleted();
             }
         }
     }.bind(this);
@@ -62,7 +63,7 @@ function GameDirector() {
         );
         
         var activityUnlock = ACTIVITY_TRANSITIONS[GameState.currentActivity];
-        if (activityUnlock) {
+        if (activityUnlock && !GameState.isActivityUnlocked(activityUnlock)) {
             GameState.unlockActivity(activityUnlock);
         }
         
